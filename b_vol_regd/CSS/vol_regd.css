@@ -4,6 +4,12 @@ table{
   width: 100%;
 }
 
+table.volList{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 60%;
+}
+
 table tr{
   border-top: solid 3px #92d050;
   border-bottom: solid 3px #92d050;
@@ -16,49 +22,15 @@ table tr:hover{
 
 table th,table td{
   text-align: center;
-  width: 10%;
-  padding: 100px 200px;
-  font-size:45px;
+  font-size:50px
 }
 
-table td.volList{
-  background-size: 100%;
-  background-position: left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-
+table td a{
+  display: block; /*行全体をリンク可*/
 }
 
-
-table td.icon{
-  background-size: 100%;
-  background-position: left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-
-}
-
-table td.icon.volNew{
-  background-image: url(volRegd.png)
-}
-
-table td.icon.volList{
-  background-image: url(volList.png)
-}
-
-
-table td.icon{
-  background-size: 100%;
-  background-position: left;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-
-}
-
-table td.icon.volNew{
-  background-image: url(volRegd.png)
-}
-
-table td.icon.volList{
-  background-image: url(volList.png)
+textarea{
+  width:100%;
+  height:100px;
+  resize:vertical;
 }
