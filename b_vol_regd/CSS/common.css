@@ -38,7 +38,7 @@ div#footer-fixed
 /* ボディの定義 */
 div#body-bk{
     padding:250px 0 250px 0;    /* 上下に250pxを余白を取る */
-    width:fit-content;
+
 }
 
 div#body{
@@ -50,7 +50,6 @@ div#Toptitle1{
     width:100%;
     text-align: center;
     font-size: 100px;
-    margin:auto;
     background-color: #0cb06e;
     margin:0px 0 100px 0;
 }
