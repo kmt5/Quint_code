@@ -1,0 +1,64 @@
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-top: solid 3px #92d050;
+  border-bottom: solid 3px #92d050;
+  cursor: pointer;
+}
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  width: 10%;
+  padding: 100px 200px;
+  font-size:45px;
+}
+
+table td.volList{
+  background-size: 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+
+}
+
+
+table td.icon{
+  background-size: 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+
+}
+
+table td.icon.volNew{
+  background-image: url(volRegd.png)
+}
+
+table td.icon.volList{
+  background-image: url(volList.png)
+}
+
+
+table td.icon{
+  background-size: 100%;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+
+}
+
+table td.icon.volNew{
+  background-image: url(volRegd.png)
+}
+
+table td.icon.volList{
+  background-image: url(volList.png)
+}
