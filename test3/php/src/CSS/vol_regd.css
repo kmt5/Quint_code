@@ -1,0 +1,36 @@
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table.volList{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 60%;
+}
+
+table tr{
+  border-top: solid 3px #92d050;
+  border-bottom: solid 3px #92d050;
+  cursor: pointer;
+}
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  font-size:50px
+}
+
+table td a{
+  display: block; /*行全体をリンク可*/
+}
+
+textarea{
+  width:100%;
+  height:100px;
+  resize:vertical;
+}
