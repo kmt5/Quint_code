@@ -30,7 +30,28 @@ table td a{
 }
 
 textarea{
-  width:100%;
+  width:80%;
   height:100px;
   resize:vertical;
 }
+
+form{
+  margin-left:100px;
+}
+
+input{
+  font-size: 50px;
+}
+
+label{
+  font-size: 50px;
+}
+
+select{
+  font-size:50px;
+}
+
+h1{font-size:70px
+}
+
+h2{font-size:70px}
