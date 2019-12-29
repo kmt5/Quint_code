@@ -11,8 +11,8 @@ table.volList{
 }
 
 table tr{
-  border-top: solid 3px #92d050;
-  border-bottom: solid 3px #92d050;
+  border-top: solid 3px #0cb06e;
+  border-bottom: solid 3px #0cb06e;
   cursor: pointer;
 }
 
@@ -33,6 +33,7 @@ textarea{
   width:80%;
   height:100px;
   resize:vertical;
+  border: 2px solid #0cb06e;
 }
 
 form{
@@ -41,17 +42,53 @@ form{
 
 input{
   font-size: 50px;
+  margin:20px 0px 0px 0px;
+  border: 2px solid #0cb06e;
+}
+
+input.capacity{
+  widht:300px;
 }
 
 label{
   font-size: 50px;
+
 }
 
 select{
   font-size:50px;
+  border: 2px solid #0cb06e;
 }
 
 h1{font-size:70px
 }
 
 h2{font-size:70px}
+
+div.new{
+  font-size:50px
+}
+
+input[type=checkbox] {
+  transform: scale(4.0);
+  margin:0px 30px 0px 0px;
+}
+
+button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #0cb06e;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 10px #627295;
+  border-radius: 30px;
+  font-size:50px;
+  margin:50px 50px 50px 250px;
+
+}
+button:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
