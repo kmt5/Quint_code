@@ -4,6 +4,10 @@ table{
   width: 100%;
 }
 
+table.list{
+  width:70%;
+}
+
 table.volList{
   border-collapse: collapse;
   border-spacing: 0;
@@ -47,7 +51,7 @@ input{
 }
 
 input.capacity{
-  widht:300px;
+  width:200px;
 }
 
 label{
