@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="./CSS/vol_regd.css">
 	<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <div id="header-fixed">
@@ -17,7 +18,7 @@
   <div id="body-bk">
     <div id="body">
       <div id="Toptitle1">
-        登録・編集
+        <i class="fas fa-edit"></i>　登録・編集
       </div>
 			<div width="100%" class="new">
         <h1 align="center">ボランティア内容</h1>
@@ -42,7 +43,6 @@
 					<br>
 					<h2>郵便番号</h2>
 					<!-- ▼郵便番号入力フィールド(7桁) -->
-
 					<input type="text" name="zip11" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');">
 					<!-- ▼住所入力フィールド(都道府県+以降の住所) -->
 					<br>
@@ -69,7 +69,6 @@
             <option value="11">11</option>
             <option value="12">12</option>
           </select> 月
-
           <select id="day" name="day">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -103,14 +102,12 @@
             <option value="30">30</option>
             <option value="31">31</option>
           </select> 日
-
 					<br>
 					<label>開始時間</label>
 					<input type="time" name="beg_time">
 					<br>
 					<label>終了時間</label>
 					<input type="time" name="fin_time">
-
 					<h2>定員</h2>
 					<input class="capacity" type="number" name="age" value="" maxlength="3">名
 					<br><br>
@@ -124,7 +121,10 @@
 				    <option value="penguin">シルバー</option>
             <option value="lion">ゴールド</option>
 				  </select><br><br>
-					<label>詳細</label><br>
+          <h2>ボランティアイメージ画像</h2>
+          <input type="file" name="pic" accept=".jpg,.png,image/jpeg,image/png">
+          <br><br>
+					<h2>詳細</h2>
   				<textarea name="detail" placeholder="詳細を入力"></textarea>
 					<br>
 					<button type="submit" align="center">登録</button>
