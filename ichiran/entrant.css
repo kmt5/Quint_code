@@ -6,6 +6,12 @@ h2{
   font-size:50px;
 }
 
+input{
+  font-size: 50px;
+  margin:20px 0px 0px 0px;
+  border: 2px solid #92d050;
+}
+
 .button-vol {
   width:80%;
   display: inline-block;
@@ -23,4 +29,14 @@ h2{
   -webkit-transform: translateY(10px);
   transform: translateY(10px);/*下に動く*/
   border-bottom: none;/*線を消す*/
+}
+
+.login{
+  background-color:#92d050;
+  margin:0px 100px 50px 100px;
+}
+
+p{
+  margin:0px 0px 0px 100px;
+  font-size:50px;
 }
