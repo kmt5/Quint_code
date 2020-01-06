@@ -16,10 +16,10 @@
 #tabbody div {
   border: 3px solid black; /* 枠線：黒色の実線を3pxの太さで引く */
   border-radius: 20px 20px 20px 20px; /* 〇枠線 */
-  margin-top: 30px;
+  margin-top: 5%;
+  margin-left: 20%;
   padding: 1em;            /* 内側の余白量 */
   background-color: white; /* 背景色：白色 */
-  text-align: center;
   width:500px;
   height:150px;
 }
