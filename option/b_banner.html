@@ -27,10 +27,14 @@
       <!-- js部分　現段階では、ボタンを押したら、変更 -->
       <script>
         function test() {
-          var elm = document.getElementById('status');
-          elm.textContent = '利用状況：　有効';
-          var elm1 = document.getElementById('banner');
-          elm1.textContent = '登録を解除する';
+          var result = window.confirm('実行しますか？');
+
+          if( result ) {
+            var elm = document.getElementById('status');
+            elm.textContent = '利用状況：　有効';
+            var elm1 = document.getElementById('banner');
+            elm1.textContent = '登録を解除する';
+          }
         }
       </script>
       <div class="zyokyo">
