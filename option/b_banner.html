@@ -47,6 +47,33 @@
         <!-- onclickでjsのtest関数を呼び出す -->
         <button type="submit" id="banner" onclick="test()">登録をする</button>
     </div>
+    <!-- js部分　現段階では、ボタンを押したら、変更 -->
+    <script>
+    var value = true;
+    var elm = document.getElementById('status');
+    var elm1 = document.getElementById('banner');
+
+    if ( value == true){
+      elm.textContent = "利用状況：　有効";
+      elm1.textContent = "登録を解除する";
+    }
+
+    function test() {
+      var result = window.confirm('実行しますか？');
+
+      if( result ) {
+        if(value == false){
+          value = true;
+          elm.textContent = "利用状況：　有効";
+          elm1.textContent = "登録を解除する";
+        }else{
+          value = false;
+          elm.textContent = "利用状況：　無効";
+          elm1.textContent = "登録をする";
+        }
+      }
+    }
+    </script>
   </div>
   <div id="footer-fixed">
     <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
