@@ -4,59 +4,79 @@
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/coler.css">
-  <link rel=“stylesheet” type="text/css" href=“size.css”>
+  <link rel="stylesheet" type="text/css" href="./CSS/color.css">
+  <link rel=“stylesheet” type="text/css" href=“./CSS/size.css”>
+  <link rel=“stylesheet” type="text/css" href=“./CSS/pop.css”>
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg" width="100%" height="100%">
+    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <a href= "regd_first.html">
+      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+    </a>
   </div>
+
+
   <div id="body-bk">
     <div id="body" class="bg_test">
       <center> <!-- 中央寄せ -->
-        <h1> 募集側アカウント登録</h1>
+        <h1> 参加側アカウント登録</h1>
       </center>
     </div>
-    <div id="body">
+    <div id="body" class="radio size1">
+      <form class="contact" action="index.html" method="post">
+      <dl>
       <center> <!-- 中央寄せ -->
       <h2>
-        　　　　  　　プロフィール画像　　<input type="file" name="pic">
+        <dt>プロフィール画像</dt>
+        <dd><input type="file" name="pic"></dd>
         <hr color="black"><br/>
 
-        名前　　　　　　<input type = “text” name =“fullname“>
+        <dt>名前</dt>
+        <dd><input type = “text” name =“fullname“></dd>
         <hr color="black"><br/>
-        メールアドレス　<input type = “text” name =“mail_address“>
+        <dt>メールアドレス</dt>
+        <dd><input type = “text” name =“mail_address“></dd>
         <hr color="black"><br/><br/>
-        パスワード　　　<input type = “text” name =“password“>
+        <dt>パスワード</dt>
+        <dd><input type = “text” name =“password“></dd>
         <hr color="black"><br/><br/>
-        住所　　　　　　<input type = “text” name =“user_address“>
+        <dt>住所</dt>
+        <dd><input type = “text” name =“user_address“></dd>
         <hr color="black"><br/><br/>
-        電話番号　　　　<input type = “text” name =“tel_num“>
+        <dt>電話番号</dt>
+        <dd><input type = “text” name =“tel_num“></dd>
         <hr color="black"><br/><br/>
 
       <p>
-        性別　　　　　　　  　　　　<select name="gender">　　　　　　
-        <option value="選択肢1">男</option>
-        <option value="選択肢2">女</option>
-        </select>
+        <dt>性別</dt>
+        <input type="radio" name="radio" class="radio-input" id="radio-01">
+        <label for="radio-01">男</label>
+        <input type="radio" name="radio" class="radio-input" id="radio-02">
+        <label for="radio-02">女</label><br>
       </p>
       <hr color="black"><br/>
-        ひとこと　　　　<input type = “text” name =“massage“>
+        <dt>ひとこと</dt>
+        <dd><input type = “text” name =“massage“></dd>
         <hr color="black"><br/><br/>
 
       <p>
-          住所エリア選択　　　　　　<select name ="area">
+        <dt>住所エリア選択</dt>
+        <dd><select name ="area"></dd>
         <option value="選択肢1">高知</option>
         <option value="選択肢2">愛媛</option>
         </select>
       </p>
       <hr color="black"><br/>
-        ニックネーム　　<input type = “text” name =“nickname“>
+        <dt>ニックネーム</dt>
+        <dd><input type = “text” name =“nickname“></dd>
         <hr color="black"><br/>
       <br>
-    </h2>
-      <a href="s_account_regd_comp.html" class="btn-square">登録完了</a><br>
-    </h2>
+    </center>
+    </div>
+    <div class="popupModal1">
+      <center> <!-- 中央寄せ -->
+      <a href="s_account_regd_comp.html" class="btn-square3">登録完了</a><br>
     </center>
     </div>
   </div>
