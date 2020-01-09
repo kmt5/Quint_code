@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
-  <title>ボランティア登録</title> <!-- ページのタイトル -->
+  <title>検索上位表示</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="../common/common.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="option.css">
@@ -17,21 +17,35 @@
     <div id="body">
       <!-- ページ上部のタイトル部分 -->
       <div id="Toptitle2">
-        <i class="fab fa-searchengin"></i></i>検索上位表示
+        <i class="fab fa-searchengin"></i>検索上位表示
       </div>
       <div class="setumei">
         ボランティア情報検索の際に<br>
         検索結果画面の上位に<br>
         優先的に配置するオプションです
       </div>
+      <!-- js部分　現段階では、ボタンを押したら、変更 -->
+      <script>
+        function test() {
+          var result = window.confirm('実行しますか？');
+
+          if( result ) {
+            var elm = document.getElementById('status');
+            elm.textContent = '利用状況：　有効';
+            var elm1 = document.getElementById('banner');
+            elm1.textContent = '登録を解除する';
+          }
+        }
+      </script>
       <div class="zyokyo">
-        利用状況：　有効
+        <p id="status">利用状況：　無効</p>
       </div>
       <div class="b">
         月額300円（税別）
         <br>
         <br>
-        <button type="submit" class"banner">登録を解除する</button>
+        <!-- onclickでjsのtest関数を呼び出す -->
+        <button type="submit" id="banner" onclick="test()">登録をする</button>
     </div>
   </div>
   <div id="footer-fixed">
