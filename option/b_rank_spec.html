@@ -24,14 +24,24 @@
         募集する参加者のランクを<br>
         指定可能にするオプションです
       </div>
+      <!-- js部分　現段階では、ボタンを押したら、変更 -->
+      <script>
+        function test() {
+          var elm = document.getElementById('status');
+          elm.textContent = '利用状況：　有効';
+          var elm1 = document.getElementById('banner');
+          elm1.textContent = '登録を解除する';
+        }
+      </script>
       <div class="zyokyo">
-        利用状況：　有効
+        <p id="status">利用状況：　無効</p>
       </div>
       <div class="b">
         月額200円（税別）
         <br>
         <br>
-        <button type="submit" class"banner">登録を解除する</button>
+        <!-- onclickでjsのtest関数を呼び出す -->
+        <button type="submit" id="banner" onclick="test()">登録をする</button>
     </div>
   </div>
   <div id="footer-fixed">
