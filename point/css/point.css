@@ -91,13 +91,13 @@
 .rank h1{
   font-size: 30px;            /* 文字サイズ:1.3倍 */
   text-align: left;         /* 中央寄せ */
-  color: black;             /* 文字色:ほぼ白色 */
+  color:black;             /* 文字色:ほぼ白色 */
   margin: 10px;               /* 外側の余白:10px */
 }
 
 .rank h2{
   font-size: 40px;            /* 文字サイズ:1.3倍 */
-  color: gold;             /* 文字色:ほぼ白色 */
+  /*color:gold;      /* 文字色:ほぼ白色 */
   margin: 10px;               /* 外側の余白:10px */
   position: absolute;
   bottom: 30px; /** 場合によっては微調整 **/
