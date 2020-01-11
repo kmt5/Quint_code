@@ -65,66 +65,32 @@
       echo '<br>';
       echo '</div>';
       }
-    }
-  ?>
-<?php
-    $dbh=null;
-      // ポストのデータを変数に
-    $name = $_POST["username"];
-    $age = $_POST["age"];
-//データベースに接続(test3)
-    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
-    $db = new PDO($dsn, 'root', 'root');
-    $volid = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '1234567a' and set_flag = 1)";
-    $result = $db->query($volid);
-    if (!$result) {
-      die('クエリが失敗'); // これが本当の「クエリが失敗」であって，最初のものは「接続が失敗」なのでエラーメッセージが不適切
-  }
-    foreach ($result as $row) {
-      if(date("m",strtotime($row['vol_date'])) == '1'){
-      echo '<div id="tabpage2">';
-      echo '<h1>';
-      echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
-      echo '<br>';
-      echo '場所 '.$row['vol_place'];
-      echo '<br>';
-      echo '内容 '.$row['vol_name'];
-      echo '<button class="del">登録解除</button>';
-      echo '<br>';
-      echo '</div>';
+      elseif(date("m",strtotime($row['vol_date'])) == '1'){
+        echo '<div id="tabpage2">';
+        echo '<h1>';
+        echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
+        echo '<br>';
+        echo '場所 '.$row['vol_place'];
+        echo '<br>';
+        echo '内容 '.$row['vol_name'];
+        echo '<button class="del">登録解除</button>';
+        echo '<br>';
+        echo '</div>';
+      }
+      elseif(date("m",strtotime($row['vol_date'])) == '2') {
+        echo '<div id="tabpage3">';
+        echo '<h1>';
+        echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
+        echo '<br>';
+        echo '場所 '.$row['vol_place']; 
+        echo '<br>';
+        echo '内容 '.$row['vol_name'];
+        echo '<button class="del">登録解除</button>';
+        echo '<br>';
+        echo '</div>';
       }
     }
-  ?>
-<?php
-    $dbh=null;
-      // ポストのデータを変数に
-    $name = $_POST["username"];
-    $age = $_POST["age"];
-//データベースに接続(test3)
-    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
-    $db = new PDO($dsn, 'root', 'root');
-    $volid = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '1234567a' and set_flag = 1)";
-    //ユーザIDとフラグを確認
-    $result = $db->query($volid);
-    if (!$result) {
-      die('クエリが失敗'); // これが本当の「クエリが失敗」であって，最初のものは「接続が失敗」なのでエラーメッセージが不適切
-  }
-    foreach ($result as $row) {
-      //if文により表示月の厳選
-      if (date("m",strtotime($row['vol_date'])) == '2') {
-      echo '<div id="tabpage3">';
-      echo '<h1>';
-      echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
-      echo '<br>';
-      echo '場所 '.$row['vol_place'];
-      echo '<br>';
-      echo '内容 '.$row['vol_name'];
-      echo '<button class="del">登録解除</button>';
-      echo '<br>';
-      echo '</div>';
-      }
-    }
-  ?>
+?>
   </div>
   </div>
 </div>
