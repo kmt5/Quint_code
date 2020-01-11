@@ -4,19 +4,9 @@ table{
   width: 100%;
 }
 
-table.list{
-  width:70%;
-}
-
-table.volList{
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 60%;
-}
-
 table tr{
-  border-top: solid 3px #0cb06e;
-  border-bottom: solid 3px #0cb06e;
+  border-top: solid 3px #92d050;
+  border-bottom: solid 3px #92d050;
   cursor: pointer;
 }
 
@@ -31,6 +21,14 @@ table th,table td{
 
 table td a{
   display: block; /*行全体をリンク可*/
+}
+
+td.icon {
+  background-color:#0cb06e;
+}
+
+a {
+  color: black;
 }
 
 textarea{
