@@ -11,7 +11,18 @@ div#header-fixed
     top: 0px;                   /* 位置(上0px) */
     left: 0px;                  /* 位置(右0px) */
     width: 100%;                /* 横幅100%　*/
-    height: 100px;              /* 縦幅140px */
+    height: 250px;              /* 縦幅140px */
+}
+
+.back {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.home {
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
 
 /* フッターの固定 */
@@ -21,19 +32,77 @@ div#footer-fixed
     bottom: 0px;                /* 位置(下0px) */
     left: 0px;                  /* 位置(左0px) */
     width: 100%;                /* 横幅100%　*/
-    height: 100px;              /* 縦幅140px */
+    height: 250px;              /* 縦幅140px */
 }
 
 /* ボディの定義 */
 div#body-bk{
-    padding:120px 0 120px 0;    /* 上下に160pxを余白を取る */
+    padding:250px 0 250px 0;    /* 上下に250pxを余白を取る */
+
+}
+
+div#body-bkx{
+    padding:200px 0 200px 0;    /* 上下に250pxを余白を取る */
+
+}
+div#body-bkxa{
+    padding:100px 0 100px 0;    /* 上下に250pxを余白を取る */
+    background: #0cb06e;
+
+}
+
+div#body-bkxaa{
+    padding:0px 0 100px 0;    /* 上下に250pxを余白を取る */
+
 }
 
 div#body{
-    width:960px;
+    width:100%;
     margin:auto;
 }
 
+div#Toptitle1{
+    width:100%;
+    text-align: center;
+    font-size: 100px;
+    background-color: #0cb06e;
+    margin:0px 0 100px 0;
+}
+
+div#Toptitle2{
+    width:100%;
+    text-align: center;
+    font-size: 100px;
+    background-color: #92d050;
+    margin:0px 0 100px 0;
+}
+
+
+form{
+  background-color: #ffffff;
+  padding:30px 50px;
+}
+
+form dl dt{
+  width: 300px;
+  padding:10px 0;
+  float:left;
+  clear:both;
+}
+
+form dl dd{
+  padding:21px 0;
+}
+
+input {
+font-size: 30px;
+}
+
+select {
+font-size: 30px;
+}
+
+/*以下ボタン*/
 .btn-square {
   display: inline-block;
   padding: 0.5em 1em;
@@ -58,10 +127,300 @@ div#body{
   color: #000;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
+  font-size: 40px;
+}
+
+.btn-square1b {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #0cb06e;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  font-size: 40px;
+}
+.btn-square1b:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
 }
 .btn-square1:active {
   /*ボタンを押したとき*/
   -webkit-transform: translateY(4px);
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
+}
+
+.btn-square3 {
+  display: inline-block;
+  padding: 20px 50px;
+  text-decoration: none;
+  background: #0cb06e;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  font-size: 30px;
+}
+.btn-square3:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+.btn-square3x {
+  display: inline-block;
+  padding: 20px 95px;
+  text-decoration: none;
+  background: #d3d3d3;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  font-size: 30px;
+}
+.btn-square3x:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+.btn-square3y {
+  display: inline-block;
+  padding: 20px 50px;
+  text-decoration: none;
+  background: #d3d3d3;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  font-size: 30px;
+}
+.btn-square3y:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+.btn-square4 {
+  display: inline-block;
+  padding: 20px 50px;
+  text-decoration: none;
+  background: #000000;/*ボタン色*/
+  color: #fff;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  font-size: 30px;
+}
+.btn-square4:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+.btn-square5 {
+  display: inline-block;
+  padding: 20px 50px;
+  text-decoration: none;
+  background: #bfbfbf;/*ボタン色*/
+  color: #fff;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+  font-size: 30px;
+}
+.btn-square5:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+
+.hexagonB {
+    margin: 100px;
+    width: 170px;
+    height: 293px;
+    display: inline-block;
+    position: relative;
+    background: #0cb06e;
+    transition: all 0.2s linear;
+    font-size: 35px;
+}
+
+.hexagonB span {
+    width: 100%;
+    height: 155px;
+    line-height: 155px;
+    color: #000;
+    text-align: center;
+    line-height: 293px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.hexagonB:before,
+.hexagonB:after {
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #0cb06e;
+    transition: all 0.2s linear;
+    z-index: 0;
+}
+
+.hexagonB:before {
+    transform: rotate(60deg);
+}
+
+.hexagonB:after {
+    transform: rotate(-60deg);
+}
+
+.hexagonB:hover,
+.hexagonB:hover:before,
+.hexagonB:hover:after {
+    background: #0cb06e;
+}
+
+.inline-block_test {
+  margin-top: -50px;
+  margin-bottom: 100px;
+    display: inline-block;      /* インラインブロック要素にする */
+    background-color:  #fff;    /* 背景色指定 */
+    padding:  20px;             /* 余白指定 */
+    height: 50px;              /* 高さ指定 */
+}
+
+.inline-block_test1 {
+  margin-top: 20px;
+  margin-bottom: 100px;
+    display: inline-block;      /* インラインブロック要素にする */
+    background-color:  #fff;    /* 背景色指定 */
+    padding:  20px;             /* 余白指定 */
+    height: 50px;              /* 高さ指定 */
+}
+
+
+.radius_test {
+    border-radius: 50%;                 /* 角丸指定 */
+    text-decoration: none;
+    display:  inline-block;             /* インラインブロックする */
+    padding: 130px 0px;                  /* 余白指定 */
+    background-color: #92d050;          /* 背景色指定 */
+    color: #000;
+    width:310px;                       /* 幅指定 */
+    text-align:  center;                /* 中央揃え */
+    position: relative;
+    font-size: 35px;
+}
+
+/*以下サイズや枠関連*/
+.size1 {
+font-size:20px;
+}
+.size2 {
+font-size:30px;
+}
+
+.size3 {
+  padding:250px 0 250px 0;
+font-size:40px;
+}
+
+.size4 {
+font-size: 20px;
+}
+
+.size5 {
+  padding-bottom: 200px;
+  margin-left: 200px;
+  margin-right: 200px;
+  border-radius: 10px;
+}
+
+/*ポップアップ*/
+.popup-overlay{
+  /*Hides pop-up when there is no "active" class*/
+  visibility:hidden;
+  position:absolute;
+  background:#ffffff;
+  border:3px solid #666666;
+  top:  38%;
+  left: 48%;
+  width:  500px;        /* 横幅 */
+  height: 159px;        /* 高さ */
+  margin-left: -250px;  /* マイナス「横幅÷2」 */
+  margin-top:  -75px;  /* マイナス「高さ÷2」 */
+  /*width:50%;
+  height:50%;
+  left:25%;*/
+}
+
+.popup-overlay.active{
+  /*displays pop-up when "active" class is present*/
+  visibility:visible;
+  text-align:center;
+  position: absolute;
+  z-index: 10;
+  top:  45%;
+  left: 48%;
+  width:  500px;        /* 横幅 */
+  height: 300px;        /* 高さ */
+  margin-left: -250px;  /* マイナス「横幅÷2」 */
+  margin-top:  -150px;  /* マイナス「高さ÷2」 */
+}
+
+.popup-content {
+  /*Hides pop-up content when there is no "active" class */
+  font-size: 25px;
+  font-weight: bold;
+  visibility:hidden;
+  vertical-align:middle;
+  text-align: center;
+  margin-top:10%;
+}
+
+.popup-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility:visible;
+}
+
+button-ok{
+  font-size: 20px;
+  font-weight: bold;
+  color:red;
+  background:	white;
+  border:2px solid black;
+  padding: 10px 30px 10px 30px;
+  margin-right: 5%;
+  font-size: 20px;
+}
+
+button-ok:hover{
+  border:2px solid #666666;
+  background:#666666;
+  color:#ffffff;
+}
+
+button-no{
+  font-size: 20px;
+  font-weight: bold;
+  color:black;
+  background:	white;
+  border:2px solid black;
+  padding: 10px 30px 10px 30px;
+  margin-right: 5%;
+  font-size: 20px;
+}
+
+button-no:hover{
+  border:2px solid #666666;
+  background:#666666;
+  color:#ffffff;
 }
