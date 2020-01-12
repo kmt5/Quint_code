@@ -2,5 +2,18 @@
     height: 100px;                  /* 高さ指定 */
     padding:  20px;                 /* 余白指定 */
     font-size: 20px;                /* 文字サイズ指定 */
-    background-color: #00FF00;   /* 背景色指定 */
+    background-color: #92d050;   /* 背景色指定 */
+}
+.bg_test2 {
+    height: 100px;                  /* 高さ指定 */
+    padding:  20px;                 /* 余白指定 */
+    font-size: 20px;                /* 文字サイズ指定 */
+    background-color: #000000;   /* 背景色指定 */
+    color: #fff;
+}
+.bg_test3 {
+    height: 100px;                  /* 高さ指定 */
+    padding:  20px;                 /* 余白指定 */
+    font-size: 20px;                /* 文字サイズ指定 */
+    background-color: #0cb06e;   /* 背景色指定 */
 }
