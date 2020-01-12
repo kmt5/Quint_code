@@ -1,45 +1,42 @@
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
-  <head>
-    <meta charset="utf-8"> <!-- 文字コードを宣言 -->
-    <title>PHP</title> <!-- ページのタイトル -->
-    <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-    <link rel=“stylesheet” type="text/css" href=“./CSS/size.css”>
-  </head>
+<head>
+  <meta charset="utf-8"> <!-- 文字コードを宣言 -->
+  <title>PHP</title> <!-- ページのタイトル -->
+  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/color.css">
+  <link rel=“stylesheet” type="text/css" href=“./CSS/size.css”>
+  <link rel=“stylesheet” type="text/css" href=“./CSS/botan.css”>
+</head>
+
+<body>
   <body>
-    <div id="header-fixed">
-      <img border="0" src="header.jpg" width="100%" height="100%">
-    </div>
+  <div id="header-fixed">
+    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <a href= "s_my_first.html">
+      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+    </a>
+    <a href= "s_home.html">
+      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+    </a>
+  </div>
+
+  <div id="body-bk">
     <div id="body-bk">
-      <div id="body">
+      <div id="body-bkxa" class="size2 size5">
         <center> <!-- 中央寄せ -->
-          <h1> VAISAログイン</h1>
+          <h1>VAISA</h1>
           <br>
-          <h2>
-            <form action ="login.php" method ="post">
-              <input type="text" name="mail_address" placeholder="メールアドレス"><br>
-              <input type="text" name="password" placeholder="パスワード"><br>
-              <input type="submit" value="送信"><br>
-              <!--
-              <a href="s_home.html" class="btn-square">ログイン</a><br>
-              <a href="manual.html" class="btn-square">アカウント登録</a><br>
-              -->
-            </form>
-          </h2>
+          <input type="text" name="mail_address" placeholder="メールアドレス"><br>
+          <input type="text" name="password" placeholder="パスワード"><br>
+          <a href="s_home.html" class="btn-square3x">ログイン</a><br>
+          <a href="manual.html" class="btn-square3y">アカウント登録</a><br>
         </center>
       </div>
     </div>
-    <div id="footer-fixed">
-      <img border="0" src="kokoku.jpg" width="100%" height="100%">
-    </div>
-  </body>
+  </div>
+  <div id="footer-fixed">
+    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+  </div>
+</body>
 </html>
-
-<?php
-  $mail_address = $_POST['mail_address'];
-  $password = $_POST['password'];
-  echo $mail_address;
-  echo "<br/>";
-  echo $password;
-?>
