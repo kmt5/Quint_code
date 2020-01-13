@@ -18,25 +18,30 @@
       <div id="Toptitle1">
           <i class="fas fa-pencil-alt"></i>登録・編集
       </div>
+
       <table border='1' frame="box"rules="none">
-        <tr>
-	        <td colspan="2" class="volList">ボランティア名</td>
-	      </tr>
-        <tr>
-	        <td>
-            <form action="vol_regd_edit.php" method="post">
-		         <input type="submit" value="編集">
-		          <input type="hidden" name="id" value="">
-		        </form>
-	        </td>
-          <td>
-		        <form action="delete2.php" method="post">
-		          <input type="submit" value="削除">
-		          <input type="hidden" name="id" value="">
-		        </form>
-	        </td>
-        </tr>
+        <tbody id="tbodyID">
+          <script type="text/javascript">
+          for (var i = 1; i <= 20; i++) {
+            document.write("<tr><td colspan='2' class='volList'>" + i + "</td></tr>");
+            document.write("<tr>");
+    	      document.write("<td>");
+            document.write("<form action='vol_regd_edit.php' method='post'>");
+    		    document.write("<input type='submit' value='編集'>");
+    		    document.write("<input type='hidden' name='id' value=''>");
+    		    document.write("</form>");
+    	      document.write("</td>");
+            document.write("<td>");
+            document.write("<form action='vol_regd_edit.php' method='post'>");
+            document.write("<input type='submit' value='削除'>");
+            document.write("<input type='hidden' name='id' value=''>");
+            document.write("</form>");
+            document.write("</td>");
+           document.write("</tr>");
+          }
+          </script>
       </table>
+
     </div>
   </div>
   <div id="footer-fixed">
