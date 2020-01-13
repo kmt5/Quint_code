@@ -206,7 +206,8 @@ $spec_rank = $_POST["rank_spec"];
 $b_user_id = '00000001';
 $rank_spec_flag = 0;
 $area_id = $_POST["select_area"];
-$point = 1;
+$num = $vol_fin_time - $vol_beg_time;
+$point = strval($num);
 $vol_fig_pass = $a;
 $disapp_flag = 0;
 
@@ -237,7 +238,7 @@ $regist->bindParam(":vol_detail", $vol_detail, PDO::PARAM_STR);
 $regist->bindParam(":pref_id", $pref_id, PDO::PARAM_STR);
 $regist->bindValue(":spec_rank", $spec_rank, PDO::PARAM_INT);
 $regist->bindParam(":b_user_id", $b_user_id, PDO::PARAM_STR);
-$regist->bindParam(":rank_spec_flag", $rank_spec_flag);
+$regist->bindValue(":rank_spec_flag", $rank_spec_flag, PDO::PARAM_INT);
 $regist->bindValue(":area_id", $area_id, PDO::PARAM_INT);
 $regist->bindValue(":vol_point", $point, PDO::PARAM_INT);
 $regist->bindParam(":vol_fig_pass", $vol_fig_pass, PDO::PARAM_STR);
