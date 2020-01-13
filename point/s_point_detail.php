@@ -11,7 +11,9 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <a href= "s_point_first.php">
     <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+    </a>
     <img border="0" src="home.jpg" width="20%" height="100%" class="home">
   </div>
 
