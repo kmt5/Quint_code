@@ -16,8 +16,6 @@ if( isset( $_POST[ 'vol_id' ] ) ){
     print "送信された内容は{$_POST['vol_id']}です。<br/>";
   }
 $id = $_POST['vol_id'];
-print $id;
-echo $id;
 $db->query("set names utf8");
 $getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $id");
 foreach ($getName as $get_name) {
@@ -92,7 +90,6 @@ $getName = $db->query("SELECT vol_fig_pass FROM volunteers WHERE vol_id = $id");
 foreach ($getName as $get_name) {
     $vol_fig_pass =  $get_name['vol_fig_pass'];
 }
-
 ?>
 
 <head>
@@ -186,3 +183,4 @@ foreach ($getName as $get_name) {
 </body>
 
 </html>
+<?php $db=null; ?>

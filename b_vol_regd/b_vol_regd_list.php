@@ -28,10 +28,9 @@ $php_vol_name = json_encode($vol_name);
 $getVolId = $db->query("SELECT vol_id FROM volunteers WHERE b_user_id = $id");
 $j = 0;
 foreach ($getVolId as $volid) {
-  $vol_id[$j] .= $volid['vol_id'];
+  $vol_id_html[$j] .= $volid['vol_id'];
   $j += 1;
 }
-$php_vol_id = json_encode($vol_id);
 
 print "<br>";
 echo $vol_name[0];
@@ -62,35 +61,28 @@ $db = null;
       <div id="Toptitle1">
         <i class="fas fa-pencil-alt"></i>登録・編集
       </div>
-
       <table border='1' frame="box" rules="none">
-        <tbody id="tbodyID">
-          <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-          <script type="text/javascript">
-            for (var i = 0; i < <?php echo $count ?>; i++) {
-              var js_array = JSON.parse('<?php echo $php_vol_name; ?>');
-              var js_array_id = JSON.parse('<?php echo $php_vol_id; ?>');
-              var vol_id = js_array_id[i];
-
-              document.write("<tr><td colspan='2' class='volList'>" + vol_id + js_array[i] + "</td></tr>");
-              document.write("<tr>");
-              document.write("<td>");
-              document.write("<form action='vol_regd_edit.php' method='post'>");
-              document.write("<input type='submit' value='編集'>");
-              document.write("<input type='hidden' name='id' value=''>");
-              document.write("</form>");
-              document.write("</td>");
-              document.write("<td>");
-              document.write("<form action='b_vol_regd_delete.php' method='post'>");
-              document.write("<input type='submit' id=delete value='削除'>");
-              document.write("<input type='hidden' name='id' value=''>");
-              document.write("</form>");
-              document.write("</td>");
-              document.write("</tr>");
+          <?php
+            for ($i = 0; $i < $count; $i++) {
+              $vol_id = $vol_id_html[$i];
+              echo "<tr><td colspan='2' class='volList'>".$vol_name[$i]."</td></tr>";
+              echo "<tr>";
+              echo "<td>";
+              echo "<form action='vol_regd_edit.php' method='post'>";
+              echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
+              echo "<input type='submit' value='編集'>";
+              echo "</form>";
+              echo "</td>";
+              echo "<td>";
+              echo "<form action='b_vol_regd_delete.php' method='post'>";
+              echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
+              echo "<input type='submit' value='削除'>";
+              echo "</form>";
+              echo "</td>";
+              echo "</tr>";
             }
-          </script>
+          ?>
       </table>
-
     </div>
   </div>
   <div id="footer-fixed">
