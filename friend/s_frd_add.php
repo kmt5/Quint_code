@@ -9,7 +9,7 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-  <div id="header-fixed">
+<div id="header-fixed">
     <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
     <a href= "s_frd_first.html">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
@@ -28,16 +28,14 @@
         </div>
       </div>
 
-
       <div class="frd-add">
-        <a href="s_frd_add_appnow.html">フレンド申請中ユーザ一覧</a>
-        <p class="id">あなたのID：s_user_id</p>
-        <form name="form1" form action="#" method="post">
-          <input type="text" name="name" id="input" class="text" value="検索したいIDを入力してください">
+        <a href="s_frd_add_appnow.php">フレンド申請中ユーザ一覧</a>
+        <p class="id">あなたのID：1234567a</p>
+        <form action="s_frd_add_app.php" method="POST">
+          <input type="text" name="name" id="input" class="text" placeholder="検索したいIDを入力してください">
+          <p><input type="submit" value="検索" class="search"></p>
         </form>
       </div>
-
-      <p class="search">検索</p>
     </div>
   </div>
 
@@ -54,16 +52,17 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">
+
   /*検索ボタンが押されたとき*/
   $(".search").on("click", function(){
     var target = document.getElementById("input").value;
     /*ID(文字数8)が入力されている場合*/
     if(target.length == 8 ){
       /*IDが存在するならの処理もここ？*/
-      location.href="s_frd_add_app.php";
     }else{
     /*IDが入力されてないor存在しない場合*/
     $(".popup-overlay, .popup-content").addClass("active");
+    return false;
     }
   });
   /*削除確認*/

@@ -94,6 +94,14 @@
   position: relative;
   margin-top: 10px;
 }
+
+.frd-appnow h1{
+  position: relative;
+  left: 0;;
+  top: 0;
+  margin: 10%;
+}
+
 .frd-appnow a{
   position: absolute;
   width: 40%;
@@ -118,13 +126,13 @@
 button{
   position: absolute;
   right: 0;
-  margin-right: 10%;
+  margin-right: 5%;
   font-size: 40px;
   font-weight: bold;
   color:black;
   background:	#92d050;
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   border-bottom: solid 8px #627295;
 }
 

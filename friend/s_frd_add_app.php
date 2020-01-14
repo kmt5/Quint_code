@@ -1,3 +1,9 @@
+<?php
+if(isset($_POST['name'])){
+$comment = $_POST['name'];
+echo $comment;
+}
+?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -9,9 +15,11 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-  <div id="header-fixed">
+<div id="header-fixed">
     <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_frd_add.html">
+    <?php $motourl = $_SERVER['HTTP_REFERER'];
+    echo '<a href= "'.$motourl.'">'; //前ページ遷移
+    ?>
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
     </a>
     <a href= "s_home.html">
@@ -21,12 +29,28 @@
 
   <div id="body-bk">
     <div id="body">
-      <div class="frd-add-app">
-        <!--ここに画像挿入 -->
-        <img src="sample.png" class="i">
-        <p class="user_name">user_name</p>
-      </div>
-      <button class="apply">申請</button>
+      <?php
+      $id =  $_POST['name'];
+      $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+    $db = new PDO($dsn, 'root', 'root');
+    $frid = "SELECT * FROM sanka_users WHERE s_user_id = '$id'";
+    $result = $db->query($frid);
+    if (is_array($result)){
+    foreach ($result as $row){
+      $img = file_get_contents($row['prof_path']);
+      $enc_img = base64_encode($img);
+      $imginfo = getimagesize('data:application/octet-stream;base64,' . $enc_img);
+      echo '<div class="frd-add-app">';
+      //echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
+      echo '<img src="data:' . $imginfo['mime'] . ';base64,'.$enc_img.'" class="img">';
+      echo '<p class="user_name">';
+      echo $row['nickname'].'</p>';
+      echo '</a>';
+      echo '</div>';
+      echo '<button class="apply">申請</button>';
+    }
+  }else echo '検索されたIDのユーザが見つかりませんでした';
+    ?>
     </div>
   </div>
 

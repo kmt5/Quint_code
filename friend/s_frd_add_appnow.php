@@ -27,15 +27,28 @@
           <i class="fa fa-user-plus">フレンド追加</i>
         </div>
       </div>
-
-      <div class="frd-appnow">
-        <a href="s_frd_list_pro.php">
-          <!--ここに画像挿入 -->
-          <img src="sample.png" class="img">
-          user_name
-        </a>
-        <button class="del">取消</button>
-      </div>
+<?php
+// ポストのデータを変数に
+//データベースに接続(test3)
+    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+    $db = new PDO($dsn, 'root', 'root');
+    $frid2 = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT my_user_id FROM friends where fr_user_id ='1234567a' and reqest_flag = 1)";
+    $result = $db->query($frid2);
+    foreach ($result as $row) {
+      $img = file_get_contents($row['prof_path']);
+      $enc_img = base64_encode($img);
+      $imginfo = getimagesize('data:application/octet-stream;base64,' . $enc_img);
+          echo '<div class="frd-appnow">';
+          echo '<h1>';
+          echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
+          echo '<img src="data:' . $imginfo['mime'] . ';base64,'.$enc_img.'" class="img">';
+          echo $row['nickname'];
+          echo '</a>';
+          echo '<button class="del">取消</button>';
+          echo '<br>';
+          echo '</div>';
+    }
+    ?>
     </div>
   </div>
 

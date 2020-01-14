@@ -27,18 +27,29 @@
           <i class="far fa-list-alt"></i>フレンド申請確認
         </div>
       </div>
-
-      <div class="frd-appcheck">
-        <a href="s_frd_list_pro.html">
-          <!--ここに画像挿入 -->
-          <img src="sample.png" class="i">
-          user_name
-        </a>
-        <div class="btn">
-        <button-ok class="ok">承認</button-ok>
-        <button-no class="no">拒否</button-no>
-      </div>
-      </div>
+<?php
+ $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+ $db = new PDO($dsn, 'root', 'root');
+ $frid3 = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT fr_user_id FROM friends where my_user_id ='1234567a' and reqest_flag = 1)";
+ $result = $db->query($frid3);
+ foreach ($result as $row) {
+  $img = file_get_contents($row['prof_path']);
+  $enc_img = base64_encode($img);
+  $imginfo = getimagesize('data:application/octet-stream;base64,' . $enc_img);
+      echo '<div class="frd-appcheck">';
+      echo '<h1>';
+      echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
+      echo '<img src="data:' . $imginfo['mime'] . ';base64,'.$enc_img.'" class="img">';
+      echo $row['nickname'];
+      echo '</a>';
+      echo '<div class="btn">';
+      echo '<button-ok class="ok">承認</button-ok>';
+      echo '<button-no class="no">拒否</button-no>';
+      echo '</div>';
+      echo '<br>';
+      echo '</div>';
+ }
+ ?>
     </div>
   </div>
 

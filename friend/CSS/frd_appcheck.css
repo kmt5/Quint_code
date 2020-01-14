@@ -94,6 +94,12 @@
   position: relative;
   margin-top: 10px;
 }
+.frd-appcheck h1{
+  position: relative;
+  left: 0;;
+  top: 0;
+  margin: 10%;
+}
 .frd-appcheck a{
   position: absolute;
   width: 30%;
@@ -104,22 +110,34 @@
   text-decoration: none;
   background-color: #92d050;
   border-radius: 20px;
-  padding: 40px 40px 40px 150px;
+  padding: 20px 0px 20px 200px;
   border-bottom: solid 8px #627295;
 }
 
 
-.i{
+.frd-appcheck img{
   width:70px;
   position: absolute;
   left: 0;
   margin-left: 20px;
 }
+button{
+  position: absolute;
+  right: 0;
+  margin-right: 5%;
+  font-size: 40px;
+  font-weight: bold;
+  color:black;
+  background:	#92d050;
+  border-radius: 20px;
+  padding: 15px;
+  border-bottom: solid 8px #627295;
+}
 
 button-ok{
   position: absolute;
   right: 0;
-  margin-right: 10%;
+  margin-right: 17%;
   font-size: 40px;
   font-weight: bold;
   color:red;
@@ -128,7 +146,7 @@ button-ok{
   border-radius: 20px;
   padding: 5px 20px 5px 20px;
   border-bottom: solid 6px #627295;
-  margin-top: -1%;
+  /*margin-top: -1%;*/
 }
 .botton-ok:active {
   /*ボタンを押したとき*/
@@ -140,8 +158,8 @@ button-ok{
 button-no{
   position: absolute;
   right: 0;
-  margin-top: 8%;
-  margin-right: 10%;
+  /*margin-top: 10%;*/
+  margin-right: 0%;
   font-size: 40px;
   font-weight: bold;
   color:blue;

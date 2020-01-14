@@ -27,15 +27,33 @@
           <i class="far fa-list-alt"></i>フレンド一覧
         </div>
       </div>
-
-      <div class="frd-list">
-        <a href="s_frd_list_pro.html">
-          <!--ここに画像挿入 -->
-          <img src="sample.png" class="img">
-          user_name
-        </a>
-        <button class="del">削除</button>
-      </div>
+<!-- php--------------------------------- -->
+<?php
+      // ポストのデータを変数に
+    $name = $_POST["username"];
+    $age = $_POST["age"];
+//データベースに接続(test3)
+    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+    $db = new PDO($dsn, 'root', 'root');
+    $frid = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT fr_user_id FROM friends where my_user_id ='1234567a' and friends_flag = 1)";
+    $result = $db->query($frid);
+    $count=0;
+foreach ($result as $row) {
+  $img = file_get_contents($row['prof_path']);
+  $enc_img = base64_encode($img);
+  $imginfo = getimagesize('data:application/octet-stream;base64,' . $enc_img);
+      echo '<div class="frd-list">';
+      echo '<h1>';
+      echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
+      echo '<img src="data:' . $imginfo['mime'] . ';base64,'.$enc_img.'" class="img">';
+      //echo '<img src="sample.png" class="img">';
+      echo $row['nickname'];
+      echo '</a>';
+      echo '<button class="del">削除</button>';
+      echo '<br>';
+      echo '</div>';
+}
+?>
     </div>
   </div>
 
