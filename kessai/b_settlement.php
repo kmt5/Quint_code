@@ -20,6 +20,7 @@
   foreach($getDate as $pay_date) {
     $payment_date = $pay_date['kessai_flag'];
   }  
+  $db=null;
 ?>
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->

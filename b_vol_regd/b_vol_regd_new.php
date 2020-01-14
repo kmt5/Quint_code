@@ -158,10 +158,10 @@ if(isset($_FILES)&& isset($_FILES['image']) && is_uploaded_file($_FILES['image']
 					<input id="check-b" type="checkbox" name="newbie_flag" value="1" checked><label for="check-a">初心者歓迎</label><br><br>
           <label>ランク指定　</label>
 					<select name="rank_spec">
-				    <option value="elephant">指定なし</option>
-				    <option value="lion">ブロンズ</option>
-				    <option value="penguin">シルバー</option>
-            <option value="lion">ゴールド</option>
+				    <option value="指定なし">指定なし</option>
+				    <option value="ブロンズ">ブロンズ</option>
+				    <option value="シルバー">シルバー</option>
+            <option value="ゴールド">ゴールド</option>
 				  </select><br><br>
 
 					<h2>詳細</h2>
@@ -190,7 +190,6 @@ var_dump($h["Content-Type"]);
 <?php
 
 // 入力フォームのデータを変数に
-$vol_is = null;
 $vol_name = $_POST["vol_name"];
 $vol_date .= $_POST["year"]."-".$_POST["month"]."-".$_POST["day"];
 $vol_beg_time = $_POST["beg_time"];
