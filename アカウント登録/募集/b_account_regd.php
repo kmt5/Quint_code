@@ -20,7 +20,7 @@
   <div id="body-bk">
     <div id="body" class="bg_test3">
       <center> <!-- 中央寄せ -->
-        <h1> 参加側アカウント登録</h1>
+        <h1> 募集側アカウント登録</h1>
       </center>
     </div>
     <div id="body" class="radio size1">
