@@ -1,0 +1,34 @@
+version: '2'
+services:
+  mysql:
+    build: ./mysql
+    env_file: ./.env
+    volumes:
+      # 起動時に読ませたいSQLはここに置く
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      # DBのデータそのものがここに置かれる
+      - ./mysql/data:/var/lib/mysql
+  phpmyadmin:
+    build: ./phpmyadmin
+    env_file: ./.env
+    ports:
+      # 8081ポートでコンテナの外に公開する
+      - '8081:80'
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
+    depends_on:
+      - mysql
+  php:
+    build: ./php
+    env_file: ./.env
+    ports:
+      # 8080ポートでコンテナの外に公開する
+      - '8080:80'
+    volumes:
+      # PHPのソースはここに置く
+      - ./php/src:/var/www/html
+    depends_on:
+      - mysql
+
+volumes:
+  db-data:
