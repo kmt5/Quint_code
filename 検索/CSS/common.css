@@ -28,6 +28,24 @@ div#header-fixed
     height: 250px;              /* 縦幅140px */
 }
 
+p#back {
+  position: absolute;/*絶対配置*/
+  color: black;
+  margin:auto;
+  top: 0;
+  left: 30px;
+  font-size:180px;
+  }
+
+  p#home {
+      color: black;
+    position: absolute;/*絶対配置*/
+    margin:auto;
+    top: 0;
+    right: 30px;
+    font-size:180px;
+    }
+
 /* フッターの固定 */
 div#footer-fixed
 {
@@ -65,6 +83,7 @@ div#Toptitle2{ 　　　　　　　　　　　　　/*黄緑ラベル*/
 }
 
 .btn-square {
+  align:center;
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none;
