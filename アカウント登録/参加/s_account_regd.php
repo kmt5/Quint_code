@@ -56,6 +56,10 @@
         <label for="radio-02">女</label><br>
       </p>
       <hr color="black"><br/>
+
+      <dt>年齢</dt>
+      <dd><input type = “text” name =“age“ id="input8" value=""></dd>
+      <hr color="black"><br/><br/>
         <dt>ひとこと</dt>
         <dd><input type = “text” name =“massage“ id="input6" value=""></dd>
         <hr color="black"><br/><br/>
@@ -99,8 +103,9 @@ $(".btn-square1").on("click", function(){
   var target5 = document.getElementById("input5").value;
   var target6 = document.getElementById("input6").value;
   var target7 = document.getElementById("input7").value;
+  var target8 = document.getElementById("input8").value;
   /*ID(文字数8)が入力されている場合*/
-  if(target1.length >= 1 && target2.length >= 1 && target3.length >= 1 && target4.length >= 1 && target5.length >= 1 && target6.length >= 1 && target7.length >= 1){
+  if(target1.length >= 1 && target2.length >= 1 && target3.length >= 1 && target4.length >= 1 && target5.length >= 1 && target6.length >= 1 && target7.length >= 1 && target8.length >= 1){
     /*IDが存在するならの処理もここ？*/
     location.href="s_account_regd_comp.html";
   }else{
