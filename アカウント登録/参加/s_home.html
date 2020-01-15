@@ -9,7 +9,7 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <p href= "login.html">
+    <p href= "login.php">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
     </p>
   </div>
@@ -25,7 +25,6 @@
   </div>
 
 
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">
   /*検索ボタンが押されたとき*/
@@ -35,15 +34,12 @@
   /*削除確認*/
   $(".ok").on("click", function(){
     $(".popup-overlay, .popup-content").removeClass("active");
-    location.href="login.html";
+    location.href="login.php";
   });
   $(".no").on("click", function(){
     $(".popup-overlay, .popup-content").removeClass("active");
   });
   </script>
-
-
-
 
 
   <div id="body-bkx">

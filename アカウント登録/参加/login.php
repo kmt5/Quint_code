@@ -1,3 +1,18 @@
+<?php
+  $mail = $_POST["mail_address"];
+  $pswd = $_POST["password"];
+//データベースに接続(test3)
+  $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+  $db = new PDO($dsn, 'root', 'root');
+  $sql = "select passwd from sanka_user where mail_address='".$mail."'";
+  $res = $db->query($sql);
+  foreach( $res as $value ) {
+    if("$value[passwd]" == $pswd){
+      header('Location: s_home.html');
+    }
+	}
+?>
+
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -27,9 +42,11 @@
         <center> <!-- 中央寄せ -->
           <h1>VAISA</h1>
           <br>
-          <input type="text" name="mail_address" placeholder="メールアドレス"><br>
-          <input type="text" name="password" placeholder="パスワード"><br>
-          <a href="s_home.html" class="btn-square3x">ログイン</a><br>
+          <form action="login.php" method="post">
+            <input type="text" name="mail_address" placeholder="メールアドレス"><br>
+            <input type="text" name="password" placeholder="パスワード"><br>
+            <input type="submit" value="ログイン" class="btn-square3x"><br>
+          </form>
           <a href="manual.html" class="btn-square3y">アカウント登録</a><br>
         </center>
       </div>
