@@ -1,0 +1,12 @@
+div#Toptitle-detail{　　　　　　　　　　　　　/*白ラベル*/
+  width:100%;
+  text-align: center;
+  background-color: white;
+  font-size: 100px;
+  margin:0px 0 100px 0;
+}
+
+div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
+  width:100%;
+  background-color: #0cb06e;
+}
