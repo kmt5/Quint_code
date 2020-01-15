@@ -11,12 +11,12 @@
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_search_first.html">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+    <img border="0" src="../common/header.jpg" width="100%" height="100%">
+    <a href="javascript:history.back()">
+      <p id="back"><i class="fas fa-reply"></i></p>
     </a>
-    <a href= "s_home.html">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+    <a href="s_home">
+      <p id="home"><i class="fas fa-home"></i></p>
     </a>
   </div>
 
@@ -156,7 +156,7 @@ $(".custom1-option").on("click", function() {
 </script>
 
 <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>
