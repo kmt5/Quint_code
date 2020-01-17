@@ -1,3 +1,18 @@
+<?php
+session_start();
+$b_user_id = $_SESSION["b_user_id"];
+  
+$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$db = new PDO($dsn, 'root', 'root');
+
+$getName = $db -> query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id");
+$j = 0;
+foreach ($getName as $get_name) {
+  $vol_name[$j] .= $get_name['vol_name'];
+  $j += 1;
+}
+$count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = $b_user_id");
+?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -22,11 +37,9 @@
       <div id="Toptitle2">
         <i class="fas fa-handshake"></i>　参加者一覧
       </div>
-      <h1 align="center">vol_name</h1>
-      <h2 align="center">参加者人数　2/5</h2>
+      <h1 align="center">ボランティアを<br>選択してください</h1>
       <div align="center">
         <?php
-            $vol_name = ["土佐　次郎", "山田　花子", "hello world", "屋台 ラーメン"];
             $array_count = count($vol_name);
             for ($i = 0; $i < $array_count; $i++) {
               if ($i != 2){
