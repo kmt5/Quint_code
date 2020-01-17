@@ -9,9 +9,12 @@
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="../common/header.jpg" width="100%" height="100%">
-    <img border="0" src="../common/back.jpg" width="20%" height="100%" class="back">
-    <img border="0" src="../common/home.jpg" width="20%" height="100%" class="home">
+    <a href="javascript:history.back()">
+      <p id="back"><i class="fas fa-reply"></i></p>
+    </a>
+    <a href="b_home">
+      <p id="home"><i class="fas fa-home"></i></p>
+    </a>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -35,7 +38,7 @@
 
           if($result == 123) {
             // 何か表示させる
-          header('Location: b_entrant_vol_list.html');
+          header('Location: b_entrant_vol_list.php');
           } else {
             echo '<font color="red"><p>パスワードが違います</p></font>';
           }
