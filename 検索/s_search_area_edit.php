@@ -120,25 +120,19 @@ foreach ($getArea as $area_data_val) {
             </select>日
           </div>
           <div class="checkbox">
-            <input type="checkbox" name="q1" value="val_flag"> 報酬アリ
-            <input type="checkbox" name="q1" value="vol_date_near"> 開催日が近い
-            <input type="checkbox" name="q1" value="newbie_flag"> 初心者OK
+            <input type="checkbox" name="val_flag" value="1"> 報酬アリ
+            <input type="checkbox" name="vol_date_near" value="1"> 開催日が近い
+            <input type="checkbox" name="newbie_flag" value="1"> 初心者OK
           </div>
           <!--<a href="s_search_result.php" class="btn-square">検索</a>-->
+          <?php
+          echo "<input type='hidden' name='area_id' value='" . $area_id . "'>";
+          ?>
           <button type="submit" align="center">検索</button>
       </form>
       </center>
     </div>
   </div>
-  <?php
-  echo "<input type='hidden' name='year' value='".$_POST['year']."'>";
-  echo "<input type='hidden' name='year' value='".$_POST['month']."'>";
-  echo "<input type='hidden' name='year' value='".$_POST['day']."'>";
-  echo "<input type='hidden' name='year' value='".$_POST['val_flag']."'>";
-  echo "<input type='hidden' name='year' value='".$_POST['vol_date_near']."'>";
-  echo "<input type='hidden' name='year' value='".$_POST['newbie_flag']."'>";
-  echo "<input type='hidden' name='year' value='".$_POST['area_id']."'>";
-  ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">

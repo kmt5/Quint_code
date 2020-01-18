@@ -61,7 +61,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
               $('#area').selectmenu('refresh');
             });
           </script>
-          <select name="select_area" , id="area">
+          <select name="area_id" , id="area">
             <option value="none" selected>--地域を選択してください--</option>
           </select>
 
@@ -118,9 +118,9 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
             </select>日
           </div>
           <div class="checkbox">
-            <input type="checkbox" name="q1" value="val_flag"> 報酬アリ
-            <input type="checkbox" name="q1" value="vol_date_near"> 開催日が近い
-            <input type="checkbox" name="q1" value="newbie_flag"> 初心者OK
+            <input type="checkbox" name="val_flag" value="1"> 報酬アリ
+            <input type="checkbox" name="vol_date_near" value="1"> 開催日が近い
+            <input type="checkbox" name="newbie_flag" value=""> 初心者OK
           </div>
           <button class="search" type="submit" align="center">登録</button>
         </form>
@@ -133,52 +133,6 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
-  /*都道府県preの値から地域の選択項目決定 参考サイト参照推奨
-  $('#pre').change(function() {
-    $.get('citylist.php?pref_code='+$(this).val(), function(data) {
-      $('#city').html(data);
-  });
-
-  $('#city').val('');
-  $('#city').selectmenu('refresh');
-});*/
-
-  /*プルダウン作成用スクリプト*/
-  $(".custom-select").each(function() {
-    var classes = $(this).attr("class"),
-      id = $(this).attr("id"),
-      name = $(this).attr("name");
-    var template = '<div class="' + classes + '">';
-    template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
-    template += '<div class="custom-options">';
-    $(this).find("option").each(function() {
-      template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
-    });
-    template += '</div></div>';
-
-    $(this).wrap('<div class="custom-select-wrapper"></div>');
-    $(this).hide();
-    $(this).after(template);
-  });
-  $(".custom-option:first-of-type").hover(function() {
-    $(this).parents(".custom-options").addClass("option-hover");
-  }, function() {
-    $(this).parents(".custom-options").removeClass("option-hover");
-  });
-  $(".custom-select-trigger").on("click", function() {
-    $('html').one('click', function() {
-      $(".custom-select").removeClass("opened");
-    });
-    $(this).parents(".custom-select").toggleClass("opened");
-    event.stopPropagation();
-  });
-  $(".custom-option").on("click", function() {
-    $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
-    $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
-    $(this).addClass("selection");
-    $(this).parents(".custom-select").removeClass("opened");
-    $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
-  });
 
   /*日付プルダウン作成用スクリプト*/
   $(".custom1-select").each(function() {

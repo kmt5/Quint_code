@@ -1,11 +1,26 @@
+<?php
+session_start();
+$b_user_id = $_SESSION["b_user_id"];
+  
+$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$db = new PDO($dsn, 'root', 'root');
+
+$getName = $db -> query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+$j = 0;
+foreach ($getName as $get_name) {
+  $vol_name[$j] .= $get_name['vol_name'];
+  $j += 1;
+}
+$count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>参加者一覧</title> <!-- ページのタイトル -->
-  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"><!-- アイコンを外部からダウンロード -->
   <link rel="stylesheet" type="text/css" href="../common/common.css">
   <link rel="stylesheet" type="text/css" href="entrant.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <div id="header-fixed">
@@ -22,17 +37,23 @@
       <div id="Toptitle2">
         <i class="fas fa-handshake"></i>　参加者一覧
       </div>
-      <h1 align="center">ボランティア一覧</h1>
+      <h1 align="center">ボランティアを<br>選択してください</h1>
       <div align="center">
         <?php
-            $vol_name = ["ゴミ拾い", "これで２０もじになるようにあいうえおあお", "hello", "屋台"];
             $array_count = count($vol_name);
             for ($i = 0; $i < $array_count; $i++) {
-              echo "<form action='b_entrant_list.php' method='post'>";
+              if ($i != 2){
+              echo "<form action='b_entrant_list.html' method='post'>";
               echo "<button type='submit' class='button-vol'>".$vol_name[$i]."</button>";
               echo "</form>";
               echo "<br>";
+            } else {
+              echo "<form action='b_entrant_list.html' method='post'>";
+              echo "<button type='submit' class='button-vol'><font color='red'><i class='fas fa-check'></i></font>　".$vol_name[$i]."</button>";
+              echo "</form>";
+              echo "<br>";
             }
+          }
           ?>
       </div>
     </div>

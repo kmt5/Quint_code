@@ -1,5 +1,25 @@
+<?php
+$b_user_id = '00000001';
+
+$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$db = new PDO($dsn, 'root', 'root');
+$db->query("set names utf8");
+$area_id = $_POST["area_id"];
+$vol_date = $_POST["year"] . "-" . $_POST["month"] . "-" . $_POST["day"];
+$val_flag = $_POST["val_flag"];
+$vol_date_near = $_POST["vol_date_near"];
+$newbie_flag = $_POST["newbie_flag"];
+//$area_id = 21;
+$getArea = $db->query("SELECT pref_name, area_name FROM areas WHERE area_id = $area_id");
+foreach ($getArea as $get_area) {
+    $pref_name = $get_area['pref_name'];
+    $area_name = $get_area['area_name'];
+}
+echo $area_id;
+?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
+
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>検索</title> <!-- ページのタイトル -->
@@ -7,6 +27,7 @@
   <link rel="stylesheet" type="text/css" href="./CSS/search_result.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
+
 <body>
   <div id="header-fixed">
     <img border="0" src="../common/header.jpg" width="100%" height="100%">
@@ -18,78 +39,218 @@
     </a>
   </div>
 
-  <div id = "body-bk">
-    <div id = "body">
-      <div id ="Toptitle1">
+  <div id="body-bk">
+    <div id="body">
+      <div id="Toptitle1">
         検索
       </div>
       <div class="area">
-        地域名
+        <?php echo $pref_name." ".$area_name;?>
       </div>
       <form action='s_search_first.html'>
-      <button type="submit" class="vol">別の条件で検索する　<i class="fas fa-search"></i></button>
-    </form>
-    <!--
-      /* 一応コメントアウトで消しときます
-        $value = 1;
-
-        if(isset($_POST['zyoken'])){
-          $value = $_POST['zyoken'];
-        }
-
-        echo "<form action='' method='post'>";
-        echo "<p>";
-        echo "<label for='zyoken'>検索条件</label>";
-        echo "<select class='zyoken' name='zyoken' onchange='submit(this.form)'>";
-        if ($value == 1) {
-          echo "<option value='1' selected>報酬あり</option>";
-        } elseif ($value == 2) {
-          echo "<option value='2' selected>開催日が近い</option>";
-        } else {
-          echo "<option value='3' selected>初心者OK</option>";
-        }
-        echo "<option value='1'>報酬あり</option>";
-        echo "<option value='2'>開催日が近い</option>";
-        echo "<option value='3'>初心者OK</option>";
-        echo "</select>";
-        echo "</p>";
-        echo "</form>"; */
-       -->
+        <button type="submit" class="vol">別の条件で検索する　<i class="fas fa-search"></i></button>
+      </form>
+ 
       <?php
-        $value1 = 1;
+      $value1 = 1;
 
-        if(isset($_POST['narabi'])){
-          $value1 = $_POST['narabi'];
-        }
+      if (isset($_POST['narabi'])) {
+        $value1 = $_POST['narabi'];
+      }
 
-        echo "<form action='' method='post'>";
-        echo "<p>";
-        echo "<label for='narabi'>並び替え</label>";
-        echo "<select class='zyoken' name='narabi' onchange='submit(this.form)'>";
-        if ($value1 == 1) {
-          echo "<option value='1' selected>開催時間順</option>";
-        } elseif ($value1 == 2) {
-          echo "<option value='2' selected>ポイント順</option>";
-        } else {
-          echo "<option value='3' selected>登録順</option>";
-        }
-        echo "<option value='1'>開催時間順</option>";
-        echo "<option value='2'>ポイント順</option>";
-        echo "<option value='3'>登録順</option>";
-        echo "</select>";
-        echo "</p>";
-        echo "</form>";
+      echo "<form action='' method='post'>";
+      echo "<p>";
+      echo "<label for='narabi'>並び替え</label>";
+      echo "<select class='zyoken' name='narabi' onchange='submit(this.form)'>";
+      if ($value1 == 1) {
+        echo "<option value='1' selected>開催時間順</option>";
+      } elseif ($value1 == 2) {
+        echo "<option value='2' selected>ポイント順</option>";
+      } else {
+        echo "<option value='3' selected>登録順</option>";
+      }
+      echo "<option value='1'>開催時間順</option>";
+      echo "<option value='2'>ポイント順</option>";
+      echo "<option value='3'>登録順</option>";
+      echo "</select>";
+      echo "</p>";
+      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+      echo "<input type='hidden' name='val_flag' value=" . $val_flag . ">";
+      echo "<input type='hidden' name='vol_date_near' value=" . $vol_date_near . ">";
+      echo "<input type='hidden' name='newbie_flag' value=" . $newbie_flag . ">";
+      echo "<input type='hidden' name='area_id' value=" . $area_id . ">";
+      echo "</form>";
       ?>
 
       <div class="b">
         <?php
-          $vol_name = ["ゴミ拾い", "これで２０もじになるようにあいうえおあお", "hello", "屋台"];
-          $array_count = count($vol_name);
-          for ($i = 0; $i < $array_count; $i++) {
-            echo "<form action='s_search_result_vol.html' method='post'>";
-            echo "<button type='submit' class='vol'>".$vol_name[$i]."</button>";
-            echo "</form>";
+        if ($value1 == 1) {
+          if ($val_flag == 1 && $vol_date_near == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag =1 AND area_id = $area_id ORDER BY vol_date AND vol_beg_time");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1 && $vol_date_near == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag =1 AND area_id = $area_id ORDER BY vol_date AND vol_beg_time");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_beg_time");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_beg_time");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($vol_date_near == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_beg_time");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND area_id = $area_id ORDER BY vol_date AND vol_beg_time");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
           }
+        } else if ($value1 == 2) {
+          if ($val_flag == 1 && $vol_date_near == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_point");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1 && $vol_date_near == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_point");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_point");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_point");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($vol_date_near == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_point");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND area_id = $area_id ORDER BY vol_date AND vol_point");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          }
+        } else if ($value1 == 3) {
+          if ($val_flag == 1 && $vol_date_near == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag =1 AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_id");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1 && $vol_date_near == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag =1 AND area_id = $area_id ORDER BY vol_date AND vol_id");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_id");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($val_flag == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_id");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else if ($vol_date_near == 1 && $newbie_flag == 1) {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND newbie_flag = 1 AND area_id = $area_id ORDER BY vol_date AND vol_id");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          } else {
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND area_id = $area_id ORDER BY vol_date AND vol_id");
+            $j = 0;
+            foreach ($getName as $get_name) {
+              $vol_id_html[$j] .= $get_name['vol_id'];
+              $vol_name[$j] .= $get_name['vol_name'];
+              $j += 1;
+            }
+          }
+        }
+        ?>
+        <?php
+        if (empty($get_name)) {
+          echo "該当するボランティアはありません。";
+        } else {
+          $array_count = count($vol_name);
+        }
+        for ($i = 0; $i < $array_count; $i++) {
+          echo "<form action='s_search_result_vol.php' method='post'>";
+          echo "<button type='submit' class='vol'>" . $vol_name[$i] . "</button>";
+          echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+          echo "<input type='hidden' name='val_flag' value=" . $val_flag . ">";
+          echo "<input type='hidden' name='vol_date_near' value=" . $vol_date_near . ">";
+          echo "<input type='hidden' name='newbie_flag' value=" . $newbie_flag . ">";
+          echo "</form>";
+        }
         ?>
         <!--
         <button type="submit" class="vol" onclick="location.href='s_search_result_vol.html'">ボランティア名１</button>
@@ -103,4 +264,5 @@
     <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
+
 </html>
