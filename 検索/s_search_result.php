@@ -26,7 +26,11 @@
       <div class="area">
         地域名
       </div>
-      <?php
+      <form action='s_search_first.html'>
+      <button type="submit" class="vol">別の条件で検索する　<i class="fas fa-search"></i></button>
+    </form>
+    <!--
+      /* 一応コメントアウトで消しときます
         $value = 1;
 
         if(isset($_POST['zyoken'])){
@@ -49,8 +53,8 @@
         echo "<option value='3'>初心者OK</option>";
         echo "</select>";
         echo "</p>";
-        echo "</form>";
-      ?>
+        echo "</form>"; */
+       -->
       <?php
         $value1 = 1;
 
