@@ -1,7 +1,7 @@
-<?php
+<?php /*
 session_start();
 $b_user_id = $_SESSION["b_user_id"];
-  
+
 $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
 $db = new PDO($dsn, 'root', 'root');
 
@@ -12,7 +12,7 @@ foreach ($getName as $get_name) {
   $j += 1;
 }
 $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = $b_user_id");
-?>
+*/?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -37,18 +37,19 @@ $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = 
       <div id="Toptitle2">
         <i class="fas fa-handshake"></i>　参加者一覧
       </div>
-      <h1 align="center">ボランティアを<br>選択してください</h1>
+      <h1 align="center">vol_name</h1>
+      <h2 align="center">参加者人数　2/5</h2>
       <div align="center">
         <?php
             $array_count = count($vol_name);
             for ($i = 0; $i < $array_count; $i++) {
               if ($i != 2){
-              echo "<form action='b_entrant_list.html' method='post'>";
+              echo "<form action='b_entrant_detail.html' method='post'>";
               echo "<button type='submit' class='button-vol'>".$vol_name[$i]."</button>";
               echo "</form>";
               echo "<br>";
             } else {
-              echo "<form action='b_entrant_list.html' method='post'>";
+              echo "<form action='b_entrant_detail.html' method='post'>";
               echo "<button type='submit' class='button-vol'><font color='red'><i class='fas fa-check'></i></font>　".$vol_name[$i]."</button>";
               echo "</form>";
               echo "<br>";
