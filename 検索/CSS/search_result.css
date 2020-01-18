@@ -14,12 +14,16 @@ div.area{
 
 select.zyoken{
   font-size: 50px;
-  background: #0cb06e;/*ボタン色*/
   margin:0px 50px 50px 80px;
-  border-radius: 20px;
+  border: 2px solid #92d050;
+  border-radius:20px;
   width:35%;
 }
 
+p{
+  font-size:50px;
+  margin:10px 10px 10px 100px;
+}
 
 button {
   display: inline-block;
