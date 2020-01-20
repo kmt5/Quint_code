@@ -6,13 +6,16 @@
   <link rel="stylesheet" type="text/css" href="./CSS/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/color.css">
   <link rel=“stylesheet” type="text/css" href=“./CSS/size.css”>
-  <link rel=“stylesheet” type="text/css" href=“./CSS/botan.css”>
+  <link rel=“stylesheet” type="text/css" href=“./CSS/pop.css”>
 </head>
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "regd_first.html">
+    <a href= "s_home.html">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+    </a>
+    <a href= "s_home.html">
+      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
     </a>
   </div>
 
@@ -24,7 +27,7 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form form action="s_account_regd_comp.html" method="post" name="myform" onsubmit="return check();">
+      <form action ="s_setting_edit.php" method="get" name="myform" onsubmit="return check();">
         <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -56,10 +59,6 @@
         <label for="radio-02">女</label><br>
       </p>
       <hr color="black"><br/>
-
-      <dt>年齢</dt>
-      <dd><input type = “text” name =“age“ id="input8" value=""></dd>
-      <hr color="black"><br/><br/>
         <dt>ひとこと</dt>
         <dd><input type = “text” name =“massage“ id="input6" value=""></dd>
         <hr color="black"><br/><br/>
@@ -75,26 +74,27 @@
         <dt>ニックネーム</dt>
         <dd><input type = “text” name =“nickname“ id="input7" value=""></dd>
         <hr color="black"><br/>
-      <br>
-      <input type="submit" value="登録完了" class="btn-square1"><br>
-    </center>
-  </dl>
-  </form>
+        <br>
+        <input type="submit" value="編集完了" class="btn-square5">
+        <a href="s_setting_delete.php" class="btn-square4">アカウント削除</a><br>
+      </center>
+    </form>
+    </div>
   </div>
-</div>
 
-<script type="text/javascript">
-function check() {
-  for(i = 0; i < document.myform.length; i++) {
-    if (document.myform.elements[i].type == "text") {
-      if (document.myform.elements[i].value.length <= 8) {
-          alert("登録に失敗しました");
-          return false;
+  <script type="text/javascript">
+  function check() {
+    for(i = 0; i < document.myform.length; i++) {
+      if (document.myform.elements[i].type == "text") {
+        if (document.myform.elements[i].value.length <= 8) {
+            alert("登録に失敗しました");
+            return false;
+        }
       }
     }
   }
-}
-</script>
+  </script>
+
 
   <div id="footer-fixed">
     <img border="0" src="kokoku.jpg" width="100%" height="100%">
