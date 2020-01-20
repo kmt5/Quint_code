@@ -1,3 +1,7 @@
+<?php
+  $s_user_id = $_POST['s_user_id'];
+?>
+
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -11,12 +15,18 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_home.html">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-    </a>
-    <a href= "s_home.html">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-    </a>
+    <form method="post" name="back" action="s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:back.submit()">
+        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+      </a>
+    </form>
+    <form method="post" name="home" action="s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:home.submit()">
+        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+      </a>
+    </form>
   </div>
   <div id="body-bk">
     <div id="body" class="bg_test">
@@ -34,7 +44,7 @@
   <script type="text/javascript" src="jquery.qrcode.min.js"></script>
   <script>
   jQuery(function(){
-  	jQuery('#qrcode').qrcode("https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8");
+    jQuery('#qrcode').qrcode("<?php echo $s_user_id; ?>");
   })
   </script>
   <div id="footer-fixed">
