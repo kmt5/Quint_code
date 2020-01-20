@@ -14,52 +14,38 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <p href= "login.php">
+    <p onclick="MoveCheck();">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
     </p>
   </div>
 
-  <div class="popup-overlay">
-    <!--Creates the popup content-->
-    <div class="popup-content">
-      <p>ログアウトしますか？</p>
-      <!--popup's close button-->
-      <button-ok class="ok">はい</button-ok>
-      <button-no class="no">いいえ</button-no>
-    </div>
-  </div>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">
-  /*検索ボタンが押されたとき*/
-  $(".back").on("click", function(){
-    $(".popup-overlay, .popup-content").addClass("active");
-    });
-  /*削除確認*/
-  $(".ok").on("click", function(){
-    $(".popup-overlay, .popup-content").removeClass("active");
-    location.href="login.php";
-  });
-  $(".no").on("click", function(){
-    $(".popup-overlay, .popup-content").removeClass("active");
-  });
+  function MoveCheck() {
+    if( confirm("ログアウトしますか？") ) {
+        window.location.href = "login.php";
+    }
+    else {
+        alert("ログアウトを中止しました");
+    }
+}
   </script>
 
 
   <div id="body-bkx">
     <center> <!-- 中央寄せ -->
-    <div class="inline-block_test1">
+    <div class="inline-block_test">
       <center> <!-- 中央寄せ -->
         <form method="post" name="search" action="s_search_first.php" class="inline-block_test">
           <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
           <a href="javascript:search.submit()" class="hexagonB"><span>検索</span></a><br>
         </form>
-        <form method="post" name="my" action="s_my_first.php"class="inline-block_test">
+        <form method="post" name="my" action="s_my_first.php"class="inline-block_test1">
           <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
           <a href="javascript:my.submit()" class="radius_test"><span>マイボラ</span></a><br>
         </form>
-        <form method="post" name="friend" action="s_frd_first.php" class="inline-block_test">
+        <form method="post" name="friend" action="s_frd_first.php" class="inline-block_test1">
           <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
           <a href="javascript:friend.submit()" class="radius_test"><span>フレンド</span></a><br>
         </form>
@@ -71,10 +57,10 @@
           <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
           <a href="javascript:point.submit()" class="hexagonB"><span>ポイント</span></a>
         </form>
-        <form method="post" name="setting" action="s_setting_edit.php" class="inline-block_test">
+        <form method="post" name="setting" action="s_setting_edit.php" class="inline-block_test1">
           <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
           <a href="javascript:setting.submit()" class="radius_test"><span>設定</span></a><br>
-        </form>-->
+        </form>
         <!--
         <a href="s_search_first.php" class="hexagonB">検索</a><br>
         <a href="s_frd_first.php" class="radius_test">フレンド</a><br>
