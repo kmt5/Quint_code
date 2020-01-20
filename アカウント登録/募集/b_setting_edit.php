@@ -11,20 +11,23 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "regd_first.html">
+    <a href= "b_home.html">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+    </a>
+    <a href= "b_home.html">
+      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
     </a>
   </div>
 
 
   <div id="body-bk">
-    <div id="body" class="bg_test3">
+    <div id="body" class="bg_test">
       <center> <!-- 中央寄せ -->
-        <h1> 募集側アカウント登録</h1>
+        <h1> 募集側アカウント設定</h1>
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form action ="b_account_regd_comp.html" method="get" name="myform" onsubmit="return check();">
+      <form action ="b_setting_edit.php" method="get" name="myform" onsubmit="return check();">
       <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -33,40 +36,44 @@
         <hr color="black"><br/>
 
         <dt>会社・団体</dt>
-        <dd><input type = “text” name=“groupname“ id="a" value=""></dd>
+        <dd><input type = “text” name =“groupname“ id="input1" value=""></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type = “text” name=“mail_address“ id="b" value=""></dd>
+        <dd><input type = “text” name =“mail_address“ id="input2" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = “text” name=“password“ id="c" value=""></dd>
+        <dd><input type = “text” name =“password“ id="input3" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = “text” name=“user_address“ id="d" value=""></dd>
+        <dd><input type = “text” name =“user_address“ id="input4" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = “text” name=“tel_num“ id="f" value=""></dd>
+        <dd><input type = “text” name =“tel_num“ id="input5" value=""></dd>
         <hr color="black"><br/><br/>
         <br>
-        <input type="submit" value="登録完了" class="btn-square1b"><br>
+        <input type="submit" value="編集完了" class="btn-square5">
+        <a href="b_setting_delete.php" class="btn-square4">アカウント削除</a><br>
       </center>
     </form>
+    </div>
   </div>
-  </div>
-
 
   <script type="text/javascript">
-    function check() {
-      for(i = 0; i < document.myform.length; i++) {
-        if (document.myform.elements[i].type == "text") {
-          if (document.myform.elements[i].value.length <= 8) {
-              alert("登録に失敗しました");
-              return false;
-          }
+  function check() {
+    for(i = 0; i < document.myform.length; i++) {
+      if (document.myform.elements[i].type == "text") {
+        if (document.myform.elements[i].value.length <= 8) {
+            alert("登録に失敗しました");
+            return false;
         }
       }
     }
+  }
   </script>
+
+
+
+
 
   <div id="footer-fixed">
     <img border="0" src="kokoku.jpg" width="100%" height="100%">
