@@ -46,7 +46,7 @@
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
             <a href="javascript:friend.submit()" class="radius_test"><span>フレンド</span></a><br>
           </form>
-          <form method="post" name="qr" action="s_qr_first.php" class="inline-block_test">
+          <form method="post" name="qr" action="s_qr.php" class="inline-block_test">
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
             <a href="javascript:qr.submit()" class="hexagonB"><span>QRコード</span></a>
           </form>
