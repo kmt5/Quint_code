@@ -1,39 +1,74 @@
-<<?php
-  $s_user_id = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
-  $nickname = $_POST['nickname'];
-  $fullname = $_POST['fullname'];
-  $place_id = $_POST['area'];
-  $age      = $_POST['age'];
-  $gender   = $_POST['gender'];
-  $message  = $_POST['message'];
+<?php
+  //  $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
+  $nickname     = $_POST['nickname'];
+  $fullname     = $_POST['fullname'];
+  $place_id     = $_POST['area'];
+  $age          = $_POST['age'];
+  $gender       = $_POST['gender'];
+  $message      = $_POST['message'];
   $mail_address = $_POST['mail_address'];
-  $tel_num  = $_POST['tel_num'];
-  $passwd   = $_POST['password'];
-  $profile_path = "/profile/$s_user_id";
-  $qr_path  = "/qr/$s_user_id";
-  $point    = 0;
-  $rank     = "ブロンズ";
+  $tel_num      = $_POST['tel_num'];
+  $passwd       = $_POST['password'];
 
-  $picture  = $_POST['pic'];
+  $picture      = $_POST['pic'];
 
-  if($nickname && $fullname && $place_id && $age && $gender && $message && $mail_address && $tel_num && $passwd){
-    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
-    $db = new PDO($dsn, 'root', 'root');
-    $sql = "insert into sanka_user values(:s_user_id, :nickname, :fullname, :place_id, :age, :gender, :message, :mail_address, :tel_num ,:passwd ,:profile_path ,:qr_path ,:point ,:rank )";
-    $stmt = $db->prepare($sql);
-    $params = array(':s_user_id' => $s_user_id, ':nickname' => $nickname, ':fullname' => $fullname, ':place_id' => $place_id, ':age' => $age, ':gender' => $gender, ':message' => $message, ':mail_address' => $mail_address, ':tel_num' => $tel_num, ':passwd' => $passwd, ':profile_path' => $profile_path, ':qr_path' => $qr_path, ':point' => $point, ':rank' => $rank);
-    $stmt->execute($params);
-    if ($stmt){
-      echo '
-      <form method="post" action="s_account_regd_comp.php">
-        <input type="hidden" name="mail_address" value="'.$mail_address.'" />
-        <input type="hidden" name="passwd" value="'.$passwd.'" />
-      </form>
-      <script>
-        document.forms[0].submit();
-      </script>';
+  //postが来てなければ飛ばす
+  if($nickname && $fullname && $place_id && $age && $gender && $mail_address && $tel_num && $passwd){
+    $dsn   = "mysql:host=test3_mysql_1;dbname=sample;";
+    $db    = new PDO($dsn, 'root', 'root');
+    $s_cnt = $db->query("select mail_address from sanka_user where mail_address='".$mail_address."'")->rowCount();
+    $b_cnt = $db->query("select mail_address from bosyu_user where mail_address='".$mail_address."'")->rowCount();
+
+    //データベースに入れて良い値かの判定
+    if (!$s_cnt && !$b_cnt && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($message) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
+      do {
+        //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
+        $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
+        $s_id_sql     = "select s_user_id from sanka_user where s_user_id = '".$s_user_id."'";
+        $b_id_sql     = "select b_user_id from bosyu_user where b_user_id = '".$s_user_id."'";
+        $s_id_cnt     = $db->query($s_id_sql)->rowCount();
+        $b_id_cnt     = $db->query($b_id_sql)->rowCount();
+      } while ($s_id_cnt or $b_id_cnt);
+
+      $profile_path = "/prof/$s_user_id.jpg";
+      $qr_path      = "/qr/$s_user_id.jpg";
+      $point        = 0;
+      $rank         = "ブロンズ";
+
+      $sql    = "insert into sanka_user values(:s_user_id, :nickname, :fullname, :place_id, :age, :gender, :message, :mail_address, :tel_num ,:passwd ,:profile_path ,:qr_path ,:point ,:rank )";
+      $stmt   = $db->prepare($sql);
+      $params = array(':s_user_id'    => $s_user_id,
+                      ':nickname'     => $nickname,
+                      ':fullname'     => $fullname,
+                      ':place_id'     => $place_id,
+                      ':age'          => $age,
+                      ':gender'       => $gender,
+                      ':message'      => $message,
+                      ':mail_address' => $mail_address,
+                      ':tel_num'      => $tel_num,
+                      ':passwd'       => $passwd,
+                      ':profile_path' => $profile_path,
+                      ':qr_path'      => $qr_path,
+                      ':point'        => $point,
+                      ':rank'         => $rank);
+      $stmt->execute($params);
+
+      //データベースに正常にinsertできたかの判定
+      if ($stmt->rowCount()){
+        echo'
+          <form method="post" action="s_account_regd_comp.php">
+            <input type="hidden" name="mail_address" value="'.$mail_address.'" />
+            <input type="hidden" name="passwd" value="'.$passwd.'" />
+          </form>
+          <script>
+            document.forms[0].submit();
+          </script>';
+      }else{
+        echo "can't insert into db";
+      }
+
     }else{
-      echo "error";
+      echo "plz input other forms.";
     }
   }
 ?>
@@ -64,7 +99,7 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form name="request" form action="s_account_regd_comp.php" method="post" onsubmit="return check();">
+      <form name="request" action="#" method="post" onsubmit="return check();">
         <dl>
       <center> <!-- 中央寄せ -->
       <h2>
