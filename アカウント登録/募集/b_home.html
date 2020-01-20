@@ -9,37 +9,23 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <p href= "login.login">
+    <p onclick="MoveCheck();">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
     </a>
   </div>
 
-  <div class="popup-overlay">
-    <!--Creates the popup content-->
-    <div class="popup-content">
-      <p>ログアウトしますか？</p>
-      <!--popup's close button-->
-      <button-ok class="ok">はい</button-ok>
-      <button-no class="no">いいえ</button-no>
-    </div>
-  </div>
 
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">
-  /*検索ボタンが押されたとき*/
-  $(".back").on("click", function(){
-    $(".popup-overlay, .popup-content").addClass("active");
-    });
-  /*削除確認*/
-  $(".ok").on("click", function(){
-    $(".popup-overlay, .popup-content").removeClass("active");
-    location.href="login.php";
-  });
-  $(".no").on("click", function(){
-    $(".popup-overlay, .popup-content").removeClass("active");
-  });
+  function MoveCheck() {
+    if( confirm("ログアウトしますか？") ) {
+        window.location.href = "login.php";
+    }
+    else {
+        alert("ログアウトを中止しました");
+    }
+}
   </script>
 
 
