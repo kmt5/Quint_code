@@ -1,4 +1,4 @@
-<?php
+<<?php
   $s_user_id = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
   $nickname = $_POST['nickname'];
   $fullname = $_POST['fullname'];
@@ -64,7 +64,7 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form name="request" action="#" method="post">
+      <form name="request" form action="s_account_regd_comp.php" method="post" onsubmit="return check();">
         <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -125,42 +125,35 @@
   </div>
 </div>
 
-<div class="popup-overlay">
-  <!--Creates the popup content-->
-  <div class="popup-content">
-    <p>登録に失敗しました</p>
-    <!--popup's close button-->
-    <button-ok class="ok">OK</button-ok>
-  </div>
-</div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
-/*検索ボタンが押されたとき*/
-$(".btn-square1").on("click", function(){
-  var target1 = document.getElementById("input1").value;
-  var target2 = document.getElementById("input2").value;
-  var target3 = document.getElementById("input3").value;
-  var target4 = document.getElementById("input4").value;
-  var target5 = document.getElementById("input5").value;
-  var target6 = document.getElementById("input6").value;
-  var target7 = document.getElementById("input7").value;
-  var target8 = document.getElementById("input8").value;
-  /*ID(文字数8)が入力されている場合*/
-  if(target1.length >= 1 && target2.length >= 1 && target3.length >= 1 && target4.length >= 1 && target5.length >= 1 && target6.length >= 1 && target7.length >= 1 && target8.length >= 1){
-    /*IDが存在するならの処理もここ？*/
-      document.request.submit();
-  }else{
-  /*IDが入力されてないor存在しない場合*/
-  $(".popup-overlay, .popup-content").addClass("active");
+function check() {
+  for(i = 0; i < document.request.length; i++) {
+    if (document.request.elements[i].type == "text") {
+      if (document.request.elements[i].value.length == 0) {
+          alert("登録に失敗しました");
+          return false;
+      }
+    }
+    if (i == 2){
+      if (document.request.elements[i].type == "text") {
+        if (document.request.elements[i].value.length >= 8) {
+          alert("既に登録されたメールアドレスです");
+          return false;
+        }
+      }
+    }
+    if (i == 3) {
+      if (document.request.elements[i].type == "text") {
+        if (document.request.elements[i].value.length <= 7) {
+          alert("登録に失敗しました");
+          return false;
+        }
+      }
+    }
   }
-});
-
-/*削除確認*/
-$(".ok").on("click", function(){
-  $(".popup-overlay, .popup-content").removeClass("active");
-});
+}
 </script>
+
 
   <div id="footer-fixed">
     <img border="0" src="kokoku.jpg" width="100%" height="100%">
