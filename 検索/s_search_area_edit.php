@@ -68,10 +68,12 @@ foreach ($getArea as $area_data_val) {
         </select>-->
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
+              <option value="none">--</option>
               <!--<option value="2019">2019年</option>-->
               <option value="2020">2020</option>
             </select>年
             <select id"month" name="month" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -86,6 +88,7 @@ foreach ($getArea as $area_data_val) {
               <option value="12">12</option>
             </select>月
             <select id="day" name="day" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

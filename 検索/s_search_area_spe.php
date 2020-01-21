@@ -67,9 +67,11 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
 
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="2020">2020</option>
             </select>年
             <select id="month" name="month" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -84,6 +86,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
               <option value="12">12</option>
             </select>月
             <select id="day" name="day" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -131,47 +134,46 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
     <img border="0" src="kokoku.jpg" width="100%" height="100%">
   </div>
 
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script type="text/javascript">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    /*日付プルダウン作成用スクリプト*/
+    $(".custom1-select").each(function() {
+      var classes = $(this).attr("class"),
+        id = $(this).attr("id"),
+        name = $(this).attr("name");
+      var template = '<div class="' + classes + '">';
+      template += '<span class="custom1-select-trigger">' + '</span>';
+      template += '<div class="custom1-options">';
+      $(this).find("option").each(function() {
+        template += '<span class="custom1-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+      });
+      template += '</div></div>';
 
-  /*日付プルダウン作成用スクリプト*/
-  $(".custom1-select").each(function() {
-    var classes = $(this).attr("class"),
-      id = $(this).attr("id"),
-      name = $(this).attr("name");
-    var template = '<div class="' + classes + '">';
-    template += '<span class="custom1-select-trigger">' + '</span>';
-    template += '<div class="custom1-options">';
-    $(this).find("option").each(function() {
-      template += '<span class="custom1-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+      $(this).wrap('<div class="custom1-select-wrapper"></div>');
+      $(this).hide();
+      $(this).after(template);
     });
-    template += '</div></div>';
 
-    $(this).wrap('<div class="custom1-select-wrapper"></div>');
-    $(this).hide();
-    $(this).after(template);
-  });
-
-  $(".custom1-option:first-of-type").hover(function() {
-    $(this).parents(".custom1-options").addClass("option-hover");
-  }, function() {
-    $(this).parents(".custom1-options").removeClass("option-hover");
-  });
-  $(".custom1-select-trigger").on("click", function() {
-    $('html').one('click', function() {
-      $(".custom1-select").removeClass("opened");
+    $(".custom1-option:first-of-type").hover(function() {
+      $(this).parents(".custom1-options").addClass("option-hover");
+    }, function() {
+      $(this).parents(".custom1-options").removeClass("option-hover");
     });
-    $(this).parents(".custom1-select").toggleClass("opened");
-    event.stopPropagation();
-  });
-  $(".custom1-option").on("click", function() {
-    $(this).parents(".custom1-select-wrapper").find("select").val($(this).data("value"));
-    $(this).parents(".custom1-options").find(".custom1-option").removeClass("selection");
-    $(this).addClass("selection");
-    $(this).parents(".custom1-select").removeClass("opened");
-    $(this).parents(".custom1-select").find(".custom1-select-trigger").text($(this).text());
-  });
-</script>
+    $(".custom1-select-trigger").on("click", function() {
+      $('html').one('click', function() {
+        $(".custom1-select").removeClass("opened");
+      });
+      $(this).parents(".custom1-select").toggleClass("opened");
+      event.stopPropagation();
+    });
+    $(".custom1-option").on("click", function() {
+      $(this).parents(".custom1-select-wrapper").find("select").val($(this).data("value"));
+      $(this).parents(".custom1-options").find(".custom1-option").removeClass("selection");
+      $(this).addClass("selection");
+      $(this).parents(".custom1-select").removeClass("opened");
+      $(this).parents(".custom1-select").find(".custom1-select-trigger").text($(this).text());
+    });
+  </script>
 </body>
 
 </html>
