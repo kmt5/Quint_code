@@ -4,7 +4,7 @@
 //データベースに接続(test3)
 $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
 $db = new PDO($dsn, 'root', 'root');
-//接続確認    
+//接続確認
 if ($db) {
     echo "データベースに繋がっています";
 } else {
@@ -116,11 +116,11 @@ foreach ($getName as $get_name) {
             <div width="100%" class="new">
                 <h1 align="center">ボランティア内容</h1>
                 <form action="b_vol_regd_delete.php" method="post" align="left">
-                    <h2>ボランティアイメージ画像</h2>
-                    <img src=<?php echo $vol_fig_pass; ?>>
                     <h2>ボランティア名</h2>
                     <?php echo $vol_name; ?>
                     <br>
+                    <h2>ボランティアイメージ画像</h2>
+                    <img id="preview" src=<?php echo $vol_fig_pass; ?> >
                     <h2>地域選択</h2>
                     <label>都道府県　</label>
                     <?php echo $pref_name; ?>
@@ -158,7 +158,7 @@ foreach ($getName as $get_name) {
                     <h2>この内容で削除しますか？</h2><br>
                     <button type="submit" align="center" onclick="test()">削除</button>
 
-                    <?php 
+                    <?php
                     $value = '<script>document.write(value);</script>';
                     echo $value;
                     if ($value == true) {
