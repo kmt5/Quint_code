@@ -66,10 +66,10 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
           </select>
 
           <div class="days">
-            <select id="year" name="year" placeholder="2020　">
+            <select id="year" name="year" class="custom1-select sources">
               <option value="2020">2020</option>
             </select>年
-            <select id="month" name="month" placeholder="1">
+            <select id="month" name="month" class="custom1-select sources">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -83,7 +83,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
               <option value="11">11</option>
               <option value="12">12</option>
             </select>月
-            <select id="day" name="day" placeholder="1">
+            <select id="day" name="day" class="custom1-select sources">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -140,7 +140,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
       id = $(this).attr("id"),
       name = $(this).attr("name");
     var template = '<div class="' + classes + '">';
-    template += '<span class="custom1-select-trigger">' + $(this).attr("placeholder") + '</span>';
+    template += '<span class="custom1-select-trigger">' + '</span>';
     template += '<div class="custom1-options">';
     $(this).find("option").each(function() {
       template += '<span class="custom1-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
