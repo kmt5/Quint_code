@@ -45,6 +45,12 @@ div#body-bkx{
     padding:200px 0 200px 0;    /* 上下に250pxを余白を取る */
 
 }
+
+div#body-qr1{
+    padding:0px 200px 0px 200px;    /* 上下に250pxを余白を取る */
+
+}
+
 div#body-bkxa{
     padding:100px 0 100px 0;    /* 上下に250pxを余白を取る */
     background: #0cb06e;
@@ -79,7 +85,12 @@ div#Toptitle2{
 
 
 form{
-  background-color: #ffffff;
+  background-color:#ffffff;
+  padding:30px 50px;
+}
+
+form at{
+  background-color:#92d050#;
   padding:30px 50px;
 }
 
@@ -289,23 +300,31 @@ font-size: 30px;
 }
 
 .inline-block_test {
-  margin-top: -50px;
-  margin-bottom: 100px;
+  margin-top: -25px;
+  margin-bottom: 150px;
     display: inline-block;      /* インラインブロック要素にする */
     background-color:  #fff;    /* 背景色指定 */
     padding:  20px;             /* 余白指定 */
     height: 50px;              /* 高さ指定 */
 }
-
 .inline-block_test1 {
+  margin-top: -25px;
+  margin-bottom: 200px;
+    display: inline-block;      /* インラインブロック要素にする */
+    background-color:  #fff;    /* 背景色指定 */
+    padding:  50px;             /* 余白指定 */
+    height: 50px;              /* 高さ指定 */
+}
+
+/*.inline-block_test1 {
   margin-top: 20px;
   margin-bottom: 100px;
-    display: inline-block;      /* インラインブロック要素にする */
-    background-color:  #fff;    /* 背景色指定 */
-    padding:  20px;             /* 余白指定 */
-    height: 50px;              /* 高さ指定 */
+    display: inline-block;      /* インラインブロック要素にする *
+    background-color:  #fff;    /* 背景色指定
+    padding:  20px;             /* 余白指定
+    height: 50px;              /* 高さ指定 *
 }
-
+*/
 
 .radius_test {
     border-radius: 50%;                 /* 角丸指定 */
@@ -342,6 +361,12 @@ font-size: 20px;
   margin-left: 200px;
   margin-right: 200px;
   border-radius: 10px;
+}
+
+.size6 {
+  padding-bottom: 200px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 /*ポップアップ*/
