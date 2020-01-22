@@ -258,6 +258,38 @@ font-size: 30px;
     background-color: #0cb06e;   /* 背景色指定 */
 }
 
+.inline-block_test {
+  margin-top: -50px;
+  margin-bottom: 100px;
+    display: inline-block;      /* インラインブロック要素にする */
+    background-color:  #fff;    /* 背景色指定 */
+    padding:  20px;             /* 余白指定 */
+    height: 50px;              /* 高さ指定 */
+}
+
+.inline-block_test1 {
+  margin-top: 20px;
+  margin-bottom: 100px;
+    display: inline-block;      /* インラインブロック要素にする */
+    background-color:  #fff;    /* 背景色指定 */
+    padding:  20px;             /* 余白指定 */
+    height: 50px;              /* 高さ指定 */
+}
+
+
+.radius_test {
+    border-radius: 50%;                 /* 角丸指定 */
+    text-decoration: none;
+    display:  inline-block;             /* インラインブロックする */
+    padding: 130px 0px;                  /* 余白指定 */
+    background-color: #92d050;          /* 背景色指定 */
+    color: #000;
+    width:310px;                       /* 幅指定 */
+    text-align:  center;                /* 中央揃え */
+    position: relative;
+    font-size: 35px;
+}
+
 .size1 {
 font-size:20px;
 }
