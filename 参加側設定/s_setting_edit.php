@@ -1,3 +1,58 @@
+<?php
+  $s_user_id    = $_POST['s_user_id'];
+  $nickname     = $_POST['nickname'];
+  $fullname     = $_POST['fullname'];
+  $place_id     = $_POST['area'];
+  $age          = $_POST['age'];
+  $gender       = $_POST['gender'];
+  $message      = $_POST['message'];
+  $mail_address = $_POST['mail_address'];
+  $tel_num      = $_POST['tel_num'];
+  $passwd       = $_POST['password'];
+
+  $picture      = $_POST['pic'];
+
+  $dsn   = "mysql:host=test3_mysql_1;dbname=sample;";
+  $db    = new PDO($dsn, 'root', 'root');
+
+  if ($nickname) {
+    $sql = "update sanka_user set nickname = '".$nickname."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($fullname) {
+    $sql = "update sanka_user set fullname = '".$fullname."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($place_id) {
+    $sql = "update sanka_user set place_id = '".$place_id."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($age) {
+    $sql = "update sanka_user set age = '".$age."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($gender) {
+    $sql = "update sanka_user set gender = '".$gender."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($message) {
+    $sql = "update sanka_user set message = '".$message."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($mail_address) {
+    $sql = "update sanka_user set mail_address = '".$mail_address."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($tel_num) {
+    $sql = "update sanka_user set tel_num = '".$tel_num."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($passwd) {
+    $sql = "update sanka_user set fullname = '".$passwd."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+?>
+
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -5,18 +60,24 @@
   <title>PHP</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./CSS/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel=“stylesheet” type="text/css" href=“./CSS/size.css”>
-  <link rel=“stylesheet” type="text/css" href=“./CSS/pop.css”>
+  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/pop.css">
 </head>
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_home.html">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-    </a>
-    <a href= "s_home.html">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-    </a>
+    <form method="post" name="back" action="s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:back.submit()">
+        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+      </a>
+    </form>
+    <form method="post" name="home" action="s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:home.submit()">
+        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+      </a>
+    </form>
   </div>
 
 
@@ -27,7 +88,8 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form form action="#" method="post">
+      <form action ="s_setting_edit.php" method="post" name="myform" onsubmit="return check();">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>">
         <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -39,88 +101,63 @@
         <dd><input type="text" name="fullname" id="input1" value=""></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type = “text” name =“mail_address“ id="input2" value=""></dd>
+        <dd><input type="text" name="mail_address" id="input2" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = “text” name =“password“ id="input3" value=""></dd>
+        <dd><input type = "text" name ="password" id="input3" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = “text” name =“user_address“ id="input4" value=""></dd>
+        <dd><input type = "text" name ="user_address" id="input4" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = “text” name =“tel_num“ id="input5" value=""></dd>
+        <dd><input type = "text" name ="tel_num" id="input5" value=""></dd>
         <hr color="black"><br/><br/>
 
       <p>
         <dt>性別</dt>
-        <input type="radio" name="gender" class="radio-input" id="radio-01">
+        <input type="radio" name="gender" class="radio-input" id="radio-01" value="男">
         <label for="radio-01">男</label>
-        <input type="radio" name="gender" class="radio-input" id="radio-02">
+        <input type="radio" name="gender" class="radio-input" id="radio-02" value="女">
         <label for="radio-02">女</label><br>
       </p>
       <hr color="black"><br/>
         <dt>ひとこと</dt>
-        <dd><input type = “text” name =“massage“ id="input6" value=""></dd>
+        <dd><input type = "text" name ="massage" id="input6" value=""></dd>
         <hr color="black"><br/><br/>
 
       <p>
         <dt>住所エリア選択</dt>
         <dd><select name ="area"></dd>
-        <option value="選択肢1" id="option">高知</option>
-        <option value="選択肢2" id="option">愛媛</option>
+        <option value="002" id="option">高知</option>
+        <option value="003" id="option">愛媛</option>
         </select>
       </p>
       <hr color="black"><br/>
         <dt>ニックネーム</dt>
-        <dd><input type = “text” name =“nickname“ id="input7" value=""></dd>
+        <dd><input type = "text" name ="nickname" id="input7" value=""></dd>
         <hr color="black"><br/>
-      <br>
-    </center>
-  </dl>
-    </form>
-    </div>
-
-    <div>
-      <center> <!-- 中央寄せ -->
-      <p  class="btn-square5">編集完了</p>
-      <a href="s_setting_delete.html" class="btn-square4">アカウント削除</a><br>
-    </center>
+        <br>
+        <input type="submit" value="編集完了" class="btn-square5">
+        </form>
+        <form action=s_setting_delete.php method="post" name=request >
+        <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>">
+        <input type="submit" value="アカウント削除" class="btn-square4"><br>
+        </form>
+      </center>
     </div>
   </div>
 
-  <div class="popup-overlay">
-    <!--Creates the popup content-->
-    <div class="popup-content">
-      <p>編集に失敗しました</p>
-      <!--popup's close button-->
-      <button-ok class="ok">OK</button-ok>
-    </div>
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">
-  /*検索ボタンが押されたとき*/
-  $(".btn-square5").on("click", function(){
-    var target1 = document.getElementById("input1").value;
-    var target2 = document.getElementById("input2").value;
-    var target3 = document.getElementById("input3").value;
-    var target4 = document.getElementById("input4").value;
-    var target5 = document.getElementById("input5").value;
-    var target6 = document.getElementById("input6").value;
-    var target7 = document.getElementById("input7").value;
-    /*ID(文字数8)が入力されている場合*/
-    if(target1.length >= 1 && target2.length >= 1 && target3.length >= 1 && target4.length >= 1 && target5.length >= 1 && target6.length >= 1 && target7.length >= 1){
-      /*IDが存在するならの処理もここ？*/
-      location.href="s_setting_edit.php";
-    }else{
-    /*IDが入力されてないor存在しない場合*/
-    $(".popup-overlay, .popup-content").addClass("active");
+  function check() {
+    for(i = 0; i < document.myform.length; i++) {
+      if (document.myform.elements[i].type == "text") {
+        if (document.myform.elements[i].value.length == 100) {
+            alert("登録に失敗しました");
+            return false;
+        }
+      }
     }
-  });
-  /*削除確認*/
-  $(".ok").on("click", function(){
-    $(".popup-overlay, .popup-content").removeClass("active");
-  });
+  }
   </script>
 
 

@@ -1,3 +1,38 @@
+<?php
+  $b_user_id    = $_POST['b_user_id'];
+  $groupname    = $_POST['groupname'];
+  $address      = $_POST['address'];
+  $tel_num      = $_POST['tel_num'];
+  $mail_address = $_POST['mail_address'];
+  $passwd       = $_POST['password'];
+
+  $picture      = $_POST['pic'];
+
+  $dsn   = "mysql:host=test3_mysql_1;dbname=sample;";
+  $db    = new PDO($dsn, 'root', 'root');
+
+  if ($groupname) {
+    $sql = "update bosyu_user set nickname = '".$groupname."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($address) {
+    $sql = "update bosyu_user set fullname = '".$address."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($tel_num) {
+    $sql = "update bosyu_user set tel_num = '".$tel_num."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($mail_address) {
+    $sql = "update bosyu_user set mail_address = '".$mail_address."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($passwd) {
+    $sql = "update bosyu_user set fullname = '".$passwd."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+?>
+
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -5,18 +40,24 @@
   <title>PHP</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./CSS/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel=“stylesheet” type="text/css" href=“./CSS/size.css”>
-  <link rel=“stylesheet” type="text/css" href=“./CSS/pop.css”>
+  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/pop.css">
 </head>
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_home.html">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-    </a>
-    <a href= "s_home.html">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-    </a>
+    <form method="post" name="back" action="b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:back.submit()">
+        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+      </a>
+    </form>
+    <form method="post" name="home" action="b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:home.submit()">
+        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+      </a>
+    </form>
   </div>
 
 
@@ -27,7 +68,8 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form class="contact" action="#" method="post">
+      <form action ="b_setting_edit.php" method="get" name="myform" onsubmit="return check();">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>"
       <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -36,61 +78,42 @@
         <hr color="black"><br/>
 
         <dt>会社・団体</dt>
-        <dd><input type = “text” name =“groupname“ id="input1" value=""></dd>
+        <dd><input type = "text" name ="groupname" id="input1" value=""></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type = “text” name =“mail_address“ id="input2" value=""></dd>
+        <dd><input type = "text" name ="mail_address" id="input2" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = “text” name =“password“ id="input3" value=""></dd>
+        <dd><input type = "text" name ="password" id="input3" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = “text” name =“user_address“ id="input4" value=""></dd>
+        <dd><input type = "text" name ="user_address" id="input4" value=""></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = “text” name =“tel_num“ id="input5" value=""></dd>
+        <dd><input type = "text" name ="tel_num" id="input5" value=""></dd>
         <hr color="black"><br/><br/>
-    </center>
-    </div>
-
-    <div>
-      <center> <!-- 中央寄せ -->
-      <p class="btn-square5">編集完了</p>
-      <a href="b_setting_delete.php" class="btn-square4">アカウント削除</a><br>
-    </center>
-    </div>
-  </div>
-  <div class="popup-overlay">
-    <!--Creates the popup content-->
-    <div class="popup-content">
-      <p>編集に失敗しました</p>
-      <!--popup's close button-->
-      <button-ok class="ok">OK</button-ok>
+        <br>
+        <input type="submit" value="編集完了" class="btn-square5">
+        <form action=b_setting_delete.php method="post" name=request >
+        <input type="hidden" name="b_user_id" value="<?php echo $s_user_id; ?>">
+        <input type="submit" value="アカウント削除" class="btn-square4"><br>
+        </form>
+      </center>
+    </form>
     </div>
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">
-  /*検索ボタンが押されたとき*/
-  $(".btn-square5").on("click", function(){
-    var target1 = document.getElementById("input1").value;
-    var target2 = document.getElementById("input2").value;
-    var target3 = document.getElementById("input3").value;
-    var target4 = document.getElementById("input4").value;
-    var target5 = document.getElementById("input5").value;
-    /*ID(文字数8)が入力されている場合*/
-    if(target1.length >= 1 && target2.length >= 1 && target3.length >= 1 && target4.length >= 1 && target5.length >= 1){
-      /*IDが存在するならの処理もここ？*/
-      location.href="b_setting_edit.php";
-    }else{
-    /*IDが入力されてないor存在しない場合*/
-    $(".popup-overlay, .popup-content").addClass("active");
+  function check() {
+    for(i = 0; i < document.myform.length; i++) {
+      if (document.myform.elements[i].type == "text") {
+        if (document.myform.elements[i].value.length == 10) {
+            alert("登録に失敗しました");
+            return false;
+        }
+      }
     }
-  });
-  /*削除確認*/
-  $(".ok").on("click", function(){
-    $(".popup-overlay, .popup-content").removeClass("active");
-  });
+  }
   </script>
 
 

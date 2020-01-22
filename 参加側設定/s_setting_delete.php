@@ -1,3 +1,21 @@
+<?php
+  $s_user_id  = $_POST['s_user_id'];
+  $really     = $_POST['really'];
+
+  if ($really){
+    $dsn  = "mysql:host=test3_mysql_1;dbname=sample;";
+    $db   = new PDO($dsn, 'root', 'root');
+    $sql  = 'DELETE FROM sanka_user WHERE s_user_id = :s_user_id';
+    $stmt  = $db->prepare($sql);
+    $params = array(':s_user_id' => $s_user_id);
+    $stmt->execute($params);
+
+    if ($stmt->rowCount()){
+      header('Location: login.php');
+    }
+  }
+?>
+
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -5,17 +23,23 @@
   <title>アカウント削除</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./CSS/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel=“stylesheet” type="text/css" href=“./CSS/size.css”>
+  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
 </head>
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_setting_edit.php">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-    </a>
-    <a href= "s_home.html">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-    </a>
+    <form method="post" name="back" action="s_setting_edit.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:back.submit()">
+        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+      </a>
+    </form>
+    <form method="post" name="home" action="s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:home.submit()">
+        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+      </a>
+    </form>
   </div>
 
   <div id="body-bk">
@@ -33,8 +57,15 @@
 </div>
 <div id="body" class="size2">
   <center> <!-- 中央寄せ -->
-      <a href="login.php" class="btn-square4">削除する</a>
-      <a href="s_setting_edit.php" class="btn-square5">削除しない</a><br>
+      <form method="post" name="done" action="#" >
+        <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+        <input type="hidden" name="really" value=1 />
+        <a href="javascript:done.submit()" class="btn-square4">削除する</a><br>
+      </form>
+      <form method="post" name="No" action="s_setting_edit.php">
+        <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+        <a href="javascript:No.submit()" class="btn-square5">削除しない</a><br>
+      </form>
     </center>
     </div>
     </div>
