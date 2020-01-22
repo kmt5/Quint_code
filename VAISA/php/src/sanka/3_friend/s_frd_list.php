@@ -61,7 +61,7 @@ foreach ($result as $row) {
       echo '<div class="frd-list">';
       echo '<h1>';
       echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
-      echo  '<img src=".../sanka/prof/'.$row['prof_path'].'" class="img">';
+      echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
       echo $row['nickname'];
       echo '</a>';
       echo '<form method="POST">';

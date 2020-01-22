@@ -63,7 +63,7 @@ if(isset($_POST['ask'])){
     foreach ($result2 as $row){
       echo '<div class="frd-add-app">';
       //echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
-      echo  '<img src=".../sanka/prof/'.$row['prof_path'].'" class="img">';
+      echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
       echo '<p class="user_name">';
       echo $row['nickname'].'</p>';
       echo '</a>';

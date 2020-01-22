@@ -46,7 +46,7 @@ $user_id='1234567a';
     $result = $db->query($usi);
     foreach ($result as $row) {
       echo '<div class="frd-pro">';
-      echo  '<img src=".../sanka/prof/'.$row['prof_path'].'" class="img">';
+      echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
       echo '<p class="name">'.$row['nickname'].'</p>';
       if ($row['rank'] == 'ブロンズ'){
         echo '<p class="rank" style="color:#C47022">'.$row['rank'].'</p>';
