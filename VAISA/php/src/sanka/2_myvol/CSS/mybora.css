@@ -1,0 +1,99 @@
+div#Toptitle-my{　　　　　　　　　　　　　/*白ラベル*/
+  width:100%;
+  text-align: center;
+  background-color: white;
+  font-size: 80px;
+  margin:0px 0 100px 0;
+}
+
+div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
+  width:100%;
+  background-color: #92d050;
+}
+
+div#tabpage1{
+  position: relative;
+}
+
+div#tabpage2{
+  position: relative;
+}
+
+div#tabpage3{
+  position: relative;
+}
+
+#tabpage1 > h1{
+  font-size: 30px;
+  position: absolute;
+  left: 0;;
+  top: 0;
+  margin: 5%;
+}
+
+#tabpage1 > h2{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 5%;
+  margin-left: 25%;
+}
+
+#tabpage1 > h3{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin: 5%;
+}
+
+#tabpage2 > h1{
+  font-size: 30px;
+  position: absolute;
+  left: 0;;
+  top: 0;
+  margin: 5%;
+}
+
+#tabpage2 > h2{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 5%;
+  margin-left: 25%;
+}
+
+#tabpage2 > h3{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin: 5%;
+}
+
+#tabpage3 > h1{
+  font-size: 30px;
+  position: absolute;
+  left: 0;;
+  top: 0;
+  margin: 5%;
+}
+
+#tabpage3 > h2{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 5%;
+  margin-left: 25%;
+}
+
+#tabpage3 > h3{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin: 5%;
+}

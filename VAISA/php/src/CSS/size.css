@@ -1,0 +1,35 @@
+.h1{
+font-size:100px;
+}
+
+.h2{
+font-size:100px;
+}
+
+.h3{
+font-size:300px;
+}
+
+.size1 {
+font-size:20px;
+}
+.size2 {
+font-size:30px;
+}
+
+.size3 {
+  padding:250px 0 250px 0;
+font-size:40px;
+}
+
+.size4 {
+font-size: 20px;
+}
+
+.size5 {
+  padding-bottom: 200;
+}
+
+.size6 {
+  margin-left: 100px;
+}
