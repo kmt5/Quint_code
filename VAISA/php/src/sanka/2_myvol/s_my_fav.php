@@ -1,6 +1,6 @@
 <?php
 $user_id='1234567a';
-$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
 $db = new PDO($dsn, 'root', 'root');
 if(isset($_POST['fav'])){
   $fai= $_POST['favol'];
@@ -53,18 +53,19 @@ $now_year=(int)date("Y",strtotime($now_time));
        echo '</div>';
      echo '</div>';
 
-$volid2 = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and favo_flag = 1)";
-$result_check = $db->query($volid2);
-$data1 = $result_check->fetchAll();
-if($data1 == Array()){
-  echo '<div id = "novol">';
-  echo '<center>';
-  echo 'お気に入りボランティアは<br>';
-  echo 'ありません';
-  echo '</center>';
-  echo '</div>';
-$db=null;
-}
+     $volid2 = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and favo_flag = 1)";
+     $result_check = $db->query($volid2);
+     $data1 = $result_check->fetchAll();
+     $data1 = strval($data1);
+     if($data1 == 'Array'){
+       echo '<div id = "novol">';
+       echo '<center>';
+       echo '参加登録ボランティアは<br>';
+       echo 'ありません';
+       echo '</center>';
+       echo '</div>';
+     $db=null;
+     }
 ?>
 <script>
   function favVol(){
@@ -75,7 +76,7 @@ $db=null;
         <center>
 <?php
 //データベースに接続(test3)
-    $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
     $db = new PDO($dsn, 'root', 'root');
     $volid = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and favo_flag = 1)";
     $result = $db->query($volid);
@@ -115,7 +116,7 @@ $db=null;
       echo '<button type = "submit" name = "fav" id="ad" class="del" onclick="return favVol()">お気に入り解除</button>';
       echo '<input type = "hidden" name = "favol" value="'.$row['vol_id'].'">';
       echo '</form>';
-      echo  '<img src=".../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
+      echo  '<img src="../common_img/'.$row['vol_fig_path'].'" class="img">';
       echo '<br>';
       echo '</div>';
     }
