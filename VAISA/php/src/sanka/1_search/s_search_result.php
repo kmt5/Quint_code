@@ -1,7 +1,7 @@
 <?php
-$s_user_id = '00000001';
+$s_user_id = $_POST["s_user_id"];
 
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 $db->query("set names utf8");
 $area_id = $_POST["area_id"];
