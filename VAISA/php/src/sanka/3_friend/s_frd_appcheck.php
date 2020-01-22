@@ -1,12 +1,12 @@
 <?php
   $user_id='1234567a';
-  $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+  $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
   $db = new PDO($dsn, 'root', 'root');
   if(isset($_POST['admin'])){
     $admrid= $_POST['adm'];
     $sth=$db->prepare("UPDATE friends SET friends_flag = 1, reqest_flag = 0 WHERE my_user_id = '$user_id' and fr_user_id='$admrid' and reqest_flag = 1");
     $sth->execute();
-    $flg="SELECT * FROM friends WHERE my_user_id = $admrid and fr_user_id = '$user_id'";
+    $flg="SELECT * FROM friends WHERE my_user_id = '$admrid' and fr_user_id = '$user_id'";
     $check = $db->query($flg);
     if($check == Array()){
     $sth2=$db->prepare("INSERT INTO friends VALUE ('$admfrid','$user_id',0,1)");
@@ -53,7 +53,7 @@
         </div>
       </div>
 <?php
- $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+ $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
  $db = new PDO($dsn, 'root', 'root');
  $frid3 = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT fr_user_id FROM friends where my_user_id ='$user_id' and reqest_flag = 1)";
  $result = $db->query($frid3);
@@ -61,7 +61,7 @@
       echo '<div class="frd-appcheck">';
       echo '<h1>';
       echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
-      echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
+      echo  '<img src="../common_img/'.$row['prof_path'].'" class="img">';
       echo $row['nickname'];
       echo '</a>';
       echo '<div class="btn">';
