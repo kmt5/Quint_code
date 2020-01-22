@@ -56,15 +56,13 @@ $now_year=(int)date("Y",strtotime($now_time));
      $volid2 = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and favo_flag = 1)";
      $result_check = $db->query($volid2);
      $data1 = $result_check->fetchAll();
-     $data1 = strval($data1);
-     if($data1 == 'Array'){
+     if($data1 == Array()){
        echo '<div id = "novol">';
        echo '<center>';
        echo '参加登録ボランティアは<br>';
        echo 'ありません';
        echo '</center>';
        echo '</div>';
-     $db=null;
      }
 ?>
 <script>
