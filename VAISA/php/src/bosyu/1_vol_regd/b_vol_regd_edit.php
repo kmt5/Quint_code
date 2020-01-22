@@ -1,6 +1,6 @@
 <?php
 //データベースに接続(test3)
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 ?>
 <?php
@@ -8,7 +8,7 @@ if (isset($_POST['vol_id'])) {
     print "送信された内容は{$_POST['vol_id']}です。<br/>";
 }
 $b_user_id = $_POST["b_user_id"];
-$b_user_id = '00000001';
+//$b_user_id = '00000001';
 $id = $_POST['vol_id'];
 $db->query("set names utf8");
 $getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $id");
@@ -147,7 +147,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
                 <form name='foo' action="update.php" method="post" onSubmit="return check()">
                     <!-- 登録したボランティア名が表示されるか　valueに代入 -->
                     <input type="text" name="vol_name" maxlength="20" value="<?php echo $vol_name; ?>" required>
-                    <input type="hidden" name="b_user_id" value="<?= $id ?>">
+                    <input type="hidden" name="b_user_id" value="<?= $b_user_id ?>">
                     <input type="hidden" name="vol_id" value="<?= $id ?>">
                     <br>
                     <h2>イメージ画像</h2>
@@ -155,7 +155,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
                     <?php if ($vol_fig_path == null) {
                         echo "<br>登録されている写真はありません。";
                     } else {
-                        echo "<img src=../b_vol_regd/" . $vol_fig_path . ">";
+                        echo "<img src=.../b_vol_regd/" . $vol_fig_path . ">";
                     } ?>
                     <br>
                     <br>
@@ -253,6 +253,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
                     <!-- 登録した住所が表示できるか textareaで登録したものを囲む-->
                     <textarea name="detail" value=<?php echo $vol_detail; ?> placeholder="詳細を入力" required><?= htmlspecialchars($vol_detail, ENT_QUOTES, 'UTF-8') ?></textarea>
                     <br>
+                    <input type="hidden" name="b_user_id" value="<?= $b_user_id ?>">
                     <button type='submit' align="center">編集登録</button>
                 </form>
             </div>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <?php
     //データベースに接続(test3)
-    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+    $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
     //接続確認    
     if ($db) {
@@ -10,6 +10,8 @@
     } else {
         "データベースに繋がってないです";
     }
+
+    $b_user_id = $_POST["b_user_id"];
 
     //都道府県プルダウン
     if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
@@ -166,7 +168,8 @@ if(isset($_FILES)&& isset($_FILES['image']) && is_uploaded_file($_FILES['image']
 
 					<h2>詳細</h2>
   				<textarea name="detail" placeholder="詳細を入力"></textarea>
-					<br>
+          <br>
+          <input type='hidden' name='b_user_id' value="<?php echo $b_user_id; ?>">
           <button type="submit" align="center">登録</button>
         </form>
 			</div>

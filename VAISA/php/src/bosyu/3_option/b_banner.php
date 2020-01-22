@@ -39,7 +39,8 @@
         <button type="submit" id="banner" onclick="postForm()">登録をする</button>
       </div>
       <?php
-      $b_user_id = '00000001';
+      //$b_user_id = '00000001';
+      $b_user_id = $_POST["b_user_id"];
       $value = $_POST['test'];
 
       printf('<script>var value = %s;
@@ -51,7 +52,7 @@
         elm1.textContent = "登録を解除する";
       }
       </script>', $value);
-      $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+      $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
       $db = new PDO($dsn, 'root', 'root');
       if ($_POST['test'] == 'true') {
         $db->query("UPDATE options SET banner_flag = 1 WHERE b_user_id = $b_user_id");
