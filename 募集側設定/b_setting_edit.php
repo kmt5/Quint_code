@@ -28,7 +28,7 @@
     $db->query($sql);
   }
   if ($passwd) {
-    $sql = "update bosyu_user set fullname = '".$passwd."' where b_user_id = '".$b_user_id."'";
+    $sql = "update bosyu_user set passwd = '".$passwd."' where b_user_id = '".$b_user_id."'";
     $db->query($sql);
   }
 ?>
@@ -68,8 +68,8 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form action ="b_setting_edit.php" method="get" name="myform" onsubmit="return check();">
-      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>"
+      <form action ="b_setting_edit.php" method="post" name="myform" onsubmit="return check();">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>">
       <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -94,12 +94,12 @@
         <hr color="black"><br/><br/>
         <br>
         <input type="submit" value="編集完了" class="btn-square5">
-        <form action=b_setting_delete.php method="post" name=request >
-        <input type="hidden" name="b_user_id" value="<?php echo $s_user_id; ?>">
-        <input type="submit" value="アカウント削除" class="btn-square4"><br>
+        </form>
+        <form action=b_setting_delete.php method="post">
+          <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>">
+          <input type="submit" value="アカウント削除" class="btn-square4"><br>
         </form>
       </center>
-    </form>
     </div>
   </div>
 
@@ -107,7 +107,7 @@
   function check() {
     for(i = 0; i < document.myform.length; i++) {
       if (document.myform.elements[i].type == "text") {
-        if (document.myform.elements[i].value.length == 10) {
+        if (document.myform.elements[i].value.length == 100) {
             alert("登録に失敗しました");
             return false;
         }

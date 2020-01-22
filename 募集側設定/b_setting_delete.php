@@ -1,13 +1,16 @@
 <?php
-  $s_user_id  = $_POST['s_user_id'];
-  $really     = $_POST['del_flag'];
+  $b_user_id  = $_POST['b_user_id'];
+  $really     = $_POST['really'];
 
   if ($really){
     $dsn  = "mysql:host=test3_mysql_1;dbname=sample;";
     $db   = new PDO($dsn, 'root', 'root');
-    $sql  = "DELETE FROM bosyu_user WHERE s_user_id='".$b_user_id."'";
-    $res  = $db->query($sql);
-    if ($cnt){
+    $sql  = 'DELETE FROM bosyu_user WHERE b_user_id = :b_user_id';
+    $stmt  = $db->prepare($sql);
+    $params = array(':b_user_id' => $b_user_id);
+    $stmt->execute($params);
+
+    if ($stmt->rowCount()){
       header('Location: login.php');
     }
   }
@@ -25,12 +28,18 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "b_setting_edit.php">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-    </a>
-    <a href= "b_home.html">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-    </a>
+    <form method="post" name="back" action="b_setting_edit.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:back.submit()">
+        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+      </a>
+    </form>
+    <form method="post" name="home" action="b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:home.submit()">
+        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+      </a>
+    </form>
   </div>
 
   <div id="body-bk">
@@ -49,12 +58,12 @@
 <div id="body" class="size2">
   <center> <!-- 中央寄せ -->
       <form method="post" name="done" action="#" >
-        <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-        <input type="hidden" name="del_flag" value=1 />
+        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+        <input type="hidden" name="really" value=1 />
         <a href="javascript:done.submit()" class="btn-square4">削除する</a><br>
       </form>
       <form method="post" name="No" action="b_setting_edit.php">
-        <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:No.submit()" class="btn-square5">削除しない</a><br>
       </form>
     </center>

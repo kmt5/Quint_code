@@ -48,7 +48,7 @@
     $db->query($sql);
   }
   if ($passwd) {
-    $sql = "update sanka_user set fullname = '".$passwd."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_user set passwd = '".$passwd."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
 ?>
