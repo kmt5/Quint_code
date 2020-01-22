@@ -1,6 +1,6 @@
 <?php
 $user_id='1234567a';
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 if(isset($_POST['fav'])){
   $fai= $_POST['favol'];
@@ -74,7 +74,7 @@ $now_year=(int)date("Y",strtotime($now_time));
         <center>
 <?php
 //データベースに接続(test3)
-    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+    $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
     $volid = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and favo_flag = 1)";
     $result = $db->query($volid);
@@ -114,7 +114,7 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '<button type = "submit" name = "fav" id="ad" class="del" onclick="return favVol()">お気に入り解除</button>';
       echo '<input type = "hidden" name = "favol" value="'.$row['vol_id'].'">';
       echo '</form>';
-      echo  '<img src="../common_img/'.$row['vol_fig_path'].'" class="img">';
+      echo  '<img src="../prof/'.$row['vol_fig_path'].'" class="img">';
       echo '<br>';
       echo '</div>';
     }

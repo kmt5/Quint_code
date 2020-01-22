@@ -1,6 +1,6 @@
 <?php
 $user_id='1234567a';
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 if(isset($_POST['add'])){
   $adi= $_POST['advol'];
@@ -78,12 +78,8 @@ $db=null;
   }
 </script>
 <?php
-    $dbh=null;
-      // ポストのデータを変数に
-    $name = $_POST["username"];
-    $age  = $_POST["age"];
 //データベースに接続(test3)
-    $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+    $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
     $volid = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and set_flag = 1)";
     $result = $db->query($volid);
@@ -125,7 +121,7 @@ $db=null;
         echo '<button type = "submit" name = "add" id="ad" class="del" onclick="return adVol()">登録解除</button>';
         echo '<input type = "hidden" name = "advol" value="'.$row['vol_id'].'">';
         echo '</form>';
-        echo  '<img src="../common_img/'.$row['vol_fig_path'].'" class="img">';
+        echo  '<img src=".../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
         echo '<br>';
         echo '</div>';
     }
