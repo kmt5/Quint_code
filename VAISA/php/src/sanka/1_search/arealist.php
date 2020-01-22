@@ -1,5 +1,5 @@
 <?php
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
 $pref_id=$_GET['pref_id'];

@@ -2,7 +2,7 @@
 session_start();
 $b_user_id = $_SESSION["b_user_id"];
   
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
 $getName = $db -> query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");

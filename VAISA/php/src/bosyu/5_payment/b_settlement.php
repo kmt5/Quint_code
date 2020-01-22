@@ -1,9 +1,10 @@
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <?php
-  $id = '00000001';
+  //$id = '00000001';
+  $id = $_POST["b_user_id"];
 //データベースに接続(test3)
-  $dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+  $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db = new PDO($dsn, 'root', 'root');
 //接続確認    
   if ($db) {

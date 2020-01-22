@@ -1,0 +1,167 @@
+div#Toptitle-my{　　　　　　　　　　　　　/*白ラベル*/
+  width:100%;
+  text-align: center;
+  background-color: #ffffff;
+  margin:0px 0 100px 0;
+}
+
+div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
+  width:100%;
+  background-color: #92d050;
+}
+
+div#tabpage1{
+  position: relative;
+}
+
+div#tabpage2{
+  position: relative;
+}
+
+div#tabpage3{
+  position: relative;
+}
+
+#tabpage1 > h1{
+  font-size: 30px;
+  position: absolute;
+  left: 0;;
+  top: 0;
+  margin: 5%;
+}
+
+#tabpage1 > h2{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 5%;
+  margin-left: 25%;
+}
+
+#tabpage1 > h3{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin: 5%;
+  margin-bottom: 10%;
+}
+
+#tabpage2 > h1{
+  font-size: 30px;
+  position: absolute;
+  left: 0;;
+  top: 0;
+  margin: 5%;
+}
+
+#tabpage2 > h2{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 5%;
+  margin-left: 25%;
+}
+
+#tabpage2 > h3{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin: 5%;
+  margin-bottom: 10%;
+}
+
+#tabpage3 > h1{
+  font-size: 30px;
+  position: absolute;
+  left: 0;;
+  top: 0;
+  margin: 5%;
+}
+
+#tabpage3 > h2{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 5%;
+  margin-left: 25%;
+}
+
+#tabpage3 > h3{
+  font-size: 30px;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin: 5%;
+  margin-bottom: 10%;
+}
+
+
+.popup-overlay{
+  /*Hides pop-up when there is no "active" class*/
+  visibility:hidden;
+  position:absolute;
+  background:#ffffff;
+  border:3px solid #666666;
+  top:  38%;
+  left: 48%;
+  width:  500px;        /* 横幅 */
+  height: 159px;        /* 高さ */
+  margin-left: -250px;  /* マイナス「横幅÷2」 */
+  margin-top:  -75px;  /* マイナス「高さ÷2」 */
+  /*width:50%;
+  height:50%;
+  left:25%;*/
+}
+
+.popup-overlay.active{
+  /*displays pop-up when "active" class is present*/
+  visibility:visible;
+  text-align:center;
+  position: absolute;
+  z-index: 10;
+  top:  45%;
+  left: 48%;
+  width:  500px;        /* 横幅 */
+  height: 300px;        /* 高さ */
+  margin-left: -250px;  /* マイナス「横幅÷2」 */
+  margin-top:  -150px;  /* マイナス「高さ÷2」 */
+}
+
+.popup-content {
+  /*Hides pop-up content when there is no "active" class */
+ visibility:hidden;
+ vertical-align:middle;
+ text-align:center;
+ margin: 5%;
+}
+
+.popup-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility:visible;
+
+}
+
+button{
+  display:inline-block;
+  vertical-align:middle;
+  text-align: center;
+  border-radius:30px;
+  font-size: 2rem;
+  color:#666666;
+  vertical-align:middle;
+  background:	#ffffff;
+  border:1px solid #666666;
+  margin-top: 10%;
+  margin-left: 40px;
+}
+
+button:hover{
+  border:1px solid #666666;
+  background:#666666;
+  color:#ffffff;
+}

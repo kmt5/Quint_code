@@ -4,14 +4,14 @@ $read_mem = 0;
 $b_user_id = $_SESSION["b_user_id"];
 $vol_id = $_POST["vol_id"];
 $vol_id = 50;
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
 $getName = $db->query("SELECT fullname, a.s_user_id FROM sanka_users a, sanka_situations b WHERE b.vol_id = $vol_id AND a.s_user_id = b.s_user_id");
 $j = 0;
 foreach ($getName as $get_name) {
   $user_name[$j] .= $get_name['fullname'];
-  $user_id[$j] .= $get_name['s_user_id'];
+  $s_user_id[$j] .= $get_name['s_user_id'];
   $j += 1;
 }
 $count = count($user_name);
@@ -44,7 +44,7 @@ $count = count($user_name);
       </div>
       <?php
       for ($i = 0; $i < $count; $i++) {
-        $al_read = $db->query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $user_id[$i]");
+        $al_read = $db->query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i]");
         foreach ($al_read as $come) {
           $read[$i] =  $come['read_flag'];
           if ($read[$i] == 1) {$read_mem += 1;}
@@ -56,20 +56,22 @@ $count = count($user_name);
       <div align="center">
         <?php
         for ($i = 0; $i < $count; $i++) {
-          $al_read = $db->query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $user_id[$i]");
+          $al_read = $db->query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i]");
           foreach ($al_read as $come) {
             $read[$i] =  $come['read_flag'];
           }
           if ($read[$i] != 1) {
             echo "<form action='b_entrant_detail.php' method='post'>";
-            echo "<input type='hidden' name='s_user_id' value=".$user_id[$i].">";
-            echo "<button type='submit' class='button-vol'>" . $user_name[$i] . "</button>";
+            echo "<input type='hidden' name='s_user_id' value=".$s_user_id[$i].">";
+            echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
+            echo "<button type='submit' class='button-vol'>" . $s_user_name[$i] . "</button>";
             echo "</form>";
             echo "<br>";
           } else {
             echo "<form action='b_entrant_detail.php' method='post'>";
-            echo "<input type='hidden' name='s_user_id' value=".$user_id[$i].">";
-            echo "<button type='submit' class='button-vol'><font color='red'><i class='fas fa-check'></i></font>　" . $user_name[$i] . "</button>";
+            echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
+            echo "<input type='hidden' name='s_user_id' value=".$s_user_id[$i].">";
+            echo "<button type='submit' class='button-vol'><font color='red'><i class='fas fa-check'></i></font>　" . $s_user_name[$i] . "</button>";
             echo "</form>";
             echo "<br>";
           }

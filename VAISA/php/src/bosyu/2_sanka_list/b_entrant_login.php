@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-$b_user_id = '00000001';
+//$b_user_id = '00000001';
+$b_user_id = $_POST["b_user_id"];
 $_SESSION["b_user_id"] = $b_user_id;
 
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
 $getPass = $db -> query("SELECT passwd FROM bosyu_users WHERE b_user_id = $b_user_id");

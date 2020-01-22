@@ -3,7 +3,7 @@
 <?php
 $s_user_id = $_POST["s_user_id"];
 //データベースに接続(test3)
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 //接続確認    
 if ($db) {

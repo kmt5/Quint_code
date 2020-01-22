@@ -3,7 +3,8 @@
 <?php
 //データベースに接続(test3)
 $id = '00000001';
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$id = $_POST["b_user_id"];
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 //接続確認    
 if ($db) {
@@ -61,12 +62,14 @@ $db = null;
               echo "<tr>";
               echo "<td>";
               echo "<form action='edit_test.php' method='post'>";
+              echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
               echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
               echo "<input type='submit' value='編集'>";
               echo "</form>";
               echo "</td>";
               echo "<td>";
               echo "<form action='b_vol_regd_delete.php' method='post'>";
+              echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
               echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
               echo "<input type='submit' value='削除'>";
               echo "</form>";
