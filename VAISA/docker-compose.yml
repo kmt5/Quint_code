@@ -22,8 +22,8 @@ services:
     build: ./php
     env_file: ./.env
     ports:
-      # 8080ポートでコンテナの外に公開する
-      - '8080:80'
+      # 80ポートでコンテナの外に公開する
+      - '80:80'
     volumes:
       # PHPのソースはここに置く
       - ./php/src:/var/www/html
