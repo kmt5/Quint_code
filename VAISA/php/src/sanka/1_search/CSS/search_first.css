@@ -1,0 +1,53 @@
+.btn-point1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width:500px;
+  height:250px;
+  top:  45%;
+  left: 45%;
+  margin-left: -250px;  /* マイナス「横幅÷2」 */
+  margin-top:  -225px;  /* マイナス「高さ÷2」 */
+  font-size: 50px;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #0cb06e;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 4px #627295;
+  border-radius: 20px;
+}
+.btn-point1:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+.btn-point2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width:500px;
+  height:250px;
+  top:  70%;
+  left: 45%;
+  margin-left: -250px;  /* マイナス「横幅÷2」 */
+  margin-top:  -225px;  /* マイナス「高さ÷2」 */
+  font-size: 50px;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #0cb06e;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 4px #627295;
+  border-radius: 20px;
+
+}
+.btn-point2:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
