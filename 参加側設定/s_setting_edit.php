@@ -156,6 +156,22 @@
             return false;
         }
       }
+      if (i == 2){
+        if (document.myform.elements[i].type == "text") {
+          if (document.myform.elements[i].value.length >= 8) {
+            alert("既に登録されたメールアドレスです");
+            return false;
+          }
+        }
+      }
+      if (i == 3) {
+        if (document.myform.elements[i].type == "text") {
+          if (document.myform.elements[i].value.length <= 7) {
+            alert("登録に失敗しました");
+            return false;
+          }
+        }
+      }
     }
   }
   </script>
