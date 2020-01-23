@@ -1,5 +1,4 @@
 <?php
-  //  $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
   $nickname     = $_POST['nickname'];
   $fullname     = $_POST['fullname'];
   $place_id     = $_POST['area'];
@@ -14,7 +13,7 @@
 
   //postが来てなければ飛ばす
   if($nickname && $fullname && $place_id && $age && $gender && $mail_address && $tel_num && $passwd){
-    $dsn   = "mysql:host=test3_mysql_1;dbname=sample;";
+    $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
     $s_cnt = $db->query("select mail_address from sanka_user where mail_address='".$mail_address."'")->rowCount();
     $b_cnt = $db->query("select mail_address from bosyu_user where mail_address='".$mail_address."'")->rowCount();
@@ -56,7 +55,7 @@
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){
         echo'
-          <form method="post" action="s_account_regd_comp.php">
+          <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
           </form>
@@ -78,16 +77,13 @@
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
-  <!--<link rel="stylesheet" type="text/css" href="./CSS/botan.css">-->
+  <link rel="stylesheet" type="text/css" href="./CSS/s_home.css">
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_account_regd_tos.html">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+    <img border="0" src="../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <a href= "./s_account_regd_tos.html">
+      <img border="0" src="../common/back.jpg" width="20%" height="100%" class="back">
     </a>
   </div>
 
@@ -231,7 +227,7 @@ function check() {
 
 
   <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>
