@@ -55,20 +55,6 @@ $now_year=(int)date("Y",strtotime($now_time));
           echo '</center>';
        echo '</div>';
      echo '</div>';
-
-$volid2 = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and set_flag = 1)";
-$result_check = $db->query($volid2);
-$data1 = $result_check->fetchAll();
-if($data1 == Array()){
-  echo '<div id = "novol">';
-  echo '<center>';
-  echo '参加登録ボランティアは<br>';
-  echo 'ありません';
-  echo '</center>';
-  echo '</div>';
-$db=null;
-}
-
 ?>
 <div id="tabbody">
   <center>
@@ -97,16 +83,22 @@ $db=null;
     $now_year=(int)date("Y",strtotime($now_time));
     $now_year=strval($now_year);
 
+    $count1=0;
+    $count2=0;
+    $count3=0;
 
     foreach ($result as $row) {
       if((date("m",strtotime($row['vol_date'])) == $now_month_1) and (date("Y",strtotime($row['vol_date'])) == $now_year)){
       echo '<div id="tabpage1">';
+      $count1++;
       }
       else if((date("m",strtotime($row['vol_date'])) == $now_month_2) and (date("Y",strtotime($row['vol_date'])) == $now_year)){
       echo '<div id="tabpage2">';
+      $count2++;
       }
       else if((date("m",strtotime($row['vol_date'])) == $now_month_3) and (date("Y",strtotime($row['vol_date'])) == $now_year)){
       echo '<div id="tabpage3">';
+      $count3++;
       }
       else{
         continue;
@@ -124,6 +116,33 @@ $db=null;
         echo  '<img src=".../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
         echo '<br>';
         echo '</div>';
+    }
+    if($count1 == 0){
+      echo '<div id="tabpage1">';
+      echo '<h1>';
+      echo '<center>';
+      echo '参加登録ボランティアは<br>';
+      echo 'ありません';
+      echo '</center>';
+      echo '</div>';
+    }
+    if($count2 == 0){
+      echo '<div id="tabpage2">';
+      echo '<h1>';
+      echo '<center>';
+      echo '参加登録ボランティアは<br>';
+      echo 'ありません';
+      echo '</center>';
+      echo '</div>';
+    }
+    if($count3 == 0){
+      echo '<div id="tabpage3">';
+      echo '<h1>';
+      echo '<center>';
+      echo '参加登録ボランティアは<br>';
+      echo 'ありません';
+      echo '</center>';
+      echo '</div>';
     }
     $db=null;
 ?>
