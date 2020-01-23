@@ -123,3 +123,27 @@ button:active {
   transform: translateY(10px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
+
+#list{
+  margin:50px 50px 50px 100px;
+}
+
+div.vollist{
+font-size:50px;
+border: solid 5px #0cb06e;
+margin:50px 100px 100px 100px;
+border-radius: 30px;
+}
+
+p{
+  text-align:center;
+}
+
+#listbutton{
+margin:0px 30px 10px 20px;
+}
+
+.vollist form {
+    display: inline-block;
+    margin: 0 10px;
+}
