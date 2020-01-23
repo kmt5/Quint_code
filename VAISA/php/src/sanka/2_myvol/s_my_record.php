@@ -140,7 +140,7 @@ if($count1 == 0){
   echo '<div id="tabpage1">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -149,7 +149,7 @@ if($count2 == 0){
   echo '<div id="tabpage2">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -158,7 +158,7 @@ if($count3 == 0){
   echo '<div id="tabpage3">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -167,7 +167,7 @@ if($count4 == 0){
   echo '<div id="tabpage4">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -176,7 +176,7 @@ if($count5 == 0){
   echo '<div id="tabpage5">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -185,7 +185,7 @@ if($count6 == 0){
   echo '<div id="tabpage6">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -194,7 +194,7 @@ if($count7 == 0){
   echo '<div id="tabpage7">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -203,7 +203,7 @@ if($count8 == 0){
   echo '<div id="tabpage8">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -212,7 +212,7 @@ if($count9 == 0){
   echo '<div id="tabpage9">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -221,7 +221,7 @@ if($count10 == 0){
   echo '<div id="tabpage10">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -230,7 +230,7 @@ if($count11 == 0){
   echo '<div id="tabpage11">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
@@ -239,7 +239,7 @@ if($count12 == 0){
   echo '<div id="tabpage12">';
   echo '<h1>';
   echo '<center>';
-  echo '参加登録ボランティアは<br>';
+  echo '参加済みボランティアは<br>';
   echo 'ありません';
   echo '</center>';
   echo '</div>';
