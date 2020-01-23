@@ -95,6 +95,7 @@ form dl dd{
 
 input {
 font-size: 30px;
+border: medium;
 }
 
 select {
