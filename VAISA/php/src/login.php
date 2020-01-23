@@ -5,7 +5,7 @@
   $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db = new PDO($dsn, 'root', 'root');
   $s_res = $db->query("select s_user_id,passwd from sanka_users where mail_address='".$mail."'");
-  $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_adress='".$mail."'");
+  $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'");
   $s_cnt = $s_res->rowCount();
   $b_cnt = $b_res->rowCount();
   if ($s_cnt or $b_cnt){
@@ -19,7 +19,7 @@
       $res  = $b_res;
     }
     foreach( $res as $value ) {
-      if("$value[1]" == $pswd){
+      if("$value[1]" == $pswd){//$value[0] = パスワード , $value[1] = ユーザID
         echo '
         <form method="post" action="./'.$dir.'/'.$head.'_home.php">
           <input type="hidden" name="'.$head.'_user_id" value="'.$value[0].'" />
