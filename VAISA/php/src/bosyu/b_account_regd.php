@@ -117,34 +117,49 @@
       </div>
     </div>
 
-
     <script type="text/javascript">
-      function check() {
-        for(i = 0; i < document.myform.length; i++) {
-          if (document.myform.elements[i].type == "text") {
-            if (document.myform.elements[i].value.length == 0) {
-                alert("登録に失敗しました");
-                return false;
+    function check() {
+      for(i = 0; i < document.request.length; i++) {
+        if (document.request.elements[i].type == "text") {
+          if (document.request.elements[i].value.length == 0) {
+              alert("入力していない項目があります");
+              return false;
+          }
+        }
+        if (i == 2){
+          if (document.request.elements[i].type == "text") {
+            if (document.request.elements[i].value.length >= 8 && document.request.elements[i].value.length <=12) {
+              alert("既に登録されたメールアドレスです");
+              return false;
             }
           }
-          if (i == 2){
-            if (document.myform.elements[i].type == "text") {
-              if (document.myform.elements[i].value.length >= 8) {
-                alert("既に登録されたメールアドレスです");
-                return false;
-              }
+        }
+        if (i == 3) {
+          if (document.request.elements[i].type == "text") {
+            if (document.request.elements[i].value.length <= 7 && document.request.elements[i].value.length <=12) {
+              alert("パスワードに誤りがあります");
+              return false;
             }
           }
-          if (i == 3) {
-            if (document.myform.elements[i].type == "text") {
-              if (document.myform.elements[i].value.length <= 7) {
-                alert("登録に失敗しました!");
-                return false;
-              }
+        }
+        if (i == 4) {
+          if (document.request.elements[i].type == "text") {
+            if (document.request.elements[i].value.length <=30) {
+              alert("住所に誤りがあります");
+              return false;
+            }
+          }
+        }
+        if (i == 5) {
+          if (document.request.elements[i].type == "text") {
+            if (document.request.elements[i].value.length <=30) {
+              alert("電話番号に誤りがあります");
+              return false;
             }
           }
         }
       }
+    }
     </script>
 
     <div id="footer-fixed">
