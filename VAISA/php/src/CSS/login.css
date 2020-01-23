@@ -79,7 +79,6 @@ div#Toptitle2{
 
 
 form{
-  background-color: ##92d050;
   padding:30px 50px;
 }
 
@@ -238,24 +237,23 @@ font-size: 30px;
   border-bottom: none;/*線を消す*/
 }
 
+
 .inline-block_test {
-  margin-top: -50px;
-  margin-bottom: 100px;
+  margin-top: -25px;
+  margin-bottom: 150px;
     display: inline-block;      /* インラインブロック要素にする */
     background-color:  #fff;    /* 背景色指定 */
     padding:  20px;             /* 余白指定 */
     height: 50px;              /* 高さ指定 */
 }
-
 .inline-block_test1 {
-  margin-top: 20px;
-  margin-bottom: 100px;
+  margin-top: -25px;
+  margin-bottom: 200px;
     display: inline-block;      /* インラインブロック要素にする */
     background-color:  #fff;    /* 背景色指定 */
-    padding:  20px;             /* 余白指定 */
+    padding:  50px;             /* 余白指定 */
     height: 50px;              /* 高さ指定 */
 }
-
 
 .radius_test {
     border-radius: 50%;                 /* 角丸指定 */
@@ -269,6 +267,7 @@ font-size: 30px;
     position: relative;
     font-size: 35px;
 }
+
 
 .bg_test {
     height: 100px;                  /* 高さ指定 */
