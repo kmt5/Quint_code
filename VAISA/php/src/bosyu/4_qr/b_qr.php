@@ -42,6 +42,7 @@
         var form = document.createElement('form');
         var request1 = document.createElement('input');
         var request2 = document.createElement('input');
+        var request3 = document.createElement('input');
 
         form.method = 'POST';
         form.action = './qr_redirect.php';
@@ -57,6 +58,12 @@
         request2.value = value2;
 
         form.appendChild(request2);
+
+        request3.type = 'hidden'; //入力フォームが表示されないように
+        request3.name = 'b_user_id';
+        request3.value = <?php echo $b_user_id; ?>;
+
+        form.appendChild(request3);
 
         document.body.appendChild(form);
         form.submit();
