@@ -97,7 +97,7 @@ foreach ($getName as $get_name) {
 <head>
     <meta charset="utf-8"> <!-- 文字コードを宣言 -->
     <title>Sample</title> <!-- ページのタイトル -->
-    <link rel="stylesheet" type="text/css" href="../../CSS/common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/common.css">
     <link rel="stylesheet" type="text/css" href="./CSS/vol_regd.css">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -106,9 +106,13 @@ foreach ($getName as $get_name) {
 
 <body>
     <div id="header-fixed">
-        <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-        <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
-        <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
+      <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+      <a href="b_vol_regd_list.php">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </a>
+      <a href="../b_home.php">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
     </div>
     <div id="body-bk">
         <div id="body">
@@ -152,22 +156,22 @@ foreach ($getName as $get_name) {
                     <?php echo $vol_capacity; ?>
                     <br><br>
                     <?php if ($val_flag == 1) {
-                        echo "報酬あり";
+                      echo "<p class='dezain'>報酬あり</p>";
                     } else {
-                        echo "報酬なし";
+                      echo "<p class='dezain'>報酬なし</p>";
                     } ?>
                     <br><br>
                     <?php if ($newbie_flag == 1) {
-                        echo "初心者歓迎";
+                      echo "<p class='dezain'>初心者OK</p>";
                     } else {
-                        echo "";
+                      echo "<p class='dezain'>経験者のみ</p>";
                     } ?>
                     <br><br>
                     <label>ランク指定　</label>
                     <?php if ($spec_rank == 0) {
-                        echo "なし";
+                      echo "<p class='dezain'>指定なし</p>";
                     } else {
-                        echo $rank_spec;
+                      echo "<p class='dezain'>$spec_rank</p>";
                     } ?>
                     <br><br>
                     <h2>詳細</h2>
