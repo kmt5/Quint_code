@@ -16,7 +16,7 @@
     <div id="header-fixed">
       <img border="0" src="../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
       <p id="back" onclick="MoveCheck();">
-        <i class="fas fa-reply"></i>
+        <i class="fas fa-door-open"></i>
       </p>
     </div>
 
