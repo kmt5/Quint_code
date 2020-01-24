@@ -4,9 +4,9 @@
   $db = new PDO($dsn, 'root', 'root');
   if(isset($_POST['remove'])){
     $remfrid= $_POST['iid'];
-    $sth=$db->prepare("UPDATE friends SET friends_flag = 0 WHERE my_user_id = '$user_id' and fr_user_id='$remfrid'");
+    $sth=$db->prepare("UPDATE friends SET friend_flag = 0 WHERE my_user_id = '$user_id' and fr_user_id='$remfrid'");
     $sth->execute();
-    $sth=$db->prepare("UPDATE friends SET friends_flag = 0 WHERE fr_user_id = '$user_id' and my_user_id='$remfrid'");
+    $sth=$db->prepare("UPDATE friends SET friend_flag = 0 WHERE fr_user_id = '$user_id' and my_user_id='$remfrid'");
     $sth->execute();
   }
 ?>
@@ -25,7 +25,7 @@
 <div>
     <div id="header-fixed">
       <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-      <a href= "s_frd_first.html">
+      <a href= "s_frd_first.php">
         <img border="0" src="back.jpg" width="20%" height="100%" class="back">
       </a>
       <a href= "s_home.html">
@@ -54,7 +54,7 @@
 //データベースに接続(test3)
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
-    $frid = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT fr_user_id FROM friends where my_user_id ='$user_id' and friends_flag = 1)";
+    $frid = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT fr_user_id FROM friends where my_user_id ='$user_id' and friend_flag = 1)";
     $result = $db->query($frid);
     $count=0;
 foreach ($result as $row) {

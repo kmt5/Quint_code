@@ -4,7 +4,7 @@
   $db = new PDO($dsn, 'root', 'root');
   if(isset($_POST['admin'])){
     $admrid= $_POST['adm'];
-    $sth=$db->prepare("UPDATE friends SET friends_flag = 1, reqest_flag = 0 WHERE my_user_id = '$user_id' and fr_user_id='$admrid' and reqest_flag = 1");
+    $sth=$db->prepare("UPDATE friends SET friend_flag = 1, reqest_flag = 0 WHERE my_user_id = '$user_id' and fr_user_id='$admrid' and reqest_flag = 1");
     $sth->execute();
     $flg="SELECT * FROM friends WHERE my_user_id = '$admrid' and fr_user_id = '$user_id'";
     $check = $db->query($flg);
@@ -12,7 +12,7 @@
     $sth2=$db->prepare("INSERT INTO friends VALUE ('$admfrid','$user_id',0,1)");
     $sth2->execute();
   }else{
-    $sth2=$db->prepare("UPDATE friends SET friends_flag= 1, reqest_flag = 0 WHERE my_user_id = '$admrid' and fr_user_id='$user_id'");
+    $sth2=$db->prepare("UPDATE friends SET friend_flag= 1, reqest_flag = 0 WHERE my_user_id = '$admrid' and fr_user_id='$user_id'");
     $sth2->execute();
   }
   }
@@ -36,7 +36,7 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_frd_first.html">
+    <a href= "s_frd_first.php">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
     </a>
     <a href= "s_home.html">

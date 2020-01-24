@@ -25,7 +25,7 @@
     <a href= "s_frd_add.php">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
     </a>
-    <a href= "s_home.html">
+    <a href= "s_home.php">
       <img border="0" src="home.jpg" width="20%" height="100%" class="home">
     </a>
   </div>

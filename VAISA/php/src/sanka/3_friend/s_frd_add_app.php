@@ -47,7 +47,7 @@ if(isset($_POST['ask'])){
     $db = new PDO($dsn, 'root', 'root');
     $frid = "SELECT * FROM sanka_users WHERE s_user_id = '$id'";
     $flags = "SELECT * FROM friends WHERE my_user_id = '$id' and fr_user_id = '$user_id' and reqest_flag = 1";//テーブルに情報があると申請済みかフレンドになっているかのどちらか
-    $flags2 =  "SELECT * FROM friends WHERE my_user_id = '$id' and fr_user_id = '$user_id' and friends_flag = 1";
+    $flags2 =  "SELECT * FROM friends WHERE my_user_id = '$id' and fr_user_id = '$user_id' and friend_flag = 1";
     $which_exit = "SELECT * FROM friends WHERE my_user_id = '$id' and fr_user_id = '$user_id'";
     $result1 = $db->query($frid); //8文字IDでも存在しないユーザなら警告文を出すためその判定用
     $result2 = $db->query($frid); //存在した場合の名前と写真を上げるため用

@@ -61,7 +61,7 @@ $user_id='1234567a';
 //データベースに接続(test3)
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
-    $volid = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and set_flag = 1)";
+    $volid = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations where s_user_id = '$user_id' and read_flag = 1)";
     $result = $db->query($volid);
 
     $count1=0;
