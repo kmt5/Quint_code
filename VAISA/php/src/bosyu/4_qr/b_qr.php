@@ -1,4 +1,7 @@
-
+<?php
+  $b_user_id  = $_POST['b_user_id'];
+  $vol_id     = $_PSOT['vol_id'];
+ ?>
 
 <!doctype html>
 <html>
@@ -6,6 +9,13 @@
     <meta charset="utf-8"/>
     <title>Instascanサンプルデモ</title>
     <link rel=“stylesheet” type="text/css" href=“./b_qr.css”>
+    <style>
+      #info {
+        font-size: 4em;
+        font-weight: bold;
+        color: #666;
+      }
+    </style>
   </head>
   <body>
     <div id="header-fixed">
@@ -29,13 +39,16 @@
           <h1>QRコード</h1>
         </center>
       </div>
+      <div>
+        <center>
+          <!-- ここにカメラの映像を表示する -->
+          <video id="preview"></video>
 
-    <!-- ここにカメラの映像を表示する -->
-    <video id="preview"></video>
-
-    <!-- ここにQRコードの情報を表示する -->
-    <p id="info"></p>
-  </div>
+          <!-- ここにQRコードの情報を表示する -->
+          <p id="info"></p>
+        </center>
+      </div>
+    </div>
 
 
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
