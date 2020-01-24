@@ -1,7 +1,4 @@
-<?php
-  $b_user_id  = $_POST['b_user_id'];
-  $vol_id     = $_POST['vol_id'];
-?>
+
 
 <!doctype html>
 <html>
@@ -9,18 +6,6 @@
     <meta charset="utf-8"/>
     <title>Instascanサンプルデモ</title>
     <link rel=“stylesheet” type="text/css" href=“./b_qr.css”>
-    <style>
-      body {
-        margin: auto;
-        width: 960px;
-        text-align: center;
-      }
-      #info {
-        font-size: 4em;
-        font-weight: bold;
-        color: #666;
-      }
-    </style>
   </head>
   <body>
     <div id="header-fixed">
