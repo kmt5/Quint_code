@@ -1,8 +1,8 @@
 <?php
-  session_start();
-  $s_user_id    = $_SESSION['s_user_id'];
+  $s_user_id    = $_POST['s_user_id'];
   $nickname     = $_POST['nickname'];
   $fullname     = $_POST['fullname'];
+  $user_address = $_POST['user_address'];
   $place_id     = $_POST['area'];
   $age          = $_POST['age'];
   $gender       = $_POST['gender'];
@@ -10,47 +10,50 @@
   $mail_address = $_POST['mail_address'];
   $tel_num      = $_POST['tel_num'];
   $passwd       = $_POST['password'];
-  echo $_SESSION['s_user_id'];
 
   $picture      = $_POST['pic'];
 
-  $dsn   = "mysql:host=test3_mysql_1;dbname=sample;";
+  $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db    = new PDO($dsn, 'root', 'root');
 
   if ($nickname) {
-    $sql = "update sanka_user set nickname = '".$nickname."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set nickname = '".$nickname."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($fullname) {
-    $sql = "update sanka_user set fullname = '".$fullname."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set fullname = '".$fullname."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($place_id) {
-    $sql = "update sanka_user set place_id = '".$place_id."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set area_id = '".$place_id."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($user_address) {
+    $sql = "update sanka_users set user_address = '".$user_address."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($age) {
-    $sql = "update sanka_user set age = '".$age."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set age = '".$age."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($gender) {
-    $sql = "update sanka_user set gender = '".$gender."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set gender = '".$gender."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($message) {
-    $sql = "update sanka_user set message = '".$message."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set message = '".$message."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($mail_address) {
-    $sql = "update sanka_user set mail_address = '".$mail_address."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set mail_address = '".$mail_address."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($tel_num) {
-    $sql = "update sanka_user set tel_num = '".$tel_num."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set tel_num = '".$tel_num."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($passwd) {
-    $sql = "update sanka_user set passwd = '".$passwd."' where s_user_id = '".$s_user_id."'";
+    $sql = "update sanka_users set passwd = '".$passwd."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
 ?>
@@ -60,24 +63,21 @@
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/pop.css">
+  <link rel="stylesheet" type="text/css" href="./s_setting.css">
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <form method="post" name="back" action="s_home.php">
+    <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <form method="post" name="back" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:back.submit()">
-        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+        <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
       </a>
     </form>
-    <form method="post" name="home" action="s_home.php">
+    <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:home.submit()">
-        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+        <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
       </a>
     </form>
   </div>
@@ -169,7 +169,7 @@
       }
       if (i == 3) {
         if (document.request.elements[i].type == "text") {
-          if (document.request.elements[i].value.length <= 7 && document.request.elements[i].value.length <=12) {
+          if (document.request.elements[i].value.length >= 7 && document.request.elements[i].value.length >=12) {
             alert("パスワードに誤りがあります");
             return false;
           }
@@ -177,7 +177,7 @@
       }
       if (i == 4) {
         if (document.request.elements[i].type == "text") {
-          if (document.request.elements[i].value.length <=30) {
+          if (document.request.elements[i].value.length >=30) {
             alert("住所に誤りがあります");
             return false;
           }
@@ -185,7 +185,7 @@
       }
       if (i == 5) {
         if (document.request.elements[i].type == "text") {
-          if (document.request.elements[i].value.length <=30) {
+          if (document.request.elements[i].value.length >=30) {
             alert("電話番号に誤りがあります");
             return false;
           }
@@ -193,7 +193,7 @@
       }
       if (i == 6) {
         if (document.request.elements[i].type == "text") {
-          if (document.request.elements[i].value.length <=3) {
+          if (document.request.elements[i].value.length >=3) {
             alert("年齢に誤りがあります");
             return false;
           }
@@ -201,7 +201,7 @@
       }
       if (i == 7) {
         if (document.request.elements[i].type == "text") {
-          if (document.request.elements[i].value.length <=20) {
+          if (document.request.elements[i].value.length >=20) {
             alert("ひとことに誤りがあります");
             return false;
           }
@@ -209,7 +209,7 @@
       }
       if (i == 8) {
         if (document.request.elements[i].type == "text") {
-          if (document.request.elements[i].value.length <=20) {
+          if (document.request.elements[i].value.length >=20) {
             alert("ニックネームに誤りがあります");
             return false;
           }
@@ -221,7 +221,7 @@
 
 
   <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>

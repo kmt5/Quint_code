@@ -3,15 +3,15 @@
   $really     = $_POST['really'];
 
   if ($really){
-    $dsn  = "mysql:host=test3_mysql_1;dbname=sample;";
+    $dsn  = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db   = new PDO($dsn, 'root', 'root');
-    $sql  = 'DELETE FROM sanka_user WHERE s_user_id = :s_user_id';
+    $sql  = 'DELETE FROM sanka_users WHERE s_user_id = :s_user_id';
     $stmt  = $db->prepare($sql);
     $params = array(':s_user_id' => $s_user_id);
     $stmt->execute($params);
 
     if ($stmt->rowCount()){
-      header('Location: login.php');
+      header('Location: ../../login.php');
     }
   }
 ?>
@@ -21,23 +21,21 @@
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>アカウント削除</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
+  <link rel="stylesheet" type="text/css" href="./s_setting.css">
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <form method="post" name="back" action="s_setting_edit.php">
+    <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <form method="post" name="back" action="./s_setting_edit.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:back.submit()">
-        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+        <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
       </a>
     </form>
-    <form method="post" name="home" action="s_home.php">
+    <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:home.submit()">
-        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+        <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
       </a>
     </form>
   </div>
@@ -62,7 +60,7 @@
         <input type="hidden" name="really" value=1 />
         <a href="javascript:done.submit()" class="btn-square4">削除する</a><br>
       </form>
-      <form method="post" name="No" action="s_setting_edit.php">
+      <form method="post" name="No" action="./s_setting_edit.php">
         <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
         <a href="javascript:No.submit()" class="btn-square5">削除しない</a><br>
       </form>
@@ -70,7 +68,7 @@
     </div>
     </div>
   <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>
