@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <?php
 $s_user_id = $_POST["s_user_id"];
+$s_user_id = "00000001";
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
@@ -13,7 +14,7 @@ if ($db) {
 }
 
 //都道府県プルダウン
-if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
+if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
   foreach ($pref_data as $pref_data_val) {
     $pref_pd .= "<option value='" . $pref_data_val['pref_id'] . "'>" . $pref_data_val['pref_name'] . "</option>";
   }
@@ -25,7 +26,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>Sample</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
+  <link rel="stylesheet" type="text/css" href="../../common/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_first.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_area.css">
   <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
@@ -35,9 +36,9 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
 
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg" width="100%" height="100%">
-    <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-    <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+    <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
+    <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
   </div>
   <div id="body-bk">
     <div id="body">
@@ -46,8 +47,8 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
       </div>
       <div width="100%" class="new">
         <form method="POST" action="s_search_result.php" enctype="multipart/form-data">
-          <select name="select_pref" id="pref" required>
-            <option value="none" selected>--都道府県を選択してください--</option>
+          <select name="select_pref" id="pref"  required>
+            <option value="" selected>--都道府県を選択してください--</option>
             <?php
             echo $pref_pd;
             ?>
@@ -62,8 +63,8 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
               $('#area').selectmenu('refresh');
             });
           </script>
-          <select name="area_id" , id="area" required>
-            <option value="none" selected>--地域を選択してください--</option>
+          <select name="area_id" , id="area"  required>
+            <option value="" selected>--地域を選択してください--</option>
           </select>
 
           <div class="days">
@@ -132,7 +133,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
     </div>
   </div>
   <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

@@ -6,10 +6,10 @@
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <?php
-//$s_user_id = '00000001';
 $s_user_id = $_POST["s_user_id"];
+$s_user_id = "00000001";
 //データベースに接続(test3)
-$dsn = "mysql:host=test3_mysql_1;dbname=sample;";
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 //接続確認    
 if ($db) {
@@ -35,7 +35,7 @@ foreach ($getArea as $area_data_val) {
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>検索</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
+  <link rel="stylesheet" type="text/css" href="../../common/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_first.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_area.css">
   <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -43,12 +43,12 @@ foreach ($getArea as $area_data_val) {
 
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+    <img border="0" src="../../common/header.jpg" style="vertical-align:middle;" width="100%" height="100%">
     <a href="s_search_first.html">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+      <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
     </a>
     <a href="s_home.html">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+      <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
     </a>
   </div>
 
@@ -70,9 +70,11 @@ foreach ($getArea as $area_data_val) {
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
               <!--<option value="2019">2019年</option>-->
+              <option value="none">--</option>
               <option value="2020">2020</option>
             </select>年
             <select id="month" name="month" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -87,6 +89,7 @@ foreach ($getArea as $area_data_val) {
               <option value="12">12</option>
             </select>月
             <select id="day" name="day" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -129,7 +132,7 @@ foreach ($getArea as $area_data_val) {
           <?php
           echo "<input type='hidden' name='area_id' value='" . $area_id . "'>";
           ?>
-           <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
+          <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
           <button type="submit" align="center">検索</button>
       </form>
       </center>
@@ -156,7 +159,7 @@ foreach ($getArea as $area_data_val) {
         id = $(this).attr("id"),
         name = $(this).attr("name");
       var template = '<div class="' + classes + '">';
-      template += '<span class="custom1-select-trigger">' + '</span>';
+      template += '<span class="custom1-select-trigger">' + '<option value="none">--</option>' + '</span>';
       template += '<div class="custom1-options">';
       $(this).find("option").each(function() {
         template += '<span class="custom1-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
@@ -190,7 +193,7 @@ foreach ($getArea as $area_data_val) {
   </script>
 
   <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 

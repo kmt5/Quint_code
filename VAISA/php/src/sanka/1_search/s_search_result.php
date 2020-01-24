@@ -1,6 +1,6 @@
 <?php
 $s_user_id = $_POST["s_user_id"];
-
+echo $s_user_id;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 $db->query("set names utf8");
@@ -31,14 +31,14 @@ echo "<br>" . $near_date;
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>検索</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
+  <link rel="stylesheet" type="text/css" href="../../common/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_result.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 
 <body>
   <div id="header-fixed">
-    <img border="0" src="../common/header.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <a href="javascript:history.back()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
@@ -97,7 +97,7 @@ echo "<br>" . $near_date;
         <?php
         if ($value1 == 1) {
           if ($val_flag == 1 && $vol_date_near == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -105,7 +105,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1 && $vol_date_near == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -113,7 +113,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($vol_date_near == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -121,7 +121,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -129,7 +129,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -137,7 +137,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($vol_date_near == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -145,7 +145,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -153,7 +153,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_beg_time");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_beg_time");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -163,7 +163,7 @@ echo "<br>" . $near_date;
           }
         } else if ($value1 == 2) {
           if ($val_flag == 1 && $vol_date_near == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -171,7 +171,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1 && $vol_date_near == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -179,7 +179,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($vol_date_near == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -187,7 +187,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -195,7 +195,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -203,7 +203,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($vol_date_near == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -211,7 +211,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -219,7 +219,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_point");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND point");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -229,7 +229,7 @@ echo "<br>" . $near_date;
           }
         } else if ($value1 == 3) {
           if ($val_flag == 1 && $vol_date_near == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag =1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_id");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag =1 AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -237,7 +237,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1 && $vol_date_near == 1) {
-              $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag =1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_id");
+              $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag =1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
               $j = 0;
               foreach ($getName as $get_name) {
                 $vol_id_html[$j] .= $get_name['vol_id'];
@@ -245,7 +245,7 @@ echo "<br>" . $near_date;
                 $j += 1;
               }
           } else if ($vol_date_near == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_id");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -253,7 +253,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1 && $newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag =1  AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_id");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag =1  AND newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date'  AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -261,7 +261,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($val_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_id");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE val_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -269,7 +269,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($vol_date_near == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' ORDER BY vol_date AND vol_id");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND vol_date <= '$near_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -277,7 +277,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else if ($newbie_flag == 1) {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_id");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE newbie_flag = 1 AND area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -285,7 +285,7 @@ echo "<br>" . $near_date;
               $j += 1;
             }
           } else {
-            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' ORDER BY vol_date AND vol_id");
+            $getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE area_id = $area_id AND vol_date >= '$vol_date' AND disapp_flag = 0 ORDER BY vol_date AND vol_id");
             $j = 0;
             foreach ($getName as $get_name) {
               $vol_id_html[$j] .= $get_name['vol_id'];
@@ -341,7 +341,7 @@ echo "<br>" . $near_date;
   </div>
 
   <div id="footer-fixed">
-    <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 

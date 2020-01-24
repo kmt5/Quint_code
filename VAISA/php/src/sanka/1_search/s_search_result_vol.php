@@ -76,9 +76,9 @@ foreach ($getName as $get_name) {
     $area_name =  $get_name['area_name'];
 }
 
-$getName = $db->query("SELECT vol_point FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT point FROM volunteers WHERE vol_id = $id");
 foreach ($getName as $get_name) {
-    $point =  $get_name['vol_point'];
+    $point =  $get_name['point'];
 }
 $getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $id");
 foreach ($getName as $get_name) {
@@ -92,7 +92,7 @@ foreach ($getName as $get_name) {
 <head>
     <meta charset="utf-8"> <!-- 文字コードを宣言 -->
     <title>Sample</title> <!-- ページのタイトル -->
-    <link rel="stylesheet" type="text/css" href="../common/common.css">
+    <link rel="stylesheet" type="text/css" href="../../common/common.css">
     <link rel="stylesheet" type="text/css" href="./CSS/search_result_vol.css">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -101,7 +101,7 @@ foreach ($getName as $get_name) {
 
 <body>
     <div id="header-fixed">
-        <img border="0" src="../common/header.jpg" width="100%" height="100%">
+        <img border="0" src="../../common/header.jpg" width="100%" height="100%">
         <a href="javascript:history.back()">
             <p id="back"><i class="fas fa-reply"></i></p>
         </a>
@@ -281,7 +281,7 @@ foreach ($getName as $get_name) {
         </div>
     </div>
     <div id="footer-fixed">
-        <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
+        <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
     </div>
 </body>
 
