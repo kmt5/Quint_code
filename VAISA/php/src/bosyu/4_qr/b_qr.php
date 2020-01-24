@@ -2,43 +2,36 @@
   $b_user_id  = $_POST['b_user_id'];
   $vol_id     = $_PSOT['vol_id'];
  ?>
+ <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
+ <html>
+ <head>
+   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
+   <title>PHP</title> <!-- ページのタイトル -->
+   <link rel="stylesheet" type="text/css" href="./b_qr.css">
+ </head>
+ <body>
+   <div id="header-fixed">
+     <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+     <form method="post" name="back" action="../b_qr_choice.php">
+       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+       <a href="javascript:back.submit()">
+         <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
+       </a>
+     </form>
+     <form method="post" name="home" action="../b_home.php">
+       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+       <a href="javascript:home.submit()">
+         <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
+       </a>
+     </form>
+   </div>
 
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>Instascanサンプルデモ</title>
-    <link rel=“stylesheet” type="text/css" href=“./b_qr.css”>
-    <style>
-      #info {
-        font-size: 4em;
-        font-weight: bold;
-        color: #666;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="header-fixed">
-      <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-      <form method="post" name="back" action="./b_qr_choice.php">
-        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-        <a href="javascript:back.submit()">
-          <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
-        </a>
-      </form>
-      <form method="post" name="home" action="../b_home.php">
-        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-        <a href="javascript:home.submit()">
-          <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
-        </a>
-      </form>
-    </div>
-    <div id="body-bk">
-      <div id="body" class="bg_test3">
-        <center> <!-- 中央寄せ -->
-          <h1>QRコード</h1>
-        </center>
-      </div>
+   <div id="body-bk">
+     <div id="body" class="bg_test3">
+       <center> <!-- 中央寄せ -->
+         <h1>QRコード</h1>
+       </center>
+     </div>
       <div>
         <center>
           <!-- ここにカメラの映像を表示する -->
