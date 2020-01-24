@@ -1,17 +1,21 @@
 <?php
 session_start();
 $b_user_id = $_SESSION["b_user_id"];
-
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
-$getName = $db -> query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+$getName = $db -> query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 $j = 0;
 foreach ($getName as $get_name) {
+  $vol_id[$j] .= $get_name["vol_id"];
   $vol_name[$j] .= $get_name['vol_name'];
   $j += 1;
 }
+if (!empty($vol_name)) {
 $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+} else {
+  echo "<h2>ボランティアがありません<br>登録・編集から登録してください</h2>";
+}
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
@@ -42,7 +46,9 @@ $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = 
         <?php
             $array_count = count($vol_name);
             for ($i = 0; $i < $array_count; $i++) {
-              echo "<form action='b_entrant_list.html' method='post'>";
+              echo "<form action='b_entrant_list.php' method='post'>";
+              echo "<input type='hidden' name='vol_id' value=".$vol_id[$i].">";
+              echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
               echo "<button type='submit' class='button-vol'>".$vol_name[$i]."</button>";
               echo "</form>";
               echo "<br>";

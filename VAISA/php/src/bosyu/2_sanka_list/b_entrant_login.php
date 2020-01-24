@@ -1,10 +1,8 @@
 <?php
 session_start();
 
-//$b_user_id = '00000001';
 $b_user_id = $_POST["b_user_id"];
 $_SESSION["b_user_id"] = $b_user_id;
-
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
@@ -65,6 +63,7 @@ if (isset($_POST["password"])) {
         <br><br>
         <p align="left">パスワード</p><br>
         <form action="b_entrant_login.php" method="post">
+          <input type='hidden' name='b_user_id' value="<?php echo $b_user_id; ?>">
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="ログイン">
         </form>
