@@ -47,7 +47,25 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
       </div>
       <div width="100%" class="new">
         <h1 align="center">ボランティア内容</h1>
-        <form method="POST" action="update_new.php" enctype="multipart/form-data">
+        <script type="text/javascript">
+            function check() {
+
+                if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
+
+                    return true; // 「OK」時は送信を実行
+
+                } else { // 「キャンセル」時の処理
+
+                    window.alert('キャンセルされました'); // 警告ダイアログを表示
+                    return false; // 送信を中止
+
+                }
+
+            }
+
+            //
+        </script>
+        <form method="POST" action="update_new.php" enctype="multipart/form-data" onSubmit="return check()">
           <h2>ボランティア名</h2>
           <input type="text" name="vol_name" maxlength="20" value="" placeholder="２０文字以内で入力" required>
           <br>
