@@ -16,6 +16,7 @@ if(isset($_POST['fav'])){
   <link rel="stylesheet" type="text/css" href="./CSS/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/tab.css">
 　<link rel="stylesheet" type="text/css" href="./CSS/my_fav.css">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <div id="header-fixed">
@@ -32,6 +33,7 @@ if(isset($_POST['fav'])){
       <div id ="Toptitle2">
         マイボランティア
         <div id ="Toptitle-my">
+        <i class="fa fa-heart" aria-hidden="true"></i>
           お気に入り
         </div>
       </div>

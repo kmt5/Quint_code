@@ -36,6 +36,7 @@ if(isset($_POST['add'])){
       <div id ="Toptitle2">
         マイボランティア
         <div id ="Toptitle-my">
+        <i class="far fa-calendar-alt"></i>
           参加登録ボランティア
         </div>
       </div>

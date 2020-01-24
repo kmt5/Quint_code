@@ -49,7 +49,7 @@
       <div id="Toptitle2">
         フレンド
         <div id="Toptitle-frd">
-          <i class="far fa-list-alt"></i>フレンド申請確認
+          <i class="fas fa-users"></i>フレンド申請確認
         </div>
       </div>
 <?php

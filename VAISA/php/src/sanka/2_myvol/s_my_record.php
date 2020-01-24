@@ -28,6 +28,7 @@ $user_id='1234567a';
       <div id ="Toptitle2">
         マイボランティア
         <div id ="Toptitle-my">
+        <i class="fas fa-folder"></i>
           ボランティア履歴
         </div>
       </div>
