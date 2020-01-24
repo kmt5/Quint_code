@@ -40,3 +40,20 @@ p{
   margin:0px 0px 0px 100px;
   font-size:50px;
 }
+
+img.prof{
+  border-radius:40px;
+  width:200px;
+  heght:200px;
+}
+
+dt{
+  border:solid 5px #92d050;
+  border-radius:40px;
+  display:inline;
+  padding:5px 20px 5px 20px;
+}
+
+dd{
+  margin:50px 0px 30px;
+}
