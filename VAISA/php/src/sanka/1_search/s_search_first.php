@@ -1,3 +1,6 @@
+<?php 
+$s_user_id = $_POST["s_user_id"];
+?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>

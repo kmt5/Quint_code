@@ -1,20 +1,28 @@
 <?php
 session_start();
 $read_mem = 0;
-$b_user_id = $_SESSION["b_user_id"];
+$b_user_id = $_POST["b_user_id"];
 $vol_id = $_POST["vol_id"];
-$vol_id = 50;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-
+echo $vol_id;
 $getName = $db->query("SELECT fullname, a.s_user_id FROM sanka_users a, sanka_situations b WHERE b.vol_id = $vol_id AND a.s_user_id = b.s_user_id");
 $j = 0;
 foreach ($getName as $get_name) {
-  $user_name[$j] .= $get_name['fullname'];
+  $s_user_name[$j] .= $get_name['fullname'];
   $s_user_id[$j] .= $get_name['s_user_id'];
   $j += 1;
 }
-$count = count($user_name);
+if (!empty($s_user_name)) {
+$count = count($s_user_name);
+} else {
+  $count = 0;
+}
+$getName = $db->query("SELECT rank_spec_flag FROM options WHERE b_user_id = $b_user_id");
+$j = 0;
+foreach ($getName as $get_name) {
+  $rank_spec_flag .= $get_name['rank_spec_flag'];
+}
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
@@ -74,6 +82,12 @@ $count = count($user_name);
             echo "<button type='submit' class='button-vol'><font color='red'><i class='fas fa-check'></i></font>　" . $s_user_name[$i] . "</button>";
             echo "</form>";
             echo "<br>";
+          }
+        }
+        if ($count == 0) {
+          echo "<h2>現在、参加登録者がいません<br></h2>";
+          if ($rank_spec_flag == 0) {
+            echo "<h3>オプションから検索上位表示を有効化すると、<br>参加者が増える可能性があります！<br>(※設定には別途料金が必要です)</h3>";
           }
         }
         ?>
