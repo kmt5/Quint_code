@@ -1,4 +1,7 @@
-
+<?php
+  $b_user_id  = $_POST['b_user_id'];
+  $vol_id     = $_PSOT['vol_id'];
+ ?>
 
 <!doctype html>
 <html>
