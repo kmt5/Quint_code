@@ -1,11 +1,11 @@
-<?php session_start(); 
+<?php session_start();
 //データベースに接続(test3)
 //$id = $_POST["b_user_id"];
 $b_user_id = $_SESSION["b_user_id"];
 echo $b_user_id;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-//接続確認    
+//接続確認
 if ($db) {
   echo "データベースに繋がっています";
 } else {
@@ -38,7 +38,7 @@ $db = null;
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>Sample</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="../../CSS/common.css">
+  <link rel="stylesheet" type="text/css" href="../../common/common.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./CSS/vol_regd.css">
 </head>
@@ -46,35 +46,43 @@ $db = null;
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
-    <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
+    <a href="b_vol_regd.php">
+      <p id="back"><i class="fas fa-reply"></i></p>
+    </a>
+    <a href="../b_home.php">
+      <p id="home"><i class="fas fa-home"></i></p>
+    </a>
   </div>
   <div id="body-bk">
     <div id="body">
       <div id="Toptitle1">
         <i class="fas fa-pencil-alt"></i>登録・編集
       </div>
-      <table border='1' frame="box" rules="none">
+    <!--  <table border='1' frame="box" rules="none"> -->
           <?php
             for ($i = 0; $i < $count; $i++) {
               $vol_id = $vol_id_html[$i];
-              echo "<tr><td colspan='2' class='volList'>".$vol_name[$i]."</td></tr>";
-              echo "<tr>";
-              echo "<td>";
-              echo "<form action='b_vol_regd_edit.php' method='post'>";
+              echo "<div class='vollist'>";
+              echo "<p>".$vol_name[$i]."</p>";
+              echo "<form action='vol_regd_edit.php' method='post'>";
               echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
               echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
-              echo "<input type='submit' value='編集'>";
+              echo "<button type='submit' align='center' id='listbutton'><i class='fas fa-edit'></i>　編集</button>";
               echo "</form>";
-              echo "</td>";
-              echo "<td>";
+              echo "<form action='b_vol_regd_delete.php' method='post'>";
+              echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
+              echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
+              echo "<button type='submit' align='center' id='listbutton'><i class='fas fa-trash'></i>　削除</button>";
+              echo "</form>";
+              echo "</div>";
+          /*
               echo "<form action='b_vol_regd_delete.php' method='post'>";
               echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
               echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
               echo "<input type='submit' value='削除'>";
               echo "</form>";
               echo "</td>";
-              echo "</tr>";
+              echo "</tr>"; */
             }
           ?>
       </table>

@@ -44,7 +44,7 @@ $area_id = $_POST["select_area"];
 $num = $vol_fin_time - $vol_beg_time;
 $point = strval($num);
 //echo "point:".$point. "<br>";
-if ($_POST["image"] != null) {$vol_fig_path = $a;}  
+if ($_POST["image"] != null) {$vol_fig_path = $a;}
 //echo $vol_fig_path;
 $pref_name = $_POST["pref_name"];
 $area_name = $_POST["area_name"];
@@ -145,22 +145,22 @@ $db = null;
                 <?php echo $vol_capacity; ?>
                 <br><br>
                 <?php if ($val_flag == 1) {
-                    echo "<p class='dezain'>報酬あり</p>";
+                  echo "<p class='dezain'>報酬あり</p>";
                 } else {
-                    echo "報酬なし";
+                  echo "<p class='dezain'>報酬なし</p>";
                 } ?>
                 <br><br>
                 <?php if ($newbie_flag == 1) {
-                    echo "<p class='dezain'>初心者OK</p>";
+                  echo "<p class='dezain'>初心者OK</p>";
                 } else {
-                    echo "";
+                  echo "<p class='dezain'>経験者のみ</p>";
                 } ?>
                 <br><br>
                 <label>ランク指定　</label>
                 <?php if ($spec_rank == 0) {
-                    echo "なし";
+                  echo "<p class='dezain'>指定なし</p>";
                 } else {
-                    echo $spec_rank;
+                  echo "<p class='dezain'>$spec_rank</p>";
                 } ?>
                 <br><br>
                 <h2>詳細</h2>

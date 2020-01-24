@@ -111,13 +111,13 @@ $db = null;
 
 <body>
     <div id="header-fixed">
-        <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-        <a href="javascript:history.back()">
-            <p id="back"><i class="fas fa-reply"></i></p>
-        </a>
-        <a href="s_home">
-            <p id="home"><i class="fas fa-home"></i></p>
-        </a>
+      <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+      <a href="b_vol_regd_list.php">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </a>
+      <a href="../b_home.php">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
     </div>
     <div id="body-bk">
         <div id="body">
@@ -142,7 +142,7 @@ $db = null;
 
                     }
 
-                    // 
+                    //
                 </script>
                 <h2>　ボランティア名</h2>
                 <form name='foo' action="update.php" method="post" onSubmit="return check()">
@@ -253,7 +253,7 @@ $db = null;
                         echo "参加ユーザのランク指定は行えません。<br>(※オプションで有効化ができます。別途追加料金が必要です。)";
                     }
                     ?>
-                    
+
                     <h2>詳細</h2>
                     <!-- 登録した住所が表示できるか textareaで登録したものを囲む-->
                     <textarea name="detail" value=<?php echo $vol_detail; ?> placeholder="詳細を入力" required><?= htmlspecialchars($vol_detail, ENT_QUOTES, 'UTF-8') ?></textarea>
