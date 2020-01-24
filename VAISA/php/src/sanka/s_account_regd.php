@@ -104,19 +104,19 @@
         <hr color="black"><br/>
 
         <dt>名前</dt>
-        <dd><input type="text" name="fullname" id="input1" ></dd>
+        <dd><input type="text" name="fullname" id="input1" class="waku"></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type = "text" name ="mail_address" id="input2" ></dd>
+        <dd><input type = "text" name ="mail_address" id="input2"  class="waku"></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3" ></dd>
+        <dd><input type = "text" name ="password" id="input3"  class="waku"></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = "text" name ="user_address" id="input4" ></dd>
+        <dd><input type = "text" name ="user_address" id="input4"  class="waku"></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = "text" name ="tel_num" id="input5" ></dd>
+        <dd><input type = "text" name ="tel_num" id="input5"  class="waku"></dd>
         <hr color="black"><br/><br/>
 
       <p>
@@ -129,11 +129,11 @@
       <hr color="black"><br/>
 
       <dt>年齢</dt>
-      <dd><input type = "number" name ="age" id="input8" ></dd>
+      <dd><input type = "number" name ="age" id="input8" class="waku" ></dd>
       <hr color="black"><br/><br/>
 
       <dt>ひとこと</dt>
-      <dd><input type = "text" name ="message" id="input6" ></dd>
+      <dd><input type = "text" name ="message" id="input6" class="waku" ></dd>
       <hr color="black"><br/><br/>
 
       <p>
@@ -145,11 +145,10 @@
       </p>
       <hr color="black"><br/>
         <dt>ニックネーム</dt>
-        <dd><input type = "text" name ="nickname" id="input7" ></dd>
+        <dd><input type = "text" name ="nickname" id="input7" class="waku" ></dd>
         <hr color="black"><br/>
       <br>
       <input type="submit" value="登録完了" class="btn-square1"><br>
-      <!--<p class="btn-square1">登録完了</p><br>>-->
     </center>
   </dl>
   </form>
@@ -167,7 +166,7 @@ function check() {
     }
     if (i == 2){
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length >= 8 && document.request.elements[i].value.length <=12) {
+        if (7 <= document.request.elements[i].value.length <= 12) {
           alert("既に登録されたメールアドレスです");
           return false;
         }
@@ -175,7 +174,7 @@ function check() {
     }
     if (i == 3) {
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <= 7 && document.request.elements[i].value.length <=12) {
+        if (document.request.elements[i].value.length <= 7 && document.request.elements[i].value.length <= 12) {
           alert("パスワードに誤りがあります");
           return false;
         }
@@ -183,7 +182,7 @@ function check() {
     }
     if (i == 4) {
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <=30) {
+        if (document.request.elements[i].value.length <= 30) {
           alert("住所に誤りがあります");
           return false;
         }
