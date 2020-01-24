@@ -22,13 +22,34 @@
     </style>
   </head>
   <body>
-    <h1>Instascanサンプルデモ</h1>
+    <div id="header-fixed">
+      <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+      <form method="post" name="back" action="b_qr_choice.php">
+        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+        <a href="javascript:back.submit()">
+          <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
+        </a>
+      </form>
+      <form method="post" name="home" action="../b_home.php">
+        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+        <a href="javascript:home.submit()">
+          <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
+        </a>
+      </form>
+    </div>
+    <div id="body-bk">
+      <div id="body" class="bg_test3">
+        <center> <!-- 中央寄せ -->
+          <h1>QRコード</h1>
+        </center>
+      </div>
 
     <!-- ここにカメラの映像を表示する -->
     <video id="preview"></video>
 
     <!-- ここにQRコードの情報を表示する -->
     <p id="info"></p>
+  </div>
 
 
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
@@ -92,5 +113,8 @@
         alert(err);
       });
     </script>
+    <div id="footer-fixed">
+      <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
+    </div>
   </body>
 </html>

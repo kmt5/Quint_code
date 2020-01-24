@@ -76,6 +76,10 @@ div#Toptitle2{
     background-color: #92d050;
     margin:0px 0 100px 0;
 }
+div#body-qr1{
+    padding:0px 200px 0px 200px;    /* 上下に250pxを余白を取る */
+
+}
 
 
 form{
