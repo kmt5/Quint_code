@@ -8,6 +8,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>Instascanサンプルデモ</title>
+    <link rel=“stylesheet” type="text/css" href=“./b_qr.css”>
     <style>
       body {
         margin: auto;
@@ -24,7 +25,7 @@
   <body>
     <div id="header-fixed">
       <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-      <form method="post" name="back" action="b_qr_choice.php">
+      <form method="post" name="back" action="./b_qr_choice.php">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:back.submit()">
           <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
