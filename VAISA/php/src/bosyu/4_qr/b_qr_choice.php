@@ -46,7 +46,7 @@
           foreach($res as $value ) {
             echo '
             <div id="body-qr1">
-              <form method="post" action="./b_qr.php"  class="bg_test3 size5">
+              <form method="post" action="./b_qr.php"  class="bg_test4">
                 <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
                 <input type="hidden" name="vol_id" value="'.$value['vol_id'].'" />
                 <input type="submit" value="'.$value['vol_name'].'" />

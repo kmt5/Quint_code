@@ -293,6 +293,14 @@ font-size: 30px;
     background-color: #0cb06e;   /* 背景色指定 */
 }
 
+.bg_test4 {
+    height: 100px;                  /* 高さ指定 */
+    margin: 0 200px 0 200px;
+    border-radius: 10px;
+    font-size: 20px;                /* 文字サイズ指定 */
+    background-color: #0cb06e;   /* 背景色指定 */
+}
+
 .inline-block_test {
   margin-top: -50px;
   margin-bottom: 100px;
