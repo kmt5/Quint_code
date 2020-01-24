@@ -72,23 +72,23 @@
     <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
     <form method="post" name="back" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-      <a href="javascript:back.submit()">
+      <button type="submit">
         <p id="back"><i class="fas fa-reply"></i></p>
-      </a>
+      </button>
     </form>
     <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-      <a href="javascript:home.submit()">
+      <button type="submit">
         <p id="home"><i class="fas fa-home"></i></p>
-      </a>
+      </button>
     </form>
   </div>
 
 
   <div id="body-bk">
-    <div id="body" class="bg_test">
+    <div id="Toptitle2">
       <center> <!-- 中央寄せ -->
-        <h1> 参加側アカウント登録</h1>
+        アカウント設定
       </center>
     </div>
     <div id="body" class="radio size1">

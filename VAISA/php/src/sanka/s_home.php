@@ -9,12 +9,14 @@
     <meta charset="utf-8"> <!-- 文字コードを宣言 -->
     <title>参加側</title> <!-- ページのタイトル -->
     <link rel="stylesheet" type="text/css" href="./CSS/s_home.css">
+    <link rel="stylesheet" type="text/css" href="../common/common.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
   <body>
     <div id="header-fixed">
       <img border="0" src="../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-      <p onclick="MoveCheck();">
-        <img border="0" src="../common/back.jpg" width="20%" height="100%" class="back">
+      <p id="back" onclick="MoveCheck();">
+        <i class="fas fa-door-open"></i>
       </p>
     </div>
 
