@@ -64,6 +64,8 @@
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./s_setting.css">
+  <link rel="stylesheet" type="text/css" href="../../common/common.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <div id="header-fixed">
@@ -71,13 +73,13 @@
     <form method="post" name="back" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:back.submit()">
-        <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
+        <p id="back"><i class="fas fa-reply"></i></p>
       </a>
     </form>
     <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:home.submit()">
-        <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
+        <p id="home"><i class="fas fa-home"></i></p>
       </a>
     </form>
   </div>
