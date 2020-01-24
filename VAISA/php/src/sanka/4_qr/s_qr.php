@@ -12,7 +12,7 @@
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <form method="post" name="back" action="s_home.php">
+    <form method="post" name="back" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:back.submit()">
         <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">

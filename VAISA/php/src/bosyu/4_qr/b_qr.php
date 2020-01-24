@@ -44,7 +44,7 @@
         var request2 = document.createElement('input');
 
         form.method = 'POST';
-        form.action = 'b_home.php';
+        form.action = './qr_redirect.php';
 
         request1.type = 'hidden'; //入力フォームが表示されないように
         request1.name = 'vol_id';
