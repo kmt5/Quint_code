@@ -24,7 +24,7 @@ $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = 
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="../common/header.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <a href="b_entrant_login.php">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
