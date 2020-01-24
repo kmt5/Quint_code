@@ -25,6 +25,10 @@ div#header-fixed
     top: 0px;
 }
 
+.waku{
+  border: solid 1px;
+}
+
 /* フッターの固定 */
 div#footer-fixed
 {
