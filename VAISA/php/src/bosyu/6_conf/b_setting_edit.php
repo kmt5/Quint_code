@@ -8,27 +8,27 @@
 
   $picture      = $_POST['pic'];
 
-  $dsn   = "mysql:host=test3_mysql_1;dbname=sample;";
+  $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db    = new PDO($dsn, 'root', 'root');
 
   if ($groupname) {
-    $sql = "update bosyu_user set nickname = '".$groupname."' where b_user_id = '".$b_user_id."'";
+    $sql = "update bosyu_users set groupname = '".$groupname."' where b_user_id = '".$b_user_id."'";
     $db->query($sql);
   }
   if ($address) {
-    $sql = "update bosyu_user set fullname = '".$address."' where b_user_id = '".$b_user_id."'";
+    $sql = "update bosyu_users set address = '".$address."' where b_user_id = '".$b_user_id."'";
     $db->query($sql);
   }
   if ($tel_num) {
-    $sql = "update bosyu_user set tel_num = '".$tel_num."' where b_user_id = '".$b_user_id."'";
+    $sql = "update bosyu_users set tel_num = '".$tel_num."' where b_user_id = '".$b_user_id."'";
     $db->query($sql);
   }
   if ($mail_address) {
-    $sql = "update bosyu_user set mail_address = '".$mail_address."' where b_user_id = '".$b_user_id."'";
+    $sql = "update bosyu_users set mail_address = '".$mail_address."' where b_user_id = '".$b_user_id."'";
     $db->query($sql);
   }
   if ($passwd) {
-    $sql = "update bosyu_user set passwd = '".$passwd."' where b_user_id = '".$b_user_id."'";
+    $sql = "update bosyu_users set passwd = '".$passwd."' where b_user_id = '".$b_user_id."'";
     $db->query($sql);
   }
 ?>
@@ -38,24 +38,21 @@
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/pop.css">
+  <link rel="stylesheet" type="text/css" href="./b_setting.css">
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-    <form method="post" name="back" action="b_home.php">
+    <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <form method="post" name="back" action="../b_home.php">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
       <a href="javascript:back.submit()">
-        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+        <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
       </a>
     </form>
-    <form method="post" name="home" action="b_home.php">
+    <form method="post" name="home" action="../b_home.php">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
       <a href="javascript:home.submit()">
-        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+        <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
       </a>
     </form>
   </div>
@@ -68,7 +65,7 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form action ="b_setting_edit.php" method="post" name="myform" onsubmit="return check();">
+      <form action ="#" method="post" name="myform" onsubmit="return check();">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>">
       <dl>
       <center> <!-- 中央寄せ -->
@@ -95,7 +92,7 @@
         <br>
         <input type="submit" value="編集完了" class="btn-square5">
         </form>
-        <form action=b_setting_delete.php method="post">
+        <form action="./b_setting_delete.php" method="post">
           <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>">
           <input type="submit" value="アカウント削除" class="btn-square4"><br>
         </form>
@@ -153,7 +150,7 @@
 
 
   <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>
