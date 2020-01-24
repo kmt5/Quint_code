@@ -7,24 +7,21 @@
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/size.css">
-  <link rel="stylesheet" type="text/css" href="./CSS/pop.css">
+  <link rel="stylesheet" type="text/css" href="./s_qr.css">
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
     <form method="post" name="back" action="s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:back.submit()">
-        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+        <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
       </a>
     </form>
-    <form method="post" name="home" action="s_home.php">
+    <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:home.submit()">
-        <img border="0" src="home.jpg" width="20%" height="100%" class="home">
+        <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
       </a>
     </form>
   </div>
@@ -48,7 +45,7 @@
   })
   </script>
   <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>

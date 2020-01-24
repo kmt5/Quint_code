@@ -11,25 +11,25 @@
 
   //postが来てなければ飛ばす
   if($groupname && $address && $mail_address && $tel_num && $passwd){
-    $dsn   = "mysql:host=test3_mysql_1;dbname=sample;";
+    $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
-    $s_cnt = $db->query("select mail_address from sanka_user where mail_address='".$mail_address."'")->rowCount();
-    $b_cnt = $db->query("select mail_address from bosyu_user where mail_address='".$mail_address."'")->rowCount();
+    $s_cnt = $db->query("select mail_address from sanka_users where mail_address='".$mail_address."'")->rowCount();
+    $b_cnt = $db->query("select mail_address from bosyu_users where mail_address='".$mail_address."'")->rowCount();
 
     //データベースに入れて良い値かの判定
     if (!$s_cnt && !$b_cnt && mb_strlen($groupkname) <= 20 && mb_strlen($address) <= 30 && mb_strlen($tel_num) <= 20 && mb_strlen($mail_address) && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない無限ループに入る可能性あり（デモぐらいは大丈夫なはず）
         $b_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
-        $s_id_sql     = "select s_user_id from sanka_user where s_user_id = '".$b_user_id."'";
-        $b_id_sql     = "select b_user_id from bosyu_user where b_user_id = '".$b_user_id."'";
+        $s_id_sql     = "select s_user_id from sanka_users where s_user_id = '".$b_user_id."'";
+        $b_id_sql     = "select b_user_id from bosyu_users where b_user_id = '".$b_user_id."'";
         $s_id_cnt     = $db->query($s_id_sql)->rowCount();
         $b_id_cnt     = $db->query($b_id_sql)->rowCount();
       } while ($s_id_cnt or $b_id_cnt);
 
       $profile_path = "/prof/$b_user_id";
 
-      $sql    = "insert into bosyu_user values( :b_user_id, :groupname, :address, :tel_num , :mail_address, :passwd , :profile_path)";
+      $sql    = "insert into bosyu_users values( :b_user_id, :groupname, :address, :tel_num , :mail_address, :passwd , :profile_path)";
       $stmt   = $db->prepare($sql);
       $params = array(':b_user_id'    => $b_user_id,
                       ':groupname'    => $groupname,
@@ -43,7 +43,7 @@
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){
         echo '
-          <form method="post" action="b_account_regd_comp.php">
+          <form method="post" action="./b_account_regd_comp.php">
             <input type="hidden" name="b_user_id" value "'.$b_user_id.'" />
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
@@ -66,16 +66,13 @@
   <head>
     <meta charset="utf-8"> <!-- 文字コードを宣言 -->
     <title>PHP</title> <!-- ページのタイトル -->
-    <link rel="stylesheet" type="text/css" href="./CSS/common.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/color.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/size.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/pop.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/b_home.css">
   </head>
   <body>
     <div id="header-fixed">
-      <img border="0" src="header.jpg"style="vertical-align:middle;" width="100%" height="100%">
-      <a href= "b_account_regd_tos.html">
-        <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+      <img border="0" src="../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+      <a href= "./b_account_regd_tos.html">
+        <img border="0" src="../common/back.jpg" width="20%" height="100%" class="back">
       </a>
     </div>
 
@@ -163,7 +160,7 @@
     </script>
 
     <div id="footer-fixed">
-      <img border="0" src="kokoku.jpg" width="100%" height="100%">
+      <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
     </div>
   </body>
 </html>

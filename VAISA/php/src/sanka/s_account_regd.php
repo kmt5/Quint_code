@@ -1,7 +1,8 @@
 <?php
+  $place_id     = $_POST['area'];
   $nickname     = $_POST['nickname'];
   $fullname     = $_POST['fullname'];
-  $place_id     = $_POST['area'];
+  $user_address = $_POST['user_address'];
   $age          = $_POST['age'];
   $gender       = $_POST['gender'];
   $message      = $_POST['message'];
@@ -9,44 +10,55 @@
   $tel_num      = $_POST['tel_num'];
   $passwd       = $_POST['password'];
 
-  $picture      = $_POST['pic'];
+  echo $place_id;
+  echo $nickname;
+  echo $fullname;
+  echo $user_address;
+  echo $age;
+  echo $gender;
+  echo $message;
+  echo $mail_address;
+  echo $tel_num;
+  echo $passwd;
+  echo $picture;
 
   //postが来てなければ飛ばす
   if($nickname && $fullname && $place_id && $age && $gender && $mail_address && $tel_num && $passwd){
     $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
-    $s_cnt = $db->query("select mail_address from sanka_user where mail_address='".$mail_address."'")->rowCount();
-    $b_cnt = $db->query("select mail_address from bosyu_user where mail_address='".$mail_address."'")->rowCount();
+    $s_cnt = $db->query("select mail_address from sanka_users where mail_address='".$mail_address."'")->rowCount();
+    $b_cnt = $db->query("select mail_address from bosyu_users where mail_address='".$mail_address."'")->rowCount();
 
     //データベースに入れて良い値かの判定
     if (!$s_cnt && !$b_cnt && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($message) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
         $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
-        $s_id_sql     = "select s_user_id from sanka_user where s_user_id = '".$s_user_id."'";
-        $b_id_sql     = "select b_user_id from bosyu_user where b_user_id = '".$s_user_id."'";
+        $s_id_sql     = "select s_user_id from sanka_users where s_user_id = '".$s_user_id."'";
+        $b_id_sql     = "select b_user_id from bosyu_users where b_user_id = '".$s_user_id."'";
         $s_id_cnt     = $db->query($s_id_sql)->rowCount();
         $b_id_cnt     = $db->query($b_id_sql)->rowCount();
       } while ($s_id_cnt or $b_id_cnt);
 
-      $profile_path = "/prof/$s_user_id.jpg";
-      $qr_path      = "/qr/$s_user_id.jpg";
-      $point        = 0;
-      $rank         = "ブロンズ";
+      $prof_path  = "/prof/$s_user_id.jpg";
+      $qr_path    = "/qr/$s_user_id.jpg";
+      $point      = 0;
+      $rank       = "ブロンズ";
 
-      $sql    = "insert into sanka_user values(:s_user_id, :nickname, :fullname, :place_id, :age, :gender, :message, :mail_address, :tel_num ,:passwd ,:profile_path ,:qr_path ,:point ,:rank )";
+      $sql    = "insert into sanka_users values(:s_user_id, :area_id, :nickname, :fullname, :user_address :age, :gender, :message, :mail_address, :tel_num ,:passwd ,:prof_path ,:qr_path ,:point ,:rank )";
       $stmt   = $db->prepare($sql);
       $params = array(':s_user_id'    => $s_user_id,
+                      ':area_id'      => $place_id,
                       ':nickname'     => $nickname,
                       ':fullname'     => $fullname,
-                      ':place_id'     => $place_id,
+                      ':user_address' => $user_address,
                       ':age'          => $age,
                       ':gender'       => $gender,
                       ':message'      => $message,
                       ':mail_address' => $mail_address,
                       ':tel_num'      => $tel_num,
                       ':passwd'       => $passwd,
-                      ':profile_path' => $profile_path,
+                      ':prof_path'    => $prof_path,
                       ':qr_path'      => $qr_path,
                       ':point'        => $point,
                       ':rank'         => $rank);
@@ -63,7 +75,7 @@
             document.forms[0].submit();
           </script>';
       }else{
-        echo "can't insert into db";
+        echo "error insert";
       }
 
     }else{
@@ -139,8 +151,8 @@
       <p>
         <dt>住所エリア選択</dt>
         <dd><select name ="area" type="number"></dd>
-        <option value="002" id="option">高知</option>
-        <option value="003" id="option">愛媛</option>
+        <option value=2 id="option">高知</option>
+        <option value=3 id="option">愛媛</option>
         </select>
       </p>
       <hr color="black"><br/>
@@ -166,7 +178,7 @@ function check() {
     }
     if (i == 2){
       if (document.request.elements[i].type == "text") {
-        if (7 <= document.request.elements[i].value.length <= 12) {
+        if (document.request.elements[i].value.length >= 7 && document.request.elements[i].value.length <= 12) {
           alert("既に登録されたメールアドレスです");
           return false;
         }
@@ -174,7 +186,7 @@ function check() {
     }
     if (i == 3) {
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <= 7 && document.request.elements[i].value.length <= 12) {
+        if (document.request.elements[i].value.length >= 7 && document.request.elements[i].value.length <= 12) {
           alert("パスワードに誤りがあります");
           return false;
         }
@@ -182,7 +194,7 @@ function check() {
     }
     if (i == 4) {
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <= 30) {
+        if (document.request.elements[i].value.length > 30) {
           alert("住所に誤りがあります");
           return false;
         }
@@ -190,15 +202,15 @@ function check() {
     }
     if (i == 5) {
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <=30) {
+        if (document.request.elements[i].value.length >30) {
           alert("電話番号に誤りがあります");
           return false;
         }
       }
     }
     if (i == 6) {
-      if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <=3) {
+      if (document.request.elements[i].type == "number") {
+        if (document.request.elements[i].value.length <= 150) {
           alert("年齢に誤りがあります");
           return false;
         }
@@ -206,7 +218,7 @@ function check() {
     }
     if (i == 7) {
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <=20) {
+        if (document.request.elements[i].value.length >20) {
           alert("ひとことに誤りがあります");
           return false;
         }
@@ -214,7 +226,7 @@ function check() {
     }
     if (i == 8) {
       if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length <=20) {
+        if (document.request.elements[i].value.length >20) {
           alert("ニックネームに誤りがあります");
           return false;
         }
