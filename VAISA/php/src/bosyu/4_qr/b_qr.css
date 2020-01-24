@@ -14,6 +14,15 @@ div#header-fixed
     height: 250px;              /* 縦幅140px */
 }
 
+p#info {
+  margin: auto;
+  width: 960px;
+  text-align: center;
+  font-size: 4em;
+  font-weight: bold;
+  color: #666;
+}
+
 .back {
     position: absolute;
     left: 0px;
