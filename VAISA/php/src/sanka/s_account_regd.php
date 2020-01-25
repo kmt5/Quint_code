@@ -18,12 +18,12 @@
     $db    = new PDO($dsn, 'root', 'root');
     $s_res = $db->query("select mail_address from sanka_users where mail_address='".$mail_address."'");
     $b_res = $db->query("select mail_address from bosyu_users where mail_address='".$mail_address."'");
-    if (!pg_field_is_null($s_res) or !pg_field_is_null($b_res)) {
+    if (!$s_res or !$b_res) {
       $check = "true";
     }
 
     //データベースに入れて良い値かの判定
-    if (!pg_field_is_null($s_res) && !pg_field_is_null($b_res) && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($message) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
+    if (!$s_res && !$b_res && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($message) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
         $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
