@@ -16,22 +16,23 @@
   if($nickname && $fullname && $area_id && $user_address && $age && $gender && $mail_address && $tel_num && $passwd){
     $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
-    $s_cnt = $db->exec("select mail_address from sanka_users where mail_address='".$mail_address."'");
-    $b_cnt = $db->exec("select mail_address from bosyu_users where mail_address='".$mail_address."'");
-    if ($s_cnt == 0  or $b_cnt == 0) {
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+    $s_cnt = $db->query("select count(*) as num from sanka_users where mail_address='".$mail_address."'");
+    $b_cnt = $db->query("select count(*) as num from bosyu_users where mail_address='".$mail_address."'");
+    if ($s_cnt->fetchColumn() == 0  or $b_cnt->fetchColumn() == 0) {
       $check = "true";
     }
 
     //データベースに入れて良い値かの判定
-    if ($s_cnt == 0 && $b_cnt == 0 && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($mes) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
+    if ($s_cnt->fetchColumn() == 0 && $b_cnt->fetchColumn() == 0 && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($mes) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
         $s_user_id  = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
-        $s_id_sql   = "select s_user_id from sanka_users where s_user_id = '".$s_user_id."'";
-        $b_id_sql   = "select b_user_id from bosyu_users where b_user_id = '".$s_user_id."'";
-        $s_id_cnt   = $db->exec($s_id_sql);
-        $b_id_cnt   = $db->exec($b_id_sql);
-      } while (!($s_id_cnt == 0) or !($b_id_cnt == 0));
+        $s_id_sql   = "select count(*) from sanka_users where s_user_id = '".$s_user_id."'";
+        $b_id_sql   = "select count(*) from bosyu_users where b_user_id = '".$s_user_id."'";
+        $s_cnt   = $db->query($s_id_sql);
+        $b_cnt   = $db->query($b_id_sql);
+      } while (!($s_cnt->fetchColumn() == 0) or !($b_cnt->fetchColumn() == 0));
 
       $prof_path  = "/prof/$s_user_id.jpg";
       $qr_path    = "/qr/$s_user_id.jpg";
@@ -88,6 +89,7 @@
       $stmt->bindValue(':rnk', $rnk, PDO::PARAM_STR);*/
       $stmt->execute($params);//();
 
+      var_dump($stmt->errorInfo());
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
         /*echo '
