@@ -72,7 +72,7 @@
     <div id="header-fixed">
       <img border="0" src="../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
       <a href= "./b_account_regd_tos.html">
-        <img border="0" src="../common/back.jpg" width="20%" height="100%" class="back">
+        <p id="back"><i class="fas fa-reply"></i></p>
       </a>
     </div>
 
