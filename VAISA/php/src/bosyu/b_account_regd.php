@@ -67,6 +67,8 @@
     <meta charset="utf-8"> <!-- 文字コードを宣言 -->
     <title>PHP</title> <!-- ページのタイトル -->
     <link rel="stylesheet" type="text/css" href="./CSS/b_home.css">
+    <link rel="stylesheet" type="text/css" href="../common/common.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
   <body>
     <div id="header-fixed">
@@ -78,9 +80,9 @@
 
 
     <div id="body-bk">
-      <div id="body" class="bg_test3">
+      <div id="Toptitle1">
         <center> <!-- 中央寄せ -->
-          <h1> 募集側アカウント登録</h1>
+          募集アカウント登録
         </center>
       </div>
       <div id="body" class="radio size1">

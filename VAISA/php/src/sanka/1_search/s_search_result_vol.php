@@ -6,52 +6,71 @@ $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
 $s_user_id = $_POST["s_user_id"];
-//$s_user_id = '00000001';
-$id = $_POST['vol_id'];
-//echo $id;
+$vol_id = $_POST['vol_id'];
+
+
+if (isset($_POST['sanka'])) {
+    echo "set" . $_SESSION['set'];
+    if ($_SESSION['set'] == 1) {
+        echo "1ここ！";
+        $db->query("UPDATE sanka_situations SET set_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
+    } else {
+        $db->query("UPDATE sanka_situations SET set_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
+        echo "2ここ！";
+    }
+} else if (isset($_POST['favo'])) {
+    echo "favo" . $_SESSION['favo'];
+    if ($_SESSION['favo'] == 1) {
+        $db->query("UPDATE sanka_situations SET favo_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
+        echo "11ここ！";
+    } else {
+        $db->query("UPDATE sanka_situations SET favo_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
+        echo "22ここ！";
+    }
+}
 
 $db->query("set names utf8");
-$getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $vol_name =  $get_name['vol_name'];
 }
-$getDate = $db->query("SELECT vol_date FROM volunteers WHERE vol_id = $id");
+$getDate = $db->query("SELECT vol_date FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getDate as $get_date) {
     $vol_date =  $get_date['vol_date'];
 }
-$getBeg = $db->query("SELECT vol_beg_time FROM volunteers WHERE vol_id = $id");
+$getBeg = $db->query("SELECT vol_beg_time FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getBeg as $get_beg) {
     $vol_beg_time =  $get_beg['vol_beg_time'];
 }
-$getFin = $db->query("SELECT vol_fin_time FROM volunteers WHERE vol_id = $id");
+$getFin = $db->query("SELECT vol_fin_time FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getFin as $get_fin) {
     $vol_fin_time =  $get_fin['vol_fin_time'];
 }
-$getCapa = $db->query("SELECT vol_capacity FROM volunteers WHERE vol_id = $id");
+$getCapa = $db->query("SELECT vol_capacity FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getCapa as $get_capa) {
     $vol_capacity =  $get_capa['vol_capacity'];
 }
-$getNum = $db->query("SELECT post_num FROM volunteers WHERE vol_id = $id");
+$getNum = $db->query("SELECT post_num FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getNum as $get_num) {
     $post_num =  $get_num['post_num'];
 }
-$getPlace = $db->query("SELECT vol_place FROM volunteers WHERE vol_id = $id");
+$getPlace = $db->query("SELECT vol_place FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getPlace as $get_place) {
     $vol_place =  $get_place['vol_place'];
 }
-$getName = $db->query("SELECT val_flag FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT val_flag FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $val_flag =  $get_name['val_flag'];
 }
-$getName = $db->query("SELECT newbie_flag FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT newbie_flag FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $newbie_flag =  $get_name['newbie_flag'];
 }
-$getName = $db->query("SELECT vol_detail FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT vol_detail FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $vol_detail =  $get_name['vol_detail'];
 }
-$getName = $db->query("SELECT pref_id FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT pref_id FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $pref_id =  $get_name['pref_id'];
 }
@@ -59,15 +78,15 @@ $getName = $db->query("SELECT pref_name FROM areas WHERE pref_id = $pref_id");
 foreach ($getName as $get_name) {
     $pref_name =  $get_name['pref_name'];
 }
-$getName = $db->query("SELECT spec_rank FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT spec_rank FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $spec_rank =  $get_name['spec_rank'];
 }
-$getName = $db->query("SELECT b_user_id FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT b_user_id FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $b_user_id =  $get_name['b_user_id'];
 }
-$getName = $db->query("SELECT area_id FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT area_id FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $area_id =  $get_name['area_id'];
 }
@@ -76,13 +95,46 @@ foreach ($getName as $get_name) {
     $area_name =  $get_name['area_name'];
 }
 
-$getName = $db->query("SELECT point FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT point FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $point =  $get_name['point'];
 }
-$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $id");
+$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $vol_fig_path =  $get_name['vol_fig_path'];
+}
+$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
+foreach ($getName as $get_name) {
+    $vol_fig_path =  $get_name['vol_fig_path'];
+}
+$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
+foreach ($getName as $get_name) {
+    $vol_fig_path =  $get_name['vol_fig_path'];
+}
+$getName = $db->query("SELECT set_flag FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
+foreach ($getName as $get_name) {
+    $value =  $get_name['set_flag'];
+}
+$getName = $db->query("SELECT favo_flag FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
+foreach ($getName as $get_name) {
+    $value1 =  $get_name['favo_flag'];
+}
+echo $value;
+echo $value1;
+
+$s_table = $db->query("SELECT s_user_id FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
+foreach ($s_table as $get_table) {
+    $table =  $get_table['s_user_id'];
+}
+if (empty($table)) {
+    echo $vol_id;
+    $regist = $db->prepare("INSERT INTO sanka_situations(vol_id, s_user_id, read_flag, set_flag, favo_flag) VALUES (:vol_id, :s_user_id, :readf, :setf, :fav)");
+    $regist->bindValue(":vol_id", $vol_id, PDO::PARAM_INT);
+    $regist->bindParam(":s_user_id", $s_user_id, PDO::PARAM_STR);
+    $regist->bindValue(":readf", 0, PDO::PARAM_INT);
+    $regist->bindValue(":setf", 0, PDO::PARAM_INT);
+    $regist->bindValue(":fav", 0, PDO::PARAM_INT);
+    $regist->execute();
 }
 ?>
 
@@ -184,96 +236,45 @@ foreach ($getName as $get_name) {
                     }
                 </script>
                 <?php
-                //ボタンの状態を前画面より取得
-                if (isset($_POST["value"])) {
-                    $value = $_POST["value"];
-                }
-                if (isset($_POST["value1"])) {
-                    $value1 = $_POST["value1"];
-                }
-
-                if ($value == 1) {
+                if ($value == 0) {
+                    $_SESSION['set'] = 1;
                     echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check()'>";
-                    echo "<input type='hidden' value='2' name='value'>";
-                    echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $id . ">";
+                    //echo "<input type='hidden' value='2' name='value'>";
+                    //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' align='center' id='regd'>参加登録</button>";
+                    echo "<button type='submit' name='sanka' align='center' id='regd'>参加登録</button>";
                     echo "</form>";
                 } else {
+                    $_SESSION['set'] = 0;
                     echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check1()'>";
-                    echo "<input type='hidden' value='1' name='value'>";
-                    echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $id . ">";
+                    //echo "<input type='hidden' value='1' name='value'>";
+                    //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' align='center' id='regd1'>参加登録を解除する</button>";
+                    echo "<button type='submit' name='sanka' align='center' id='regd1'>参加登録を解除する</button>";
                     echo "</form>";
                 }
                 ?>
                 <?php
-                if ($value1 == 1) {
-                    $value1 == 2;
+                if ($value1 == 0) {
+                    $_SESSION['favo'] = 1;
                     echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check()'>";
-                    echo "<input type='hidden' value='" . $value . "' name='value'>";
-                    echo "<input type='hidden' value='2' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $id . ">";
+                    //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                    //echo "<input type='hidden' value='2' name='value1'>";
+                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' align='center' id='oki'>お気に入り</button>";
+                    echo "<button type='submit' name='favo' align='center' id='oki'>お気に入り</button>";
                     echo "</form>";
                 } else {
-                    $value1 == 1;
+                    $_SESSION['favo'] = 0;
                     echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check1()'>";
-                    echo "<input type='hidden' value='" . $value . "' name='value'>";
-                    echo "<input type='hidden' value='1' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $id . ">";
+                    //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                    //echo "<input type='hidden' value='1' name='value1'>";
+                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' align='center' id='oki1'>お気に入りを解除する</button>";
+                    echo "<button type='submit' name='favo' align='center' id='oki1'>お気に入りを解除する</button>";
                     echo "</form>";
-                }
-                ?>
-                <?php
-                $_SESSION[$value];
-                $_SESSION[$value1];
-
-                $s_table = $db->query("SELECT s_user_id FROM sanka_situations WHERE vol_id = $id AND s_user_id = $s_user_id");
-                foreach ($s_table as $get_table) {
-                    $table =  $get_table['s_user_id'];
-                }
-                //echo $id;
-                //echo $s_user_id;
-
-                if (empty($table)) {
-                    echo $id;
-                    $regist = $db->prepare("INSERT INTO sanka_situations(vol_id, s_user_id, read_flag, set_flag, favo_flag) VALUES (:vol_id, :s_user_id, :readf, :setf, :fav)");
-                    $regist->bindValue(":vol_id", $id, PDO::PARAM_INT);
-                    $regist->bindParam(":s_user_id", $s_user_id, PDO::PARAM_STR);
-                    $regist->bindValue(":readf", 0, PDO::PARAM_INT);
-                    $regist->bindValue(":setf", 0, PDO::PARAM_INT);
-                    $regist->bindValue(":fav", 0, PDO::PARAM_INT);
-                    $regist->execute();
-
-                    if ($_POST['value'] == 2) {
-                        $db->query("UPDATE sanka_situations SET set_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                    } else {
-                        $db->query("UPDATE sanka_situations SET set_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                    }
-                    if ($_POST['value1'] == 2) {
-                        $db->query("UPDATE sanka_situations SET favo_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                    } else {
-                        $db->query("UPDATE sanka_situations SET favo_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                    }
-                } else {
-                    if ($_POST['value'] == 2) {
-                        $db->query("UPDATE sanka_situations SET set_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                        //echo $id . "-" . $s_user_id;
-                    } else {
-                        $db->query("UPDATE sanka_situations SET set_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                    }
-                    if ($_POST['value1'] == 2) {
-                        $db->query("UPDATE sanka_situations SET favo_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                    } else {
-                        $db->query("UPDATE sanka_situations SET favo_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $id");
-                    }
                 }
                 ?>
 
