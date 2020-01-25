@@ -6,10 +6,10 @@
   if ($mail && $pswd){
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
-    $s_res = $db->query("select s_user_id,passwd from sanka_users where mail_address='".$mail."'")->fetch();
-    $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'")->fetch();
-    if ($s_res or $b_res){
-      if ($s_res){
+    $s_res = $db->exec("select s_user_id,passwd from sanka_users where mail_address='".$mail."'");
+    $b_res = $db->exec("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'");
+    if ($s_res == 0 or $b_res == 0){
+      if ($s_res == 0){
         $dir  = "sanka";
         $head = "s";
         $res  = $s_res;
