@@ -17,14 +17,21 @@
     $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-    $s_cnt = $db->query("select count(*) as num from sanka_users where mail_address='".$mail_address."'");
-    $b_cnt = $db->query("select count(*) as num from bosyu_users where mail_address='".$mail_address."'");
-    if ($s_cnt->fetchColumn() == 0  or $b_cnt->fetchColumn() == 0) {
+    $s_cnt = $db->query("select count(*) as num from sanka_users where mail_address='".$mail_address."'")->fetchColumn();
+    $b_cnt = $db->query("select count(*) as num from bosyu_users where mail_address='".$mail_address."'")->fetchColumn();
+
+    if ($s_cnt == false){
+      $s_cnt = 0;
+    }
+    if ($b_cnt == false){
+      $b_cnt = 0;
+    }
+    if ($s_cnt == 0  or $b_cnt == 0) {
       $check = "true";
     }
 
     //データベースに入れて良い値かの判定
-    if ($s_cnt->fetchColumn() == 0 && $b_cnt->fetchColumn() == 0 && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($mes) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
+    if ($s_cnt == 0 && $b_cnt == 0 && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($mes) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
         $s_user_id  = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
