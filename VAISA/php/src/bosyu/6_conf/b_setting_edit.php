@@ -39,29 +39,31 @@
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./b_setting.css">
-</head>
-<body>
+  <link rel="stylesheet" type="text/css" href="../../common/common.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+  <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
     <form method="post" name="back" action="../b_home.php">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-      <a href="javascript:back.submit()">
-        <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
-      </a>
+      <button type="submit">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </button>
     </form>
     <form method="post" name="home" action="../b_home.php">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-      <a href="javascript:home.submit()">
-        <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
-      </a>
+      <button type="submit">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </button>
     </form>
   </div>
 
 
   <div id="body-bk">
-    <div id="body" class="bg_test">
+    <div id="Toptitle2">
       <center> <!-- 中央寄せ -->
-        <h1> 募集側アカウント設定</h1>
+        アカウント設定
       </center>
     </div>
     <div id="body" class="radio size1">
