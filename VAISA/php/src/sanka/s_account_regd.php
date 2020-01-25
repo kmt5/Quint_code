@@ -1,60 +1,65 @@
 <?php
-  $place_id     = $_POST['area'];
+  $area_id      = $_POST['area_id'];
   $nickname     = $_POST['nickname'];
   $fullname     = $_POST['fullname'];
   $user_address = $_POST['user_address'];
   $age          = $_POST['age'];
   $gender       = $_POST['gender'];
-  $message      = $_POST['message'];
+  $mes          = $_POST['mes'];
   $mail_address = $_POST['mail_address'];
   $tel_num      = $_POST['tel_num'];
-  $passwd       = $_POST['password'];
+  $passwd       = $_POST['passwd'];
+
+  $check        = "false";//判定どうしよう js->呼び出された瞬間 php->読み込まれた瞬間 phpの判定結果を使うと動的にならないs
 
   //postが来てなければ飛ばす
-  if($nickname && $fullname && $place_id && $age && $gender && $mail_address && $tel_num && $passwd){
+  if($nickname && $fullname && $area_id && $user_address && $age && $gender && $mail_address && $tel_num && $passwd){
     $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
     $s_cnt = $db->exec("select mail_address from sanka_users where mail_address='".$mail_address."'");
     $b_cnt = $db->exec("select mail_address from bosyu_users where mail_address='".$mail_address."'");
+    if ($s_cnt == 0  or $b_cnt == 0) {
+      $check = "true";
+    }
 
     //データベースに入れて良い値かの判定
-    if ($s_cnt == 0 && $b_cnt == 0 && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($message) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
+    if ($s_cnt == 0 && $b_cnt == 0 && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($mes) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
-        $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
-        $s_id_sql     = "select s_user_id from sanka_users where s_user_id = '".$s_user_id."'";
-        $b_id_sql     = "select b_user_id from bosyu_users where b_user_id = '".$s_user_id."'";
-        $s_id_cnt     = $db->exec($s_id_sql);
-        $b_id_cnt     = $db->exec($b_id_sql);
+        $s_user_id  = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
+        $s_id_sql   = "select s_user_id from sanka_users where s_user_id = '".$s_user_id."'";
+        $b_id_sql   = "select b_user_id from bosyu_users where b_user_id = '".$s_user_id."'";
+        $s_id_cnt   = $db->exec($s_id_sql);
+        $b_id_cnt   = $db->exec($b_id_sql);
       } while (!($s_id_cnt == 0) or !($b_id_cnt == 0));
 
       $prof_path  = "/prof/$s_user_id.jpg";
       $qr_path    = "/qr/$s_user_id.jpg";
-      $point      = 0;
-      $rank       = "ブロンズ";
+      $poi        = 0;
+      $rnk        = "ブロンズ";
 
-      $sql    = "insert into sanka_users values(:s_user_id, :area_id, :nickname, :fullname, :user_address ,:age, :gender, :message, :mail_address, :tel_num ,:passwd ,:prof_path ,:qr_path ,:point ,:rank )";
+      $sql    = "insert into sanka_users values( :s_user_id, :area_id, :nickname, :fullname, :user_address, :age, :gender, :mes, :mail_address, :tel_num , :passwd , :prof_path , :qr_path , :poi , :rnk)";
       $stmt   = $db->prepare($sql);
       $params = array(':s_user_id'    => $s_user_id,
-                      ':area_id'      => $place_id,
+                      ':area_id'      => $area_id,
                       ':nickname'     => $nickname,
                       ':fullname'     => $fullname,
                       ':user_address' => $user_address,
                       ':age'          => $age,
                       ':gender'       => $gender,
-                      ':message'      => $message,
+                      ':mes'          => $mes,
                       ':mail_address' => $mail_address,
                       ':tel_num'      => $tel_num,
                       ':passwd'       => $passwd,
                       ':prof_path'    => $prof_path,
                       ':qr_path'      => $qr_path,
-                      ':point'        => $point,
-                      ':rank'         => $rank);
+                      ':poi'          => $poi,
+                      ':rnk'          => $rnk);
       $stmt->execute($params);
 
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){
-        echo'
+        echo '
           <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
@@ -78,20 +83,22 @@
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>PHP</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./CSS/s_home.css">
+  <link rel="stylesheet" type="text/css" href="../common/common.css">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <div id="header-fixed">
     <img border="0" src="../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
     <a href= "./s_account_regd_tos.html">
-      <img border="0" src="../common/back.jpg" width="20%" height="100%" class="back">
+      <p id="back"><i class="fas fa-reply"></i></p>
     </a>
   </div>
 
 
   <div id="body-bk">
-    <div id="body" class="bg_test">
+    <div id="Toptitle2">
       <center> <!-- 中央寄せ -->
-        <h1> 参加側アカウント登録</h1>
+        参加アカウント登録
       </center>
     </div>
     <div id="body" class="radio size1">
@@ -110,7 +117,7 @@
         <dd><input type = "text" name ="mail_address" id="input2"  class="waku"></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3"  class="waku"></dd>
+        <dd><input type = "text" name ="passwd" id="input3"  class="waku"></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
         <dd><input type = "text" name ="user_address" id="input4"  class="waku"></dd>
@@ -129,18 +136,18 @@
       <hr color="black"><br/>
 
       <dt>年齢</dt>
-      <dd><input type = "number" name ="age" id="input8" class="waku" ></dd>
+      <dd><input type = "number" name ="age" min="1" max="130" id="input8" class="waku" ></dd>
       <hr color="black"><br/><br/>
 
       <dt>ひとこと</dt>
-      <dd><input type = "text" name ="message" id="input6" class="waku" ></dd>
+      <dd><input type = "text" name ="mes" id="input6" class="waku" ></dd>
       <hr color="black"><br/><br/>
 
       <p>
         <dt>住所エリア選択</dt>
-        <dd><select name ="area" type="number"></dd>
-        <option value=2 id="option">高知</option>
-        <option value=3 id="option">愛媛</option>
+        <dd><select name ="area_id" type="number"></dd>
+        <option value='1' id="option">高知</option>
+        <option value='2' id="option">愛媛</option>
         </select>
       </p>
       <hr color="black"><br/>
@@ -156,72 +163,65 @@
 </div>
 
 <script type="text/javascript">
-function check() {
-  for(i = 0; i < document.request.length; i++) {
-    if (document.request.elements[i].type == "text") {
-      if (document.request.elements[i].value.length == 0) {
-          alert("入力していない項目があります");
-          return false;
-      }
-    }
-    if (i == 2){
+  function check() {
+    for(i = 0; i < document.request.length; i++) {
       if (document.request.elements[i].type == "text") {
-        if (30 < document.request.elements[2].value.length) {
-          alert("既に登録されたメールアドレスです");
-          return false;
+        if (document.request.elements[i].value.length == 0) {
+            alert("入力していない項目があります");
+            return false;
         }
       }
     }
-    if (i == 3) {
-      if (document.request.elements[i].type == "text") {
-        if (document.request.elements[3].value.length <= 7 && 12 <= document.request.elements[3].value.length) {
-          alert("パスワードに誤りがあります");
-          return false;
-        }
+
+    if (document.request.elements[2].type == "text") {
+      if (30 < document.request.elements[2].value.length) {//データベースまだ
+        alert("既に登録されたメールアドレスもしくは30文字以上の入力です。");
+        return false;
       }
     }
-    if (i == 4) {
-      if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length > 30) {
-          alert("住所に誤りがあります");
-          return false;
-        }
+
+    if (document.request.elements[3].type == "text") {
+      if (document.request.elements[3].value.length <= 7 && 12 <= document.request.elements[3].value.length) {
+        alert("パスワードに誤りがあります。7文字以上12文字以下に設定してください。");
+        return false;
       }
     }
-    if (i == 5) {
-      if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length >30) {
-          alert("電話番号に誤りがあります");
-          return false;
-        }
+
+    if (document.request.elements[4].type == "text") {
+      if (document.request.elements[4].value.length > 30) {
+        alert("住所は30文字以下で入力してください");
+        return false;
       }
     }
-    if (i == 6) {
-      if (document.request.elements[i].type == "number") {
-        if (document.request.elements[i].value.length <= 150) {
-          alert("年齢に誤りがあります");
-          return false;
-        }
+
+    if (document.request.elements[5].type == "text") {
+      if (document.request.elements[5].value.length >30) {
+        alert("電話番号には30文字以下で入力してください");
+        return false;
       }
     }
-    if (i == 7) {
-      if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length >20) {
-          alert("ひとことに誤りがあります");
-          return false;
-        }
+
+    if (document.request.elements[6].type == "number") {//多分動くことはない
+      if (document.request.elements[6].value >= 150) {
+        alert("年齢は本当にあっていますか？");
+        return false;
       }
     }
-    if (i == 8) {
-      if (document.request.elements[i].type == "text") {
-        if (document.request.elements[i].value.length >20) {
-          alert("ニックネームに誤りがあります");
-          return false;
-        }
+
+    if (document.request.elements[7].type == "text") {
+      if (document.request.elements[7].value.length >20) {
+        alert("ひとことは20文字以下で入力してください");
+        return false;
+      }
+    }
+
+    if (document.request.elements[8].type == "text") {
+      if (document.request.elements[8].value.length >20) {
+        alert("ニックネームは20文字以下で入力してください");
+        return false;
       }
     }
   }
-}
 </script>
 
 
