@@ -120,7 +120,7 @@ $now_year=(int)date("Y",strtotime($now_time));
         echo '<button type = "submit" name = "add" id="ad" class="del" onclick="return adVol()">登録解除</button>';
         echo '<input type = "hidden" name = "advol" value="'.$row['vol_id'].'">';
         echo '</form>';
-        echo  '<img src=".../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
+        echo  '<img src="../../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
         echo '<br>';
         echo '</div>';
     }

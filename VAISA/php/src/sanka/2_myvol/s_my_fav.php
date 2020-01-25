@@ -117,7 +117,7 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '<button type = "submit" name = "fav" id="ad" class="del" onclick="return favVol()">お気に入り解除</button>';
       echo '<input type = "hidden" name = "favol" value="'.$row['vol_id'].'">';
       echo '</form>';
-      echo  '<img src="../prof/'.$row['vol_fig_path'].'" class="img">';
+      echo  '<img src="../../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
       echo '<br>';
       echo '</div>';
     }

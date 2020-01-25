@@ -136,7 +136,7 @@ $user_id='1234567a';
           echo '<br>';
           echo '獲得ポイント '.$row['point'];
           echo '<br>';
-          echo '<img src=".../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img2">';
+          echo '<img src="../../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img2">';
           echo '</div>';
          }
          if($count1 == 0){
