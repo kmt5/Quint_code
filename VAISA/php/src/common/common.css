@@ -35,27 +35,27 @@ div#footer-fixed
     height: 250px;              /* 縦幅140px */
 }
 
-p#back {
+#back {
   position: absolute;/*絶対配置*/
   color: black;
   margin:auto;
-  top: 0;
-  left: 30px;
+  top: 40px;
+  left: 50px;
   font-size:180px;
   }
 
-  p#home {
+#home {
       color: black;
     position: absolute;/*絶対配置*/
     margin:auto;
-    top: 0;
-    right: 30px;
+    top: 40px;
+    right: 50px;
     font-size:180px;
     }
 
 /* ボディの定義 */
 div#body-bk{
-    padding:250px 0 250px 0;    /* 上下に250pxを余白を取る */
+    padding:175px 0 250px 0;    /* 上下に250pxを余白を取る */
 
 }
 

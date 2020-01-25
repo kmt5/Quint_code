@@ -1,5 +1,5 @@
 <?php
-  $user_id='1234567a';
+  $user_id=$_POST['s_user_id'];
   $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db = new PDO($dsn, 'root', 'root');
   if(isset($_POST['reject'])){
@@ -20,15 +20,22 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-  <div id="header-fixed">
-    <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-    <a href= "s_frd_add.php">
+<div id="header-fixed">
+      <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+
+      <form method="post" name="back" action="s_frd_add.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+      <button type="submit">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-    </a>
-    <a href= "s_home.php">
+      </button>
+      </form>
+      <form method="post" name="home" action="../s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+      <button type="submit">
       <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-    </a>
-  </div>
+      </button>
+      </form>
+    </div>
 
   <div id="body-bk">
     <div id="body">
