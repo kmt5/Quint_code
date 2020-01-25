@@ -17,15 +17,22 @@
     $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
-    $s_cnt = $db->query("select count(*) as num from sanka_users where mail_address='".$mail_address."'")->fetchColumn();
-    $b_cnt = $db->query("select count(*) as num from bosyu_users where mail_address='".$mail_address."'")->fetchColumn();
+    $s_cnt = $db->query("select count(*) as num from sanka_users where mail_address='".$mail_address."'");
+    $b_cnt = $db->query("select count(*) as num from bosyu_users where mail_address='".$mail_address."'");
 
     if ($s_cnt == false){
       $s_cnt = 0;
+    }else{
+      $s_cnt = $s_cnt->fetchColumn();
     }
     if ($b_cnt == false){
       $b_cnt = 0;
+    }else{
+      $b_cnt = $b_cnt->fetchColumn();
     }
+
+    echo $s_cnt;
+    echo $b_cnt;
     if ($s_cnt == 0  or $b_cnt == 0) {
       $check = "true";
     }
