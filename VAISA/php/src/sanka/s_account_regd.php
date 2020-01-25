@@ -16,14 +16,15 @@
   if($nickname && $fullname && $area_id && $user_address && $age && $gender && $mail_address && $tel_num && $passwd){
     $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
-    $s_res = $db->query("select mail_address from sanka_users where mail_address='".$mail_address."'");
-    $b_res = $db->query("select mail_address from bosyu_users where mail_address='".$mail_address."'");
-    if (!$s_res or !$b_res) {
+    $s_res = $db->exec("select mail_address from sanka_users where mail_address='".$mail_address."'");
+    $b_res = $db->exec("select mail_address from bosyu_users where mail_address='".$mail_address."'");
+    if ($s_res == 0 or $b_res == 0) {
       $check = "true";
+      echo 'error';
     }
 
     //データベースに入れて良い値かの判定
-    if (!$s_res && !$b_res && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($message) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
+    if ($s_res == 0 && $b_res == 0 && mb_strlen($nickname) <= 20 && mb_strlen($fullname) <= 20 && $age <= 256 && mb_strlen($message) <= 20 && mb_strlen($tel_num) <= 30 && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
         $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
