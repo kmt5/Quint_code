@@ -9,14 +9,10 @@
     $s_res = $db->query("select s_user_id,passwd from sanka_users where mail_address='".$mail."'");
     $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'");
 
-    if ($s_res == false){
-      $s_res = 0;
-    }else{
+    if ($s_res != false){
       $s_res = $s_res->fetch();
     }
-    if ($b_res == false){
-      $b_res = 0;
-    }else{
+    if ($b_res != false){
       $b_res = $b_res->fetch();
     }
     echo $s_res;
