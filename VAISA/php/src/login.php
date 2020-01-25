@@ -19,6 +19,8 @@
     }else{
       $b_res = $b_res->fetch();
     }
+    echo $s_res;
+    echo $b_res;
 
     if ($s_res or $b_res){
       if ($s_res){
