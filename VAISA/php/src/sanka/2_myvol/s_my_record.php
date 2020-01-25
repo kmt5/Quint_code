@@ -277,7 +277,12 @@ if($count12 == 0){
     // ▼B：タブの切り替え処理
     // ---------------------------
     function changeTab() {
+      for(var i=0; i<tabs.length; i++) {
 
+      tabs[i].style.background = '#92d050';
+ }
+var tabnumber = this.id;
+tabs[tabnumber].style.background = 'white';
        // ▼B-1. href属性値から対象のid名を抜き出す
        var targetid = this.href.substring(this.href.indexOf('#')+1,this.href.length);
        // ▼B-2. 指定のタブページだけを表示する
@@ -302,6 +307,11 @@ if($count12 == 0){
     // ---------------------------
     // ▼D：最初のタブ選択しておく
     // ---------------------------
+    if(tabs.length == 3) {
+       tabs[3].onclick();
+     }else if(tabs.length == 12){
+       tabs[9].onclick();
+     }
     tabs[9].onclick();
     // ---------------------------
     // 初期は直近3カ月表示のため右矢印を選択不可
