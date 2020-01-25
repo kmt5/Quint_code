@@ -64,7 +64,7 @@
 
       } while ($s_cnt != 0 or $b_cnt != 0);
 
-      $msg = null;
+      /*$msg = null;
       // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
       // POSTでアップロードされたファイルだったら
       if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
@@ -98,7 +98,7 @@
           }else {
               $msg = 'アップロードに失敗しました';
           }
-      }
+      }*/
 
       $prof_path  = "/prof/$new_name";
       $qr_path    = "empty";
@@ -126,7 +126,7 @@
 
       var_dump($stmt->errorInfo());
       //データベースに正常にinsertできたかの判定
-      /*if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
+      if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
         echo '
           <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
@@ -134,7 +134,7 @@
           </form>
           <script>
             document.forms[0].submit();
-          </script>';*/
+          </script>';
       }else{
         echo "error insert";
       }
