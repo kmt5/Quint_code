@@ -12,10 +12,16 @@
 
   $check        = "false";//判定どうしよう js->呼び出された瞬間 php->読み込まれた瞬間 phpの判定結果を使うと動的にならないs
 
+  $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+  $db    = new PDO($dsn, 'root', 'root');
+  if ($area_data = $db->query("SELECT DISTINCT area_id, area_name, pref_name FROM areas")) {
+    foreach ($area_data as $area_datas) {
+      $pulldown .= "<option value='" . $area_datas['area_id'] . "' id='option'>" .$area_datas['pref_name']." ".$area_datas['area_name'] . "</option>";
+    }
+  }
+
   //postが来てなければ飛ばす
   if($nickname && $fullname && $area_id && $user_address && $age && $gender && $mail_address && $tel_num && $passwd){
-    $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
-    $db    = new PDO($dsn, 'root', 'root');
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
     $s_cnt = $db->query("select count(*) as num from sanka_users where mail_address='".$mail_address."'");
     $b_cnt = $db->query("select count(*) as num from bosyu_users where mail_address='".$mail_address."'");
@@ -58,8 +64,44 @@
 
       } while ($s_cnt != 0 or $b_cnt != 0);
 
-      $prof_path  = "/prof/$s_user_id.jpg";
-      $qr_path    = "/qr/$s_user_id.jpg";
+      $msg = null;
+      // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
+      // POSTでアップロードされたファイルだったら
+      if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
+          $old_name = $_FILES['pic']['tmp_name'];
+      //  もしprofというフォルダーがなければ
+          if(!file_exists('../prof')){
+              mkdir('../prof');
+          }
+          $new_name = $s_user_id;
+          list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
+          echo ($type);
+          switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
+              case 3:
+                  $new_name .= '.jpg';
+                  break;
+              case IMAGETYPE_GIF:
+                  $new_name .= '.gif';
+                  break;
+              case 2:
+                  $new_name .= '.png';
+                  break;
+              default:
+                  header('Location: s_account_regd.php');
+                  exit();
+          }
+      //  もし一時的なファイル名の$_FILES['pic']ファイルを
+      //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
+          $gazou = basename($_FILES['pic']['name']);
+          if(move_uploaded_file($old_name, '../prof/'.$new_name)){
+              $msg = $gazou. 'のアップロードに成功しました';
+          }else {
+              $msg = 'アップロードに失敗しました';
+          }
+      }
+
+      $prof_path  = "/prof/$new_name";
+      $qr_path    = "empty";
       $poi        = 0;
       $rnk        = "ブロンズ";
 
@@ -84,7 +126,7 @@
 
       var_dump($stmt->errorInfo());
       //データベースに正常にinsertできたかの判定
-      if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
+      /*if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
         echo '
           <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
@@ -92,7 +134,7 @@
           </form>
           <script>
             document.forms[0].submit();
-          </script>';
+          </script>';*/
       }else{
         echo "error insert";
       }
@@ -100,7 +142,6 @@
     }else{
       echo "plz input other forms.";
     }
-  }
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -128,7 +169,7 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form name="request" action="#" method="post" onsubmit="return check();">
+      <form name="request" action="#" method="post" enctype="multipart/form-data" onsubmit="return check();">
         <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -172,8 +213,10 @@
       <p>
         <dt>住所エリア選択</dt>
         <dd><select name ="area_id" type="number"></dd>
-        <option value='1' id="option">高知</option>
-        <option value='2' id="option">愛媛</option>
+            <option value="none" selected>----選択してください----</option>
+            <?php
+            echo $pulldown;
+            ?>
         </select>
       </p>
       <hr color="black"><br/>
