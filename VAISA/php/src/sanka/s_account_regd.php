@@ -28,11 +28,9 @@
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
         $s_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
-        $s_id_sql     = "select s_user_id from sanka_users where s_user_id = '".$s_user_id."'";
-        $b_id_sql     = "select b_user_id from bosyu_users where b_user_id = '".$s_user_id."'";
-        $s_id_cnt     = $db->exec($s_id_sql);
-        $b_id_cnt     = $db->exec($b_id_sql);
-      } while ($s_id_cnt == 0 or $b_id_cnt == 0);
+        $s_cnt        = $db->exec("select s_user_id from sanka_users where s_user_id = '".$s_user_id."'");
+        $b_cnt        = $db->exec("select b_user_id from bosyu_users where b_user_id = '".$s_user_id."'");
+      } while ($s_cnt == 0 or $b_cnt == 0);
 
       $prof_path  = "/prof/$s_user_id.jpg";
       $qr_path    = "/qr/$s_user_id.jpg";
