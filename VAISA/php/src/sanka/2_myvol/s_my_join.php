@@ -105,16 +105,22 @@ $now_year=(int)date("Y",strtotime($now_time));
         continue;
       }
         echo '<h1>';
+        echo '<form method="post" name="form1" action="../1_search/s_search_result_vol.php">';
+        echo '<input type="hidden" name="vol_id" value="'.$row['vol_id'].'">';
+        echo '<a href="javascript:form1.submit()">';
         echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
         echo '<br>';
         echo '場所 '.$row['vol_place'];
         echo '<br>';
         echo '内容 '.$row['vol_name'];
+        echo '</a>';
+        echo '</form>';
+
         echo '<form method="POST">';
         echo '<button type = "submit" name = "add" id="ad" class="del" onclick="return adVol()">登録解除</button>';
         echo '<input type = "hidden" name = "advol" value="'.$row['vol_id'].'">';
         echo '</form>';
-        echo  '<img src=".../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
+        echo  '<img src="../../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
         echo '<br>';
         echo '</div>';
     }
