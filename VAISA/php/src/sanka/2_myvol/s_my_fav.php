@@ -12,11 +12,11 @@ if(isset($_POST['fav'])){
 <html>
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
-  <title>お気に入り</title> <!-- ページのタイトル -->
+  <title>参加登録ボランティア</title> <!-- ページのタイトル -->
   <link rel="stylesheet" type="text/css" href="./CSS/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/tab.css">
-　<link rel="stylesheet" type="text/css" href="./CSS/my_fav.css">
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./CSS/my_fav.css">
 </head>
 <body>
   <div id="header-fixed">
@@ -33,12 +33,11 @@ if(isset($_POST['fav'])){
       <div id ="Toptitle2">
         マイボランティア
         <div id ="Toptitle-my">
-        <i class="fa fa-heart" aria-hidden="true"></i>
+        <i class="fa fa-heart"></i>
           お気に入り
         </div>
       </div>
-
-<?php
+      <?php
 
 $now_time=date("Y/m/d");
 $now_month=(int)date("m",strtotime($now_time));
