@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
@@ -8,15 +7,12 @@ $db = new PDO($dsn, 'root', 'root');
 $s_user_id = $_POST["s_user_id"];
 $vol_id = $_POST['vol_id'];
 
-
 if (isset($_POST['sanka'])) {
     echo "set" . $_SESSION['set'];
     if ($_SESSION['set'] == 1) {
-        echo "1ここ！";
         $db->query("UPDATE sanka_situations SET set_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
     } else {
         $db->query("UPDATE sanka_situations SET set_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
-        echo "2ここ！";
     }
 } else if (isset($_POST['favo'])) {
     echo "favo" . $_SESSION['favo'];
@@ -78,13 +74,17 @@ $getName = $db->query("SELECT pref_name FROM areas WHERE pref_id = $pref_id");
 foreach ($getName as $get_name) {
     $pref_name =  $get_name['pref_name'];
 }
-$getName = $db->query("SELECT spec_rank FROM volunteers WHERE vol_id = $vol_id");
+$getName = $db->query("SELECT spec_rank, rank_spec_flag, b_user_id FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $spec_rank =  $get_name['spec_rank'];
-}
-$getName = $db->query("SELECT b_user_id FROM volunteers WHERE vol_id = $vol_id");
-foreach ($getName as $get_name) {
+    $rank_spec_flag =  $get_name['rank_spec_flag'];
     $b_user_id =  $get_name['b_user_id'];
+}
+$getName = $db->query("SELECT groupname, address, tel_num FROM bosyu_users WHERE b_user_id = $b_user_id");
+foreach ($getName as $get_name) {
+    $groupname =  $get_name['groupname'];
+    $address =  $get_name['address'];
+    $tel_num =  $get_name['tel_num'];
 }
 $getName = $db->query("SELECT area_id FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
@@ -94,7 +94,6 @@ $getName = $db->query("SELECT area_name FROM areas WHERE area_id = $area_id");
 foreach ($getName as $get_name) {
     $area_name =  $get_name['area_name'];
 }
-
 $getName = $db->query("SELECT point FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $point =  $get_name['point'];
@@ -119,8 +118,10 @@ $getName = $db->query("SELECT favo_flag FROM sanka_situations WHERE vol_id = $vo
 foreach ($getName as $get_name) {
     $value1 =  $get_name['favo_flag'];
 }
-echo $value;
-echo $value1;
+$s_table = $db->query("SELECT rank FROM sanka_users WHERE s_user_id = $s_user_id");
+foreach ($s_table as $get_table) {
+    $rank =  $get_table['rank'];
+}
 
 $s_table = $db->query("SELECT s_user_id FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
 foreach ($s_table as $get_table) {
@@ -187,12 +188,45 @@ if (empty($table)) {
                         <?php if ($vol_fig_path == null) {
                             echo "登録されている写真はありません。";
                         } else {
-                            echo "<img src=../b_vol_regd/" . $vol_fig_path . ">";
+                            echo "<img src=../../bosyu/1_vol_regd/" . $vol_fig_path . ">";
                         } ?>
                         <br><br>
+                        <?php
+                        if ($newbie_flag == 1) {
+                        echo "<h2>初心者OK</h2>";
+                        }
+                        $can_ap = 0;
+                        if ($spec_rank == '指定なし') {
+                            $can_ap = 1;
+                        } else if ($spec_flag == 'ブロンズ') {
+                            if ($rank == 'ブロンズ' || $rank == 'シルバー' || $rank == 'ゴールド' || $rank == 'プラチナ') {
+                                $can_ap = 1;
+                            }
+                        } else if ($spec_rank == 'シルバー') {
+                            if ($rank == 'シルバー' || $rank == 'ゴールド' || $rank == 'プラチナ') {
+                                $can_ap = 1;
+                            }
+                        } else if ($spec_rank == 'ゴールド') {
+                            if ($rank == 'ゴールド' || $rank == 'プラチナ') {
+                                $can_ap = 1;
+                            }
+                        } else if ($spec_rank == 'プラチナ') {
+                            if ($rank == 'プラチナ') {
+                                $can_ap = 1;
+                            }
+                        }
+                        ?>
+                        <br>
+                        <h2>ランク指定</h2>
+                        <p><?php echo $spec_rank; ?></p>
+                        <br>
                         <h2>詳細</h2>
                         <p><?php echo $vol_detail; ?></p>
                         <br>
+                        <h2>団体情報・連絡先</h2>
+                        <p><?php echo "団体名：".$groupname; ?></p><br>
+                        <p><?php echo "住所：".$address; ?></p><br>
+                        <p><?php echo "電話番号：".$tel_num; ?></p>
                 </form>
                 <script>
                     function check() {
@@ -236,7 +270,9 @@ if (empty($table)) {
                     }
                 </script>
                 <?php
-                if ($value == 0) {
+                if ($can_ap == 0) {
+                    echo "このボランティアは".$spec_rank."以上の方しか参加することができません";
+                } else if ($value == 0) {
                     $_SESSION['set'] = 1;
                     echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check()'>";
                     //echo "<input type='hidden' value='2' name='value'>";
