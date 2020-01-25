@@ -4,12 +4,10 @@
   //データベースに接続(vaisa)
   $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db = new PDO($dsn, 'root', 'root');
-  $s_res = $db->query("select s_user_id,passwd from sanka_users where mail_address='".$mail."'");
-  $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'");
-  $s_cnt = $s_res->rowCount();
-  $b_cnt = $b_res->rowCount();
-  if ($s_cnt or $b_cnt){
-    if ($s_cnt){
+  $s_res = $db->query("select s_user_id,passwd from sanka_users where mail_address='".$mail."'")->fetch();
+  $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'")->fetch();
+  if ($s_res or $b_res){
+    if ($s_res){
       $dir  = "sanka";
       $head = "s";
       $res  = $s_res;
@@ -18,16 +16,14 @@
       $head = "b";
       $res  = $b_res;
     }
-    foreach( $res as $value ) {
-      if("$value[1]" == $pswd){//$value[0] = パスワード , $value[1] = ユーザID
-        echo '
-        <form method="post" action="./'.$dir.'/'.$head.'_home.php">
-          <input type="hidden" name="'.$head.'_user_id" value="'.$value[0].'" />
-        </form>
-        <script>
-          document.forms[0].submit();
-        </script>';
-      }
+    if("$res[1]" == $pswd){//$res[0] = ユーザID, $res[1] = パスワード
+      echo '
+      <form method="post" action="./'.$dir.'/'.$head.'_home.php">
+        <input type="hidden" name="'.$head.'_user_id" value="'.$res[0].'" />
+      </form>
+      <script>
+        document.forms[0].submit();
+      </script>';
     }
   }
 ?>
