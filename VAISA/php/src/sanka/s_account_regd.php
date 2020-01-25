@@ -31,8 +31,6 @@
       $b_cnt = $b_cnt->fetchColumn();
     }
 
-    echo $s_cnt;
-    echo $b_cnt;
     if ($s_cnt == 0  or $b_cnt == 0) {
       $check = "true";
     }
@@ -46,7 +44,19 @@
         $b_id_sql   = "select count(*) from bosyu_users where b_user_id = '".$s_user_id."'";
         $s_cnt   = $db->query($s_id_sql);
         $b_cnt   = $db->query($b_id_sql);
-      } while (!($s_cnt->fetchColumn() == 0) or !($b_cnt->fetchColumn() == 0));
+
+        if ($s_cnt == false){
+          $s_cnt = 0;
+        }else{
+          $s_cnt = $s_cnt->fetchColumn();
+        }
+        if ($b_cnt == false){
+          $b_cnt = 0;
+        }else{
+          $b_cnt = $b_cnt->fetchColumn();
+        }
+
+      } while ($s_cnt != 0 or $b_cnt != 0);
 
       $prof_path  = "/prof/$s_user_id.jpg";
       $qr_path    = "/qr/$s_user_id.jpg";
