@@ -77,7 +77,7 @@
 
         request3.type = 'hidden'; //入力フォームが表示されないように
         request3.name = 'b_user_id';
-        request3.value = <?php echo $b_user_id; ?>;
+        request3.value = '<?php echo $b_user_id; ?>';
 
         form.appendChild(request3);
 
