@@ -38,6 +38,22 @@
       $poi        = 0;
       $rnk        = "ブロンズ";
 
+      /*echo $s_user_id;
+      echo $area_id;
+      echo $nickname;
+      echo $fullname;
+      echo $user_address;
+      echo $age;
+      echo $gender;
+      echo $mes;
+      echo $mail_address;
+      echo $tel_num;
+      echo $passwd;
+      echo $prof_path;
+      echo $qr_path;
+      echo $poi;
+      echo $rnk;*/
+
       $sql    = "insert into sanka_users values( :s_user_id, :area_id, :nickname, :fullname, :user_address, :age, :gender, :mes, :mail_address, :tel_num , :passwd , :prof_path , :qr_path , :poi , :rnk)";
       $stmt   = $db->prepare($sql);
       $params = array(':s_user_id'    => $s_user_id,
@@ -55,18 +71,33 @@
                       ':qr_path'      => $qr_path,
                       ':poi'          => $poi,
                       ':rnk'          => $rnk);
-      $stmt->execute($params);
+      /*$stmt->bindValue(':s_user_id', $s_user_id, PDO::PARAM_STR);
+      $stmt->bindValue(':area_id', $area_id, PDO::PARAM_INT);
+      $stmt->bindValue(':nickname', $nickname, PDO::PARAM_STR);
+      $stmt->bindValue(':fullname', $fullname, PDO::PARAM_STR);
+      $stmt->bindValue(':user_address', $user_address, PDO::PARAM_STR);
+      $stmt->bindValue(':age', $age, PDO::PARAM_INT);
+      $stmt->bindValue(':gender', $gender, PDO::PARAM_STR);
+      $stmt->bindValue(':mes', $message, PDO::PARAM_STR);
+      $stmt->bindValue(':mail_address', $mail_address, PDO::PARAM_STR);
+      $stmt->bindValue(':tel_num', $tel_num, PDO::PARAM_STR);
+      $stmt->bindValue(':passwd', $passwd, PDO::PARAM_STR);
+      $stmt->bindValue(':prof_path', $prof_path, PDO::PARAM_STR);
+      $stmt->bindValue(':qr_path', $qr_path, PDO::PARAM_STR);
+      $stmt->bindValue(':poi', $poi, PDO::PARAM_INT);
+      $stmt->bindValue(':rnk', $rnk, PDO::PARAM_STR);*/
+      $stmt->execute($params);//();
 
       //データベースに正常にinsertできたかの判定
-      if ($stmt->rowCount()){
-        echo '
+      if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
+        /*echo '
           <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
           </form>
           <script>
             document.forms[0].submit();
-          </script>';
+          </script>';*/
       }else{
         echo "error insert";
       }
