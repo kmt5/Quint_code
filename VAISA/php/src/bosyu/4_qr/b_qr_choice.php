@@ -36,7 +36,7 @@
   <div id="body-bk">
     <div id="Toptitle1">
       <center> <!-- 中央寄せ -->
-        QRコード
+        <i class="fas fa-camera"></i>QRコード
       </center>
     </div>
     <div id="body">

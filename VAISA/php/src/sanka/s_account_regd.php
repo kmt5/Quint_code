@@ -61,8 +61,8 @@
         }else{
           $b_cnt = $b_cnt->fetchColumn();
         }
-
-      } while ($s_cnt != 0 or $b_cnt != 0);
+      }
+       while ($s_cnt != 0 or $b_cnt != 0);
 
       /*$msg = null;
       // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
@@ -142,6 +142,7 @@
     }else{
       echo "plz input other forms.";
     }
+  }
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -172,7 +173,6 @@
       <form name="request" action="#" method="post" enctype="multipart/form-data" onsubmit="return check();">
         <dl>
       <center> <!-- 中央寄せ -->
-      <h2>
         <dt>プロフィール画像</dt>
         <dd><input type="file" name="pic"></dd>
         <hr color="black"><br/>

@@ -43,10 +43,8 @@
   </div>
 
   <div id="body-bk">
-    <div id="body" class="bg_test2">
-      <center> <!-- 中央寄せ -->
-        <h1> 参加側アカウント設定</h1>
-      </center>
+    <div id="Toptitle2">
+        <i class="fas fa-cogs"></i>アカウント設定
       </div>
     <div id="body" class="size3">
       <center> <!-- 中央寄せ -->
