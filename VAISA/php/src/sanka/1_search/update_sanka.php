@@ -13,9 +13,12 @@
 <body>
     <div id="header-fixed">
       <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-        <a href="../s_home.php">
-          <p id="home"><i class="fas fa-home"></i></p>
-        </a>
+      <form method="post" name="formhome" action="../s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
+    </form>
     </div>
     <div id="body-bk">
         <div id="body">
