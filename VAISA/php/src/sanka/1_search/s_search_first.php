@@ -13,13 +13,15 @@ $s_user_id = $_POST["s_user_id"];
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <form method="post" name="form1" action="../s_home.php">
-    <a href="javascript:form1.submit()">
+    <form method="post" name="formback" action="../s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formback.submit()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
   </form>
-  <form method="post" name="form1" action="../s_home.php">
-    <a href="javascript:form1.submit()">
+  <form method="post" name="formhome" action="../s_home.php">
+    <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formhome.submit()">
       <p id="home"><i class="fas fa-home"></i></p>
     </a>
   </form>
@@ -30,11 +32,11 @@ $s_user_id = $_POST["s_user_id"];
       <div id ="Toptitle1">
         検索
       </div>
-      <form method="post" name="form1" action="s_search_area_spe.php">
-        <a href="javascript:form1.submit()" class="btn-point1">地域を選択して検索</a>
+      <form method="post" name="form0" action="s_search_area_spe.php">
+        <a href="javascript:form0.submit()" class="btn-point1">地域を選択して検索</a>
       </form>
-      <form method="post" name="form1" action="s_search_area_edit.php">
-        <a href="javascript:form1.submit()" class="btn-point2">登録地域周辺で検索</a>
+      <form method="post" name="form01" action="s_search_area_edit.php">
+        <a href="javascript:form01.submit()" class="btn-point2">登録地域周辺で検索</a>
       </form>
     </div>
   </div>
