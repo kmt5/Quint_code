@@ -61,8 +61,17 @@
                       ':profile_path' => $profile_path);
       $stmt->execute($params);
 
+      $sql    = "insert into payments values( :b_user_id, null)";
+      $stmt2  = $db->prepare($sql);
+      $params = array(':b_user_id' => $b_user_id);
+      $stmt2->execute($params);
+
+      $sql    = "insert into options values( :b_user_id, 0, 0, 0, 0)";
+      $stmt3  = $db->prepare($sql);
+      $stmt3->execute($params);
+
       //データベースに正常にinsertできたかの判定
-      if ($stmt->rowCount()){
+      if ($stmt->rowCount() && $stmt2->rowCount() && $stmt3->rowCount()){
         echo '
           <form method="post" action="./b_account_regd_comp.php">
             <input type="hidden" name="b_user_id" value "'.$b_user_id.'" />
