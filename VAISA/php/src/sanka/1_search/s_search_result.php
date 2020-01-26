@@ -334,6 +334,11 @@ echo "<br>" . $near_date;
           echo "<input type='hidden' name='year' value=" . $_POST["year"] . ">";
           echo "<input type='hidden' name='vol_date_near' value=" . $vol_date_near . ">";
           echo "<input type='hidden' name='newbie_flag' value=" . $newbie_flag . ">";
+          //書き換え
+          echo "<input type='hidden' name='month' value=" . $_POST["month"] . ">";
+          echo "<input type='hidden' name='day' value=" . $_POST["day"] . ">";
+          echo "<input type='hidden' name='area_id' value=" . $area_id . ">";      
+          //やほー
           echo "<button type='submit' class='vol'>" . $vol_name[$i] . "</button>";
           echo "</form>";
 
