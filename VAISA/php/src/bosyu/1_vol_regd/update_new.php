@@ -3,7 +3,7 @@
 $b_user_id = $_POST["b_user_id"];
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-echo $b_user_id;
+
 if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
   if (!file_exists('upload')) {
     mkdir('upload');
@@ -37,8 +37,9 @@ echo $newbie_flag = $_POST["newbie_flag"];
 echo $vol_detail = $_POST["detail"];
 echo $pref_id = $_POST["select_pref"];
 echo $spec_rank = $_POST["spec_rank"];
+echo "spec_rank:".$spec_rank;
 if ($spec_rank == null) {
-  $spec_rank = '指定なし';
+    $spec_rank = '指定なし';
 }
 echo $area_id = $_POST["select_area"];
 echo $num = $vol_fin_time - $vol_beg_time;
@@ -157,8 +158,8 @@ $db = null;
         } ?>
         <br><br>
         <label>ランク指定　</label>
-        <?php
-        echo "<p class='dezain'>$spec_rank</p>";
+        <?php 
+          echo "<p class='dezain'>$spec_rank</p>";
         ?>
         <br><br>
         <h2>詳細</h2>
