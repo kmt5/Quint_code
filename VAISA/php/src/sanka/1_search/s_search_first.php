@@ -14,7 +14,7 @@ $s_user_id = $_POST["s_user_id"];
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <form method="post" name="formback" action="../s_home.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
     <a href="javascript:formback.submit()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
@@ -33,11 +33,9 @@ $s_user_id = $_POST["s_user_id"];
         検索
       </div>
       <form method="post" name="form0" action="s_search_area_spe.php">
-      <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
         <a href="javascript:form0.submit()" class="btn-point1">地域を選択して検索</a>
       </form>
       <form method="post" name="form01" action="s_search_area_edit.php">
-      <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
         <a href="javascript:form01.submit()" class="btn-point2">登録地域周辺で検索</a>
       </form>
     </div>
