@@ -37,6 +37,9 @@ echo $newbie_flag = $_POST["newbie_flag"];
 echo $vol_detail = $_POST["detail"];
 echo $pref_id = $_POST["select_pref"];
 echo $spec_rank = $_POST["spec_rank"];
+if ($spec_rank == null) {
+  $spec_rank = '指定なし';
+}
 echo $area_id = $_POST["select_area"];
 echo $num = $vol_fin_time - $vol_beg_time;
 echo $point = strval($num);
@@ -154,11 +157,9 @@ $db = null;
         } ?>
         <br><br>
         <label>ランク指定　</label>
-        <?php if ($spec_rank == 0) {
-          echo "<p class='dezain'>指定なし</p>";
-        } else {
-          echo "<p class='dezain'>$spec_rank</p>";
-        } ?>
+        <?php
+        echo "<p class='dezain'>$spec_rank</p>";
+        ?>
         <br><br>
         <h2>詳細</h2>
         <?php echo $vol_detail; ?>
