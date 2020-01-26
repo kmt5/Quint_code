@@ -15,7 +15,7 @@ if(isset($_FILES)&& isset($_FILES['image']) && is_uploaded_file($_FILES['image']
 }?>
 <?php
 $vol_id = $_POST["vol_id"];
-$db->query("UPDATE volunteers SET vol_name = $vol_name WHERE vol_id = $vol_id");
+//$db->query("UPDATE volunteers SET vol_name = $vol_name WHERE vol_id = $vol_id");
 //echo $vol_name = $_POST["vol_name"];echo "<br>";
 $vol_date = $_POST["vol_date"];echo "<br>";
 //echo $vol_date;
