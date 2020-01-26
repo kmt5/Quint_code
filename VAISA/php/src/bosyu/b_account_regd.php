@@ -117,19 +117,19 @@
             <hr color="black"><br/>
 
             <dt>会社・団体</dt>
-            <dd><input type = "text" name="groupname" id="a" value="" class="waku"></dd>
+            <dd><input type = "text" name="groupname" id="a" value="" class="waku" required></dd>
             <hr color="black"><br/>
             <dt>メールアドレス</dt>
-            <dd><input type = "text" name="mail_address" id="b" value="" class="waku"></dd>
+            <dd><input type = "text" name="mail_address" id="b" value="" class="waku" required></dd>
             <hr color="black"><br/><br/>
             <dt>パスワード</dt>
-            <dd><input type = "text" name="password" id="c" value="" class="waku"></dd>
+            <dd><input type = "text" name="password" id="c" value="" class="waku" required></dd>
             <hr color="black"><br/><br/>
             <dt>住所</dt>
-            <dd><input type = "text" name="user_address" id="d" value="" class="waku"></dd>
+            <dd><input type = "text" name="user_address" id="d" value="" class="waku" required></dd>
             <hr color="black"><br/><br/>
             <dt>電話番号</dt>
-            <dd><input type = "text" name="tel_num" id="f" value="" class="waku"></dd>
+            <dd><input type = "text" name="tel_num" id="f" value="" class="waku" required></dd>
             <hr color="black"><br/><br/>
             <br>
             <input type="submit" value="登録完了" class="btn-square1b"><br>
