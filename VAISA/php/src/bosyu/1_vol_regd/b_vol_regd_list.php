@@ -64,7 +64,7 @@ $db = null;
               $vol_id = $vol_id_html[$i];
               echo "<div class='vollist'>";
               echo "<p>".$vol_name[$i]."</p>";
-              echo "<form action='vol_regd_edit.php' method='post'>";
+              echo "<form action='b_vol_regd_edit.php' method='post'>";
               echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
               echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
               echo "<button type='submit' align='center' id='listbutton'><i class='fas fa-edit'></i>　編集</button>";
