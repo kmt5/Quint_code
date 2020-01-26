@@ -47,24 +47,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
       </div>
       <div width="100%" class="new">
         <h1 align="center">ボランティア内容</h1>
-        <script type="text/javascript">
-            function check() {
 
-                if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
-
-                    return true; // 「OK」時は送信を実行
-
-                } else { // 「キャンセル」時の処理
-
-                    window.alert('キャンセルされました'); // 警告ダイアログを表示
-                    return false; // 送信を中止
-
-                }
-
-            }
-
-            //
-        </script>
         <form method="POST" action="update_new.php" enctype="multipart/form-data" onSubmit="return check()">
           <h2>ボランティア名</h2>
           <input type="text" name="vol_name" maxlength="20" value="" placeholder="２０文字以内で入力" required>
@@ -202,11 +185,56 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
           <input type='hidden' name='b_user_id' value="<?php echo $b_user_id; ?>">
           <button type="submit" align="center">登録</button>
         </form>
+
+        <script type="text/javascript">
+            function check() {
+
+              // 今日の日付
+              var date1 = new Date(Date.now());
+              // 2020/4/30 12:30:45
+              var year = document.getElementById( "year" ).value ;
+              var month = document.getElementById( "month" ).value - 1;
+              var day = document.getElementById( "day" ).value ;
+              var date2 = new Date(year, month, day);
+
+              try {
+              // year、month、dayの年月日をもつDate型のインスタンスを作成
+              var validDate=new Date( year, month, day);
+
+              // year、month、dayが妥当であるかどうかのチェック
+              var isValid = (
+                             ( validDate.getFullYear() == year )
+                          && ( validDate.getMonth() == month )
+                          && ( validDate.getDate() == day)
+                      );
+
+              } catch( e ) {
+
+                  // Date型の作成で例外が発生した場合は、妥当でないのでfalse
+                  return false;
+              }
+
+              if (isValid) {
+                if ( date1.getTime() < date2.getTime()) {
+                  if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
+                      return true; // 「OK」時は送信を実行
+                  } else { // 「キャンセル」時の処理
+                      window.alert('キャンセルされました'); // 警告ダイアログを表示
+                      return false; // 送信を中止
+                  }
+                } else {
+                  window.alert('日付は明日以降にして下さい'); // 警告ダイアログを表示
+                  return false; // 送信を中止
+                }
+              } else {
+                window.alert('日付の値が正しくありません'); // 警告ダイアログを表示
+                return false; // 送信を中止
+              }
+            }
+
+        </script>
       </div>
     </div>
-  </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 
