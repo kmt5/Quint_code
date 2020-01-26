@@ -39,12 +39,18 @@ echo "<br>" . $near_date;
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <a href="javascript:history.back()">
+    <form method="post" name="formback" action="s_search_first.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formback.submit()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
-    <a href="s_home">
+  </form>
+  <form method="post" name="formhome" action="../s_home.php">
+    <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formhome.submit()">
       <p id="home"><i class="fas fa-home"></i></p>
     </a>
+  </form>
   </div>
 
   <div id="body-bk">
@@ -55,7 +61,8 @@ echo "<br>" . $near_date;
       <div class="area">
         <?php echo $pref_name . " " . $area_name; ?>
       </div>
-      <form action='s_search_first.html'>
+      <form action='s_search_first.php' method="post">
+        <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
         <button type="submit" class="vol">別の条件で検索する　<i class="fas fa-search"></i></button>
       </form>
 

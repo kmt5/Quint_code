@@ -11,7 +11,7 @@ echo $s_user_id;
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-//接続確認    
+//接続確認
 if ($db) {
   echo "データベースに繋がっています";
 } else {
@@ -43,13 +43,19 @@ foreach ($getArea as $area_data_val) {
 
 <body>
   <div id="header-fixed">
-    <img border="0" src="../../common/header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-    <a href="s_search_first.html">
-      <img border="0" src="../../common/back.jpg" width="20%" height="100%" class="back">
+    <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+    <form method="post" name="formback" action="s_search_first.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formback.submit()">
+      <p id="back"><i class="fas fa-reply"></i></p>
     </a>
-    <a href="s_home.html">
-      <img border="0" src="../../common/home.jpg" width="20%" height="100%" class="home">
+  </form>
+  <form method="post" name="formhome" action="../s_home.php">
+    <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formhome.submit()">
+      <p id="home"><i class="fas fa-home"></i></p>
     </a>
+  </form>
   </div>
 
   <div id="body-bk">
@@ -192,9 +198,7 @@ foreach ($getArea as $area_data_val) {
     });
   </script>
 
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
-  </div>
+  
 </body>
 
 </html>
