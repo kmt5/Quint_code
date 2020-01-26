@@ -26,7 +26,7 @@
     <p id="info"></p>
 
 
-    <script src="instascan.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script>
       var videoTag = document.getElementById('preview');
       var info = document.getElementById('info');
