@@ -40,13 +40,13 @@ echo "<br>" . $near_date;
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <form method="post" name="formback" action="s_search_first.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
     <a href="javascript:formback.submit()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
   </form>
   <form method="post" name="formhome" action="../s_home.php">
-    <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
     <a href="javascript:formhome.submit()">
       <p id="home"><i class="fas fa-home"></i></p>
     </a>
@@ -345,10 +345,6 @@ echo "<br>" . $near_date;
           <button type="submit">再検索</button> -->
       </div>
     </div>
-  </div>
-
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 
