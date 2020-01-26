@@ -1,5 +1,15 @@
 <?php
 $user_id=$_POST['s_user_id'];
+if(isset($_POST['whos_user_id'])){
+$id = $_POST['whos_user_id'];//選択したフレンドのID取得
+}
+elseif(isset($_POST['now_user_id'])){
+$id = $_POST['now_user_id'];//選択したフレンドのID取得
+}
+elseif(isset($_POST['check_user_id'])){
+$id = $_POST['check_user_id'];
+}
+else{$id=null;}
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -14,24 +24,34 @@ $user_id=$_POST['s_user_id'];
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-  <div id="header-fixed">
+<div id="header-fixed">
       <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-      <?php $motourl = $_SERVER['HTTP_REFERER'];?>
-      <form method="post" name="back" action="<?php $motourl ?>">
+      <?php
+      if(isset($_POST['whos_user_id'])){
+      echo '<form method="post" name="back" action="s_frd_list.php">';
+      }
+      elseif(isset($_POST['now_user_id'])){
+      echo '<form method="post" name="back" action="s_frd_add_appnow.php">';
+      }
+      elseif(isset($_POST['check_user_id'])){
+      echo '<form method="post" name="back" action="s_frd_appcheck.php">';
+      }
+      else{
+      echo '<form method="post" name="back" action="s_home.php">';
+      }
+      ?>
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
+      <a href="javascript:back.submit()">
       <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-      </button>
+      </a>
       </form>
       <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
+      <a href="javascript:home.submit()">
       <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-      </button>
+      </a>
       </form>
     </div>
-
-
 
   <div id="body-bk">
     <div id="body">
@@ -42,13 +62,9 @@ $user_id=$_POST['s_user_id'];
         </div>
       </div>
 <?php
-      // ポストのデータを変数に
-    $name = $_POST["username"];
-    $age = $_POST["age"];
 //データベースに接続(test3)
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
-    $id = $_GET['id'];//選択したフレンドのID取得
     $usi = "SELECT * FROM sanka_users WHERE s_user_id = '$id'"; //idは文字型で送られてくるのでクォーテーション
     $result = $db->query($usi);
     foreach ($result as $row) {

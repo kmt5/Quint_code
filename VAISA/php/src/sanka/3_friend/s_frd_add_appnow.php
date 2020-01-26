@@ -21,21 +21,22 @@
 </head>
 <body>
 <div id="header-fixed">
-      <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+<img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+<form method="post" name="back" action="s_frd_add.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:back.submit()">
+<img border="0" src="back.jpg" width="20%" height="100%" class="back">
+</a>
+</form>
+<form method="post" name="home" action="../s_home.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:home.submit()">
+<img border="0" src="home.jpg" width="20%" height="100%" class="home">
+</a>
+</form>
+</div>
 
-      <form method="post" name="back" action="s_frd_add.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-      </button>
-      </form>
-      <form method="post" name="home" action="../s_home.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-      </button>
-      </form>
-    </div>
+  </div>
 
   <div id="body-bk">
     <div id="body">
@@ -57,19 +58,27 @@
     $db = new PDO($dsn, 'root', 'root');
     $frid2 = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT my_user_id FROM friends where fr_user_id ='$user_id' and reqest_flag = 1)";
     $result = $db->query($frid2);
+    $count=0;
     foreach ($result as $row){
           echo '<div class="frd-appnow">';
           echo '<h1>';
-          echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
+          echo '<form method="post" name="form'.$count.'" action="s_frd_list_pro.php">';
+          echo '<input type="hidden" name="now_user_id" value="'.$row['s_user_id'].'">';
+          echo '<input type = "hidden" name="s_user_id" value="'.$user_id.'">';
+          echo '<a href="javascript:form'.$count.'.submit()" style="color:black">';
           echo '<img src="../prof/'.$row['prof_path'].'" class="img">';
           echo $row['nickname'];
           echo '</a>';
+          echo '</form>';
+
           echo '<form method="POST">';
           echo '<button type = "submit" name = "reject" id = "rejec" class="del" onclick="return reFrd()">取消</button>';
+          echo '<input type = "hidden" name="s_user_id" value="'.$user_id.'">';
           echo '<input type = "hidden" name = "frdid" value ="'.$row['s_user_id'].'">';
           echo '</form>';
           echo '<br>';
           echo '</div>';
+          $count++;
     }
     $db=null;
 ?>

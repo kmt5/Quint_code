@@ -8,7 +8,7 @@ if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image
   if (!file_exists('upload')) {
     mkdir('upload');
   }
-  $a = './upload/' . basename($_FILES['image']['name']);
+  $a = 'upload/' . basename($_FILES['image']['name']);
   if (move_uploaded_file($_FILES['image']['tmp_name'], $a)) {
     $msg = $a . 'のアップロードに成功しました';
   } else {
@@ -37,6 +37,10 @@ echo $newbie_flag = $_POST["newbie_flag"];
 echo $vol_detail = $_POST["detail"];
 echo $pref_id = $_POST["select_pref"];
 echo $spec_rank = $_POST["spec_rank"];
+echo "spec_rank:".$spec_rank;
+if ($spec_rank == null) {
+    $spec_rank = '指定なし';
+}
 echo $area_id = $_POST["select_area"];
 echo $num = $vol_fin_time - $vol_beg_time;
 echo $point = strval($num);
@@ -92,9 +96,12 @@ $db = null;
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <a href="../b_home.php">
-      <p id="home"><i class="fas fa-home"></i></p>
-    </a>
+    <form method="post" name="formhome" action="../b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
+    </form>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -154,11 +161,9 @@ $db = null;
         } ?>
         <br><br>
         <label>ランク指定　</label>
-        <?php if ($spec_rank == 0) {
-          echo "<p class='dezain'>指定なし</p>";
-        } else {
+        <?php
           echo "<p class='dezain'>$spec_rank</p>";
-        } ?>
+        ?>
         <br><br>
         <h2>詳細</h2>
         <?php echo $vol_detail; ?>

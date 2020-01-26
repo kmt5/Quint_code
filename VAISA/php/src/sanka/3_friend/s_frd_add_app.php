@@ -1,9 +1,7 @@
 <?php
 $user_id=$_POST['s_user_id'];
 //申請時に前画面に遷移するためにデータが途切れるヌルで判定
-if($_POST['name']== null){
-  header("location: s_frd_add.php");
-}
+
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 //テーブルに自分とフレンドに関するデータがない場合はこっちの申請で追加
@@ -28,27 +26,34 @@ if(isset($_POST['ask'])){
   <link rel="stylesheet" type="text/css" href="./CSS/frd_add_app.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
-<body>
 <div id="header-fixed">
-      <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-
-      <form method="post" name="back" action="s_frd_add.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-      </button>
-      </form>
-      <form method="post" name="home" action="../s_home.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-      </button>
-      </form>
-    </div>
+<img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+<form method="post" name="back" action="s_frd_add.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:back.submit()">
+<img border="0" src="back.jpg" width="20%" height="100%" class="back">
+</a>
+</form>
+<form method="post" name="home" action="../s_home.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:home.submit()">
+<img border="0" src="home.jpg" width="20%" height="100%" class="home">
+</a>
+</form>
+</div>
 
   <div id="body-bk">
     <div id="body">
       <?php
+if($_POST['name'] == null){
+echo '<form method="post" name="done" action="s_frd_add.php">';
+echo '<input type="hidden" name="s_user_id" value="'.$user_id.'"/>';
+echo '<a href="javascript:done.submit()" style="color:black">';
+echo '正常に申請されました(クリックするとフレンド追加画面に戻ります)';
+echo '</a>';
+echo '</form>';
+echo '</div>';
+}
     $id =  $_POST['name'];
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
@@ -66,14 +71,12 @@ if(isset($_POST['ask'])){
     $data2 = $result3->fetchAll();
     $data3 = $result4->fetchAll();
     $data_which = $which->fetchAll();
-    if($data1 == Array()){echo 'IDに一致するユーザーが見つかりませんでした'; }
+    if($data1 == Array()){echo 'IDに一致するユーザーが見つかりませんでした'; echo '</div>';}
     foreach ($result2 as $row){
       echo '<div class="frd-add-app">';
-      //echo '<a href="s_frd_list_pro.php?id='.$row['s_user_id'].'">';
       echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
       echo '<p class="user_name">';
       echo $row['nickname'].'</p>';
-      echo '</a>';
       echo '</div>';
     if(($data2 != Array()) or ($data3 != Array())){echo '<p>申請済みかフレンドです<p/>';}
     //elseif($data3 != Array()){echo '<p>申請済みかフレンドです<p/>';}
@@ -81,6 +84,7 @@ if(isset($_POST['ask'])){
       if($data_which == Array()){
         echo '<form method="POST" id = "add">';
         echo '<button type = "submit" name = "ask" class="apply" onclick="appFrd()">申請</button>';
+        echo '<input type = "hidden" name = "s_user_id" value="'.$user_id.'">';
         echo '<input type = "hidden" name = "frid" value ="'.$row['s_user_id'].'">';
         echo '<input type = "hidden" name = "ask" id = "ask">';
         echo '</form>';
@@ -88,6 +92,7 @@ if(isset($_POST['ask'])){
         else{ //一度申請したことがあるならテーブルにデータがそんざいする
         echo '<form method="POST" id = "add2">';
         echo '<button type = "submit" name = "ask2" class="apply" onclick="appFrd()">申請</button>';
+        echo '<input type = "hidden" name = "s_user_id" value="'.$user_id.'">';
         echo '<input type = "hidden" name = "frid2" value ="'.$row['s_user_id'].'">';
         echo '<input type = "hidden" name = "ask2" id = "ask2">';
         echo '</form>';

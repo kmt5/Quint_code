@@ -29,12 +29,18 @@ $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = 
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <a href="b_entrant_login.php">
+    <form method="post" name="formback" action="b_entrant_login.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <a href="javascript:formback.submit()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
-    <a href="../b_home.php">
+  </form>
+  <form method="post" name="formhome" action="../b_home.php">
+    <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <a href="javascript:formhome.submit()">
       <p id="home"><i class="fas fa-home"></i></p>
     </a>
+  </form>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -56,9 +62,6 @@ $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = 
           ?>
       </div>
     </div>
-  </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>

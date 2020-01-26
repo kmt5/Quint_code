@@ -87,34 +87,42 @@
 
   <div id="body-bk">
     <div id="Toptitle2">
-      <center> <!-- 中央寄せ -->
-        アカウント設定
-      </center>
+      <i class="fas fa-cogs"></i>アカウント設定
     </div>
     <div id="body" class="radio size1">
-      <form action ="s_setting_edit.php" method="post" name="myform" onsubmit="return check();">
+      <form action ="s_setting_edit.php" method="post" name="myform" enctype="multipart/form-data" onsubmit="return check();">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>">
         <dl>
       <center> <!-- 中央寄せ -->
       <h2>
         <dt>プロフィール画像</dt>
-        <dd><input type="file" name="pic"></dd>
+        <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
+        <img id="preview">
+        <script>
+            $('#pic').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $("#preview").attr('src', e.target.result);
+              }
+              reader.readAsDataURL(e.target.files[0]);
+            });
+          </script>
         <hr color="black"><br/>
 
         <dt>名前</dt>
-        <dd><input type="text" name="fullname" id="input1" value="" class="waku"></dd>
+        <dd><input type="text" name="fullname" id="input1" value="" class="waku" required></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type="text" name="mail_address" id="input2" value="" class="waku"></dd>
+        <dd><input type="text" name="mail_address" id="input2" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3" value="" class="waku"></dd>
+        <dd><input type = "text" name ="password" id="input3" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = "text" name ="user_address" id="input4" value="" class="waku"></dd>
+        <dd><input type = "text" name ="user_address" id="input4" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = "text" name ="tel_num" id="input5" value="" class="waku"></dd>
+        <dd><input type = "text" name ="tel_num" id="input5" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
 
       <p>
@@ -138,7 +146,7 @@
       </p>
       <hr color="black"><br/>
         <dt>ニックネーム</dt>
-        <dd><input type = "text" name ="nickname" id="input7" value="" class="waku"></dd>
+        <dd><input type = "text" name ="nickname" id="input7" value="" class="waku" required></dd>
         <hr color="black"><br/>
         <br>
         <input type="submit" value="編集完了" class="btn-square5">

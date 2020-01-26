@@ -61,8 +61,8 @@
         }else{
           $b_cnt = $b_cnt->fetchColumn();
         }
-
-      } while ($s_cnt != 0 or $b_cnt != 0);
+      }
+       while ($s_cnt != 0 or $b_cnt != 0);
 
       /*$msg = null;
       // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
@@ -138,10 +138,10 @@
       }else{
         echo "error insert";
       }
-
     }else{
       echo "plz input other forms.";
     }
+  }
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -172,25 +172,34 @@
       <form name="request" action="#" method="post" enctype="multipart/form-data" onsubmit="return check();">
         <dl>
       <center> <!-- 中央寄せ -->
-      <h2>
         <dt>プロフィール画像</dt>
-        <dd><input type="file" name="pic"></dd>
+        <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
+        <img id="preview">
+        <script>
+            $('#pic').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $("#preview").attr('src', e.target.result);
+              }
+              reader.readAsDataURL(e.target.files[0]);
+            });
+          </script>
         <hr color="black"><br/>
 
         <dt>名前</dt>
-        <dd><input type="text" name="fullname" id="input1" class="waku"></dd>
+        <dd><input type="text" name="fullname" id="input1" class="waku" required></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type = "text" name ="mail_address" id="input2"  class="waku"></dd>
+        <dd><input type = "text" name ="mail_address" id="input2" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="passwd" id="input3"  class="waku"></dd>
+        <dd><input type = "text" name ="passwd" id="input3" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = "text" name ="user_address" id="input4"  class="waku"></dd>
+        <dd><input type = "text" name ="user_address" id="input4"  class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = "text" name ="tel_num" id="input5"  class="waku"></dd>
+        <dd><input type = "text" name ="tel_num" id="input5"  class="waku" required></dd>
         <hr color="black"><br/><br/>
 
       <p>
@@ -203,7 +212,7 @@
       <hr color="black"><br/>
 
       <dt>年齢</dt>
-      <dd><input type = "number" name ="age" min="1" max="130" id="input8" class="waku" ></dd>
+      <dd><input type = "number" name ="age" min="1" max="130" id="input8" class="waku" required></dd>
       <hr color="black"><br/><br/>
 
       <dt>ひとこと</dt>
@@ -221,7 +230,7 @@
       </p>
       <hr color="black"><br/>
         <dt>ニックネーム</dt>
-        <dd><input type = "text" name ="nickname" id="input7" class="waku" ></dd>
+        <dd><input type = "text" name ="nickname" id="input7" class="waku" required></dd>
         <hr color="black"><br/>
       <br>
       <input type="submit" value="登録完了" class="btn-square1"><br>
@@ -232,6 +241,14 @@
 </div>
 
 <script type="text/javascript">
+$('#pic').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $("#preview").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+});
+
   function check() {
     for(i = 0; i < document.request.length; i++) {
       if (document.request.elements[i].type == "text") {

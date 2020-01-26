@@ -1,4 +1,4 @@
-<?php 
+<?php
 $s_user_id = $_POST["s_user_id"];
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -6,19 +6,25 @@ $s_user_id = $_POST["s_user_id"];
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>検索</title> <!-- ページのタイトル -->
-  <link rel="stylesheet" type="text/css" href="./CSS/common.css">
+  <link rel="stylesheet" type="text/css" href="../../common/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_first.css">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="../common/header.jpg" width="100%" height="100%">
-    <a href="javascript:history.back()">
+    <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+    <form method="post" name="formback" action="../s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formback.submit()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
-    <a href="s_home">
+  </form>
+  <form method="post" name="formhome" action="../s_home.php">
+    <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+    <a href="javascript:formhome.submit()">
       <p id="home"><i class="fas fa-home"></i></p>
     </a>
+  </form>
   </div>
 
   <div id = "body-bk">
@@ -26,13 +32,19 @@ $s_user_id = $_POST["s_user_id"];
       <div id ="Toptitle1">
         検索
       </div>
-        <a href="s_search_area_spe.php" class="btn-point1">地域を選択して検索</a>
-        <a href="s_search_area_edit.php" class="btn-point2">登録地域周辺で検索</a>
+      <form method="post" name="form0" action="s_search_area_spe.php">
+      <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
+        <a href="javascript:form0.submit()" class="btn-point1">地域を選択して検索</a>
+      </form>
+      <form method="post" name="form01" action="s_search_area_edit.php">
+      <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
+        <a href="javascript:form01.submit()" class="btn-point2">登録地域周辺で検索</a>
+      </form>
     </div>
   </div>
 
   <div id="footer-fixed">
-    <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
+    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 </html>

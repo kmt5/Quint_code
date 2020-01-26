@@ -112,12 +112,18 @@ $db = null;
 <body>
     <div id="header-fixed">
       <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-      <a href="b_vol_regd_list.php">
+      <form method="post" name="formback" action="b_vol_regd_list.php">
+        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
       </a>
-      <a href="../b_home.php">
+    </form>
+    <form method="post" name="formhome" action="../b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
         <p id="home"><i class="fas fa-home"></i></p>
       </a>
+    </form>
     </div>
     <div id="body-bk">
         <div id="body">
@@ -126,24 +132,7 @@ $db = null;
             </div>
             <div width="100%" class="new">
                 <h1 align="center">変更画面</h1>
-                <script type="text/javascript">
-                    function check() {
 
-                        if (window.confirm('再登録してしてよろしいですか？')) { // 確認ダイアログを表示
-
-                            return true; // 「OK」時は送信を実行
-
-                        } else { // 「キャンセル」時の処理
-
-                            window.alert('キャンセルされました'); // 警告ダイアログを表示
-                            return false; // 送信を中止
-
-                        }
-
-                    }
-
-                    //
-                </script>
                 <h2>　ボランティア名</h2>
                 <form name='foo' action="update.php" method="post" onSubmit="return check()">
                     <!-- 登録したボランティア名が表示されるか　valueに代入 -->
@@ -264,11 +253,55 @@ $db = null;
                     <input type="hidden" name="area_name" value="<?php echo $area_name; ?>">
                     <button type='submit' align="center">編集登録</button>
                 </form>
+                <script type="text/javascript">
+                    function check() {
+
+                      // 今日の日付
+                      var date1 = new Date(Date.now());
+                      // 2020/4/30 12:30:45
+                      var year = document.getElementById( "year" ).value ;
+                      var month = document.getElementById( "month" ).value - 1;
+                      var day = document.getElementById( "day" ).value ;
+                      var date2 = new Date(year, month, day);
+
+                      try {
+                      // year、month、dayの年月日をもつDate型のインスタンスを作成
+                      var validDate=new Date( year, month, day);
+
+                      // year、month、dayが妥当であるかどうかのチェック
+                      var isValid = (
+                                     ( validDate.getFullYear() == year )
+                                  && ( validDate.getMonth() == month )
+                                  && ( validDate.getDate() == day)
+                              );
+
+                      } catch( e ) {
+
+                          // Date型の作成で例外が発生した場合は、妥当でないのでfalse
+                          return false;
+                      }
+
+                      if (isValid) {
+                        if ( date1.getTime() < date2.getTime()) {
+                          if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
+                              return true; // 「OK」時は送信を実行
+                          } else { // 「キャンセル」時の処理
+                              window.alert('キャンセルされました'); // 警告ダイアログを表示
+                              return false; // 送信を中止
+                          }
+                        } else {
+                          window.alert('日付は明日以降にして下さい'); // 警告ダイアログを表示
+                          return false; // 送信を中止
+                        }
+                      } else {
+                        window.alert('日付の値が正しくありません'); // 警告ダイアログを表示
+                        return false; // 送信を中止
+                      }
+                    }
+
+                </script>
             </div>
         </div>
-    </div>
-    <div id="footer-fixed">
-        <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
     </div>
 </body>
 

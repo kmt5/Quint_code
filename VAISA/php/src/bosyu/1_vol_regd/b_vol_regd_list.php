@@ -13,19 +13,19 @@ if ($db) {
 }
 
 $db->query("set names utf8");
-$getVolName = $db->query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id");
+$getVolName = $db->query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 $i = 0;
 foreach ($getVolName as $volname) {
   $vol_name[$i] .= $volname['vol_name'];
   $i += 1;
 }
-$getCount = $db->query("SELECT COUNT(vol_name) AS num FROM volunteers WHERE b_user_id = $b_user_id");
+$getCount = $db->query("SELECT COUNT(vol_name) AS num FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 foreach ($getCount as $get_count) {
   $count = $get_count['num'];
 }
 $php_vol_name = json_encode($vol_name);
 
-$getVolId = $db->query("SELECT vol_id FROM volunteers WHERE b_user_id = $b_user_id");
+$getVolId = $db->query("SELECT vol_id FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 $j = 0;
 foreach ($getVolId as $volid) {
   $vol_id_html[$j] .= $volid['vol_id'];
@@ -46,12 +46,18 @@ $db = null;
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <a href="b_vol_regd.php">
+    <form method="post" name="formback" action="b_vol_regd.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <a href="javascript:formback.submit()">
       <p id="back"><i class="fas fa-reply"></i></p>
     </a>
-    <a href="../b_home.php">
+  </form>
+  <form method="post" name="formhome" action="../b_home.php">
+    <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <a href="javascript:formhome.submit()">
       <p id="home"><i class="fas fa-home"></i></p>
     </a>
+  </form>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -64,7 +70,7 @@ $db = null;
               $vol_id = $vol_id_html[$i];
               echo "<div class='vollist'>";
               echo "<p>".$vol_name[$i]."</p>";
-              echo "<form action='vol_regd_edit.php' method='post'>";
+              echo "<form action='b_vol_regd_edit.php' method='post'>";
               echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
               echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
               echo "<button type='submit' align='center' id='listbutton'><i class='fas fa-edit'></i>　編集</button>";
@@ -87,9 +93,6 @@ $db = null;
           ?>
       </table>
     </div>
-  </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 
