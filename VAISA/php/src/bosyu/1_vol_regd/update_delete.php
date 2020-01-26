@@ -11,10 +11,10 @@ $getName = $db->query("SELECT vol_date FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $vol_date =  $get_name['vol_date'];
 }
-$today = date('Y-m-d');
+$vol_date = strtotime($vol_date);
+$today = strtotime(date('Y-m-d'));
 if ($vol_date >= $today) {
-    echo "dekitenai";
-    $db->query("DELETE FROM volunteers WHERE vol_id = $vol_id");
+    echo "dekitenai";    $db->query("DELETE FROM volunteers WHERE vol_id = $vol_id");
 }
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
