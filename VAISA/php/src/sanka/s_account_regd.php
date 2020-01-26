@@ -62,7 +62,7 @@
           $b_cnt = $b_cnt->fetchColumn();
         }
       }
-       while ($s_cnt != 0 or $b_cnt != 0);
+      while ($s_cnt != 0 or $b_cnt != 0);
 
       /*$msg = null;
       // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
