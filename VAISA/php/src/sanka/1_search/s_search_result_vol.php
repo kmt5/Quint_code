@@ -158,6 +158,13 @@ if (empty($table)) {
       <img border="0" src="../../common/header.jpg" width="100%" height="100%">
       <form method="post" name="formback" action="s_search_first.php">
         <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+        <input type='hidden' name='year' value=" <?php echo $_POST["year"]; ?>" />
+        <input type='hidden' name='month' value=" <?php echo $_POST["month"]; ?>" />
+        <input type='hidden' name='day' value=" .<?php echo $_POST["day"]; ?>" />
+        <input type='hidden' name='val_flag' value=" <?php echo $_POST["val_flag"]; ?>" />
+        <input type='hidden' name='vol_date_near' value=" <?php echo $_POST["vol_date_near"]; ?> " />
+        <input type='hidden' name='newbie_flag' value=" <?php echo $_POST["newbie_flag"]; ?>"/>
+        <input type='hidden' name='area_id' value=" <?php echo $_POST["area_id"]; ?> "/>
       <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
       </a>
