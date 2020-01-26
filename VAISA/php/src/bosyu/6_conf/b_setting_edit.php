@@ -76,19 +76,19 @@
         <hr color="black"><br/>
 
         <dt>会社・団体</dt>
-        <dd><input type = "text" name ="groupname" id="input1" value="" class="waku"></dd>
+        <dd><input type = "text" name ="groupname" id="input1" value="" class="waku" required></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type = "text" name ="mail_address" id="input2" value="" class="waku"></dd>
+        <dd><input type = "text" name ="mail_address" id="input2" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3" value="" class="waku"></dd>
+        <dd><input type = "text" name ="password" id="input3" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = "text" name ="user_address" id="input4" value="" class="waku"></dd>
+        <dd><input type = "text" name ="user_address" id="input4" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = "text" name ="tel_num" id="input5" value="" class="waku"></dd>
+        <dd><input type = "text" name ="tel_num" id="input5" value="" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <br>
         <input type="submit" value="編集完了" class="btn-square5">

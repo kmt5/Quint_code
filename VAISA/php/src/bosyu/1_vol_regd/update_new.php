@@ -3,7 +3,7 @@
 $b_user_id = $_POST["b_user_id"];
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-
+echo $b_user_id;
 if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
   if (!file_exists('upload')) {
     mkdir('upload');
