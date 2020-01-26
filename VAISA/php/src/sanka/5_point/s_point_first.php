@@ -143,7 +143,6 @@ if(!isset($_SESSION['nowpoint'])){
         echo '<form method="post" name="form1" action="s_point_detail.php">';
         echo '<input type="hidden" name = "s_user_id" value = "'.$user_id.'">';
         echo '<a href="javascript:form1.submit()" style="color:black" class="btn-point">';
-        echo '<h2>';
         ?>
         ポイント明細
         <?php
