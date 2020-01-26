@@ -71,7 +71,7 @@
       <center> <!-- 中央寄せ -->
       <h2>
         <dt>プロフィール画像</dt>
-        <dd><input type="file" name="pic" accept="image/*"></dd>
+        <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
         <img id="preview">
         <script>
             $('pic').on('change', function (e) {
