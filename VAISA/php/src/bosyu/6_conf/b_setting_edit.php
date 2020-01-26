@@ -65,7 +65,7 @@
       <i class="fas fa-cogs"></i>アカウント設定
     </div>
     <div id="body" class="radio size1">
-      <form action ="#" method="post" name="myform" onsubmit="return check();">
+      <form action ="#" method="post" name="myform" enctype="multipart/form-data" onsubmit="return check();">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>">
       <dl>
       <center> <!-- 中央寄せ -->
@@ -73,6 +73,15 @@
         <dt>プロフィール画像</dt>
         <dd><input type="file" name="pic" accept="image/*"></dd>
         <img id="preview">
+        <script>
+            $('pic').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $("#preview").attr('src', e.target.result);
+              }
+              reader.readAsDataURL(e.target.files[0]);
+            });
+          </script>
         <hr color="black"><br/>
 
         <dt>会社・団体</dt>
@@ -102,13 +111,6 @@
   </div>
 
   <script type="text/javascript">
-  $('#pic').on('change', function (e) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-          $("#preview").attr('src', e.target.result);
-      }
-      reader.readAsDataURL(e.target.files[0]);
-  });
   function check() {
     for(i = 0; i < document.request.length; i++) {
       if (document.request.elements[i].type == "text") {
