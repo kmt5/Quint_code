@@ -13,19 +13,19 @@ if ($db) {
 }
 
 $db->query("set names utf8");
-$getVolName = $db->query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id");
+$getVolName = $db->query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 $i = 0;
 foreach ($getVolName as $volname) {
   $vol_name[$i] .= $volname['vol_name'];
   $i += 1;
 }
-$getCount = $db->query("SELECT COUNT(vol_name) AS num FROM volunteers WHERE b_user_id = $b_user_id");
+$getCount = $db->query("SELECT COUNT(vol_name) AS num FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 foreach ($getCount as $get_count) {
   $count = $get_count['num'];
 }
 $php_vol_name = json_encode($vol_name);
 
-$getVolId = $db->query("SELECT vol_id FROM volunteers WHERE b_user_id = $b_user_id");
+$getVolId = $db->query("SELECT vol_id FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 $j = 0;
 foreach ($getVolId as $volid) {
   $vol_id_html[$j] .= $volid['vol_id'];
