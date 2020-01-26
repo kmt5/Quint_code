@@ -66,7 +66,7 @@
  $db = new PDO($dsn, 'root', 'root');
  $frid3 = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT fr_user_id FROM friends where my_user_id ='$user_id' and reqest_flag = 1)";
  $result = $db->query($frid3);
- $count++;
+ $count=0;
  foreach ($result as $row) {
       echo '<div class="frd-appcheck">';
       echo '<h1>';
