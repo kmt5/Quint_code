@@ -175,6 +175,15 @@
         <dt>プロフィール画像</dt>
         <dd><input type="file" name="pic" accept="image/*"></dd>
         <img id="preview">
+        <script>
+            $('pic').on('change', function (e) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                $("#preview").attr('src', e.target.result);
+              }
+              reader.readAsDataURL(e.target.files[0]);
+            });
+          </script>
         <hr color="black"><br/>
 
         <dt>名前</dt>
