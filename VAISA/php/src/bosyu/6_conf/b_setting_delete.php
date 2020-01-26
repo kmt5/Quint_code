@@ -45,9 +45,7 @@
 
   <div id="body-bk">
     <div id="Toptitle2">
-      <center> <!-- 中央寄せ -->
-        アカウント設定
-      </center>
+      <i class="fas fa-cogs"></i>アカウント設定
     </div>
     <div id="body" class="size3">
       <center> <!-- 中央寄せ -->
