@@ -95,6 +95,7 @@ $now_year=(int)date("Y",strtotime($now_time));
     $count1=0;
     $count2=0;
     $count3=0;
+    $count=0;
 
     foreach ($result as $row) {
       if((date("m",strtotime($row['vol_date'])) == $now_month_1) and (date("Y",strtotime($row['vol_date'])) == $now_year)){
@@ -113,10 +114,10 @@ $now_year=(int)date("Y",strtotime($now_time));
         continue;
       }
         echo '<h1>';
-        echo '<form method="post" name="form1" action="../1_search/s_search_result_vol.php">';
+        echo '<form method="post" name="form'.$count.'" action="../1_search/s_search_result_vol.php">';
         echo '<input type = "hidden" name = "s_user_id" value="'.$user_id.'">';
         echo '<input type = "hidden" name="vol_id" value="'.$row['vol_id'].'">';
-        echo '<a href="javascript:form1.submit()" style="color:black">';
+        echo '<a href="javascript:form'.$count.'.submit()" style="color:black">';
         echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
         echo '<br>';
         echo '場所 '.$row['vol_place'];
@@ -124,6 +125,8 @@ $now_year=(int)date("Y",strtotime($now_time));
         echo '内容 '.$row['vol_name'];
         echo '</a>';
         echo '</form>';
+
+        $count++;
 
         echo '<form method="POST">';
         echo '<button type = "submit" name = "add" id="ad" class="del" onclick="return adVol()">登録解除</button>';
