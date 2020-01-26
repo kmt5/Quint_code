@@ -13,6 +13,7 @@ foreach ($getName as $get_name) {
 }
 $today = date('Y-m-d');
 if ($vol_date >= $today) {
+    echo "dekitenai";
     $db->query("DELETE FROM volunteers WHERE vol_id = $vol_id");
 }
 ?>
