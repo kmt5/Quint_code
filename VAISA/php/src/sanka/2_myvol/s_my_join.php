@@ -1,5 +1,6 @@
 <?php
 $user_id=$_POST['s_user_id'];
+
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 if(isset($_POST['add'])){
@@ -22,22 +23,22 @@ if(isset($_POST['add'])){
   <link rel="stylesheet" type="text/css" href="./CSS/my_fav.css">
 </head>
 <body>
-    <div id="header-fixed">
-      <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+<div id="header-fixed">
+<img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+<form method="post" name="back" action="s_my_first.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:back.submit()">
+<img border="0" src="back.jpg" width="20%" height="100%" class="back">
+</a>
+</form>
+<form method="post" name="home" action="../s_home.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:home.submit()">
+<img border="0" src="home.jpg" width="20%" height="100%" class="home">
+</a>
+</form>
+</div>
 
-      <form method="post" name="back" action="../s_my_first.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-      </button>
-      </form>
-      <form method="post" name="home" action="../s_home.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-      </button>
-      </form>
-    </div>
   <div id = "body-bk">
     <div id = "body">
       <div id ="Toptitle2">
@@ -113,9 +114,9 @@ $now_year=(int)date("Y",strtotime($now_time));
       }
         echo '<h1>';
         echo '<form method="post" name="form1" action="../1_search/s_search_result_vol.php">';
+        echo '<input type = "hidden" name = "s_user_id" value="'.$user_id.'">';
         echo '<input type = "hidden" name="vol_id" value="'.$row['vol_id'].'">';
-        echo '<input type = "hidden" name="s_user_id" value="'.$user_id.'">';
-        echo '<a href="javascript:form1.submit()">';
+        echo '<a href="javascript:form1.submit()" style="color:black">';
         echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
         echo '<br>';
         echo '場所 '.$row['vol_place'];
@@ -126,6 +127,7 @@ $now_year=(int)date("Y",strtotime($now_time));
 
         echo '<form method="POST">';
         echo '<button type = "submit" name = "add" id="ad" class="del" onclick="return adVol()">登録解除</button>';
+        echo '<input type  = "hidden" name = "s_user_id" value="'.$user_id.'">';
         echo '<input type = "hidden" name = "advol" value="'.$row['vol_id'].'">';
         echo '</form>';
         echo  '<img src="../../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';

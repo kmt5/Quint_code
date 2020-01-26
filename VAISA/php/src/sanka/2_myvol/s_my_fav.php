@@ -20,21 +20,29 @@ if(isset($_POST['fav'])){
 </head>
 <body>
 <div id="header-fixed">
-      <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-
-      <form method="post" name="back" action="../s_my_first.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
-      </button>
-      </form>
-      <form method="post" name="home" action="../s_home.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-      </button>
-      </form>
-    </div>
+<img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
+<form method="post" name="back" action="s_my_first.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:back.submit()">
+<img border="0" src="back.jpg" width="20%" height="100%" class="back">
+</a>
+</form>
+<form method="post" name="home" action="../s_home.php">
+<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
+<a href="javascript:home.submit()">
+<img border="0" src="home.jpg" width="20%" height="100%" class="home">
+</a>
+</form>
+</div>
+  <div id = "body-bk">
+    <div id = "body">
+      <div id ="Toptitle2">
+        マイボランティア
+        <div id ="Toptitle-my">
+        <i class="fa fa-heart"></i>
+          お気に入り
+        </div>
+      </div>
       <?php
 
 $now_time=date("Y/m/d");
@@ -101,7 +109,7 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '<h1>';
       echo '<form method="post" name="form1" action="../1_search/s_search_result_vol.php">';
       echo '<input type="hidden" name="vol_id" value="'.$row['vol_id'].'">';
-      echo '<input type = "hidden" name="s_user_id" value="'.$user_id.'">';
+      echo '<input type  = "hidden" name = "s_user_id" value="'.$user_id.'">';
       echo '<a href="javascript:form1.submit()">';
       echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
       echo '<br>';
@@ -114,6 +122,7 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '<form method="POST">';
       echo '<button type = "submit" name = "fav" id="ad" class="del" onclick="return favVol()">お気に入り解除</button>';
       echo '<input type = "hidden" name = "favol" value="'.$row['vol_id'].'">';
+      echo '<input type  = "hidden" name = "s_user_id" value="'.$user_id.'">';
       echo '</form>';
       echo  '<img src="../../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
       echo '<br>';

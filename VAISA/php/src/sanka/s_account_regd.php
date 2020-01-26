@@ -12,12 +12,31 @@
 
   $check        = "false";//判定どうしよう js->呼び出された瞬間 php->読み込まれた瞬間 phpの判定結果を使うと動的にならないs
 
+  $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+  $db    = new PDO($dsn, 'root', 'root');
+  if ($area_data = $db->query("SELECT DISTINCT area_id, area_name, pref_name FROM areas")) {
+    foreach ($area_data as $area_datas) {
+      $pulldown .= "<option value='" . $area_datas['area_id'] . "' id='option'>" .$area_datas['pref_name']." ".$area_datas['area_name'] . "</option>";
+    }
+  }
+
   //postが来てなければ飛ばす
   if($nickname && $fullname && $area_id && $user_address && $age && $gender && $mail_address && $tel_num && $passwd){
-    $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
-    $db    = new PDO($dsn, 'root', 'root');
-    $s_cnt = $db->exec("select mail_address from sanka_users where mail_address='".$mail_address."'");
-    $b_cnt = $db->exec("select mail_address from bosyu_users where mail_address='".$mail_address."'");
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+    $s_cnt = $db->query("select count(*) as num from sanka_users where mail_address='".$mail_address."'");
+    $b_cnt = $db->query("select count(*) as num from bosyu_users where mail_address='".$mail_address."'");
+
+    if ($s_cnt == false){
+      $s_cnt = 0;
+    }else{
+      $s_cnt = $s_cnt->fetchColumn();
+    }
+    if ($b_cnt == false){
+      $b_cnt = 0;
+    }else{
+      $b_cnt = $b_cnt->fetchColumn();
+    }
+
     if ($s_cnt == 0  or $b_cnt == 0) {
       $check = "true";
     }
@@ -27,32 +46,64 @@
       do {
         //idの生成:まだ危ない可能性あり（デモぐらいは大丈夫なはず）
         $s_user_id  = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
-        $s_id_sql   = "select s_user_id from sanka_users where s_user_id = '".$s_user_id."'";
-        $b_id_sql   = "select b_user_id from bosyu_users where b_user_id = '".$s_user_id."'";
-        $s_id_cnt   = $db->exec($s_id_sql);
-        $b_id_cnt   = $db->exec($b_id_sql);
-      } while (!($s_id_cnt == 0) or !($b_id_cnt == 0));
+        $s_id_sql   = "select count(*) from sanka_users where s_user_id = '".$s_user_id."'";
+        $b_id_sql   = "select count(*) from bosyu_users where b_user_id = '".$s_user_id."'";
+        $s_cnt   = $db->query($s_id_sql);
+        $b_cnt   = $db->query($b_id_sql);
 
-      $prof_path  = "/prof/$s_user_id.jpg";
-      $qr_path    = "/qr/$s_user_id.jpg";
+        if ($s_cnt == false){
+          $s_cnt = 0;
+        }else{
+          $s_cnt = $s_cnt->fetchColumn();
+        }
+        if ($b_cnt == false){
+          $b_cnt = 0;
+        }else{
+          $b_cnt = $b_cnt->fetchColumn();
+        }
+
+      } while ($s_cnt != 0 or $b_cnt != 0);
+
+      /*$msg = null;
+      // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
+      // POSTでアップロードされたファイルだったら
+      if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
+          $old_name = $_FILES['pic']['tmp_name'];
+      //  もしprofというフォルダーがなければ
+          if(!file_exists('../prof')){
+              mkdir('../prof');
+          }
+          $new_name = $s_user_id;
+          list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
+          echo ($type);
+          switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
+              case 3:
+                  $new_name .= '.jpg';
+                  break;
+              case IMAGETYPE_GIF:
+                  $new_name .= '.gif';
+                  break;
+              case 2:
+                  $new_name .= '.png';
+                  break;
+              default:
+                  header('Location: s_account_regd.php');
+                  exit();
+          }
+      //  もし一時的なファイル名の$_FILES['pic']ファイルを
+      //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
+          $gazou = basename($_FILES['pic']['name']);
+          if(move_uploaded_file($old_name, '../prof/'.$new_name)){
+              $msg = $gazou. 'のアップロードに成功しました';
+          }else {
+              $msg = 'アップロードに失敗しました';
+          }
+      }*/
+
+      $prof_path  = "/prof/$new_name";
+      $qr_path    = "empty";
       $poi        = 0;
       $rnk        = "ブロンズ";
-
-      /*echo $s_user_id;
-      echo $area_id;
-      echo $nickname;
-      echo $fullname;
-      echo $user_address;
-      echo $age;
-      echo $gender;
-      echo $mes;
-      echo $mail_address;
-      echo $tel_num;
-      echo $passwd;
-      echo $prof_path;
-      echo $qr_path;
-      echo $poi;
-      echo $rnk;*/
 
       $sql    = "insert into sanka_users values( :s_user_id, :area_id, :nickname, :fullname, :user_address, :age, :gender, :mes, :mail_address, :tel_num , :passwd , :prof_path , :qr_path , :poi , :rnk)";
       $stmt   = $db->prepare($sql);
@@ -71,33 +122,19 @@
                       ':qr_path'      => $qr_path,
                       ':poi'          => $poi,
                       ':rnk'          => $rnk);
-      /*$stmt->bindValue(':s_user_id', $s_user_id, PDO::PARAM_STR);
-      $stmt->bindValue(':area_id', $area_id, PDO::PARAM_INT);
-      $stmt->bindValue(':nickname', $nickname, PDO::PARAM_STR);
-      $stmt->bindValue(':fullname', $fullname, PDO::PARAM_STR);
-      $stmt->bindValue(':user_address', $user_address, PDO::PARAM_STR);
-      $stmt->bindValue(':age', $age, PDO::PARAM_INT);
-      $stmt->bindValue(':gender', $gender, PDO::PARAM_STR);
-      $stmt->bindValue(':mes', $message, PDO::PARAM_STR);
-      $stmt->bindValue(':mail_address', $mail_address, PDO::PARAM_STR);
-      $stmt->bindValue(':tel_num', $tel_num, PDO::PARAM_STR);
-      $stmt->bindValue(':passwd', $passwd, PDO::PARAM_STR);
-      $stmt->bindValue(':prof_path', $prof_path, PDO::PARAM_STR);
-      $stmt->bindValue(':qr_path', $qr_path, PDO::PARAM_STR);
-      $stmt->bindValue(':poi', $poi, PDO::PARAM_INT);
-      $stmt->bindValue(':rnk', $rnk, PDO::PARAM_STR);*/
-      $stmt->execute($params);//();
+      $stmt->execute($params);
 
+      var_dump($stmt->errorInfo());
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
-        /*echo '
+        echo '
           <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
           </form>
           <script>
             document.forms[0].submit();
-          </script>';*/
+          </script>';
       }else{
         echo "error insert";
       }
@@ -105,7 +142,6 @@
     }else{
       echo "plz input other forms.";
     }
-  }
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -133,7 +169,7 @@
       </center>
     </div>
     <div id="body" class="radio size1">
-      <form name="request" action="#" method="post" onsubmit="return check();">
+      <form name="request" action="#" method="post" enctype="multipart/form-data" onsubmit="return check();">
         <dl>
       <center> <!-- 中央寄せ -->
       <h2>
@@ -177,8 +213,10 @@
       <p>
         <dt>住所エリア選択</dt>
         <dd><select name ="area_id" type="number"></dd>
-        <option value='1' id="option">高知</option>
-        <option value='2' id="option">愛媛</option>
+            <option value="none" selected>----選択してください----</option>
+            <?php
+            echo $pulldown;
+            ?>
         </select>
       </p>
       <hr color="black"><br/>

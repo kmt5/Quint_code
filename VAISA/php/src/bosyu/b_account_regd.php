@@ -13,11 +13,22 @@
   if($groupname && $address && $mail_address && $tel_num && $passwd){
     $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db    = new PDO($dsn, 'root', 'root');
-    $s_cnt = $db->query("select mail_address from sanka_users where mail_address='".$mail_address."'")->rowCount();
-    $b_cnt = $db->query("select mail_address from bosyu_users where mail_address='".$mail_address."'")->rowCount();
+    $s_cnt = $db->query("select count(*) from sanka_users where mail_address='".$mail_address."'");
+    $b_cnt = $db->query("select count(*) from bosyu_users where mail_address='".$mail_address."'");
+
+    if ($s_cnt == false){
+      $s_cnt = 0;
+    }else{
+      $s_cnt = $s_cnt->fetchColumn();
+    }
+    if ($b_cnt == false){
+      $b_cnt = 0;
+    }else{
+      $b_cnt = $b_cnt->fetchColumn();
+    }
 
     //データベースに入れて良い値かの判定
-    if (!$s_cnt && !$b_cnt && mb_strlen($groupkname) <= 20 && mb_strlen($address) <= 30 && mb_strlen($tel_num) <= 20 && mb_strlen($mail_address) && mb_strlen($passwd) <= 12) {
+    if ($s_cnt == 0 && $b_cnt == 0 && mb_strlen($groupkname) <= 20 && mb_strlen($address) <= 30 && mb_strlen($tel_num) <= 20 && mb_strlen($mail_address) && mb_strlen($passwd) <= 12) {
       do {
         //idの生成:まだ危ない無限ループに入る可能性あり（デモぐらいは大丈夫なはず）
         $b_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
@@ -25,7 +36,17 @@
         $b_id_sql     = "select b_user_id from bosyu_users where b_user_id = '".$b_user_id."'";
         $s_id_cnt     = $db->query($s_id_sql)->rowCount();
         $b_id_cnt     = $db->query($b_id_sql)->rowCount();
-      } while ($s_id_cnt or $b_id_cnt);
+        if ($s_cnt == false){
+          $s_cnt = 0;
+        }else{
+          $s_cnt = $s_cnt->fetchColumn();
+        }
+        if ($b_cnt == false){
+          $b_cnt = 0;
+        }else{
+          $b_cnt = $b_cnt->fetchColumn();
+        }
+      } while ($s_id_cnt != 0 or $b_id_cnt != 0);
 
       $profile_path = "/prof/$b_user_id";
 

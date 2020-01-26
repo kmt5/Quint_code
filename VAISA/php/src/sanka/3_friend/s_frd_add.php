@@ -14,8 +14,7 @@ $user_id=$_POST['s_user_id'];
 </head>
 <body>
 <div id="header-fixed">
-      <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
-
+<img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
       <form method="post" name="back" action="s_frd_first.php">
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
       <button type="submit">
@@ -40,11 +39,20 @@ $user_id=$_POST['s_user_id'];
       </div>
 
       <div class="frd-add">
-        <a href="s_frd_add_appnow.php">フレンド申請中ユーザ一覧</a>
+      <?php
+      echo '<form method="post" name="form1" action="s_frd_add_appnow.php">';
+      echo '<input type="hidden" name="s_user_id" value="'.$user_id.'">';
+      echo '<a href="javascript:form1.submit()" style="color:black">';
+      echo 'フレンド申請中ユーザ一覧';
+      echo '</a>';
+      echo '</form>';
+      ?>
         <p class="id">あなたのID：<?php echo $user_id;?> </p>
+
         <form action="s_frd_add_app.php" method="POST" id="pal">
           <input type="text" name="name" id="input" class="text" placeholder="検索したいIDを入力してください">
           <button type="submit" name="seek" class="search" onclick="serLeng()">検索</button>
+          <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
         </form>
       </div>
     </div>
