@@ -96,7 +96,8 @@
       <center> <!-- 中央寄せ -->
       <h2>
         <dt>プロフィール画像</dt>
-        <dd><input type="file" name="pic"></dd>
+        <dd><input type="file" name="pic" accept="image/*"></dd>
+        <img id="preview">
         <hr color="black"><br/>
 
         <dt>名前</dt>
@@ -151,6 +152,13 @@
 
 
   <script type="text/javascript">
+  $('#pic').on('change', function (e) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $("#preview").attr('src', e.target.result);
+      }
+      reader.readAsDataURL(e.target.files[0]);
+  });
   function check() {
     for(i = 0; i < document.request.length; i++) {
       if (document.request.elements[i].type == "text") {
