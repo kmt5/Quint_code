@@ -61,17 +61,8 @@
                       ':profile_path' => $profile_path);
       $stmt->execute($params);
 
-      $sql    = "insert into payments values( :b_user_id, null)";
-      $stmt2  = $db->prepare($sql);
-      $params = array(':b_user_id' => $b_user_id);
-      $stmt2->execute($params);
-
-      $sql    = "insert into options values( :b_user_id, 0, 0, 0, 0)";
-      $stmt3  = $db->prepare($sql);
-      $stmt3->execute($params);
-
       //データベースに正常にinsertできたかの判定
-      if ($stmt->rowCount() && $stmt2->rowCount() && $stmt3->rowCount()){
+      if ($stmt->rowCount()){
         echo '
           <form method="post" action="./b_account_regd_comp.php">
             <input type="hidden" name="b_user_id" value "'.$b_user_id.'" />
@@ -99,6 +90,7 @@
     <link rel="stylesheet" type="text/css" href="./CSS/b_home.css">
     <link rel="stylesheet" type="text/css" href="../common/common.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   </head>
   <body>
     <div id="header-fixed">
