@@ -91,7 +91,7 @@ else{$id=null;}
         </center>
         <ul>
 <?php
-    $myv = "SELECT vol_name FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations WHERE s_user_id = '$id' and read_flag = 1)";
+    $myv = "SELECT vol_name FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations WHERE s_user_id = '$id' and set_flag = 1)";
     $result2 = $db->query($myv);
     foreach ($result2 as $row){
       echo '<li>'.$row['vol_name'].'</li>';
