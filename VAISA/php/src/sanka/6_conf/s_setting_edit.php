@@ -99,7 +99,7 @@
         <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
         <img id="preview">
         <script>
-            $('pic').on('change', function (e) {
+            $('#pic').on('change', function (e) {
               var reader = new FileReader();
               reader.onload = function (e) {
                 $("#preview").attr('src', e.target.result);
