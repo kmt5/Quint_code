@@ -1,5 +1,5 @@
 <?php
-$user_id = '1234567a';
+$user_id = $_POST['s_user_id'];
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
