@@ -69,7 +69,7 @@ $user_id = $_POST['s_user_id'];
         echo '<input type="hidden" name="s_user_id" value="'.$user_id.'">';
         echo '<a href="javascript:form3.submit()" style="color:black">';
         ?>
-        ボランティア申請確認
+        フレンド申請確認
         <?php
         echo '</a>';
         echo '</form>';
