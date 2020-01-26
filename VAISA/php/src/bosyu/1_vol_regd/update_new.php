@@ -8,7 +8,7 @@ if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image
   if (!file_exists('upload')) {
     mkdir('upload');
   }
-  $a = './upload/' . basename($_FILES['image']['name']);
+  $a = 'upload/' . basename($_FILES['image']['name']);
   if (move_uploaded_file($_FILES['image']['tmp_name'], $a)) {
     $msg = $a . 'のアップロードに成功しました';
   } else {
