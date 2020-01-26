@@ -40,7 +40,7 @@
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:vol.submit()" class="hexagonB"><span>登録編集</span></a><br>
       </form>
-      <form method="post" name="entrant" action="./2_sanka_list/b_entrant_join.php" class="inline-block_test1">
+      <form method="post" name="entrant" action="./2_sanka_list/b_entrant_login.php" class="inline-block_test1">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:entrant.submit()" class="radius_test"><span>参加者確認</span></a><br>
       </form>
@@ -52,7 +52,7 @@
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:qr_choice.submit()" class="hexagonB"><span>QRコード</span></a><br>
       </form>
-      <form method="post" name="settiement" action="./5_payment/b_settiement.php" class="inline-block_test">
+      <form method="post" name="settiement" action="./5_payment/b_settlement.php" class="inline-block_test">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:settiement.submit()" class="hexagonB"><span>決済</span></a><br>
       </form>
