@@ -46,12 +46,18 @@ if (isset($_POST["password"])) {
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-      <a href="../b_home.php">
-        <p id="back"><i class="fas fa-reply"></i></p>
-      </a>
-      <a href="../b_home.php">
-        <p id="home"><i class="fas fa-home"></i></p>
-      </a>
+    <form method="post" name="formback" action="../b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <a href="javascript:formback.submit()">
+      <p id="back"><i class="fas fa-reply"></i></p>
+    </a>
+  </form>
+  <form method="post" name="formhome" action="../b_home.php">
+    <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <a href="javascript:formhome.submit()">
+      <p id="home"><i class="fas fa-home"></i></p>
+    </a>
+  </form>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -72,9 +78,6 @@ if (isset($_POST["password"])) {
         <br>
       </div>
     </div>
-  </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 
