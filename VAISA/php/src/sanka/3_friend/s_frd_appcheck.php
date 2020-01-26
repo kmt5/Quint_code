@@ -66,17 +66,20 @@
  $db = new PDO($dsn, 'root', 'root');
  $frid3 = "SELECT * FROM sanka_users WHERE s_user_id in (SELECT fr_user_id FROM friends where my_user_id ='$user_id' and reqest_flag = 1)";
  $result = $db->query($frid3);
+ $count++;
  foreach ($result as $row) {
       echo '<div class="frd-appcheck">';
       echo '<h1>';
-      echo '<form method="post" name="form1" action="s_frd_list_pro.php">';
+      echo '<form method="post" name="form'.$count.'" action="s_frd_list_pro.php">';
       echo '<input type="hidden" name="check_user_id" value="'.$row['s_user_id'].'">';
       echo '<input type = "hidden" name="s_user_id" value="'.$user_id.'">';
-      echo '<a href="javascript:form1.submit()" style="color:black">';
+      echo '<a href="javascript:form'.$count.'.submit()" style="color:black">';
       echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
       echo $row['nickname'];
       echo '</a>';
       echo '</form>';
+
+      $count++;
 
       echo '<div class="btn">';
       echo '<form method = "POST" id="app">';

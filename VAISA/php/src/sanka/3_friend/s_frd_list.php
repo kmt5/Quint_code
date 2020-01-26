@@ -64,10 +64,10 @@
 foreach ($result as $row) {
       echo '<div class="frd-list">';
       echo '<h1>';
-      echo '<form method="post" name="form1" action="s_frd_list_pro.php">';
+      echo '<form method="post" name="form'.$count.'" action="s_frd_list_pro.php">';
       echo '<input type="hidden" name="whos_user_id" value="'.$row['s_user_id'].'">';
       echo '<input type = "hidden" name="s_user_id" value="'.$user_id.'">';
-      echo '<a href="javascript:form1.submit()" style="color:black">';
+      echo '<a href="javascript:form'.$count.'.submit()" style="color:black">';
       echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
       echo $row['nickname'];
       echo '</a>';
@@ -80,6 +80,7 @@ foreach ($result as $row) {
       echo '</form>';
       echo '<br>';
       echo '</div>';
+      $count++;
 }
 $db=null;
 ?>

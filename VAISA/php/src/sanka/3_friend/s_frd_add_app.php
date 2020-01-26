@@ -1,9 +1,7 @@
 <?php
 $user_id=$_POST['s_user_id'];
 //申請時に前画面に遷移するためにデータが途切れるヌルで判定
-if($_POST['name']== null){
-  header("location: s_frd_add.php");
-}
+
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 //テーブルに自分とフレンドに関するデータがない場合はこっちの申請で追加
@@ -47,6 +45,15 @@ if(isset($_POST['ask'])){
   <div id="body-bk">
     <div id="body">
       <?php
+if($_POST['name'] == null){
+echo '<form method="post" name="done" action="s_frd_add.php">';
+echo '<input type="hidden" name="s_user_id" value="'.$user_id.'"/>';
+echo '<a href="javascript:done.submit()" style="color:black">';
+echo '正常に申請されました(クリックするとフレンド追加画面に戻ります)';
+echo '</a>';
+echo '</form>';
+echo '</div>';
+}
     $id =  $_POST['name'];
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
@@ -64,7 +71,7 @@ if(isset($_POST['ask'])){
     $data2 = $result3->fetchAll();
     $data3 = $result4->fetchAll();
     $data_which = $which->fetchAll();
-    if($data1 == Array()){echo 'IDに一致するユーザーが見つかりませんでした'; }
+    if($data1 == Array()){echo 'IDに一致するユーザーが見つかりませんでした'; echo '</div>';}
     foreach ($result2 as $row){
       echo '<div class="frd-add-app">';
       echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
