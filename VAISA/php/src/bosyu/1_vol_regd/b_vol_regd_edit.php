@@ -258,14 +258,6 @@ $db = null;
                       var day = document.getElementById( "day" ).value ;
                       var date2 = new Date(year, month, day);
 
-                      const beg = document.getElementById('beg');
-                      const fin = document.getElementById('fin');
-                      beg.addEventListener('input', () => {
-                        let [h, m, s] = (beg.value).split(':')
-                        //if (s === undefined) s = '00';
-                          window.alert(h + ':' + m + ':' + s);
-                      });
-
                       try {
                       // year、month、dayの年月日をもつDate型のインスタンスを作成
                       var validDate=new Date( year, month, day);
