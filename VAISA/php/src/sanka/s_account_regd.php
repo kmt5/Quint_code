@@ -64,7 +64,7 @@
       }
       while ($s_cnt != 0 or $b_cnt != 0);
 
-      /*$msg = null;
+      $msg = null;
       // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
       // POSTでアップロードされたファイルだったら
       if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
@@ -75,15 +75,14 @@
           }
           $new_name = $s_user_id;
           list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
-          echo ($type);
           switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
-              case 3:
+              case 2:
                   $new_name .= '.jpg';
                   break;
-              case IMAGETYPE_GIF:
+              case 1:
                   $new_name .= '.gif';
                   break;
-              case 2:
+              case 3:
                   $new_name .= '.png';
                   break;
               default:
@@ -98,9 +97,9 @@
           }else {
               $msg = 'アップロードに失敗しました';
           }
-      }*/
+      }
 
-      $prof_path  = "/prof/$new_name";
+      $prof_path  = "prof/$new_name";
       $qr_path    = "empty";
       $poi        = 0;
       $rnk        = "ブロンズ";
@@ -127,14 +126,14 @@
       var_dump($stmt->errorInfo());
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
-        echo '
+        /*echo '
           <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
           </form>
           <script>
             document.forms[0].submit();
-          </script>';
+          </script>';*/
       }else{
         echo "error insert";
       }
