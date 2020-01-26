@@ -11,11 +11,14 @@ $getName = $db->query("SELECT vol_date FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $vol_date =  $get_name['vol_date'];
 }
+$db -> query("SET FOREIGN_KEY_CHECKS = 0");
 $vol_date = strtotime($vol_date);
 $today = strtotime(date('Y-m-d'));
 if ($vol_date >= $today) {
-    echo "dekitenai";    $db->query("DELETE FROM volunteers WHERE vol_id = $vol_id");
+    echo "dekitenai";    
+    $db->query("DELETE FROM volunteers WHERE vol_id = $vol_id");
 }
+$db -> query("SET FOREIGN_KEY_CHECKS = 1");
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
