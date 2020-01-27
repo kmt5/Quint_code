@@ -51,11 +51,11 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '<div id = "tab-color">';
         echo '<div id="tabcontrol">';
           echo '<center>';
-            echo '<a href="#tabpage1">'.$now_year.' '.$now_month.'</a>';
+            echo '<a href="#tabpage1" id="sm1">'.$now_year.' '.$now_month.'</a>';
             $now_month++;
-            echo '<a href="#tabpage2">'.$now_year.' '.$now_month.'</a>';
+            echo '<a href="#tabpage2" id="sm2">'.$now_year.' '.$now_month.'</a>';
             $now_month++;
-            echo '<a href="#tabpage3">'.$now_year.' '.$now_month.'</a>';
+            echo '<a href="#tabpage3" id="sm3">'.$now_year.' '.$now_month.'</a>';
           echo '</center>';
        echo '</div>';
      echo '</div>';
@@ -174,6 +174,12 @@ $now_year=(int)date("Y",strtotime($now_time));
   // ▼B：タブの切り替え処理
   // ---------------------------
   function changeTab() {
+    for(var i=0; i<tabs.length; i++) {
+      tabs[i].style.background = '#92D050';
+    }
+    var tabnumber = this.id;
+    tabs[tabnumber].style.background = 'white';
+
      // ▼B-1. href属性値から対象のid名を抜き出す
      var targetid = this.href.substring(this.href.indexOf('#')+1,this.href.length);
 
