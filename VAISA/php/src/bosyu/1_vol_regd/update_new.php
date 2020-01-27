@@ -5,16 +5,16 @@ $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
 if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
-  if (!file_exists('upload')) {
-    mkdir('upload');
+  if (!file_exists('../upload')) {
+    mkdir('../upload');
   }
-  $a = 'upload/' . basename($_FILES['image']['name']);
+  $a = '../upload/' . basename($_FILES['image']['name']);
   if (move_uploaded_file($_FILES['image']['tmp_name'], $a)) {
     $msg = $a . 'のアップロードに成功しました';
   } else {
     $msg = 'アップロードに失敗しました';
   }
-}
+}                           
 
 if (isset($msg) && $msg == true) {
   echo '<p>' . $msg . '</p>';
@@ -96,12 +96,9 @@ $db = null;
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <form method="post" name="formhome" action="../b_home.php">
-      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-      <a href="javascript:formhome.submit()">
-        <p id="home"><i class="fas fa-home"></i></p>
-      </a>
-    </form>
+    <a href="../b_home.php">
+      <p id="home"><i class="fas fa-home"></i></p>
+    </a>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -161,7 +158,7 @@ $db = null;
         } ?>
         <br><br>
         <label>ランク指定　</label>
-        <?php
+        <?php 
           echo "<p class='dezain'>$spec_rank</p>";
         ?>
         <br><br>

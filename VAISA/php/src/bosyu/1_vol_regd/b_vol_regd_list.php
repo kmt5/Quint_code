@@ -19,9 +19,13 @@ foreach ($getVolName as $volname) {
   $vol_name[$i] .= $volname['vol_name'];
   $i += 1;
 }
+if (!empty($vol_name)) {
 $getCount = $db->query("SELECT COUNT(vol_name) AS num FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
 foreach ($getCount as $get_count) {
   $count = $get_count['num'];
+}
+} else {
+  echo "ボランティアがありません。新規登録してください。";
 }
 $php_vol_name = json_encode($vol_name);
 
