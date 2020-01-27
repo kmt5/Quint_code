@@ -39,22 +39,28 @@ $_SESSION["b_user_id"] = $b_user_id;
       <table>
         <tr>
           <td class="icon" width="30%">
-            <a href="b_banner.php">
+            <form method="post" name="form0" action="b_banner.php">
+            <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+            <a href="javascript:form0.submit()">
             <i class="fab fa-searchengin fa-2x"></i>
             </a>
           </td>
           <td>
-            <a href="b_banner.php">検索上位表示<br>オプション</a>
+            <a href="javascript:form0.submit()">検索上位表示<br>オプション</a>
+          </form>
           </td>
         </tr>
         <tr>
           <td class="icon" width="30%">
-            <a href="b_rank_spec.php">
+            <form method="post" name="form1" action="b_rank_spec.php">
+            <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+            <a href="javascript:form1.submit()">
             <i class="fas fa-medal fa-2x"></i>
             </a>
           </td>
           <td>
-            <a href="b_rank_spec.php">参加者ランク<br>オプション</a>
+            <a href="javascript:form1.submit()">参加者ランク<br>オプション</a>
+          </form>
           </td>
         </tr>
       </a>
