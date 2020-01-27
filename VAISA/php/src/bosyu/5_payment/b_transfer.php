@@ -1,3 +1,10 @@
+<?php
+session_start();
+$b_user_id = $_POST["b_user_id"];
+echo $b_user_id;
+$_SESSION["b_user_id"] = $b_user_id;
+?>
+
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <head>
@@ -9,13 +16,19 @@
 </head>
 <body>
   <div id="header-fixed">  <!-- ヘッダー箇所 -->
-  <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <a href="b_settlement.php">
-      <p id="back"><i class="fas fa-reply"></i></p>
-    </a>
-    <a href="../b_home.php">
-      <p id="home"><i class="fas fa-home"></i></p>
-    </a>
+    <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+      <form method="post" name="formback" action="b_settlement.php">
+        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:formback.submit()">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </a>
+    </form>
+    <form method="post" name="formhome" action="../b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
+    </form>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -43,8 +56,5 @@
         お振込みの際にお確かめ下さい。
       </div>
     </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
-  </div>
 </body>
 </html>

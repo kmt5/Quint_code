@@ -126,14 +126,14 @@
       var_dump($stmt->errorInfo());
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){//rowCountがエラーを吐くかも？
-        /*echo '
+        echo '
           <form method="post" action="./s_account_regd_comp.php">
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
           </form>
           <script>
             document.forms[0].submit();
-          </script>';*/
+          </script>';
       }else{
         echo "error insert";
       }
@@ -310,9 +310,5 @@ $('#pic').on('change', function (e) {
   }
 </script>
 
-
-  <div id="footer-fixed">
-    <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
-  </div>
 </body>
 </html>

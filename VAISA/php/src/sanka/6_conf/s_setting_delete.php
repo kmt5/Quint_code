@@ -5,12 +5,30 @@
   if ($really){
     $dsn  = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db   = new PDO($dsn, 'root', 'root');
-    $sql  = 'DELETE FROM sanka_users WHERE s_user_id = :s_user_id';
-    $stmt  = $db->prepare($sql);
-    $params = array(':s_user_id' => $s_user_id);
-    $stmt->execute($params);
 
-    if ($stmt->rowCount()){
+    $sql = "SELECT prof_path FROM sanka_users WHERE s_user_id = '".$s_user_id."'";
+    $res = $db->query($sql)->fetch();
+    $file = "../../".$res['prof_path'];
+    unlink($file);
+
+    $sql  = 'DELETE FROM sanka_situations WHERE s_user_id = :s_user_id';
+    $stmt1  = $db->prepare($sql);
+    $params = array(':s_user_id' => $s_user_id);
+    $stmt1->execute($params);
+
+    $sql  = 'DELETE FROM friends WHERE my_user_id = :s_user_id';
+    $stmt2  = $db->prepare($sql);
+    $stmt2->execute($params);
+
+    $sql  = 'DELETE FROM friends WHERE fr_user_id = :s_user_id';
+    $stmt3  = $db->prepare($sql);
+    $stmt3->execute($params);
+
+    $sql  = 'DELETE FROM sanka_users WHERE s_user_id = :s_user_id';
+    $stmt4  = $db->prepare($sql);
+    $stmt4->execute($params);
+
+    if ($stmt4->rowCount()){
       header('Location: ../../login.php');
     }
   }
@@ -67,8 +85,5 @@
     </center>
     </div>
     </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
-  </div>
 </body>
 </html>
