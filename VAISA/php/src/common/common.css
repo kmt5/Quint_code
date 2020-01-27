@@ -11,7 +11,7 @@ div#header-fixed
     top: 0px;                   /* 位置(上0px) */
     left: 0px;                  /* 位置(右0px) */
     width: 100%;                /* 横幅100%　*/
-    height: 200px;              /* 縦幅140px */
+    height: 15%;              /* 縦幅140px */
 }
 
 .back {
@@ -39,25 +39,26 @@ div#footer-fixed
   position: absolute;/*絶対配置*/
   color: black;
   margin:auto;
-  top: 0px;
+  top: 20px;
   left: 50px;
   font-size:180px;
   }
 
 #home {
-      color: black;
+    color: black;
     position: absolute;/*絶対配置*/
     margin:auto;
-    top: 0px;
+    top: 20px;
     right: 50px;
     font-size:180px;
     }
 
 /* ボディの定義 */
 div#body-bk{
-    padding:200px 0 250px 0;    /* 上下に250pxを余白を取る */
-
+    display:block;
+    padding:15% 0 250px 0;    /* 上下に250pxを余白を取る */
 }
+
 
 div#body{
     width:100%;
@@ -69,7 +70,8 @@ div#Toptitle1{
     text-align: center;
     font-size: 100px;
     background-color: #0cb06e;
-    margin:0px 0 100px 0;
+    padding:40px 0px 0px 0px;
+    margin:0px 0px 100px 0px;
 }
 
 div#Toptitle2{
@@ -77,7 +79,8 @@ div#Toptitle2{
     text-align: center;
     font-size: 100px;
     background-color: #92d050;
-    margin:0px 0 100px 0;
+    padding:30px 0px 0px 0px;
+    margin:0px 0px 100px 0px;
 }
 
 .btn-square {
