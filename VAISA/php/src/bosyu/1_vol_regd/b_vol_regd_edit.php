@@ -89,7 +89,6 @@ $specData = $db->query("SELECT DISTINCT rank_spec_flag FROM options WHERE b_user
 foreach ($specData as $data_val) {
     $rank_spec_flag = $data_val['rank_spec_flag'];
 }
-
 //都道府県プルダウン
 if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
     foreach ($pref_data as $pref_data_val) {
@@ -299,11 +298,9 @@ $db = null;
                         return false; // 送信を中止
                       }
                     }
-
                 </script>
             </div>
         </div>
     </div>
 </body>
-
 </html>
