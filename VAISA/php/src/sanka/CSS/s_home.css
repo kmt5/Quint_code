@@ -28,12 +28,17 @@ div#footer-fixed
     bottom: 0px;                /* 位置(下0px) */
     left: 0px;                  /* 位置(左0px) */
     width: 100%;                /* 横幅100%　*/
-    height: 150px;              /* 縦幅140px */
+    height: 50px;              /* 縦幅140px */
 }
 
 /* ボディの定義 */
 div#body-bk{
     padding:250px 0 250px 0;    /* 上下に250pxを余白を取る */
+
+}
+
+div#body-bk3{
+    padding:125px 0 125px 0;    /* 上下に250pxを余白を取る */
 
 }
 

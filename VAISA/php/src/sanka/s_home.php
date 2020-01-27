@@ -32,7 +32,7 @@
     </script>
 
 
-    <div id="body-bkx">
+    <div id="body-bk3">
       <center> <!-- 中央寄せ -->
       <div class="inline-block_test">
         <center> <!-- 中央寄せ -->
