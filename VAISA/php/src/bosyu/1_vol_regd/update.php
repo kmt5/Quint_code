@@ -19,7 +19,7 @@ echo $msg;
 ?>
 
 <?php
-//$vol_name = $_POST["vol_name"];
+$vol_name = $_POST["vol_name"];
 $vol_id = $_POST["vol_id"];
 //$db->query("UPDATE volunteers SET vol_name = $vol_name WHERE vol_id = $vol_id");
 //echo $vol_name = $_POST["vol_name"];echo "<br>";
