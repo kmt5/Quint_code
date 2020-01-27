@@ -4,12 +4,13 @@ $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 ?>
 <?php
-if (isset($_POST['vol_id'])) {
-    print "送信された内容は{$_POST['vol_id']}です。<br/>";
-}
+//if (isset($_POST['vol_id'])) {
+//    print "送信された内容は{$_POST['vol_id']}です。<br/>";
+//}
 $b_user_id = $_POST["b_user_id"];
 $vol_id = $_POST['vol_id'];
 echo $b_user_id;
+
 $db->query("set names utf8");
 $getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {

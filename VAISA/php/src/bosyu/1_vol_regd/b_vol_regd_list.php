@@ -5,12 +5,6 @@ $b_user_id = $_SESSION["b_user_id"];
 echo $b_user_id;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-//接続確認
-if ($db) {
-  echo "データベースに繋がっています";
-} else {
-  "データベースに繋がってないです";
-}
 
 $db->query("set names utf8");
 $getVolName = $db->query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
