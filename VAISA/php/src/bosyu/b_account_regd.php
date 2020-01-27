@@ -193,8 +193,5 @@
     }
     </script>
 
-    <div id="footer-fixed">
-      <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
-    </div>
   </body>
 </html>
