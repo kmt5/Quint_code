@@ -4,7 +4,6 @@
   $fullname     = $_POST['fullname'];
   $user_address = $_POST['user_address'];
   $place_id     = $_POST['area'];
-  $age          = $_POST['age'];
   $gender       = $_POST['gender'];
   $message      = $_POST['message'];
   $mail_address = $_POST['mail_address'];
@@ -32,10 +31,6 @@
     $sql = "update sanka_users set user_address = '".$user_address."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
-  if ($age) {
-    $sql = "update sanka_users set age = '".$age."' where s_user_id = '".$s_user_id."'";
-    $db->query($sql);
-  }
   if ($gender) {
     $sql = "update sanka_users set gender = '".$gender."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
@@ -56,6 +51,61 @@
     $sql = "update sanka_users set passwd = '".$passwd."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
+  $msg = null;
+  // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
+  // POSTでアップロードされたファイルだったら
+  if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
+      $old_name = $_FILES['pic']['tmp_name'];
+  //  もしprofというフォルダーがなければ
+      if(!file_exists('../../prof')){
+          mkdir('../../prof');
+      }
+      $new_name = $s_user_id;
+      list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
+      switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
+          case 2:
+              $new_name .= '.jpg';
+              break;
+          case 1:
+              $new_name .= '.gif';
+              break;
+          case 3:
+              $new_name .= '.png';
+              break;
+          default:
+              header('Location: s_account_regd.php');
+              exit();
+      }
+  //  もし一時的なファイル名の$_FILES['pic']ファイルを
+  //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
+      $gazou = basename($_FILES['pic']['name']);
+      if(move_uploaded_file($old_name, '../../prof/'.$new_name)){
+          $msg = $gazou. 'のアップロードに成功しました';
+      }else {
+          $msg = 'アップロードに失敗しました';
+      }
+  }
+
+  if ($area_data = $db->query("SELECT DISTINCT area_id, area_name, pref_name FROM areas")) {
+    foreach ($area_data as $area_datas) {
+      $pulldown .= "<option value='" . $area_datas['area_id'] . "' id='option'>" .$area_datas['pref_name']." ".$area_datas['area_name'] . "</option>";
+    }
+  }
+  $sql = "select * from sanka_users where s_user_id = '".$s_user_id."'";
+  $res = $db->query($sql)->fetch();
+  $s_user_id    = $res['s_user_id'];
+  $nickname     = $res['nickname'];
+  $fullname     = $res['fullname'];
+  $user_address = $res['user_address'];
+  $place_id     = $res['area_id'];
+  $gender       = $res['gender'];
+  $message      = $res['message'];
+  $mail_address = $res['mail_address'];
+  $tel_num      = $res['tel_num'];
+  $passwd       = $res['passwd'];
+
+  $sql = "select pref_name,area_name from areas where area_id= '".$place_id."'";
+  $res = $db->query($sql)->fetch();
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -111,19 +161,19 @@
         <hr color="black"><br/>
 
         <dt>名前</dt>
-        <dd><input type="text" name="fullname" id="input1" value="" class="waku" required></dd>
+        <dd><input type="text" name="fullname" id="input1" value="<?php echo $fullname; ?>" class="waku" required></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type="text" name="mail_address" id="input2" value="" class="waku" required></dd>
+        <dd><input type="text" name="mail_address" id="input2" value="<?php echo $mail_address; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="password" id="input3" value="<?php echo $passwd; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = "text" name ="user_address" id="input4" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="user_address" id="input4" value="<?php echo $user_address; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = "text" name ="tel_num" id="input5" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="tel_num" id="input5" value="<?php echo $tel_num; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
 
       <p>
@@ -135,19 +185,21 @@
       </p>
       <hr color="black"><br/>
         <dt>ひとこと</dt>
-        <dd><input type = "text" name ="massage" id="input6" value="" class="waku"></dd>
+        <dd><input type = "text" name ="massage" id="input6" value="<?php echo $message; ?>" class="waku"></dd>
         <hr color="black"><br/><br/>
 
       <p>
         <dt>住所エリア選択</dt>
-        <dd><select name ="area"></dd>
-        <option value="002" id="option">高知</option>
-        <option value="003" id="option">愛媛</option>
+        <dd><select name ="area" type="number"></dd>
+            <option value="<?php echo $place_id; ?>" selected><?php echo $res['pref_name']; ?> <?php echo $res['area_name'] ; ?>(登録中)</option>
+            <?php
+            echo $pulldown;
+            ?>
         </select>
       </p>
       <hr color="black"><br/>
         <dt>ニックネーム</dt>
-        <dd><input type = "text" name ="nickname" id="input7" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="nickname" id="input7" value="<?php echo $nickname; ?>" class="waku" required></dd>
         <hr color="black"><br/>
         <br>
         <input type="submit" value="編集完了" class="btn-square5">
