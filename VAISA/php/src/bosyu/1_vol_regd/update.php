@@ -14,7 +14,10 @@ if(isset($_FILES)&& isset($_FILES['image']) && is_uploaded_file($_FILES['image']
     }else {
         $msg = 'アップロードに失敗しました';
     }
-}?>
+}
+echo $msg;
+?>
+
 <?php
 //$vol_name = $_POST["vol_name"];
 $vol_id = $_POST["vol_id"];
