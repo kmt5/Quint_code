@@ -10,7 +10,7 @@ div#header-fixed
     position: fixed;            /* ヘッダーの固定 */
     top: 0px;                   /* 位置(上0px) */
     left: 0px;                  /* 位置(右0px) */
-    width: 100%;                /* 横幅100%　*/
+    width: 100%;                /* 横幅100%*/
     height: 100px;              /* 縦幅140px */
 }
 
@@ -31,7 +31,7 @@ div#footer-fixed
     position: fixed;            /* フッターの固定 */
     bottom: 0px;                /* 位置(下0px) */
     left: 0px;                  /* 位置(左0px) */
-    width: 100%;                /* 横幅100%　*/
+    width: 100%;                /* 横幅100%*/
     height: 250px;              /* 縦幅140px */
 }
 #back {
@@ -42,7 +42,7 @@ div#footer-fixed
     left: 50px;
     font-size:70px;
     }
-  
+
   #home {
         color: black;
       position: absolute;/*絶対配置*/
