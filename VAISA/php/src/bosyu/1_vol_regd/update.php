@@ -51,7 +51,7 @@ $num = $vol_fin_time - $vol_beg_time;
 $point = strval($num);
 //echo "point:".$point. "<br>";
 if ($_POST["image"] != null) {$vol_fig_path = $a;}
-//echo $vol_fig_path;
+echo $vol_fig_path;
 $pref_name = $_POST["pref_name"];
 $area_name = $_POST["area_name"];
 //echo $pref_name;
