@@ -62,6 +62,8 @@
           </form>
         </center> <!-- 中央寄せ -->
       </div>
+      <div class="body">
+      </div>
     </div>
     <center> <!-- 中央寄せ -->
     </div>
