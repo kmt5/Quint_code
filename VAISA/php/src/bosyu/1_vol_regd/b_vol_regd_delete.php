@@ -14,9 +14,9 @@ if ($db) {
 }
 ?>
 <?php
-if (isset($_POST['vol_id'])) {
-    print "送信された内容は{$_POST['vol_id']}です。<br/>";
-}
+//if (isset($_POST['vol_id'])) {
+//    print "送信された内容は{$_POST['vol_id']}です。<br/>";
+//}
 $vol_id = $_POST['vol_id'];
 $db->query("set names utf8");
 $getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $vol_id");
