@@ -38,22 +38,28 @@ $_SESSION["b_user_id"] = $b_user_id;
       <table>
         <tr>
           <td class="icon" width="30%">
-            <a href="b_vol_regd_new.php">
+            <form method="post" name="form1" action="b_vol_regd_new.php">
+            <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+            <a href="javascript:form1.submit()">
             <i class="fas fa-plus fa-2x"></i>
             </a>
           </td>
           <td>
-            <a href="b_vol_regd_new.php">新規<br>ボランティア登録</a>
+            <a href="javascript:form1.submit()">新規<br>ボランティア登録</a>
+          </form>
           </td>
         </tr>
         <tr>
           <td class="icon" width="30%">
-            <a href="b_vol_regd_list.php">
+            <form method="post" name="form0" action="b_vol_regd_list.php">
+            <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+            <a href="javascript:form0.submit()">
             <i class="fas fa-file-signature fa-2x"></i>
             </a>
           </td>
           <td>
-            <a href="b_vol_regd_list.php">ボランティア<br>一覧</a>
+            <a href="javascript:form0.submit()">ボランティア<br>一覧</a>
+          </form>
           </td>
         </tr>
       </a>
