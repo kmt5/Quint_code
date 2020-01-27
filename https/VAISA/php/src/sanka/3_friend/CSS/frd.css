@@ -1,0 +1,70 @@
+.list{
+  position:relative;
+  text-align: center;
+  background: white;
+  border: solid 3px #92d050;
+  margin-top: 30%;
+}
+.list i{
+  font-size: 110px;
+  position: absolute;
+  left: 0;
+  background:  #92d050;
+  width: 20%;
+
+}
+.list a{
+  font-size: 70px;
+  text-decoration: none;
+  color:black;
+  margin-left: 20%;
+}
+.add{
+  position:relative;
+  text-align: center;
+  background: white;
+  border: solid 3px #92d050;
+}
+.add i{
+  font-size: 110px;
+  position: absolute;
+  left: 0;
+  background:  #92d050;
+  width: 20%;
+}
+.add a{
+  font-size: 70px;
+  text-decoration: none;
+  color:black;
+  margin-left: 20%;
+}
+
+.appcheck{
+  position:relative;
+  text-align: center;
+  background: white;
+  border: solid 3px #92d050;
+  margin-top: -1px;
+}
+.appcheck i{
+  font-size: 110px;
+  position: absolute;
+  left: 0;
+  background:  #92d050;
+  width: 20%;
+
+}
+.appcheck a{
+  font-size: 70px;
+  text-decoration: none;
+  color:black;
+  margin-left: 20%;
+}
+
+div#Toptitle-frd{　　　　　　　　　　　　　/*白ラベル*/
+  width:100%;
+  text-align: center;
+  background-color: white;
+  font-size: 80px;
+  margin:0px 0 100px 0;
+}
