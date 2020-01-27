@@ -310,6 +310,10 @@ font-size: 30px;
     background-color: #0cb06e;   /* 背景色指定 */
 }
 
+.bg_test5 {
+    background-color: #0cb06e;   /* 背景色指定 */
+}
+
 .inline-block_test {
   margin-top: -50px;
   margin-bottom: 100px;
