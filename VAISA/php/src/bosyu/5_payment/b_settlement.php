@@ -68,7 +68,7 @@
         <br>
         <br>
         <form method="post" action="b_transfer.php">
-        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+        <input type="hidden" name="b_user_id" value="<?php echo $id; ?>" />
         <button type="submit">振込先</button>
       </form>
     </div>
