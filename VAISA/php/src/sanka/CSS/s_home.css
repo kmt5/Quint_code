@@ -37,6 +37,11 @@ div#body-bk{
 
 }
 
+div#body-bk3{
+    padding:100px 0 100px 0;    /* 上下に250pxを余白を取る */
+
+}
+
 div#body-bkx{
     padding:200px 0 200px 0;    /* 上下に250pxを余白を取る */
 

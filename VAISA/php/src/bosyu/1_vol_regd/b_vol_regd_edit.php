@@ -142,7 +142,7 @@ $db = null;
                     <input type="hidden" name="vol_id" value="<?= $vol_id ?>">
                     <br>
                     <h2>イメージ画像</h2>
-                    <label>選択済みの画像</label>
+                    <label>登録画像</label>
                     <?php if ($vol_fig_path == null) {
                         echo "<br>登録されている写真はありません。";
                     } else {
