@@ -44,7 +44,7 @@
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:entrant.submit()" class="radius_test"><span>参加者確認</span></a><br>
       </form>
-      <form method="post" name="option" action="./3_option/b_option.html" class="inline-block_test1">
+      <form method="post" name="option" action="./3_option/b_option.php" class="inline-block_test1">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:option.submit()" class="radius_test"><span>オプション</span></a><br>
       </form><!-- 中央寄せ -->
