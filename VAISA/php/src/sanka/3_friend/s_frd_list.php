@@ -25,18 +25,19 @@
 <div id="header-fixed">
 <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
 <form method="post" name="back" action="s_frd_first.php">
-<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
-<a href="javascript:back.submit()">
-<img border="0" src="back.jpg" width="20%" height="100%" class="back">
-</a>
+<input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+<button type="submit">
+<p id="back"><i class="fas fa-reply"></i></p>
+</button>
 </form>
 <form method="post" name="home" action="../s_home.php">
-<input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
-<a href="javascript:home.submit()">
-<img border="0" src="home.jpg" width="20%" height="100%" class="home">
-</a>
-</form>
-</div>
+<input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+<button type="submit">
+<p id="home"><i class="fas fa-home"></i></p>
+</button>
+      </form>
+    </div>
+
   <div id="body-bk">
     <div id="body">
       <div id="Toptitle2">
@@ -87,9 +88,5 @@ $db=null;
     </div>
     </div>
     </div>
-
-  <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
-  </div>
 </body>
 </html>

@@ -18,16 +18,17 @@ $user_id=$_POST['s_user_id'];
       <form method="post" name="back" action="s_frd_first.php">
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
       <button type="submit">
-      <img border="0" src="back.jpg" width="20%" height="100%" class="back">
+        <p id="back"><i class="fas fa-reply"></i></p>
       </button>
       </form>
       <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
       <button type="submit">
-      <img border="0" src="home.jpg" width="20%" height="100%" class="home">
-      </button>
+        <p id="home"><i class="fas fa-home"></i></p>
+</button>
       </form>
     </div>
+
 
   <div id="body-bk">
     <div id="body">
@@ -69,9 +70,6 @@ return false;
 return true;
   }
 </script>
-  <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
-  </div>
 </body>
 </html>
 

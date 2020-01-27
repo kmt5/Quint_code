@@ -4,7 +4,6 @@
   $db = new PDO($dsn, 'root', 'root');
   if(isset($_POST['admin'])){
     $admrid= $_POST['adm'];
-    echo $admrid;
     $sth=$db->prepare("UPDATE friends SET friend_flag = 1, reqest_flag = 0 WHERE my_user_id = '$user_id' and fr_user_id='$admrid' and reqest_flag = 1");
     $sth->execute();
     $flg="SELECT * FROM friends WHERE my_user_id = '$admrid' and fr_user_id = '$user_id'";
@@ -40,17 +39,18 @@
 <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
 <form method="post" name="back" action="s_frd_first.php">
 <input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
-<a href="javascript:back.submit()">
-<img border="0" src="back.jpg" width="20%" height="100%" class="back">
-</a>
+<button type="submit">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </button>
 </form>
 <form method="post" name="home" action="../s_home.php">
 <input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
-<a href="javascript:home.submit()">
-<img border="0" src="home.jpg" width="20%" height="100%" class="home">
-</a>
+<button type="submit">
+        <p id="home"><i class="fas fa-home"></i></p>
+</button>
 </form>
 </div>
+
 
   <div id="body-bk">
     <div id="body">
@@ -111,8 +111,5 @@ var result=window.alert("拒否しました");
 }
 </script>
 
-  <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
-  </div>
 </body>
 </html>

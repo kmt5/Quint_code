@@ -30,17 +30,18 @@ if(isset($_POST['ask'])){
 <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
 <form method="post" name="back" action="s_frd_add.php">
 <input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
-<a href="javascript:back.submit()">
-<img border="0" src="back.jpg" width="20%" height="100%" class="back">
-</a>
+<button type="submit">
+        <p id="back"><i class="fas fa-reply"></i></p>
+</button>
 </form>
 <form method="post" name="home" action="../s_home.php">
 <input type="hidden" name="s_user_id" value="<?php echo $user_id;?>"/>
-<a href="javascript:home.submit()">
-<img border="0" src="home.jpg" width="20%" height="100%" class="home">
-</a>
+<button type="submit">
+        <p id="home"><i class="fas fa-home"></i></p>
+</button>
 </form>
 </div>
+
 
   <div id="body-bk">
     <div id="body">
@@ -71,6 +72,7 @@ echo '</div>';
     $data2 = $result3->fetchAll();
     $data3 = $result4->fetchAll();
     $data_which = $which->fetchAll();
+    if($id==$user_id){echo "自分のIDやで"; exit();}
     if($data1 == Array()){echo 'IDに一致するユーザーが見つかりませんでした'; echo '</div>';}
     foreach ($result2 as $row){
       echo '<div class="frd-add-app">';
@@ -111,8 +113,5 @@ var result=window.alert("申請しました!!");
 </script>
 
 
-  <div id="footer-fixed">
-    <img border="0" src="kokoku.jpg" width="100%" height="100%">
-  </div>
 </body>
 </html>
