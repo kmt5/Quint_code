@@ -13,7 +13,7 @@ if ($db) {
 }
 
 //都道府県プルダウン
-if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
+if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
   foreach ($pref_data as $pref_data_val) {
     $pref_pd .= "<option value='" . $pref_data_val['pref_id'] . "'>" . $pref_data_val['pref_name'] . "</option>";
   }
@@ -38,16 +38,16 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <form method="post" name="formback" action="s_search_first.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-    <a href="javascript:formback.submit()">
-      <p id="back"><i class="fas fa-reply"></i></p>
-    </a>
-  </form>
-  <form method="post" name="formhome" action="../s_home.php">
-    <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-    <a href="javascript:formhome.submit()">
-      <p id="home"><i class="fas fa-home"></i></p>
-    </a>
-  </form>
+      <a href="javascript:formback.submit()">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </a>
+    </form>
+    <form method="post" name="formhome" action="../s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
+    </form>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -56,86 +56,89 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
       </div>
       <div width="100%" class="new">
         <div class="areas">
-        <form method="POST" action="s_search_result.php" enctype="multipart/form-data">
-          <select name="select_pref" id="pref" required>
-            <option value="none">--都道府県を指定してください--</option>
-            <?php
+          <form method="POST" action="s_search_result.php" enctype="multipart/form-data">
+            <select name="select_pref" id="pref" required>
+              <option value="none">--都道府県を指定してください--</option>
+              <?php
               echo $pref_pd;
-            ?>
-          </select>
-          <script>
-            $("#pref").change(function() {
-              $.get('arealist.php?pref_id=' + $("#pref").val(), function(data) {
-                $('#area').html(data);
+              ?>
+            </select>
+            <script>
+              $("#pref").change(function() {
+                $.get('arealist.php?pref_id=' + $("#pref").val(), function(data) {
+                  $('#area').html(data);
+                });
+                $('#area').val('');
+                $('#area').selectmenu('refresh');
               });
-              $('#area').val('');
-              $('#area').selectmenu('refresh');
-            });
-          </script>
-          <br><br>
-          <select name="area_id" , id="area" required>
-          </select>
+            </script>
+            <br><br>
+            <select name="area_id" , id="area" required>
+            </select>
         </div>
 
-          <div class="days">
-            <select id="year" name="year" class="custom1-select sources">
-              <option value="2020">2020</option>
-            </select>年
-            <select id="month" name="month" class="custom1-select sources">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>月
-            <select id="day" name="day" class="custom1-select sources">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="4">5</option>
-              <option value="4">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-              <option value="31">31</option>
-            </select>日
-          </div>
-          <div class="checkbox">
-            <input type="checkbox" name="val_flag" value="1"> 報酬アリ
-            <input type="checkbox" name="vol_date_near" value="1"> 開催日が近い
-            <input type="checkbox" name="newbie_flag" value=""> 初心者OK
-          </div>
-          <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
-          <button class="btn-square" type="submit" align="center">登録</button>
+        <div class="days">
+          <select id="year" name="year" class="custom1-select sources">
+            <option value="none">--</option>
+            <option value="2020">2020</option>
+          </select>年
+          <select id="month" name="month" class="custom1-select sources">
+            <option value="none">--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>月
+          <select id="day" name="day" class="custom1-select sources">
+            <option value="none">--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="4">5</option>
+            <option value="4">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+          </select>日
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="val_flag" value="1"> 報酬アリ
+          <input type="checkbox" name="vol_date_near" value="1"> 開催日が近い
+          <input type="checkbox" name="newbie_flag" value=""> 初心者OK
+        </div>
+        <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
+        <button class="btn-square" type="submit" align="center">登録</button>
         </form>
       </div>
     </div>
@@ -256,7 +259,6 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
       $(this).parents(".custom0-select").removeClass("opened");
       $(this).parents(".custom0-select").find(".custom0-select-trigger").text($(this).text());
     });
-
   </script>
 </body>
 

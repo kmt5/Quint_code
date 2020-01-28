@@ -46,16 +46,16 @@ foreach ($getArea as $area_data_val) {
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <form method="post" name="formback" action="s_search_first.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-    <a href="javascript:formback.submit()">
-      <p id="back"><i class="fas fa-reply"></i></p>
-    </a>
-  </form>
-  <form method="post" name="formhome" action="../s_home.php">
-    <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-    <a href="javascript:formhome.submit()">
-      <p id="home"><i class="fas fa-home"></i></p>
-    </a>
-  </form>
+      <a href="javascript:formback.submit()">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </a>
+    </form>
+    <form method="post" name="formhome" action="../s_home.php">
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
+    </form>
   </div>
 
   <div id="body-bk">
@@ -76,9 +76,11 @@ foreach ($getArea as $area_data_val) {
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
               <!--<option value="2019">2019年</option>-->
+              <option value="none">--</option>
               <option value="2020">2020</option>
             </select>年
             <select id="month" name="month" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -93,6 +95,7 @@ foreach ($getArea as $area_data_val) {
               <option value="12">12</option>
             </select>月
             <select id="day" name="day" class="custom1-select sources">
+              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
