@@ -181,6 +181,8 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
             echo "<option value='ゴールド'>ゴールド</option>";
             echo "</select><br><br>";
           } else {
+            $spec_rank = '指定なし';
+            echo "<input type='hidden' name='spec_rank' value='".$spec_rank."'>";
             echo "参加ユーザのランク指定は行えません。<br>(※オプションで有効化ができます。別途追加料金が必要です。)";
           }
           ?>
