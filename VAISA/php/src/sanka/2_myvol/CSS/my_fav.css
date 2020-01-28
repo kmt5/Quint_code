@@ -146,7 +146,7 @@ div#tabpage3{
 
 }
 
-del{
+.del{
   display:inline-block;
   vertical-align:middle;
   text-align: center;
@@ -160,7 +160,7 @@ del{
   margin-left: 40px;
 }
 
-del:hover{
+.del:hover{
   border:1px solid #666666;
   background:#666666;
   color:#ffffff;

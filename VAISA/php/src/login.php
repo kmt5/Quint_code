@@ -2,13 +2,13 @@
   $mail = $_POST["mail_address"];
   $pswd = $_POST["password"];
   //データベースに接続(vaisa)
+  $loginFail  = false;
 
   if ($mail && $pswd){
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db = new PDO($dsn, 'root', 'root');
     $s_res = $db->query("select s_user_id,passwd from sanka_users where mail_address='".$mail."'");
     $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'");
-    $loginFail  = false;
 
     if ($s_res != false){
       $s_res = $s_res->fetch();
@@ -72,9 +72,13 @@
       </div>
     </div>
   </body>
-  <script>
-  if (<?php echo $loginFail; ?>){
-    alert("ログインに失敗しました");
-  }
-  </script>
 </html>
+
+<?php
+  if ($loginFail) {
+    echo '
+    <script>
+    alert("ログインに失敗しました")
+    </script>';
+  }
+?>

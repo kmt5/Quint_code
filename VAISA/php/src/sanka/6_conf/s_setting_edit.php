@@ -15,9 +15,10 @@
 
   $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db    = new PDO($dsn, 'root', 'root');
-  $sql   = "select mail_address from sanka_users where s_user_id = '".$s_user_id."'";
+  $sql   = "select mail_address,prof_path from sanka_users where s_user_id = '".$s_user_id."'";
   $res   = $db->query($sql)->fetch();
 
+  $prof_path = $res['prof_path'];
   if ($res['mail_address'] != $mail_address) {
     $s_cnt = $db->query("select count(*) from sanka_users where mail_address='".$mail_address."'");
     $b_cnt = $db->query("select count(*) from bosyu_users where mail_address='".$mail_address."'");
@@ -38,6 +39,43 @@
       $mail_address = false;
     }
   }
+
+  $msg = null;
+  // もし$_FILES['pic']があって、一時的なファイル名の$_FILES'pic'が
+  // POSTでアップロードされたファイルだったら
+  if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
+      $old_name = $_FILES['pic']['tmp_name'];
+  //  もしprofというフォルダーがなければ
+      if(!file_exists('../../prof')){
+          mkdir('../../prof');
+      }
+      $new_name = $s_user_id;
+      list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
+      switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
+          case IMAGETYPE_JPEG:
+              $new_name .= '.jpg';
+              break;
+          case IMAGETYPE_GIF:
+              $new_name .= '.gif';
+              break;
+          case IMAGETYPE_PNG:
+              $new_name .= '.png';
+              break;
+          default:
+              header('Location: s_account_regd.php');
+              exit();
+      }
+  //  もし一時的なファイル名の$_FILES['pic']ファイルを
+  //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
+      $gazou = basename($_FILES['pic']['name']);
+      if(move_uploaded_file($old_name, '../../prof/'.$new_name)){
+          $prof_path = "prof/".$new_name;
+          $msg = $gazou. 'のアップロードに成功しました';
+      }else {
+          $msg = 'アップロードに失敗しました';
+      }
+  }
+
 
   if ($nickname) {
     $sql = "update sanka_users set nickname = '".$nickname."' where s_user_id = '".$s_user_id."'";
@@ -75,40 +113,9 @@
     $sql = "update sanka_users set passwd = '".$passwd."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
-
-  $msg = null;
-  // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
-  // POSTでアップロードされたファイルだったら
-  if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
-      $old_name = $_FILES['pic']['tmp_name'];
-  //  もしprofというフォルダーがなければ
-      if(!file_exists('../../prof')){
-          mkdir('../../prof');
-      }
-      $new_name = $s_user_id;
-      list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
-      switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
-          case 2:
-              $new_name .= '.jpg';
-              break;
-          case 1:
-              $new_name .= '.gif';
-              break;
-          case 3:
-              $new_name .= '.png';
-              break;
-          default:
-              header('Location: s_account_regd.php');
-              exit();
-      }
-  //  もし一時的なファイル名の$_FILES['pic']ファイルを
-  //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
-      $gazou = basename($_FILES['pic']['name']);
-      if(move_uploaded_file($old_name, '../../prof/'.$new_name)){
-          $msg = $gazou. 'のアップロードに成功しました';
-      }else {
-          $msg = 'アップロードに失敗しました';
-      }
+  if ($prof_path) {
+    $sql = "update sanka_users set prof_path = '".$prof_path."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
   }
 
   if ($area_data = $db->query("SELECT DISTINCT area_id, area_name, pref_name FROM areas")) {
@@ -173,7 +180,7 @@
       <h2>
         <dt>プロフィール画像</dt>
         <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
-        <img id="preview">
+        <img src=<?php echo '../../'.$prof_path; ?> id="preview">
         <script>
             $('#pic').on('change', function (e) {
               var reader = new FileReader();
