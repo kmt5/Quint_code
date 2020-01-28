@@ -156,15 +156,35 @@ if (empty($table)) {
 <body>
     <div id="header-fixed">
       <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-      <form method="post" name="formback" action="s_search_first.php">
-        <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-        <input type='hidden' name='year' value=" <?php echo $_POST["year"]; ?>" />
-        <input type='hidden' name='month' value=" <?php echo $_POST["month"]; ?>" />
-        <input type='hidden' name='day' value=" .<?php echo $_POST["day"]; ?>" />
-        <input type='hidden' name='val_flag' value=" <?php echo $_POST["val_flag"]; ?>" />
-        <input type='hidden' name='vol_date_near' value=" <?php echo $_POST["vol_date_near"]; ?> " />
-        <input type='hidden' name='newbie_flag' value=" <?php echo $_POST["newbie_flag"]; ?>"/>
-        <input type='hidden' name='area_id' value=" <?php echo $_POST["area_id"]; ?> "/>
+      <?php
+        if ($_POST['back'] == 1) {
+          echo "<form method='post' name='formback' action='s_search_result.php'>";
+          echo "<input type='hidden' name='s_user_id' value=". $s_user_id ." />";
+          echo "<input type='hidden' name='year' value=".$_POST['year']." />";
+          echo "<input type='hidden' name='month' value=".$_POST['month']." />";
+          echo "<input type='hidden' name='day' value=".$_POST['day']." />";
+          echo "<input type='hidden' name='val_flag' value=".$_POST['val_flag']." />";
+          echo "<input type='hidden' name='vol_date_near' value=".$_POST['vol_date_near']." />";
+          echo "<input type='hidden' name='newbie_flag' value=".$_POST['newbie_flag']."/>";
+          echo "<input type='hidden' name='area_id' value=".$_POST['area_id']." />";
+          echo "<a href='javascript:formback.submit()'>";
+          echo "<p id='back'><i class='fas fa-reply'></i></p>";
+          echo "</a></form>";
+        } else if ($_POST['back'] == 2){
+          echo "<form method='post' name='formback' action='../2_myvol/s_my_join.php'>";
+          echo "<input type='hidden' name='s_user_id' value=". $s_user_id ." />";
+          echo "<a href='javascript:formback.submit()'>";
+          echo "<p id='back'><i class='fas fa-reply'></i></p>";
+          echo "</a></form>";
+        } else {
+          echo "<form method='post' name='formback' action='../2_myvol/s_my_fav.php'>";
+          echo "<input type='hidden' name='s_user_id' value=". $s_user_id ." />";
+          echo "<a href='javascript:formback.submit()'>";
+          echo "<p id='back'><i class='fas fa-reply'></i></p>";
+          echo "</a></form>";
+        }
+      ?>
+
       <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
       </a>
