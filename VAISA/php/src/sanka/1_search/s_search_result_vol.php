@@ -230,7 +230,7 @@ if (empty($table)) {
                         $can_ap = 0;
                         echo $rank;
                         echo $spec_rank;
-                        if ($spec_rank == 'ブロンズ') {
+                        if ($spec_rank == 'ブロンズ' || $spec_rank == '指定なし' || $spec_rank == null) {
                             if ($rank == 'ブロンズ' || $rank == 'シルバー' || $rank == 'ゴールド' || $rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
