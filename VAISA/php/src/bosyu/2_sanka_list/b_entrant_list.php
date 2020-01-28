@@ -59,9 +59,10 @@ foreach ($getName as $get_name) {
       <?php
       $read_mem = 0;
       for ($i = 0; $i < $count; $i++) {
-        $al_read = $db -> query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = ");
+        $al_read = $db -> query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = 1");
         foreach ($al_read as $come) {
           $read[$i] =  $come['read_flag'];
+          echo $read[$i];
           if ($read[$i] == 1) {$read_mem += 1;}
         }
       }
@@ -85,7 +86,6 @@ foreach ($getName as $get_name) {
             echo "<br>";
           } else {
             echo "<form action='b_entrant_detail.php' method='post'>";
-
             echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
             echo "<input type='hidden' name='s_user_id' value=".$s_user_id[$i].">";
             echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
