@@ -1,6 +1,6 @@
 <!--ボランティア新規登録画面-->
 <!DOCTYPE html>
-<?php
+<?php 
 $s_user_id = $_POST["s_user_id"];
 echo $s_user_id;
 //データベースに接続(test3)
@@ -56,14 +56,13 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
         <i class="fas fa-edit"></i>　検索
       </div>
       <div width="100%" class="new">
+        <div class="areas">
         <form method="POST" action="s_search_result.php" enctype="multipart/form-data">
-          <select name="select_pref" id="pref"  required>
-            <option value="" selected>--都道府県を選択してください--</option>
+          <select name="select_pref" id="pref"  class="custom0-select sources" required>
             <?php
             echo $pref_pd;
             ?>
           </select>
-          <br><br>
           <script>
             $('#pref').change(function() {
               $.get('arealist.php?pref_id=' + $("#pref").val(), function(data) {
@@ -73,9 +72,11 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
               $('#area').selectmenu('refresh');
             });
           </script>
-          <select name="area_id" , id="area"  required>
-            <option value="" selected>--地域を選択してください--</option>
+
+
+          <select name="area_id" , id="area" class="custom-select sources" required>
           </select>
+</div>
 
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
@@ -137,13 +138,10 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
             <input type="checkbox" name="newbie_flag" value=""> 初心者OK
           </div>
           <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
-          <button class="search" type="submit" align="center">登録</button>
+          <button class="btn-square" type="submit" align="center">登録</button>
         </form>
       </div>
     </div>
-  </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -154,7 +152,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
         id = $(this).attr("id"),
         name = $(this).attr("name");
       var template = '<div class="' + classes + '">';
-      template += '<span class="custom-select-trigger">' + '<option value="none">--</option>' + '</span>';
+      template += '<span class="custom-select-trigger">' + '<option value="none">--地域を選択してください--</option>' + '</span>';
       template += '<div class="custom-options">';
       $(this).find("option").each(function() {
         template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
@@ -223,6 +221,45 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
       $(this).parents(".custom1-select").removeClass("opened");
       $(this).parents(".custom1-select").find(".custom1-select-trigger").text($(this).text());
     });
+
+
+    $(".custom0-select").each(function() {
+      var classes = $(this).attr("class"),
+        id = $(this).attr("id"),
+        name = $(this).attr("name");
+      var template = '<div class="' + classes + '">';
+      template += '<span class="custom0-select-trigger">' + '<option value="none">--都道府県を選択してください--</option>' + '</span>';
+      template += '<div class="custom0-options">';
+      $(this).find("option").each(function() {
+        template += '<span class="custom0-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+      });
+      template += '</div></div>';
+
+      $(this).wrap('<div class="custom0-select-wrapper"></div>');
+      $(this).hide();
+      $(this).after(template);
+    });
+
+    $(".custom0-option:first-of-type").hover(function() {
+      $(this).parents(".custom0-options").addClass("option-hover");
+    }, function() {
+      $(this).parents(".custom0-options").removeClass("option-hover");
+    });
+    $(".custom0-select-trigger").on("click", function() {
+      $('html').one('click', function() {
+        $(".custom0-select").removeClass("opened");
+      });
+      $(this).parents(".custom0-select").toggleClass("opened");
+      event.stopPropagation();
+    });
+    $(".custom0-option").on("click", function() {
+      $(this).parents(".custom0-select-wrapper").find("select").val($(this).data("value"));
+      $(this).parents(".custom0-options").find(".custom0-option").removeClass("selection");
+      $(this).addClass("selection");
+      $(this).parents(".custom0-select").removeClass("opened");
+      $(this).parents(".custom0-select").find(".custom0-select-trigger").text($(this).text());
+    });
+
   </script>
 </body>
 
