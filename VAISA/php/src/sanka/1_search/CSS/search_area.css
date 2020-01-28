@@ -250,6 +250,15 @@ z-index: 2;
       font-size: 30px;
       margin:10% 0px 100px 20%;
   }
+
+  select{
+  width:600px;
+  height:75px;
+font-size:30px;
+border:alicebluepx;
+text-align:center;
+border:solid 3px #0cb06e;
+}
 /*地域名表示*/
 .area{
 }
