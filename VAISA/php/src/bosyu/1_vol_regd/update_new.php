@@ -123,7 +123,7 @@ $db = null;
         <?php if ($vol_fig_path == null) {
           echo "<br>登録されている写真はありません。";
         } else {
-          echo "<img src=./" . $vol_fig_path . ">";
+          echo "<img src=../" . $vol_fig_path . ">";
         } ?>
         <h2>地域選択</h2>
         <label>都道府県　</label>
