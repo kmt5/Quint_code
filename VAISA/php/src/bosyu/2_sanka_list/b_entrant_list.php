@@ -6,7 +6,7 @@ $vol_id = $_POST["vol_id"];
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 echo $vol_id;
-$getName = $db->query("SELECT fullname, a.s_user_id FROM sanka_users a, sanka_situations b WHERE b.vol_id = $vol_id AND a.s_user_id = b.s_user_id");
+$getName = $db->query("SELECT fullname, a.s_user_id FROM sanka_users a, sanka_situations b WHERE b.vol_id = $vol_id AND a.s_user_id = b.s_user_id AND set_flag = 1");
 $j = 0;
 foreach ($getName as $get_name) {
   $s_user_name[$j] .= $get_name['fullname'];
