@@ -118,6 +118,7 @@ $now_year=(int)date("Y",strtotime($now_time));
         echo '<form method="post" name="form'.$count.'" action="../1_search/s_search_result_vol.php">';
         echo '<input type = "hidden" name = "s_user_id" value="'.$user_id.'">';
         echo '<input type = "hidden" name="vol_id" value="'.$row['vol_id'].'">';
+        echo '<input type = "hidden" name="back" value="2">';
         echo '<a href="javascript:form'.$count.'.submit()" style="color:black">';
         echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
         echo '<br>';
