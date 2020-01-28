@@ -64,7 +64,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
           </select>
           <script>
             $('#pref').change(function() {
-              $.get('s_search_area_spe.php?pref_id=' + $("#pref").val(), function(data) {
+              $.post('s_search_area_spe.php?pref_id=' + $("#pref").val(), function(data) {
                 $('#area').html(data);
               });
               $('#area').val('');
@@ -72,11 +72,11 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
             });
           </script>
           <?php
-          $pref_id=$_GET['pref_id'];
+          $pref_id=$_POST['pref_id'];
 
-          if( isset( $_GET[ 'pref_id' ] ) ){
+          if( isset( $_POST[ 'pref_id' ] ) ){
             //選択されたドロップダウンリストの value を表示する。
-            print "送信された内容は{$_GET['pref_id']}です。<br/>";
+            print "送信された内容は{$_POST['pref_id']}です。<br/>";
           }
           ?>
 
@@ -84,11 +84,11 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
 
           <select name="area_id" , id="area" class="custom-select sources" required>
             <?php
-            $pref_id=$_GET['pref_id'];
+            $pref_id=$_POST['pref_id'];
 
-            if( isset( $_GET[ 'pref_id' ] ) ){
+            if( isset( $_POST[ 'pref_id' ] ) ){
               //選択されたドロップダウンリストの value を表示する。
-              print "送信された内容は{$_GET['pref_id']}です。<br/>";
+              print "送信された内容は{$_POST['pref_id']}です。<br/>";
             }
 
             $sql  = "SELECT area_id, area_name FROM areas WHERE pref_id = '" . $pref_id . "'";
@@ -167,11 +167,11 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
           <button class="btn-square" type="submit" align="center">登録</button>
         </form>
         <?php
-        $pref_id=$_GET['pref_id'];
+        $pref_id=$_POST['pref_id'];
 
-        if( isset( $_GET[ 'pref_id' ] ) ){
+        if( isset( $_POST[ 'pref_id' ] ) ){
           //選択されたドロップダウンリストの value を表示する。
-          print "送信された内容は{$_GET['pref_id']}です。<br/>";
+          print "送信された内容は{$_POST['pref_id']}です。<br/>";
         }
         ?>
       </div>
