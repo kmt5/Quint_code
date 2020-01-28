@@ -16,13 +16,16 @@ if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image
 if (isset($msg) && $msg == true) {
   echo '<p>' . $msg . '</p>';
 }
+$vol_fig_path = $a;
+echo $vol_fig_path;
 ?>
 
 <?php
 $vol_name = $_POST["vol_name"];
 $vol_id = $_POST["vol_id"];
 //$db->query("UPDATE volunteers SET vol_name = $vol_name WHERE vol_id = $vol_id");
-echo $vol_name = $_POST["vol_name"];echo "<br>";
+echo $vol_name = $_POST["vol_name"];
+echo "<br>";
 $vol_date = $_POST["vol_date"];
 //echo $vol_date;
 $vol_beg_time = $_POST["beg_time"];
@@ -32,28 +35,25 @@ echo $vol_fin_time;
 echo $vol_capacity = $_POST["vol_capacity"];
 echo $post_num = $_POST["zip11"];
 echo $vol_place = $_POST["addr11"];
-$val_flag = $_POST["val_flag"];  
-echo "val_flag:".$val_flag. "<br>";
+$val_flag = $_POST["val_flag"];
+echo "val_flag:" . $val_flag . "<br>";
 $newbie_flag = $_POST["newbie_flag"];
-echo "newbie_flag:".$newbie_flag. "<br>";
+echo "newbie_flag:" . $newbie_flag . "<br>";
 $vol_detail = $_POST["detail"];
-echo "vol_detail:".$vol_detail. "<br>";
+echo "vol_detail:" . $vol_detail . "<br>";
 $pref_id = $_POST["select_pref"];
-echo "select_pref:".$pref_id. "<br>";
+echo "select_pref:" . $pref_id . "<br>";
 $spec_rank = $_POST["spec_rank"];
-echo "spec_rank:".$spec_rank. "<br>";
-echo $vol_id. "<br>";
+echo "spec_rank:" . $spec_rank . "<br>";
+echo $vol_id . "<br>";
 echo $rank_spec_flag = 0;
 echo "<br>";
 $area_id = $_POST["select_area"];
-echo "select_area:".$area_id. "<br>";
+echo "select_area:" . $area_id . "<br>";
 $num = $vol_fin_time - $vol_beg_time;
 $point = strval($num);
-echo "point:".$point. "<br>";
-if ($_POST["image"] != null) {
-  $vol_fig_path = $a;
-}
-echo $vol_fig_path;
+echo "point:" . $point . "<br>";
+
 $pref_name = $_POST["pref_name"];
 $area_name = $_POST["area_name"];
 //echo $pref_name;
