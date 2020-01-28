@@ -23,6 +23,11 @@ $j = 0;
 foreach ($getName as $get_name) {
   $rank_spec_flag .= $get_name['rank_spec_flag'];
 }
+$getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $vol_id");
+$j = 0;
+foreach ($getName as $get_name) {
+  $vol_name .= $get_name['vol_name'];
+}
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
