@@ -71,6 +71,15 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
               $('#area').selectmenu('refresh');
             });
           </script>
+          <?php
+          $pref_id=$_GET['pref_id'];
+
+          if( isset( $_GET[ 'pref_id' ] ) ){
+            //選択されたドロップダウンリストの value を表示する。
+            print "送信された内容は{$_GET['pref_id']}です。<br/>";
+          }
+          ?>
+
 
 
           <select name="area_id" , id="area" class="custom-select sources" required>
@@ -157,6 +166,14 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
           <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
           <button class="btn-square" type="submit" align="center">登録</button>
         </form>
+        <?php
+        $pref_id=$_GET['pref_id'];
+
+        if( isset( $_GET[ 'pref_id' ] ) ){
+          //選択されたドロップダウンリストの value を表示する。
+          print "送信された内容は{$_GET['pref_id']}です。<br/>";
+        }
+        ?>
       </div>
     </div>
   </div>
