@@ -151,7 +151,7 @@ $db = null;
                     <br>
                     <label>ファイルを変更する場合は、<br>ファイルを選択してください</label>
                     <br>
-                    <input type="file" id='image' name="image" accept="image/*">
+                    <input type="file" id='image' name="change_image" accept="image/*">
                     <img id="preview">
                     <script>
                         $('#image').on('change', function(e) {
