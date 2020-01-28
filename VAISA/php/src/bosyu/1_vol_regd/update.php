@@ -8,9 +8,10 @@ echo $b_user_id;
 if (isset($_FILES) && isset($_FILES['change_image']) && is_uploaded_file($_FILES['change_image']['tmp_name'])) {
   echo "ここ通ってますか？";
   $a = '../upload/' . basename($_FILES['change_image']['name']);
+  $b = 'upload/' . basename($_FILES['image']['name']);
   if (move_uploaded_file($_FILES['change_image']['tmp_name'], $a)) {
     $msg = $a . 'のアップロードに成功しました';
-    $vol_fig_path = $a;
+    $vol_fig_path = $b;
   } else {
     $msg = 'アップロードに失敗しました';
   }
@@ -134,7 +135,7 @@ $db = null;
         if ($vol_fig_path == null) {
           echo "<br>登録されている写真はありません。";
         } else {
-          echo "<img src=./" . $vol_fig_path . ">";
+          echo "<img src=../" . $vol_fig_path . ">";
         }
         ?>
         <h2>地域選択</h2>

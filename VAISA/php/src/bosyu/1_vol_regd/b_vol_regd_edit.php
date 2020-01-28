@@ -145,7 +145,7 @@ $db = null;
                     <?php if ($vol_fig_path == null) {
                         echo "<br>登録されている写真はありません。";
                     } else {
-                        echo "<img src=" . $vol_fig_path . ">";
+                        echo "<img src=../" . $vol_fig_path . ">";
                     } ?>
                     <br>
                     <br>

@@ -8,6 +8,7 @@
     $db = new PDO($dsn, 'root', 'root');
     $s_res = $db->query("select s_user_id,passwd from sanka_users where mail_address='".$mail."'");
     $b_res = $db->query("select b_user_id,passwd from bosyu_users where mail_address='".$mail."'");
+    $loginFail  = false;
 
     if ($s_res != false){
       $s_res = $s_res->fetch();
@@ -35,6 +36,8 @@
           document.forms[0].submit();
         </script>';
       }
+    }else{
+      $loginFail = true;
     }
   }
 ?>
@@ -58,7 +61,7 @@
           <center> <!-- 中央寄せ -->
             <h1>VAISA</h1>
             <br>
-            <form action="#" name="login" method="post" onsubmit="return MoveCheck()">
+            <form action="#" name="login" method="post">
               <input type="text" name="mail_address" placeholder="メールアドレス"><br>
               <input type="password" name="password" placeholder="パスワード"><br>
               <input type="submit" value="ログイン" class="btn-square3x"><br><!--ログインボタン-->
@@ -68,13 +71,10 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript">
-      function MoveCheck() {
-        if( ) {
-          alert("ログインに失敗しました")
-          return false;
-        }
-      }
-    </script>
   </body>
+  <script>
+  if (<?php echo $loginFail; ?>){
+    alert("ログインに失敗しました");
+  }
+  </script>
 </html>
