@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
 $s_user_id = $_POST["s_user_id"];
 echo $s_user_id;
 //データベースに接続(test3)
@@ -69,6 +69,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
               });
               $('#area').val('');
               $('#area').selectmenu('refresh');
+              console.log('変更されました！');
             });
           </script>
           <select name="area_id" , id="area" class="custom-select sources" required>
