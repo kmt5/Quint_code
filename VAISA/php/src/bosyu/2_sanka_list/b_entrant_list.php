@@ -62,13 +62,13 @@ foreach ($getName as $get_name) {
         <i class="fas fa-handshake"></i>　参加者一覧
       </div>
       <?php
-      $read_mem = -1;
+      $read_mem = 0;
       for ($i = 0; $i < $count; $i++) {
         $al_read = $db -> query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = 1");
         foreach ($al_read as $come) {
           $read[$i] =  $come['read_flag'];
-          //echo $read[$i];
           if ($read[$i] == 1) {
+                      echo $read[$i];
             $read_mem += 1;
           }
         }
