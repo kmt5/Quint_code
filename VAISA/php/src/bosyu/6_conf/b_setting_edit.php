@@ -10,9 +10,10 @@
 
   $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db    = new PDO($dsn, 'root', 'root');
-  $sql   = "select mail_address from bosyu_users where b_user_id = '".$b_user_id."'";
+  $sql   = "select mail_address,prof_path from bosyu_users where b_user_id = '".$b_user_id."'";
   $res   = $db->query($sql)->fetch();
 
+  $prof_path = $res['prof_path'];
   if ($res['mail_address'] != $mail_address) {
     $s_cnt = $db->query("select count(*) from sanka_users where mail_address='".$mail_address."'");
     $b_cnt = $db->query("select count(*) from bosyu_users where mail_address='".$mail_address."'");
@@ -32,28 +33,6 @@
       $check_mail = $mail_address;
       $mail_address = false;
     }
-  }
-
-
-  if ($groupname) {
-    $sql = "update bosyu_users set groupname = '".$groupname."' where b_user_id = '".$b_user_id."'";
-    $db->query($sql);
-  }
-  if ($address) {
-    $sql = "update bosyu_users set address = '".$address."' where b_user_id = '".$b_user_id."'";
-    $db->query($sql);
-  }
-  if ($tel_num) {
-    $sql = "update bosyu_users set tel_num = '".$tel_num."' where b_user_id = '".$b_user_id."'";
-    $db->query($sql);
-  }
-  if ($mail_address) {
-    $sql = "update bosyu_users set mail_address = '".$mail_address."' where b_user_id = '".$b_user_id."'";
-    $db->query($sql);
-  }
-  if ($passwd) {
-    $sql = "update bosyu_users set passwd = '".$passwd."' where b_user_id = '".$b_user_id."'";
-    $db->query($sql);
   }
 
   $msg = null;
@@ -85,10 +64,36 @@
   //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
       $gazou = basename($_FILES['pic']['name']);
       if(move_uploaded_file($old_name, '../../prof/'.$new_name)){
+          $prof_path = "prof/".$new_name;
           $msg = $gazou. 'のアップロードに成功しました';
       }else {
           $msg = 'アップロードに失敗しました';
       }
+  }
+
+  if ($groupname) {
+    $sql = "update bosyu_users set groupname = '".$groupname."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($address) {
+    $sql = "update bosyu_users set address = '".$address."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($tel_num) {
+    $sql = "update bosyu_users set tel_num = '".$tel_num."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($mail_address) {
+    $sql = "update bosyu_users set mail_address = '".$mail_address."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($passwd) {
+    $sql = "update bosyu_users set passwd = '".$passwd."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
+  }
+  if ($prof_path) {
+    $sql = "update bosyu_users set prof_path = '".$prof_path."' where b_user_id = '".$b_user_id."'";
+    $db->query($sql);
   }
 
   $sql = "select * from bosyu_users where b_user_id = '".$b_user_id."'";
@@ -142,7 +147,7 @@
       <h2>
         <dt>プロフィール画像</dt>
         <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
-        <img id="preview">
+        <img src=<?php echo '../../'.$prof_path; ?> id="preview">
         <script>
             $('#pic').on('change', function (e) {
               var reader = new FileReader();
