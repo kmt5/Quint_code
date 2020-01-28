@@ -59,7 +59,7 @@ foreach ($getName as $get_name) {
       <?php
       $read_mem = 0;
       for ($i = 0; $i < $count; $i++) {
-        $al_read = $db -> query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = 1");
+        $al_read = $db -> query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = ");
         foreach ($al_read as $come) {
           $read[$i] =  $come['read_flag'];
           if ($read[$i] == 1) {$read_mem += 1;}
@@ -70,6 +70,7 @@ foreach ($getName as $get_name) {
       <h2 align="center">参加者人数　<?php echo $read_mem; ?>/<?php echo $count; ?></h2>
       <div align="center">
         <?php
+        for ($i = 0; $i < $count; $i++) {
           echo $s_user_name[$i];
           echo $s_user_id[$i];
           echo "flag:".$read[$i];
