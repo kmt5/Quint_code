@@ -79,11 +79,9 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
 
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
-              <option value="none">--</option>
               <option value="2020">2020</option>
             </select>年
             <select id="month" name="month" class="custom1-select sources">
-              <option value="none">--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
