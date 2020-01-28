@@ -69,7 +69,7 @@ foreach ($result as $row) {
       echo '<input type="hidden" name="whos_user_id" value="'.$row['s_user_id'].'">';
       echo '<input type = "hidden" name="s_user_id" value="'.$user_id.'">';
       echo '<a href="javascript:form'.$count.'.submit()" style="color:black">';
-      echo  '<img src="../prof/'.$row['prof_path'].'" class="img">';
+      echo  '<img src="../../prof/'.$row['prof_path'].'" class="img">';
       echo $row['nickname'];
       echo '</a>';
       echo '</form>';
