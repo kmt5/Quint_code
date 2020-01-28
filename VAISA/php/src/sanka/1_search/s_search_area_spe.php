@@ -57,22 +57,23 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
       <div width="100%" class="new">
         <div class="areas">
         <form method="POST" action="s_search_result.php" enctype="multipart/form-data">
-          <select name="select_pref" id="pref"  class="custom0-select sources" required>
+          <select name="select_pref" id="pref" required>
+            <option value="none">--都道府県を指定してください--</option>
             <?php
               echo $pref_pd;
             ?>
           </select>
           <script>
-            $(".custom0-select sources").change(function() {
+            $("#pref").change(function() {
               $.get('arealist.php?pref_id=' + $("#pref").val(), function(data) {
                 $('#area').html(data);
               });
               $('#area').val('');
               $('#area').selectmenu('refresh');
-              console.log('変更されました！');
             });
           </script>
-          <select name="area_id" , id="area" class="custom-select sources" required>
+          <br><br>
+          <select name="area_id" , id="area" required>
           </select>
         </div>
 
