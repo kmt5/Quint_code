@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php
+<?php /*
 $s_user_id = $_POST["s_user_id"];
 echo $s_user_id;
 //データベースに接続(test3)
@@ -17,7 +17,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
   foreach ($pref_data as $pref_data_val) {
     $pref_pd .= "<option value='" . $pref_data_val['pref_id'] . "'>" . $pref_data_val['pref_name'] . "</option>";
   }
-}
+}*/
 ?>
 
 <html>
@@ -59,48 +59,19 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
         <form method="POST" action="s_search_result.php" enctype="multipart/form-data">
           <select name="select_pref" id="pref"  class="custom0-select sources" required>
             <?php
-            echo $pref_pd;
+              echo $pref_pd;
             ?>
           </select>
           <script>
             $('#pref').change(function() {
-              $.post('s_search_area_spe.php?pref_id=' + $("#pref").val(), function(data) {
+              $.get('arealist.php?pref_id=' + $("#pref").val(), function(data) {
                 $('#area').html(data);
               });
               $('#area').val('');
               $('#area').selectmenu('refresh');
             });
           </script>
-          <?php
-          $pref_id=$_POST['pref_id'];
-
-          if( isset( $_POST[ 'pref_id' ] ) ){
-            //選択されたドロップダウンリストの value を表示する。
-            print "送信された内容は{$_POST['pref_id']}です。<br/>";
-          }
-          ?>
-
-
-
           <select name="area_id" , id="area" class="custom-select sources" required>
-            <?php
-            $pref_id=$_POST['pref_id'];
-
-            if( isset( $_POST[ 'pref_id' ] ) ){
-              //選択されたドロップダウンリストの value を表示する。
-              print "送信された内容は{$_POST['pref_id']}です。<br/>";
-            }
-
-            $sql  = "SELECT area_id, area_name FROM areas WHERE pref_id = '" . $pref_id . "'";
-
-            if ($area_data = $db->query($sql)) {
-                $area_pd = '<option value="">上手くいってないです。</option>' . "\r\n";
-                foreach($area_data as $area_data_val) {
-                  $area_pd .= "<option value='".$area_data_val['area_id']."'>".$area_data_val['area_name']."</option>";
-                }
-            }
-            echo $area_pd;
-            ?>
           </select>
         </div>
 
@@ -166,14 +137,6 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
           <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
           <button class="btn-square" type="submit" align="center">登録</button>
         </form>
-        <?php
-        $pref_id=$_POST['pref_id'];
-
-        if( isset( $_POST[ 'pref_id' ] ) ){
-          //選択されたドロップダウンリストの value を表示する。
-          print "送信された内容は{$_POST['pref_id']}です。<br/>";
-        }
-        ?>
       </div>
     </div>
   </div>
