@@ -1,0 +1,53 @@
+.frd-appnow{
+  position: relative;
+  margin-top: 10px;
+}
+
+.frd-appnow h1{
+  position: relative;
+  left: 0;;
+  top: 0;
+  margin: 10%;
+}
+
+.frd-appnow a{
+  position: absolute;
+  width: 40%;
+  margin-left: 10%;
+  font-size: 40px;
+  font-weight: bold;
+  color:black;
+  text-decoration: none;
+  background-color: #92d050;
+  border-radius: 20px;
+  padding: 20px 0px 20px 200px;
+  border-bottom: solid 8px #627295;
+}
+
+
+.frd-appnow img{
+  width:70px;
+  position: absolute;
+  left: 0;
+  margin-left: 20px;
+}
+.frd-appnow button{
+  position: absolute;
+  right: 0;
+  margin-right: 5%;
+  font-size: 40px;
+  font-weight: bold;
+  color:black;
+  background:	#92d050;
+  border-radius: 20px;
+  padding: 15px;
+  border-bottom: solid 8px #627295;
+}
+
+.frd-appnow button:active {
+  /*ボタンを押し*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}
+

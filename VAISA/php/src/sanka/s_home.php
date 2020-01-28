@@ -1,6 +1,5 @@
 <?php
   $s_user_id = $_POST['s_user_id'];
-
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -48,9 +47,9 @@
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
             <a href="javascript:friend.submit()" class="radius_test"><span>フレンド</span></a><br>
           </form>
-          <form method="post" name="qr" action="./4_qr/s_qr.php" class="inline-block_test">
+          <form method="post" name="qr" action="./7_check/s_check.php" class="inline-block_test">
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-            <a href="javascript:qr.submit()" class="hexagonB"><span>QRコード</span></a>
+            <a href="javascript:qr.submit()" class="hexagonB"><span>プロフ</span></a>
           </form>
           <form method="post" name="point" action="./5_point/s_point_first.php" class="inline-block_test">
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
