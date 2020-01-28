@@ -4,12 +4,13 @@ $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 ?>
 <?php
-if (isset($_POST['vol_id'])) {
-    print "送信された内容は{$_POST['vol_id']}です。<br/>";
-}
+//if (isset($_POST['vol_id'])) {
+//    print "送信された内容は{$_POST['vol_id']}です。<br/>";
+//} 
 $b_user_id = $_POST["b_user_id"];
 $vol_id = $_POST['vol_id'];
 echo $b_user_id;
+
 $db->query("set names utf8");
 $getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
@@ -88,7 +89,6 @@ $specData = $db->query("SELECT DISTINCT rank_spec_flag FROM options WHERE b_user
 foreach ($specData as $data_val) {
     $rank_spec_flag = $data_val['rank_spec_flag'];
 }
-
 //都道府県プルダウン
 if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
     foreach ($pref_data as $pref_data_val) {
@@ -141,11 +141,11 @@ $db = null;
                     <input type="hidden" name="vol_id" value="<?= $vol_id ?>">
                     <br>
                     <h2>イメージ画像</h2>
-                    <label>選択済みの画像</label>
+                    <label>登録画像</label>
                     <?php if ($vol_fig_path == null) {
                         echo "<br>登録されている写真はありません。";
                     } else {
-                        echo "<img src=./" . $vol_fig_path . ">";
+                        echo "<img src=" . $vol_fig_path . ">";
                     } ?>
                     <br>
                     <br>
@@ -189,7 +189,7 @@ $db = null;
                     </select>
                     <br>
                     <h2>郵便番号</h2>
-                    <!-- ▼郵便番号入力フィールド(7桁) -->
+                    <!-- ▼郵便番号入力フィールド(7桁) -->-
                     <!-- 登録した郵便番号が表示できるか -->
                     <input type="text" name="zip11" size="10" maxlength="8" value="<?= htmlspecialchars($post_num, ENT_QUOTES, 'UTF-8') ?>" required>
                     <!-- ▼住所入力フィールド(都道府県+以降の住所) -->
@@ -298,11 +298,9 @@ $db = null;
                         return false; // 送信を中止
                       }
                     }
-
                 </script>
             </div>
         </div>
     </div>
 </body>
-
 </html>

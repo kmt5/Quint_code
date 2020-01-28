@@ -5,10 +5,10 @@ $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
 if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
-  if (!file_exists('upload')) {
-    mkdir('upload');
+  if (!file_exists('../upload')) {
+    mkdir('../upload');
   }
-  $a = 'upload/' . basename($_FILES['image']['name']);
+  $a = '../upload/' . basename($_FILES['image']['name']);
   if (move_uploaded_file($_FILES['image']['tmp_name'], $a)) {
     $msg = $a . 'のアップロードに成功しました';
   } else {
@@ -175,10 +175,6 @@ $db = null;
         </form>
       </div>
     </div>
-  </div>
-
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 

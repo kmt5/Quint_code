@@ -171,7 +171,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
           foreach ($specData as $data_val) {
             $rank_spec_flag = $data_val['rank_spec_flag'];
           }
-          echo $rank_spec_flag;
+          //echo $rank_spec_flag;
           echo "<h2>ランク指定  </h2>";
           if ($rank_spec_flag == 1) {
             echo "<select name='spec_rank'>";

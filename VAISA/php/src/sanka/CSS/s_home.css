@@ -5,14 +5,6 @@ html, body{
     height:100%;
 }
 
-div#header-fixed
-{
-    position: fixed;            /* ヘッダーの固定 */
-    top: 0px;                   /* 位置(上0px) */
-    left: 0px;                  /* 位置(右0px) */
-    width: 100%;                /* 横幅100%　*/
-    height: 250px;              /* 縦幅140px */
-}
 
 .back {
     position: absolute;
@@ -29,19 +21,15 @@ div#header-fixed
   border: solid 1px;
 }
 
-/* フッターの固定 */
-div#footer-fixed
-{
-    position: fixed;            /* フッターの固定 */
-    bottom: 0px;                /* 位置(下0px) */
-    left: 0px;                  /* 位置(左0px) */
-    width: 100%;                /* 横幅100%　*/
-    height: 250px;              /* 縦幅140px */
-}
 
 /* ボディの定義 */
 div#body-bk{
-    padding:250px 0 250px 0;    /* 上下に250pxを余白を取る */
+     margin:100px 0px 0px 0px;
+
+}
+
+div#body-bk3{
+    padding:125px 0 125px 0;    /* 上下に250pxを余白を取る */
 
 }
 
@@ -65,21 +53,6 @@ div#body{
     margin:auto;
 }
 
-div#Toptitle1{
-    width:100%;
-    text-align: center;
-    font-size: 100px;
-    background-color: #0cb06e;
-    margin:0px 0 100px 0;
-}
-
-div#Toptitle2{
-    width:100%;
-    text-align: center;
-    font-size: 100px;
-    background-color: #92d050;
-    margin:0px 0 100px 0;
-}
 
 
 form{

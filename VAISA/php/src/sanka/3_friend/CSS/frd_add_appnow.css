@@ -1,95 +1,3 @@
-.popup-overlay{
-  /*Hides pop-up when there is no "active" class*/
-  visibility:hidden;
-  position:absolute;
-  background:#ffffff;
-  border:3px solid #666666;
-  top:  38%;
-  left: 48%;
-  width:  500px;        /* 横幅 */
-  height: 159px;        /* 高さ */
-  margin-left: -250px;  /* マイナス「横幅÷2」 */
-  margin-top:  -75px;  /* マイナス「高さ÷2」 */
-  /*width:50%;
-  height:50%;
-  left:25%;*/
-}
-
-.popup-overlay.active{
-  /*displays pop-up when "active" class is present*/
-  visibility:visible;
-  text-align:center;
-  position: absolute;
-  z-index: 10;
-  top:  45%;
-  left: 48%;
-  width:  500px;        /* 横幅 */
-  height: 300px;        /* 高さ */
-  margin-left: -250px;  /* マイナス「横幅÷2」 */
-  margin-top:  -150px;  /* マイナス「高さ÷2」 */
-}
-
-.popup-content {
-  /*Hides pop-up content when there is no "active" class */
-  font-size: 25px;
-  font-weight: bold;
-  visibility:hidden;
-  vertical-align:middle;
-  text-align: center;
-  margin-top:10%;
-}
-
-.popup-content.active {
-  /*Shows pop-up content when "active" class is present */
-  visibility:visible;
-}
-
-.popup1-overlay{
-  /*Hides pop-up when there is no "active" class*/
-  visibility:hidden;
-  position:absolute;
-  background:#ffffff;
-  border:3px solid #666666;
-  top:  38%;
-  left: 48%;
-  width:  500px;        /* 横幅 */
-  height: 159px;        /* 高さ */
-  margin-left: -250px;  /* マイナス「横幅÷2」 */
-  margin-top:  -75px;  /* マイナス「高さ÷2」 */
-  /*width:50%;
-  height:50%;
-  left:25%;*/
-}
-
-.popup1-overlay.active{
-  /*displays pop-up when "active" class is present*/
-  visibility:visible;
-  text-align:center;
-  position: absolute;
-  z-index: 10;
-  top:  45%;
-  left: 48%;
-  width:  500px;        /* 横幅 */
-  height: 300px;        /* 高さ */
-  margin-left: -250px;  /* マイナス「横幅÷2」 */
-  margin-top:  -150px;  /* マイナス「高さ÷2」 */
-}
-
-.popup-content1 {
-  /*Hides pop-up content when there is no "active" class */
-  font-size: 25px;
-  font-weight: bold;
-  visibility:hidden;
-  vertical-align:middle;
-  text-align:center;
-  margin: 10%;
-}
-
-.popup-content1.active {
-  /*Shows pop-up content when "active" class is present */
-  visibility:visible;
-}
-
 .frd-appnow{
   position: relative;
   margin-top: 10px;
@@ -123,7 +31,7 @@
   left: 0;
   margin-left: 20px;
 }
-button{
+.frd-appnow button{
   position: absolute;
   right: 0;
   margin-right: 5%;
@@ -136,41 +44,10 @@ button{
   border-bottom: solid 8px #627295;
 }
 
-.botton:active {
-  /*ボタンを押したとき*/
+.frd-appnow button:active {
+  /*ボタンを押し*/
   -webkit-transform: translateY(4px);
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
 
-button-no{
-  font-size: 20px;
-  font-weight: bold;
-  color:blue;
-  background:	white;
-  border:2px solid black;
-  padding: 10px 30px 10px 30px;
-  margin-left: 5%;
-}
-
-button-no:hover{
-  border:2px solid #666666;
-  background:#666666;
-  color:#ffffff;
-}
-
-button-ok{
-  font-size: 20px;
-  font-weight: bold;
-  color:red;
-  background:	white;
-  border:2px solid black;
-  padding: 10px 30px 10px 30px;
-  margin-right: 5%;
-}
-
-button-ok:hover{
-  border:2px solid #666666;
-  background:#666666;
-  color:#ffffff;
-}

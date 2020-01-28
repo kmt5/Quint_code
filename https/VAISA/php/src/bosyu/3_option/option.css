@@ -1,0 +1,69 @@
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-top: solid 3px #0cb06e;
+  border-bottom: solid 3px #0cb06e;
+  cursor: pointer;
+}
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  font-size:50px
+}
+
+table td a{
+  display: block; /*行全体をリンク可*/
+}
+
+td.icon {
+  background-color:#92d050;
+}
+
+a {
+  color: black;
+}
+
+div.setumei{
+  text-align:center;
+  font-size:50px
+}
+
+div.zyokyo{
+  margin:50px 0px 50px 150px;
+  text-align:center;
+  font-size:50px;
+  border: 2px solid #92d050;
+  border-radius:20px;
+  width:70%;
+}
+div.b{
+  text-align:center;
+  font-size:50px;
+}
+
+button {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #92d050;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 10px #627295;
+  border-radius: 30px;
+  font-size:50px;
+  margin:0px 50px 50px 80px;
+
+}
+button:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}

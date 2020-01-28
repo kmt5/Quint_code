@@ -1,0 +1,93 @@
+#tabcontrol a {
+  display: inline-block;        /* インラインブロック化 */
+  border-width: 0px 0px 0px 0px;    /* 下以外の枠線を引く */
+  border-style: solid;              /* 枠線の種類：実線 */
+  border-color: none;              /* 枠線の色：黒色 */
+  width:20%;
+  border-radius: 0 0 0 0; /* 枠線の左上角と右上角だけを丸く */
+  padding: 0.75em 1em;              /* 内側の余白 */
+  text-decoration: none;            /* リンクの下線を消す */
+  font-size: 30px;
+  color: black;                     /* 文字色：黒色 */
+  font-weight: bold;                /* 太字 */
+  margin-left: 30px;
+  position: relative;               /* JavaScriptでz-indexを調整するために必要 */
+}
+
+div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
+ width:100%;
+ background-color: #0cb06e;
+}
+/* ▼タブの中身 */
+#tabbody div {
+ border: 3px solid black; /* 枠線：黒色の実線を3pxの太さで引く */
+ border-radius: 20px 20px 20px 20px; /* 〇枠線 */
+ margin-top: 5%;
+ margin-left: 5%;
+ padding: 1em;            /* 内側の余白量 */
+ background-color: white; /* 背景色：白色 */
+ width:500px;
+ height:300px;
+}
+
+.img2{
+  position: relative;
+  top:0px;
+  left:70px;
+  }
+
+#tabcontrol a:hover {
+ background-color: white; /* 背景色：白色 */
+}
+
+#tabcontrol #left{
+ position: absolute;
+ left:0;
+ margin-top: 20px;
+ margin-left: 20px;
+}
+
+#tabcontrol #right{
+ position: absolute;
+ right:0;
+ margin-top: 20px;
+ margin-right: 20px;
+}
+
+#tabcontrol #m1{
+ display: none;
+}
+#tabcontrol #m2{
+ display: none;
+}
+#tabcontrol #m3{
+ display: none;
+}
+#tabcontrol #m4{
+ display: none;
+}
+#tabcontrol #m5{
+ display: none;
+}
+#tabcontrol #m6{
+ display: none;
+}
+#tabcontrol #m7{
+ display: none;
+}
+#tabcontrol #m8{
+ display: none;
+}
+#tabcontrol #m9{
+  white-space: nowrap;
+ display: none;
+}
+#tabcontrol #m10{
+ white-space: nowrap;
+}
+#tabcontrol #m11{
+
+}
+#tabcontrol #m12{
+
+}

@@ -5,14 +5,6 @@ html, body{
     height:100%;
 }
 
-div#header-fixed
-{
-    position: fixed;            /* ヘッダーの固定 */
-    top: 0px;                   /* 位置(上0px) */
-    left: 0px;                  /* 位置(右0px) */
-    width: 100%;                /* 横幅100%　*/
-    height: 250px;              /* 縦幅140px */
-}
 
 p#info {
   margin: auto;
@@ -34,19 +26,9 @@ p#info {
     top: 0px;
 }
 
-/* フッターの固定 */
-div#footer-fixed
-{
-    position: fixed;            /* フッターの固定 */
-    bottom: 0px;                /* 位置(下0px) */
-    left: 0px;                  /* 位置(左0px) */
-    width: 100%;                /* 横幅100%　*/
-    height: 250px;              /* 縦幅140px */
-}
-
 /* ボディの定義 */
 div#body-bk{
-    padding:250px 0 250px 0;    /* 上下に250pxを余白を取る */
+     margin:100px 0px 0px 0px;
 
 }
 
@@ -70,21 +52,6 @@ div#body{
     margin:auto;
 }
 
-div#Toptitle1{
-    width:100%;
-    text-align: center;
-    font-size: 100px;
-    background-color: #0cb06e;
-    margin:0px 0 100px 0;
-}
-
-div#Toptitle2{
-    width:100%;
-    text-align: center;
-    font-size: 100px;
-    background-color: #92d050;
-    margin:0px 0 100px 0;
-}
 div#body-qr1{
     padding:0px 200px 0px 200px;    /* 上下に250pxを余白を取る */
 
@@ -307,6 +274,10 @@ font-size: 30px;
     margin: 0 100px 0 100px;
     border-radius: 10px;
     font-size: 20px;                /* 文字サイズ指定 */
+    background-color: #0cb06e;   /* 背景色指定 */
+}
+
+.bg_test5 {
     background-color: #0cb06e;   /* 背景色指定 */
 }
 

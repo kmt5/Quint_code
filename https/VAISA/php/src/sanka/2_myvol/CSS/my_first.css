@@ -1,0 +1,62 @@
+.join{
+  position:relative;
+  text-align: center;
+  background: white;
+  border: solid 3px #92d050;
+  margin-top: 30%;
+}
+.join i{
+  font-size: 110px;
+  position: absolute;
+  left: 0;
+  background:  #92d050;
+  width: 20%;
+
+}
+.join a{
+  font-size: 70px;
+  text-decoration: none;
+  color:black;
+  margin-left: 20%;
+}
+.fav{
+  position:relative;
+  text-align: center;
+  background: white;
+  border: solid 3px #92d050;
+}
+.fav i{
+  font-size: 110px;
+  position: absolute;
+  left: 0;
+  background:  #92d050;
+  width: 20%;
+}
+.fav a{
+  font-size: 70px;
+  text-decoration: none;
+  color:black;
+  margin-left: 20%;
+}
+
+.record{
+  position:relative;
+  text-align: center;
+  background: white;
+  border: solid 3px #92d050;
+  margin-top: -1px;
+}
+.record i{
+  font-size: 110px;
+  position: absolute;
+  left: 0;
+  background:  #92d050;
+  width: 20%;
+
+}
+.record a{
+  font-size: 70px;
+  text-decoration: none;
+  color:black;
+  margin-left: 20%;  
+}

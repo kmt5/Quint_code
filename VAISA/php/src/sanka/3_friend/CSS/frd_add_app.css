@@ -8,7 +8,7 @@
   left: 48%;
   width:  500px;        /* 横幅 */
   height: 159px;        /* 高さ */
-  margin-left: -250px;  /* マイナス「横幅÷2」 */
+  margin-left: -250px;  /* マイナス「横幅÷2 */
   margin-top:  -75px;  /* マイナス「高さ÷2」 */
   /*width:50%;
   height:50%;
@@ -95,18 +95,3 @@
 }
 
 
-button-ok{
-  font-size: 20px;
-  font-weight: bold;
-  color:red;
-  background:	white;
-  border:2px solid black;
-  padding: 10px 30px 10px 30px;
-  margin-right: 5%;
-}
-
-button-ok:hover{
-  border:2px solid #666666;
-  background:#666666;
-  color:#ffffff;
-}
