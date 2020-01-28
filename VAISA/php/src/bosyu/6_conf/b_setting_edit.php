@@ -4,12 +4,36 @@
   $address      = $_POST['address'];
   $tel_num      = $_POST['tel_num'];
   $mail_address = $_POST['mail_address'];
-  $passwd       = $_POST['password'];
+  $passwd       = $_POST['passwd'];
 
   $picture      = $_POST['pic'];
 
   $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db    = new PDO($dsn, 'root', 'root');
+  $sql   = "select mail_address from bosyu_users where b_user_id = '".$b_user_id."'";
+  $res   = $db->query($sql)->fetch();
+
+  if ($res['mail_address'] != $mail_address) {
+    $s_cnt = $db->query("select count(*) from sanka_users where mail_address='".$mail_address."'");
+    $b_cnt = $db->query("select count(*) from bosyu_users where mail_address='".$mail_address."'");
+
+    if ($s_cnt == false){
+      $s_cnt = 0;
+    }else{
+      $s_cnt = $s_cnt->fetchColumn();
+    }
+    if ($b_cnt == false){
+      $b_cnt = 0;
+    }else{
+      $b_cnt = $b_cnt->fetchColumn();
+    }
+
+    if ($s_cnt > 0 || $b_cnt > 0) {
+      $check_mail = $mail_address;
+      $mail_address = false;
+    }
+  }
+
 
   if ($groupname) {
     $sql = "update bosyu_users set groupname = '".$groupname."' where b_user_id = '".$b_user_id."'";
@@ -31,6 +55,51 @@
     $sql = "update bosyu_users set passwd = '".$passwd."' where b_user_id = '".$b_user_id."'";
     $db->query($sql);
   }
+
+  $msg = null;
+  // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
+  // POSTでアップロードされたファイルだったら
+  if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
+      $old_name = $_FILES['pic']['tmp_name'];
+  //  もしprofというフォルダーがなければ
+      if(!file_exists('../../prof')){
+          mkdir('../../prof');
+      }
+      $new_name = $b_user_id;
+      list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
+      switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
+          case 2:
+              $new_name .= '.jpg';
+              break;
+          case 1:
+              $new_name .= '.gif';
+              break;
+          case 3:
+              $new_name .= '.png';
+              break;
+          default:
+              header('Location: s_account_regd.php');
+              exit();
+      }
+  //  もし一時的なファイル名の$_FILES['pic']ファイルを
+  //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
+      $gazou = basename($_FILES['pic']['name']);
+      if(move_uploaded_file($old_name, '../../prof/'.$new_name)){
+          $msg = $gazou. 'のアップロードに成功しました';
+      }else {
+          $msg = 'アップロードに失敗しました';
+      }
+  }
+
+  $sql = "select * from bosyu_users where b_user_id = '".$b_user_id."'";
+  $res = $db->query($sql)->fetch();
+  $b_user_id    = $res['b_user_id'];
+  $groupname    = $res['groupname'];
+  $address      = $res['address'];
+  $tel_num      = $res['tel_num'];
+  $mail_address = $res['mail_address'];
+  $passwd       = $res['passwd'];
+  $prof_path    = $res['prof_path'];
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -86,19 +155,20 @@
         <hr color="black"><br/>
 
         <dt>会社・団体</dt>
-        <dd><input type = "text" name ="groupname" id="input1" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="groupname" id="input1" value="<?php echo $groupname; ?>" class="waku" required></dd>
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
-        <dd><input type = "text" name ="mail_address" id="input2" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="mail_address" id="input2" value="<?php echo $mail_address; ?>" class="waku" required></dd>
+        <?php if ($check_mail) {echo $check_mail.'は使用できません。';} ?>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="passwd" id="input3" value="<?php echo $passwd; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
-        <dd><input type = "text" name ="user_address" id="input4" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="user_address" id="input4" value="<?php echo $address; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>電話番号</dt>
-        <dd><input type = "text" name ="tel_num" id="input5" value="" class="waku" required></dd>
+        <dd><input type = "text" name ="tel_num" id="input5" value="<?php echo $tel_num; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <br>
         <input type="submit" value="編集完了" class="btn-square5">

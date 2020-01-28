@@ -8,8 +8,10 @@
 
     $sql = "SELECT prof_path FROM sanka_users WHERE s_user_id = '".$s_user_id."'";
     $res = $db->query($sql)->fetch();
-    $file = "../../".$res['prof_path'];
-    unlink($file);
+    if ($res['prof_path'] != "prof/default.jpg"){
+      $file = "../../".$res['prof_path'];
+      unlink($file);
+    }
 
     $sql  = 'DELETE FROM sanka_situations WHERE s_user_id = :s_user_id';
     $stmt1  = $db->prepare($sql);

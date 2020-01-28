@@ -5,12 +5,37 @@
   if ($really){
     $dsn  = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
     $db   = new PDO($dsn, 'root', 'root');
-    $sql  = 'DELETE FROM bosyu_users WHERE b_user_id = :b_user_id';
-    $stmt  = $db->prepare($sql);
-    $params = array(':b_user_id' => $b_user_id);
-    $stmt->execute($params);
 
-    if ($stmt->rowCount()){
+    $sql = "SELECT prof_path FROM bosyu_users WHERE b_user_id = '".$b_user_id."'";
+    $res = $db->query($sql)->fetch();
+    if ($res['prof_path'] != "prof/default.jpg"){
+      $file = "../../".$res['prof_path'];
+      unlink($file);
+    }
+
+    //$sql  = 'DELETE FROM sanka_situations WHERE b_user_id = :b_user_id';
+    //$stmt1  = $db->prepare($sql);
+    //$params = array(':b_user_id' => $b_user_id);
+    //$stmt1->execute($params);
+
+    //$sql  = 'DELETE FROM volunteers WHERE b_user_id = :b_user_id';
+    //$stmt2  = $db->prepare($sql);
+    //$stmt2->execute($params);
+
+    $sql  = 'DELETE FROM options WHERE b_user_id = :b_user_id';
+    $stmt3  = $db->prepare($sql);
+    $params = array(':b_user_id' => $b_user_id);
+    $stmt3->execute($params);
+
+    $sql  = 'DELETE FROM payments WHERE b_user_id = :b_user_id';
+    $stmt4  = $db->prepare($sql);
+    $stmt4->execute($params);
+
+    $sql  = 'DELETE FROM bosyu_users WHERE b_user_id = :b_user_id';
+    $stmt5  = $db->prepare($sql);
+    $stmt5->execute($params);
+
+    if ($stmt5->rowCount()){
       header('Location: ../../login.php');
     }
   }

@@ -3,17 +3,41 @@
   $nickname     = $_POST['nickname'];
   $fullname     = $_POST['fullname'];
   $user_address = $_POST['user_address'];
-  $place_id     = $_POST['area'];
+  $area_id      = $_POST['area_id'];
   $gender       = $_POST['gender'];
   $message      = $_POST['message'];
   $mail_address = $_POST['mail_address'];
   $tel_num      = $_POST['tel_num'];
-  $passwd       = $_POST['password'];
+  $passwd       = $_POST['passwd'];
 
   $picture      = $_POST['pic'];
+  $check_mail   = null;
 
   $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db    = new PDO($dsn, 'root', 'root');
+  $sql   = "select mail_address from sanka_users where s_user_id = '".$s_user_id."'";
+  $res   = $db->query($sql)->fetch();
+
+  if ($res['mail_address'] != $mail_address) {
+    $s_cnt = $db->query("select count(*) from sanka_users where mail_address='".$mail_address."'");
+    $b_cnt = $db->query("select count(*) from bosyu_users where mail_address='".$mail_address."'");
+
+    if ($s_cnt == false){
+      $s_cnt = 0;
+    }else{
+      $s_cnt = $s_cnt->fetchColumn();
+    }
+    if ($b_cnt == false){
+      $b_cnt = 0;
+    }else{
+      $b_cnt = $b_cnt->fetchColumn();
+    }
+
+    if ($s_cnt > 0 || $b_cnt > 0) {
+      $check_mail = $mail_address;
+      $mail_address = false;
+    }
+  }
 
   if ($nickname) {
     $sql = "update sanka_users set nickname = '".$nickname."' where s_user_id = '".$s_user_id."'";
@@ -23,12 +47,12 @@
     $sql = "update sanka_users set fullname = '".$fullname."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
-  if ($place_id) {
-    $sql = "update sanka_users set area_id = '".$place_id."' where s_user_id = '".$s_user_id."'";
-    $db->query($sql);
-  }
   if ($user_address) {
     $sql = "update sanka_users set user_address = '".$user_address."' where s_user_id = '".$s_user_id."'";
+    $db->query($sql);
+  }
+  if ($area_id) {
+    $sql = "update sanka_users set area_id = '".$area_id."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($gender) {
@@ -51,6 +75,7 @@
     $sql = "update sanka_users set passwd = '".$passwd."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
+
   $msg = null;
   // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
   // POSTでアップロードされたファイルだったら
@@ -97,14 +122,14 @@
   $nickname     = $res['nickname'];
   $fullname     = $res['fullname'];
   $user_address = $res['user_address'];
-  $place_id     = $res['area_id'];
+  $area_id      = $res['area_id'];
   $gender       = $res['gender'];
   $message      = $res['message'];
   $mail_address = $res['mail_address'];
   $tel_num      = $res['tel_num'];
   $passwd       = $res['passwd'];
 
-  $sql = "select pref_name,area_name from areas where area_id= '".$place_id."'";
+  $sql = "select pref_name,area_name from areas where area_id= '".$area_id."'";
   $res = $db->query($sql)->fetch();
 ?>
 
@@ -165,9 +190,10 @@
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
         <dd><input type="text" name="mail_address" id="input2" value="<?php echo $mail_address; ?>" class="waku" required></dd>
+        <?php if ($check_mail) {echo $check_mail.'は使用できません。';} ?>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3" value="<?php echo $passwd; ?>" class="waku" required></dd>
+        <dd><input type = "text" name ="passwd" id="input3" value="<?php echo $passwd; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
         <dd><input type = "text" name ="user_address" id="input4" value="<?php echo $user_address; ?>" class="waku" required></dd>
@@ -190,8 +216,8 @@
 
       <p>
         <dt>住所エリア選択</dt>
-        <dd><select name ="area" type="number"></dd>
-            <option value="<?php echo $place_id; ?>" selected><?php echo $res['pref_name']; ?> <?php echo $res['area_name'] ; ?>(登録中)</option>
+        <dd><select name ="area_id" type="number"></dd>
+            <option value="<?php echo $area_id; ?>" selected><?php echo $res['pref_name']; ?> <?php echo $res['area_name'] ; ?>(登録中)</option>
             <?php
             echo $pulldown;
             ?>

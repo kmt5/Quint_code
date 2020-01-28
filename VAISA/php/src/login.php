@@ -58,7 +58,7 @@
           <center> <!-- 中央寄せ -->
             <h1>VAISA</h1>
             <br>
-            <form action="#" name="login" method="post">
+            <form action="#" name="login" method="post" onsubmit="return MoveCheck()">
               <input type="text" name="mail_address" placeholder="メールアドレス"><br>
               <input type="password" name="password" placeholder="パスワード"><br>
               <input type="submit" value="ログイン" class="btn-square3x"><br><!--ログインボタン-->
@@ -68,5 +68,13 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      function MoveCheck() {
+        if( ) {
+          alert("ログインに失敗しました")
+          return false;
+        }
+      }
+    </script>
   </body>
 </html>

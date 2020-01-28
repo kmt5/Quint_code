@@ -111,6 +111,7 @@ $db = null;
     </form>
   </div>
   <div id="body-bk">
+    
     <div id="body">
       <div id="Toptitle1">
         <i class="fas fa-edit"></i>　登録・編集
@@ -186,10 +187,6 @@ $db = null;
         </form>
       </div>
     </div>
-  </div>
-
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 

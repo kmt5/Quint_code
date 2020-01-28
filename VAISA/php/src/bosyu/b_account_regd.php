@@ -2,12 +2,11 @@
 //  $b_user_id    = chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57)) . chr(mt_rand(48,57));
   $groupname    = $_POST['groupname'];
   $address      = $_POST['user_address'];
-  $place_id     = $_POST['area'];
   $mail_address = $_POST['mail_address'];
   $tel_num      = $_POST['tel_num'];
-  $passwd       = $_POST['password'];
+  $passwd       = $_POST['passwd'];
 
-  $picture      = $_POST['pic'];
+  $picture      = $_FILES['pic'];
 
   //postが来てなければ飛ばす
   if($groupname && $address && $mail_address && $tel_num && $passwd){
@@ -48,9 +47,44 @@
         }
       } while ($s_id_cnt != 0 or $b_id_cnt != 0);
 
-      $profile_path = "/prof/$b_user_id";
+      $prof_path = "prof/default.jpg";
+      $msg = null;
+      // もし$_FILES['pic']があって、一時的なファイル名の$_FILES'pic'が
+      // POSTでアップロードされたファイルだったら
+      if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
+          $old_name = $_FILES['pic']['tmp_name'];
+      //  もしprofというフォルダーがなければ
+          if(!file_exists('../prof')){
+              mkdir('../prof');
+          }
+          $new_name = $b_user_id;
+          list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
+          switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
+              case 2:
+                  $new_name .= '.jpg';
+                  break;
+              case 1:
+                  $new_name .= '.gif';
+                  break;
+              case 3:
+                  $new_name .= '.png';
+                  break;
+              default:
+                  header('Location: s_account_regd.php');
+                  exit();
+          }
+      //  もし一時的なファイル名の$_FILES['pic']ファイルを
+      //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
+          $gazou = basename($_FILES['pic']['name']);
+          if(move_uploaded_file($old_name, '../prof/'.$new_name)){
+              $prof_path  = "prof/$new_name";
+              $msg = $gazou. 'のアップロードに成功しました';
+          }else {
+              $msg = 'アップロードに失敗しました';
+          }
+      }
 
-      $sql    = "insert into bosyu_users values( :b_user_id, :groupname, :address, :tel_num , :mail_address, :passwd , :profile_path)";
+      $sql    = "insert into bosyu_users values( :b_user_id, :groupname, :address, :tel_num , :mail_address, :passwd , :prof_path)";
       $stmt   = $db->prepare($sql);
       $params = array(':b_user_id'    => $b_user_id,
                       ':groupname'    => $groupname,
@@ -58,8 +92,17 @@
                       ':tel_num'      => $tel_num,
                       ':mail_address' => $mail_address,
                       ':passwd'       => $passwd,
-                      ':profile_path' => $profile_path);
+                      ':prof_path'    => $prof_path);
       $stmt->execute($params);
+
+      $sql    = "insert into payments values( :b_user_id, null)";
+      $stmt2  = $db->prepare($sql);
+      $params = array(':b_user_id' => $b_user_id);
+      $stmt2->execute($params);
+
+      $sql    = "insert into options values( :b_user_id, 0, 0, 0, 0)";
+      $stmt3  = $db->prepare($sql);
+      $stmt3->execute($params);
 
       //データベースに正常にinsertできたかの判定
       if ($stmt->rowCount()){
@@ -133,7 +176,7 @@
             <dd><input type = "text" name="mail_address" id="b" value="" class="waku" required></dd>
             <hr color="black"><br/><br/>
             <dt>パスワード</dt>
-            <dd><input type = "text" name="password" id="c" value="" class="waku" required></dd>
+            <dd><input type = "text" name="passwd" id="c" value="" class="waku" required></dd>
             <hr color="black"><br/><br/>
             <dt>住所</dt>
             <dd><input type = "text" name="user_address" id="d" value="" class="waku" required></dd>
