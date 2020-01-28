@@ -76,7 +76,7 @@ echo '</div>';
     if($data1 == Array()){echo 'IDに一致するユーザーが見つかりませんでした'; echo '</div>';}
     foreach ($result2 as $row){
       echo '<div class="frd-add-app">';
-      echo  '<img src="../../prof/'.$row['prof_path'].'" class="img">';
+      echo  '<img src="../../'.$row['prof_path'].'" class="img">';
       echo '<p class="user_name">';
       echo $row['nickname'].'</p>';
       echo '</div>';

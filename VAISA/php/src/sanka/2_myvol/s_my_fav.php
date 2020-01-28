@@ -129,7 +129,7 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '<input type = "hidden" name = "favol" value="'.$row['vol_id'].'">';
       echo '<input type  = "hidden" name = "s_user_id" value="'.$user_id.'">';
       echo '</form>';
-      echo  '<img src="../../bosyu/1_vol_regd/upload/'.$row['vol_fig_path'].'" class="img">';
+      echo  '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img">';
       echo '<br>';
       echo '</div>';
     }
