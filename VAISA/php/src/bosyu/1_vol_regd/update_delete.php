@@ -1,13 +1,12 @@
 <?php
 $b_user_id = $_POST["b_user_id"];
 $vol_id = $_POST["vol_id"];
-echo $b_user_id;
+//echo $b_user_id;
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-$db->query("UPDATE volunteers SET disapp_flag = 1 WHERE vol_id = $vol_id");
-
-$getName = $db->query("SELECT vol_date FROM volunteers WHERE vol_id = $vol_id");
+$db -> query("UPDATE volunteers SET disapp_flag = 1 WHERE vol_id = $vol_id");
+$getName = $db -> query("SELECT vol_date FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $vol_date =  $get_name['vol_date'];
 }
@@ -15,10 +14,10 @@ $db -> query("SET FOREIGN_KEY_CHECKS = 0");
 $vol_date = strtotime($vol_date);
 $today = strtotime(date('Y-m-d'));
 if ($vol_date >= $today) {
-    echo "dekitenai";
-    $db->query("DELETE FROM volunteers WHERE vol_id = $vol_id");
+    $db -> query("DELETE FROM volunteers WHERE vol_id = $vol_id");
 }
 $db -> query("SET FOREIGN_KEY_CHECKS = 1");
+$db = null;
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>

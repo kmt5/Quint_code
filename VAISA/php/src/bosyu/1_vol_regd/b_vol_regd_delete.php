@@ -2,7 +2,7 @@
 <html>
 <?php
 $b_user_id = $_POST["b_user_id"];
-echo $b_user_id;
+//echo $b_user_id;
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');

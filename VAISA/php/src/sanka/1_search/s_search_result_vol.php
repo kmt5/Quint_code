@@ -7,7 +7,6 @@ $db = new PDO($dsn, 'root', 'root');
 $s_user_id = $_POST["s_user_id"];
 $vol_id = $_POST['vol_id'];
 
-
 if (isset($_POST['sanka'])) {
     echo "set" . $_SESSION['set'];
     if ($_SESSION['set'] == 1) {
@@ -129,7 +128,7 @@ foreach ($s_table as $get_table) {
     $table =  $get_table['s_user_id'];
 }
 if (empty($table)) {
-    echo $vol_id;
+    //echo $vol_id;
     $regist = $db->prepare("INSERT INTO sanka_situations(vol_id, s_user_id, read_flag, set_flag, favo_flag) VALUES (:vol_id, :s_user_id, :readf, :setf, :fav)");
     $regist->bindValue(":vol_id", $vol_id, PDO::PARAM_INT);
     $regist->bindParam(":s_user_id", $s_user_id, PDO::PARAM_STR);
@@ -230,7 +229,7 @@ if (empty($table)) {
                         echo "<h2>初心者OK</h2>";
                         }
                         $can_ap = 0;
-                        echo $spec_flag;
+                        echo $spec_rank;
                         if ($spec_rank == '指定なし') {
                             $can_ap = 1;
                         } else if ($spec_flag == 'ブロンズ') {

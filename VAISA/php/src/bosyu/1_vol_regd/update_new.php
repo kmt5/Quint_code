@@ -26,27 +26,27 @@ var_dump($h["Content-Type"]);
 ?>
 <?php
 // 入力フォームのデータを変数に
-echo $vol_name = $_POST["vol_name"];
-echo $vol_date .= $_POST["year"] . "-" . $_POST["month"] . "-" . $_POST["day"];
-echo $vol_beg_time = $_POST["beg_time"];
-echo $vol_fin_time = $_POST["fin_time"];
-echo $vol_capacity = $_POST["capacity"];
-echo $post_num = $_POST["zip11"];
-echo $vol_place = $_POST["addr11"];
-echo $val_flag = $_POST["va_flag"];
-echo $newbie_flag = $_POST["newbie_flag"];
-echo $vol_detail = $_POST["detail"];
-echo $pref_id = $_POST["select_pref"];
-echo $spec_rank = $_POST["spec_rank"];
-echo "spec_rank:".$spec_rank;
+$vol_name = $_POST["vol_name"];
+$vol_date .= $_POST["year"] . "-" . $_POST["month"] . "-" . $_POST["day"];
+$vol_beg_time = $_POST["beg_time"];
+$vol_fin_time = $_POST["fin_time"];
+$vol_capacity = $_POST["capacity"];
+$post_num = $_POST["zip11"];
+$vol_place = $_POST["addr11"];
+$val_flag = $_POST["va_flag"];
+$newbie_flag = $_POST["newbie_flag"];
+$vol_detail = $_POST["detail"];
+$pref_id = $_POST["select_pref"];
+$spec_rank = $_POST["spec_rank"];
+
 if ($spec_rank == null) {
     $spec_rank = '指定なし';
 }
-echo $area_id = $_POST["select_area"];
-echo $num = $vol_fin_time - $vol_beg_time;
-echo $point = strval($num);
-echo $vol_fig_path = $b;
-echo $disapp_flag = 0;
+$area_id = $_POST["select_area"];
+$num = $vol_fin_time - $vol_beg_time;
+$point = strval($num);
+$vol_fig_path = $b;
+$disapp_flag = 0;
 
 //データを登録する準備
 $regist = $db->prepare("INSERT INTO volunteers(vol_id, vol_name, vol_date, vol_beg_time, vol_fin_time, vol_capacity, post_num, vol_place, val_flag, newbie_flag, vol_detail, pref_id, spec_rank, b_user_id, rank_spec_flag, area_id, point, vol_fig_path, disapp_flag) VALUES (:vol_id, :vol_name, :vol_date, :vol_beg_time, :vol_fin_time, :vol_capacity, :post_num, :vol_place, :val_flag, :newbie_flag, :vol_detail, :pref_id, :spec_rank, :b_user_id, :rank_spec_flag, :area_id, :point, :vol_fig_path, :disapp_flag)");

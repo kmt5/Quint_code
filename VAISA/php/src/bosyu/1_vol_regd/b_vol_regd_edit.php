@@ -9,7 +9,7 @@ $db = new PDO($dsn, 'root', 'root');
 //} 
 $b_user_id = $_POST["b_user_id"];
 $vol_id = $_POST['vol_id'];
-echo $b_user_id;
+//echo $b_user_id;
 
 $db->query("set names utf8");
 $getName = $db->query("SELECT vol_name FROM volunteers WHERE vol_id = $vol_id");
@@ -249,6 +249,7 @@ $db = null;
                     <!-- 登録した住所が表示できるか textareaで登録したものを囲む-->
                     <textarea name="detail" value=<?php echo $vol_detail; ?> placeholder="詳細を入力" required><?= htmlspecialchars($vol_detail, ENT_QUOTES, 'UTF-8') ?></textarea>
                     <br>
+                    <input type="hidden" name="rank_spec_flag" value="<?php echo $rank_spec_flag; ?>">
                     <input type="hidden" name="vol_fig_path" value="<?php echo $vol_fig_path; ?>">
                     <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>">
                     <input type="hidden" name="vol_id" value="<?php echo $vol_id; ?>">
