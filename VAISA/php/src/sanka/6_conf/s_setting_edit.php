@@ -8,7 +8,7 @@
   $message      = $_POST['message'];
   $mail_address = $_POST['mail_address'];
   $tel_num      = $_POST['tel_num'];
-  $passwd       = $_POST['password'];
+  $passwd       = $_POST['passwd'];
 
   $picture      = $_POST['pic'];
 
@@ -21,10 +21,6 @@
   }
   if ($fullname) {
     $sql = "update sanka_users set fullname = '".$fullname."' where s_user_id = '".$s_user_id."'";
-    $db->query($sql);
-  }
-  if ($place_id) {
-    $sql = "update sanka_users set area_id = '".$place_id."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
   if ($user_address) {
@@ -51,6 +47,7 @@
     $sql = "update sanka_users set passwd = '".$passwd."' where s_user_id = '".$s_user_id."'";
     $db->query($sql);
   }
+
   $msg = null;
   // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
   // POSTでアップロードされたファイルだったら
@@ -167,7 +164,7 @@
         <dd><input type="text" name="mail_address" id="input2" value="<?php echo $mail_address; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
-        <dd><input type = "text" name ="password" id="input3" value="<?php echo $passwd; ?>" class="waku" required></dd>
+        <dd><input type = "text" name ="passwd" id="input3" value="<?php echo $passwd; ?>" class="waku" required></dd>
         <hr color="black"><br/><br/>
         <dt>住所</dt>
         <dd><input type = "text" name ="user_address" id="input4" value="<?php echo $user_address; ?>" class="waku" required></dd>

@@ -64,8 +64,9 @@
       }
       while ($s_cnt != 0 or $b_cnt != 0);
 
+      $prof_path = "prof/default.jpg";
       $msg = null;
-      // もし$_FILES['pic']があって、一時的なファイル名の$_FILES['pic']が
+      // もし$_FILES['pic']があって、一時的なファイル名の$_FILES'pic'が
       // POSTでアップロードされたファイルだったら
       if(isset($_FILES['pic']) && is_uploaded_file($_FILES['pic']['tmp_name'])){
           $old_name = $_FILES['pic']['tmp_name'];
@@ -93,13 +94,13 @@
       //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
           $gazou = basename($_FILES['pic']['name']);
           if(move_uploaded_file($old_name, '../prof/'.$new_name)){
+              $prof_path  = "prof/$new_name";
               $msg = $gazou. 'のアップロードに成功しました';
           }else {
               $msg = 'アップロードに失敗しました';
           }
       }
 
-      $prof_path  = "prof/$new_name";
       $qr_path    = "empty";
       $poi        = 0;
       $rnk        = "ブロンズ";
