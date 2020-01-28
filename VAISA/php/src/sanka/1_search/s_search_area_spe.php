@@ -66,7 +66,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
               });
             </script>
             <br><br>
-            <select name="area_id" , id="area" required>
+            <select name="area_id" id="area" required>
             </select>
         </div>
 
