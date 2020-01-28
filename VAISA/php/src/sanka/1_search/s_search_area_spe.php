@@ -65,7 +65,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
           </select>
           <script>
             $('#pref').change(function() {
-              $.get('arealist.php?pref_id=' + $("#pref").val(), function(data) {
+              $.get('s_search_area_spe.php?pref_id=' + $("#pref").val(), function(data) {
                 $('#area').html(data);
               });
               $('#area').val('');
