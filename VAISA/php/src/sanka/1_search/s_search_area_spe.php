@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 $s_user_id = $_POST["s_user_id"];
-echo $s_user_id;
+//echo $s_user_id;
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
@@ -178,5 +178,5 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
     });
   </script>
 </body>
-
 </html>
+<?php $db = null; ?>

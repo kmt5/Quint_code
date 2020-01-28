@@ -333,7 +333,7 @@ $near_date = date('Y-m-d', strtotime('+1 week', strtotime($vol_date)));
           echo "<input type='hidden' name='month' value=" . $_POST["month"] . ">";
           echo "<input type='hidden' name='day' value=" . $_POST["day"] . ">";
           echo "<input type='hidden' name='area_id' value=" . $area_id . ">";      
-          //やほー
+          //
           echo "<button type='submit' class='vol'>" . $vol_name[$i] . "</button>";
           echo "</form>";
 

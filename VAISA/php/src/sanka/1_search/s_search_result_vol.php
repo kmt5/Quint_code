@@ -8,20 +8,18 @@ $s_user_id = $_POST["s_user_id"];
 $vol_id = $_POST['vol_id'];
 
 if (isset($_POST['sanka'])) {
-    echo "set" . $_SESSION['set'];
+    //echo "set" . $_SESSION['set'];
     if ($_SESSION['set'] == 1) {
         $db->query("UPDATE sanka_situations SET set_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
     } else {
         $db->query("UPDATE sanka_situations SET set_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
     }
 } else if (isset($_POST['favo'])) {
-    echo "favo" . $_SESSION['favo'];
+    //echo "favo" . $_SESSION['favo'];
     if ($_SESSION['favo'] == 1) {
         $db->query("UPDATE sanka_situations SET favo_flag = 1 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
-        echo "11ここ！";
     } else {
         $db->query("UPDATE sanka_situations SET favo_flag = 0 WHERE s_user_id = $s_user_id AND vol_id = $vol_id");
-        echo "22ここ！";
     }
 }
 
