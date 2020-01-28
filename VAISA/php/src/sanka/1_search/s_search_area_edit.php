@@ -1,8 +1,3 @@
-<?php
-// 有効期限30日
-//session_cache_expire(10);
-//session_start();
-?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
 <?php
@@ -11,12 +6,6 @@ echo $s_user_id;
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-//接続確認
-if ($db) {
-  echo "データベースに繋がっています";
-} else {
-  "データベースに繋がってないです";
-}
 $db->query("set names utf8");
 $getAreaId = $db->query("SELECT area_id FROM sanka_users WHERE s_user_id = $s_user_id");
 foreach ($getAreaId as $area_id_val) {

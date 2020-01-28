@@ -15,6 +15,7 @@ foreach ($getArea as $get_area) {
   $area_name = $get_area['area_name'];
 }
 echo $area_id . "<br>";
+echo "year:".$_POST['year'];
 if ($_POST['year'] == 'none') {
   $vol_date = date('Y-m-d');
 } else {

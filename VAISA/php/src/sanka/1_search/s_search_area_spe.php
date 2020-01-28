@@ -5,13 +5,6 @@ echo $s_user_id;
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-//接続確認
-if ($db) {
-  echo "データベースに繋がっています";
-} else {
-  "データベースに繋がってないです";
-}
-
 //都道府県プルダウン
 if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
   foreach ($pref_data as $pref_data_val) {
@@ -138,7 +131,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
           <input type="checkbox" name="newbie_flag" value=""> 初心者OK
         </div>
         <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
-        <button class="btn-square" type="submit" align="center">登録</button>
+        <button class="btn-square" type="submit" align="center">検索</button>
         </form>
       </div>
     </div>
