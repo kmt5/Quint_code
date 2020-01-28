@@ -122,6 +122,7 @@ $s_table = $db->query("SELECT rank FROM sanka_users WHERE s_user_id = $s_user_id
 foreach ($s_table as $get_table) {
     $rank =  $get_table['rank'];
 }
+echo $rank;
 
 $s_table = $db->query("SELECT s_user_id FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
 foreach ($s_table as $get_table) {
