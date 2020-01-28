@@ -1,6 +1,6 @@
 <?php
 $s_user_id = $_POST["s_user_id"];
-echo $s_user_id;
+//echo $s_user_id;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 $db->query("set names utf8");
@@ -8,23 +8,17 @@ $area_id = $_POST["area_id"];
 $val_flag = $_POST["val_flag"];
 $vol_date_near = $_POST["vol_date_near"];
 $newbie_flag = $_POST["newbie_flag"];
-//$area_id = 21;
-$getArea = $db->query("SELECT pref_name, area_name FROM areas WHERE area_id = $area_id");
+$getArea = $db -> query("SELECT pref_name, area_name FROM areas WHERE area_id = $area_id");
 foreach ($getArea as $get_area) {
   $pref_name = $get_area['pref_name'];
   $area_name = $get_area['area_name'];
 }
-echo $area_id . "<br>";
-echo "year:".$_POST['year'];
 if ($_POST['year'] == 'none') {
   $vol_date = date('Y-m-d');
 } else {
   $vol_date = $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day'];
 }
-echo $vol_date;
 $near_date = date('Y-m-d', strtotime('+1 week', strtotime($vol_date)));
-echo "<br>" . $near_date;
-echo "<br>" . $near_date;
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
@@ -353,5 +347,5 @@ echo "<br>" . $near_date;
     </div>
   </div>
 </body>
-
 </html>
+<?php $db = null; ?>

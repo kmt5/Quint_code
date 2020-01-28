@@ -31,6 +31,7 @@ if (isset($_POST["password"])) {
     exit;
   }
 }
+$db = null;
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>

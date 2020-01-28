@@ -6,7 +6,7 @@ $pref_id=$_GET['pref_id'];
 
 if( isset( $_GET[ 'pref_id' ] ) ){
   //選択されたドロップダウンリストの value を表示する。
-  print "送信された内容は{$_GET['pref_id']}です。<br/>";
+  //print "送信された内容は{$_GET['pref_id']}です。<br/>";
 }
 
 $sql  = "SELECT area_id, area_name FROM areas WHERE pref_id = '" . $pref_id . "'";

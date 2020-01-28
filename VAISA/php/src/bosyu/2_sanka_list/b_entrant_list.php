@@ -111,5 +111,5 @@ foreach ($getName as $get_name) {
     </div>
   </div>
 </body>
-
 </html>
+<?php $db = null; ?>

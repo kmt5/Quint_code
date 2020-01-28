@@ -17,6 +17,7 @@ foreach ($getInfo as $get_info) {
     $gender = $get_info['gender'];
     $prof_path = $get_info['prof_path'];
 }
+$db = null;
 ?>
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
@@ -56,11 +57,11 @@ foreach ($getInfo as $get_info) {
           <dt>プロフィール画像</dt>
           <dd>
             <?php
-                  if ($prof_pass == null) {
+                  if ($prof_path == null) {
                     //echo "登録されている写真は<br>ありません。";
                     echo "<img class='prof' src= '../../common/noimg.jpg'>";
                   } else {
-                    echo "<img class='prof' src=../b_vol_regd/" . $prof_path . ">";
+                    echo "<img class='prof' src=../../" . $prof_path . ">";
                   }
             ?>
           </dd>

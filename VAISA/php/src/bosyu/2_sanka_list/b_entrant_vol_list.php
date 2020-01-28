@@ -65,3 +65,4 @@ $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = 
   </div>
 </body>
 </html>
+<?php $db = null; ?>
