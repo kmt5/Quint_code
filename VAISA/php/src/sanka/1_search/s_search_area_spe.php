@@ -58,7 +58,7 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
               ?>
             </select>
             <script>
-              $("#pref").change(function() {
+              $('#pref').change(function() {
                 $.get('arealist.php?pref_id=' + $("#pref").val(), function(data) {
                   $('#area').html(data);
                 });
@@ -66,8 +66,9 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
                 $('#area').selectmenu('refresh');
               });
             </script>
-            <br><br>
-            <select name="area_id" id="area" required>
+            <label>地域</label>
+            <select name="select_area" , id="area" required>
+              <option value="none" selected></option>
             </select>
         </div>
 
