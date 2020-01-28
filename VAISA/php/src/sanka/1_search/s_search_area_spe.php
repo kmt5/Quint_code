@@ -178,44 +178,6 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
       $(this).parents(".custom1-select").removeClass("opened");
       $(this).parents(".custom1-select").find(".custom1-select-trigger").text($(this).text());
     });
-
-
-    $(".custom0-select").each(function() {
-      var classes = $(this).attr("class"),
-        id = $(this).attr("id"),
-        name = $(this).attr("name");
-      var template = '<div class="' + classes + '">';
-      template += '<span class="custom0-select-trigger">' + '<option value="none">--都道府県を選択してください--</option>' + '</span>';
-      template += '<div class="custom0-options">';
-      $(this).find("option").each(function() {
-        template += '<span class="custom0-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
-      });
-      template += '</div></div>';
-
-      $(this).wrap('<div class="custom0-select-wrapper"></div>');
-      $(this).hide();
-      $(this).after(template);
-    });
-
-    $(".custom0-option:first-of-type").hover(function() {
-      $(this).parents(".custom0-options").addClass("option-hover");
-    }, function() {
-      $(this).parents(".custom0-options").removeClass("option-hover");
-    });
-    $(".custom0-select-trigger").on("click", function() {
-      $('html').one('click', function() {
-        $(".custom0-select").removeClass("opened");
-      });
-      $(this).parents(".custom0-select").toggleClass("opened");
-      event.stopPropagation();
-    });
-    $(".custom0-option").on("click", function() {
-      $(this).parents(".custom0-select-wrapper").find("select").val($(this).data("value"));
-      $(this).parents(".custom0-options").find(".custom0-option").removeClass("selection");
-      $(this).addClass("selection");
-      $(this).parents(".custom0-select").removeClass("opened");
-      $(this).parents(".custom0-select").find(".custom0-select-trigger").text($(this).text());
-    });
   </script>
 </body>
 
