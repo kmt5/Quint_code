@@ -122,8 +122,6 @@ $s_table = $db->query("SELECT rank FROM sanka_users WHERE s_user_id = $s_user_id
 foreach ($s_table as $get_table) {
     $rank =  $get_table['rank'];
 }
-echo $rank;
-
 $s_table = $db->query("SELECT s_user_id FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
 foreach ($s_table as $get_table) {
     $table =  $get_table['s_user_id'];
@@ -155,46 +153,46 @@ if (empty($table)) {
 
 <body>
     <div id="header-fixed">
-      <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-      <?php
+        <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+        <?php
         if ($_POST['back'] == 1) {
-          echo "<form method='post' name='formback' action='s_search_result.php'>";
-          echo "<input type='hidden' name='s_user_id' value=". $s_user_id ." />";
-          echo "<input type='hidden' name='year' value=".$_POST['year']." />";
-          echo "<input type='hidden' name='month' value=".$_POST['month']." />";
-          echo "<input type='hidden' name='day' value=".$_POST['day']." />";
-          echo "<input type='hidden' name='val_flag' value=".$_POST['val_flag']." />";
-          echo "<input type='hidden' name='vol_date_near' value=".$_POST['vol_date_near']." />";
-          echo "<input type='hidden' name='newbie_flag' value=".$_POST['newbie_flag']."/>";
-          echo "<input type='hidden' name='area_id' value=".$_POST['area_id']." />";
-          echo "<a href='javascript:formback.submit()'>";
-          echo "<p id='back'><i class='fas fa-reply'></i></p>";
-          echo "</a></form>";
-        } else if ($_POST['back'] == 2){
-          echo "<form method='post' name='formback' action='../2_myvol/s_my_join.php'>";
-          echo "<input type='hidden' name='s_user_id' value=". $s_user_id ." />";
-          echo "<a href='javascript:formback.submit()'>";
-          echo "<p id='back'><i class='fas fa-reply'></i></p>";
-          echo "</a></form>";
+            echo "<form method='post' name='formback' action='s_search_result.php'>";
+            echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . " />";
+            echo "<input type='hidden' name='year' value=" . $_POST['year'] . " />";
+            echo "<input type='hidden' name='month' value=" . $_POST['month'] . " />";
+            echo "<input type='hidden' name='day' value=" . $_POST['day'] . " />";
+            echo "<input type='hidden' name='val_flag' value=" . $_POST['val_flag'] . " />";
+            echo "<input type='hidden' name='vol_date_near' value=" . $_POST['vol_date_near'] . " />";
+            echo "<input type='hidden' name='newbie_flag' value=" . $_POST['newbie_flag'] . "/>";
+            echo "<input type='hidden' name='area_id' value=" . $_POST['area_id'] . " />";
+            echo "<a href='javascript:formback.submit()'>";
+            echo "<p id='back'><i class='fas fa-reply'></i></p>";
+            echo "</a></form>";
+        } else if ($_POST['back'] == 2) {
+            echo "<form method='post' name='formback' action='../2_myvol/s_my_join.php'>";
+            echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . " />";
+            echo "<a href='javascript:formback.submit()'>";
+            echo "<p id='back'><i class='fas fa-reply'></i></p>";
+            echo "</a></form>";
         } else {
-          echo "<form method='post' name='formback' action='../2_myvol/s_my_fav.php'>";
-          echo "<input type='hidden' name='s_user_id' value=". $s_user_id ." />";
-          echo "<a href='javascript:formback.submit()'>";
-          echo "<p id='back'><i class='fas fa-reply'></i></p>";
-          echo "</a></form>";
+            echo "<form method='post' name='formback' action='../2_myvol/s_my_fav.php'>";
+            echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . " />";
+            echo "<a href='javascript:formback.submit()'>";
+            echo "<p id='back'><i class='fas fa-reply'></i></p>";
+            echo "</a></form>";
         }
-      ?>
+        ?>
 
-      <a href="javascript:formback.submit()">
-        <p id="back"><i class="fas fa-reply"></i></p>
-      </a>
-    </form>
-    <form method="post" name="formhome" action="../s_home.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-      <a href="javascript:formhome.submit()">
-        <p id="home"><i class="fas fa-home"></i></p>
-      </a>
-    </form>
+        <a href="javascript:formback.submit()">
+            <p id="back"><i class="fas fa-reply"></i></p>
+        </a>
+        </form>
+        <form method="post" name="formhome" action="../s_home.php">
+            <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
+            <a href="javascript:formhome.submit()">
+                <p id="home"><i class="fas fa-home"></i></p>
+            </a>
+        </form>
     </div>
     <div id="body-bk">
         <div id="body">
@@ -227,25 +225,24 @@ if (empty($table)) {
                         <br><br>
                         <?php
                         if ($newbie_flag == 1) {
-                        echo "<h2>初心者OK</h2>";
+                            echo "<h2>初心者OK</h2>";
                         }
                         $can_ap = 0;
                         echo $rank;
-                        if ($rank == '指定なし') {
-                            $can_ap = 1;
-                        } else if ($spec_flag == 'ブロンズ') {
+                        echo $spec_rank;
+                        if ($spec_rank == 'ブロンズ') {
                             if ($rank == 'ブロンズ' || $rank == 'シルバー' || $rank == 'ゴールド' || $rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
-                        } else if ($rank == 'シルバー') {
+                        } else if ($spec_rank == 'シルバー') {
                             if ($rank == 'シルバー' || $rank == 'ゴールド' || $rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
-                        } else if ($rank == 'ゴールド') {
+                        } else if ($spec_rank == 'ゴールド') {
                             if ($rank == 'ゴールド' || $rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
-                        } else if ($rank == 'プラチナ') {
+                        } else if ($spec_rank == 'プラチナ') {
                             if ($rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
@@ -259,9 +256,9 @@ if (empty($table)) {
                         <p><?php echo $vol_detail; ?></p>
                         <br>
                         <h2>団体情報・連絡先</h2>
-                        <p><?php echo "団体名：".$groupname; ?></p><br>
-                        <p><?php echo "住所：".$address; ?></p><br>
-                        <p><?php echo "電話番号：".$tel_num; ?></p>
+                        <p><?php echo "団体名：" . $groupname; ?></p><br>
+                        <p><?php echo "住所：" . $address; ?></p><br>
+                        <p><?php echo "電話番号：" . $tel_num; ?></p>
                 </form>
                 <script>
                     function check() {
@@ -306,7 +303,7 @@ if (empty($table)) {
                 </script>
                 <?php
                 if ($can_ap == 0) {
-                    echo "このボランティアは".$spec_rank."以上の方しか参加することができません";
+                    echo "このボランティアは" . $spec_rank . "以上の方しか参加することができません";
                 } else if ($value == 0) {
                     $_SESSION['set'] = 1;
                     echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check()'>";
