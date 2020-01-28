@@ -32,7 +32,7 @@ echo $vol_fin_time;
 echo $vol_capacity = $_POST["vol_capacity"];
 echo $post_num = $_POST["zip11"];
 echo $vol_place = $_POST["addr11"];
-$val_flag = $_POST["val_flag"];  
+$val_flag = $_POST["val_flag"];
 echo "val_flag:".$val_flag. "<br>";
 $newbie_flag = $_POST["newbie_flag"];
 echo "newbie_flag:".$newbie_flag. "<br>";
@@ -186,10 +186,6 @@ $db = null;
         </form>
       </div>
     </div>
-  </div>
-
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
   </div>
 </body>
 
