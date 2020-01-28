@@ -10,6 +10,30 @@
 
   $dsn   = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db    = new PDO($dsn, 'root', 'root');
+  $sql   = "select mail_address from bosyu_users where b_user_id = '".$b_user_id."'";
+  $res   = $db->query($sql)->fetch();
+
+  if ($res['mail_address'] != $mail_address) {
+    $s_cnt = $db->query("select count(*) from sanka_users where mail_address='".$mail_address."'");
+    $b_cnt = $db->query("select count(*) from bosyu_users where mail_address='".$mail_address."'");
+
+    if ($s_cnt == false){
+      $s_cnt = 0;
+    }else{
+      $s_cnt = $s_cnt->fetchColumn();
+    }
+    if ($b_cnt == false){
+      $b_cnt = 0;
+    }else{
+      $b_cnt = $b_cnt->fetchColumn();
+    }
+
+    if ($s_cnt > 0 || $b_cnt > 0) {
+      $check_mail = $mail_address;
+      $mail_address = false;
+    }
+  }
+
 
   if ($groupname) {
     $sql = "update bosyu_users set groupname = '".$groupname."' where b_user_id = '".$b_user_id."'";
@@ -135,6 +159,7 @@
         <hr color="black"><br/>
         <dt>メールアドレス</dt>
         <dd><input type = "text" name ="mail_address" id="input2" value="<?php echo $mail_address; ?>" class="waku" required></dd>
+        <?php if ($check_mail) {echo $check_mail.'は使用できません。';} ?>
         <hr color="black"><br/><br/>
         <dt>パスワード</dt>
         <dd><input type = "text" name ="passwd" id="input3" value="<?php echo $passwd; ?>" class="waku" required></dd>
