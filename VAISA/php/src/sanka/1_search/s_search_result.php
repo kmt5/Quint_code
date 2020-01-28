@@ -62,7 +62,7 @@ echo "<br>" . $near_date;
         <?php echo $pref_name . " " . $area_name; ?>
       </div>
       <form action='s_search_first.php' method="post">
-        <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
+        <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
         <button type="submit" class="vol">別の条件で検索する　<i class="fas fa-search"></i></button>
       </form>
 

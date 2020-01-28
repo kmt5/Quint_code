@@ -75,7 +75,6 @@ foreach ($getArea as $area_data_val) {
         </select>-->
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
-              <!--<option value="2019">2019年</option>-->
               <option value="none">--</option>
               <option value="2020">2020</option>
             </select>年
