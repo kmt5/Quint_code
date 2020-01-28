@@ -230,22 +230,22 @@ if (empty($table)) {
                         echo "<h2>初心者OK</h2>";
                         }
                         $can_ap = 0;
-                        echo $spec_rank;
-                        if ($spec_rank == '指定なし') {
+                        echo $rank;
+                        if ($rank == '指定なし') {
                             $can_ap = 1;
                         } else if ($spec_flag == 'ブロンズ') {
                             if ($rank == 'ブロンズ' || $rank == 'シルバー' || $rank == 'ゴールド' || $rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
-                        } else if ($spec_rank == 'シルバー') {
+                        } else if ($rank == 'シルバー') {
                             if ($rank == 'シルバー' || $rank == 'ゴールド' || $rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
-                        } else if ($spec_rank == 'ゴールド') {
+                        } else if ($rank == 'ゴールド') {
                             if ($rank == 'ゴールド' || $rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
-                        } else if ($spec_rank == 'プラチナ') {
+                        } else if ($rank == 'プラチナ') {
                             if ($rank == 'プラチナ') {
                                 $can_ap = 1;
                             }
