@@ -222,7 +222,7 @@ if (empty($table)) {
                         <?php if ($vol_fig_path == null) {
                             echo "登録されている写真はありません。";
                         } else {
-                            echo "<img src=../../bosyu/1_vol_regd/" . $vol_fig_path . ">";
+                            echo "<img src=../../bosyu/" . $vol_fig_path . ">";
                         } ?>
                         <br><br>
                         <?php
@@ -230,6 +230,7 @@ if (empty($table)) {
                         echo "<h2>初心者OK</h2>";
                         }
                         $can_ap = 0;
+                        echo $spec_flag;
                         if ($spec_rank == '指定なし') {
                             $can_ap = 1;
                         } else if ($spec_flag == 'ブロンズ') {
