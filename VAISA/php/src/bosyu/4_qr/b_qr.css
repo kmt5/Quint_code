@@ -271,8 +271,8 @@ font-size: 30px;
 
 .bg_test4 {
     height: 100px;                  /* 高さ指定 */
-    margin: 0 200px 0 200px;
-    font-size: 20px;                /* 文字サイズ指定 */
+    margin: 0 100px 0 100px;
+    font-size: 35px;                /* 文字サイズ指定 */
     background-color: #0cb06e;   /* 背景色指定 */
 }
 
