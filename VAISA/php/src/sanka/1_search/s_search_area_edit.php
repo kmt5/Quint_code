@@ -135,18 +135,6 @@ foreach ($getArea as $area_data_val) {
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script type="text/javascript">
-    /*都道府県preの値から地域の選択項目決定 参考サイト参照推奨
-  $('#pre').change(function() {
-    $.get('citylist.php?pref_code='+$(this).val(), function(data) {
-      $('#city').html(data);
-  });
-
-  $('#city').val('');
-  $('#city').selectmenu('refresh');
-});*/
-
-
-
     /*日付プルダウン作成用スクリプト*/
     $(".custom1-select").each(function() {
       var classes = $(this).attr("class"),
