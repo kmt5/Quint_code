@@ -1,6 +1,6 @@
 <!--ボランティア新規登録画面-->
 <!DOCTYPE html>
-<?php 
+<?php
 $s_user_id = $_POST["s_user_id"];
 echo $s_user_id;
 //データベースに接続(test3)
@@ -75,8 +75,26 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
 
 
           <select name="area_id" , id="area" class="custom-select sources" required>
+            <?php
+            $pref_id=$_GET['pref_id'];
+
+            if( isset( $_GET[ 'pref_id' ] ) ){
+              //選択されたドロップダウンリストの value を表示する。
+              print "送信された内容は{$_GET['pref_id']}です。<br/>";
+            }
+
+            $sql  = "SELECT area_id, area_name FROM areas WHERE pref_id = '" . $pref_id . "'";
+
+            if ($area_data = $db->query($sql)) {
+                $area_pd = '<option value="">--地域を選択してください--</option>' . "\r\n";
+                foreach($area_data as $area_data_val) {
+                  $area_pd .= "<option value='".$area_data_val['area_id']."'>".$area_data_val['area_name']."</option>";
+                }
+            }
+            echo $area_pd;
+            ?>
           </select>
-</div>
+        </div>
 
           <div class="days">
             <select id="year" name="year" class="custom1-select sources">
