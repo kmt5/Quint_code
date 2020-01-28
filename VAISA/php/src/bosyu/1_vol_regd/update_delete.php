@@ -15,7 +15,7 @@ $db -> query("SET FOREIGN_KEY_CHECKS = 0");
 $vol_date = strtotime($vol_date);
 $today = strtotime(date('Y-m-d'));
 if ($vol_date >= $today) {
-    echo "dekitenai";    
+    echo "dekitenai";
     $db->query("DELETE FROM volunteers WHERE vol_id = $vol_id");
 }
 $db -> query("SET FOREIGN_KEY_CHECKS = 1");
@@ -35,10 +35,13 @@ $db -> query("SET FOREIGN_KEY_CHECKS = 1");
 
 <body>
     <div id="header-fixed">
-        <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-        <a href="../b_home.php">
-            <p id="home"><i class="fas fa-home"></i></p>
+      <img border="0" src="../../common/header.jpg" width="100%" height="100%">
+      <form method="post" name="formhome" action="../b_home.php">
+        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+        <a href="javascript:formhome.submit()">
+          <p id="home"><i class="fas fa-home"></i></p>
         </a>
+      </form>
     </div>
     <div id="body-bk">
         <div id="body">
@@ -52,17 +55,13 @@ $db -> query("SET FOREIGN_KEY_CHECKS = 1");
                 <h1 align="center">削除が完了しました</h1>
 
                 <form action='b_vol_regd_list.php' method='post'>
-                    <button type="submit" align="center" id='list'>ボランティア一覧へ</button>
+                  <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+                  <button type="submit" align="center" id='list'>ボランティア一覧へ</button>
                 </form>
 
             </div>
         </div>
     </div>
-
-    <div id="footer-fixed">
-        <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
-    </div>
 </body>
 
 </html>
-
