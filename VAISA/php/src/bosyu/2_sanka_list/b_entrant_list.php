@@ -14,7 +14,7 @@ foreach ($getName as $get_name) {
   $j += 1;
 }
 if (!empty($s_user_name)) {
-$count = count($s_user_name);
+  $count = count($s_user_name);
 } else {
   $count = 0;
 }
@@ -45,16 +45,16 @@ foreach ($getName as $get_name) {
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <form method="post" name="formback" action="b_entrant_vol_list.php">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-    <a href="javascript:formback.submit()">
-      <p id="back"><i class="fas fa-reply"></i></p>
-    </a>
-  </form>
-  <form method="post" name="formhome" action="../b_home.php">
-    <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-    <a href="javascript:formhome.submit()">
-      <p id="home"><i class="fas fa-home"></i></p>
-    </a>
-  </form>
+      <a href="javascript:formback.submit()">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </a>
+    </form>
+    <form method="post" name="formhome" action="../b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
+    </form>
   </div>
   <div id="body-bk">
     <div id="body">
@@ -64,11 +64,12 @@ foreach ($getName as $get_name) {
       <?php
       $read_mem = 0;
       for ($i = 0; $i < $count; $i++) {
-        $al_read = $db -> query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = 1");
+        $al_read = $db->query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = 1");
         foreach ($al_read as $come) {
           $read[$i] =  $come['read_flag'];
           if ($read[$i] == 1) {
-                      echo $read[$i];
+            echo $s_user_id[$i];
+            echo $read[$i];
             $read_mem += 1;
           }
         }
@@ -85,17 +86,17 @@ foreach ($getName as $get_name) {
 
           if ($read[$i] != 1) {
             echo "<form action='b_entrant_detail.php' method='post'>";
-            echo "<input type='hidden' name='s_user_id' value=".$s_user_id[$i].">";
-            echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
-            echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
+            echo "<input type='hidden' name='s_user_id' value=" . $s_user_id[$i] . ">";
+            echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
+            echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
             echo "<button type='submit' class='button-vol'>" . $s_user_name[$i] . "</button>";
             echo "</form>";
             echo "<br>";
           } else {
             echo "<form action='b_entrant_detail.php' method='post'>";
-            echo "<input type='hidden' name='b_user_id' value=".$b_user_id.">";
-            echo "<input type='hidden' name='s_user_id' value=".$s_user_id[$i].">";
-            echo "<input type='hidden' name='vol_id' value=".$vol_id.">";
+            echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
+            echo "<input type='hidden' name='s_user_id' value=" . $s_user_id[$i] . ">";
+            echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
             echo "<button type='submit' class='button-vol'><font color='red'><i class='fas fa-check'></i></font>　" . $s_user_name[$i] . "</button>";
             echo "</form>";
             echo "<br>";
