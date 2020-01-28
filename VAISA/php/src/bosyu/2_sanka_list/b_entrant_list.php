@@ -64,7 +64,7 @@ foreach ($getName as $get_name) {
       <?php
       $read_mem = 0;
       for ($i = 0; $i < $count; $i++) {
-        $al_read = $db->query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = 1");
+        $al_read = $db->query("SELECT read_flag FROM sanka_situations WHERE s_user_id = $s_user_id[$i] AND set_flag = 1 AND vol_id = $vol_id");
         foreach ($al_read as $come) {
           $read[$i] =  $come['read_flag'];
           if ($read[$i] == 1) {
