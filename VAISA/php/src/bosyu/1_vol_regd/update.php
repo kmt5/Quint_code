@@ -17,7 +17,7 @@ if (isset($msg) && $msg == true) {
   echo '<p>' . $msg . '</p>';
 }
 $vol_fig_path = $a;
-echo $vol_fig_path;
+echo "vol_path:".$vol_fig_path;
 ?>
 
 <?php
