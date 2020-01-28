@@ -6,6 +6,7 @@ $b_user_id = $_POST["b_user_id"];
 echo $b_user_id;
 
 if (isset($_FILES) && isset($_FILES['change_image']) && is_uploaded_file($_FILES['change_image']['tmp_name'])) {
+  echo "ここ通ってますか？";
   $a = '../upload/' . basename($_FILES['change_image']['name']);
   if (move_uploaded_file($_FILES['change_image']['tmp_name'], $a)) {
     $msg = $a . 'のアップロードに成功しました';
