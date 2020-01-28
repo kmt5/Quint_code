@@ -1,4 +1,3 @@
-<!--ボランティア新規登録画面-->
 <!DOCTYPE html>
 <?php
 $s_user_id = $_POST["s_user_id"];
@@ -86,7 +85,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
             $sql  = "SELECT area_id, area_name FROM areas WHERE pref_id = '" . $pref_id . "'";
 
             if ($area_data = $db->query($sql)) {
-                $area_pd = '<option value="">--地域を選択してください--</option>' . "\r\n";
+                $area_pd = '<option value="">上手くいってないです。</option>' . "\r\n";
                 foreach($area_data as $area_data_val) {
                   $area_pd .= "<option value='".$area_data_val['area_id']."'>".$area_data_val['area_name']."</option>";
                 }
