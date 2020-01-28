@@ -50,7 +50,6 @@ $_SESSION["b_user_id"] = $b_user_id;
         <br>
         <br>
         <!-- onclickでjsのtest関数を呼び出す -->
-        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <button type="submit" id="banner" onclick="postForm()">登録をする</button>
     </div>
     <?php
