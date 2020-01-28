@@ -68,7 +68,5 @@
   <div id="footer-fixed">
     <img border="0" src="../common/kokoku.jpg" width="100%" height="100%">
   </div>
-  <div class="body">
-  </div>
 </body>
 </html>
