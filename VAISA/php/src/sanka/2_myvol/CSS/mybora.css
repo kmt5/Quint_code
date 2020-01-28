@@ -1,4 +1,4 @@
-div#Toptitle-my{　　　　　　　　　　　　　/*白ラベル*/
+div#Toptitle-my{/*白ラベル*/
   width:100%;
   text-align: center;
   background-color: white;
@@ -6,7 +6,7 @@ div#Toptitle-my{　　　　　　　　　　　　　/*白ラベル*/
   margin:0px 0 100px 0;
 }
 
-div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
+div#tab-color{/*タブのラベル*/
   width:100%;
   background-color: #92d050;
 }
