@@ -52,25 +52,26 @@ $_SESSION["b_user_id"] = $b_user_id;
         <br>
         <?php
           if(empty($_POST['b_user_id'])) {
-            echo $_POST['b_user_id'];
-          } else {
             echo "IDが渡されていません";
+          } else {
+            echo $_POST['b_user_id'];
           }
         ?>
         <br>
         <br>
         <?php
           if(empty($_POST['test'])) {
-            echo $_POST['test'];
+              echo "testの値が渡されていません";
           } else {
-            echo "testの値が渡されていません";
+
+            echo $_POST['test'];
           }
         ?>
         <br>
         <br>
         <!-- onclickでjsのtest関数を呼び出す -->
         <?php
-        if ($_POST['test'] == false) {
+        if ($_POST['test'] == "false") {
           //$_SESSION['set'] = 1;
           echo "<form action='b_banner.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
