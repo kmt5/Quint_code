@@ -51,7 +51,11 @@ if ($pref_data = $db->query("SELECT DISTINCT pref_id, pref_name FROM areas")) {
         <form method="POST" action="s_search_result.php" enctype="multipart/form-data">
           <div class="areas">
             <select name="select_pref" id="pref" required>
+<<<<<<< HEAD
+              <option value="none" selected>--都道府県を指定してください--</option>
+=======
               <option value="">--都道府県を指定してください--</option>
+>>>>>>> 1a3326899d01d91050c1c630f4b9ceebbea92950
               <?php
               echo $pref_pd;
               ?>
