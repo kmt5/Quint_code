@@ -78,6 +78,8 @@ h1{font-size:70px
 
 h2{font-size:70px}
 
+h2.a{font-size:55px}
+
 div.new{
   font-size:50px
 }
@@ -139,6 +141,7 @@ p.dezain{
   border:solid 5px #0cb06e;
   width:50%;
   border-radius:10px;
+  text-align:center;
 }
 
 #listbutton{
@@ -153,4 +156,7 @@ margin:0px 30px 10px 20px;
 div.textarea{
   width:85%;
   font-size:50px;
+  font-weight: 1000;
+  border:solid 5px #0cb06e;
+  padding:15px;
 }
