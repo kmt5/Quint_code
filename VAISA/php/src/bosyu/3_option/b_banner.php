@@ -16,10 +16,12 @@ foreach ($getName as $get_name) {
   $shounin = $get_name['banner_flag'];
 }
 echo $shounin;
+if (isset($_POST['banner'])) {
 if ($_SESSION['banner'] == 1) {
   $db->query("UPDATE options SET banner_apply_flag = 1 WHERE b_user_id = $b_user_id");
 } else {
   $db->query("UPDATE options SET banner_apply_flag = 0 WHERE b_user_id = $b_user_id");
+}
 }
 $db = null;
 ?>
@@ -85,14 +87,14 @@ $db = null;
           echo "<form action='b_banner.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
           //echo "<input type='hidden' name='test' value='true'>";
-          echo "<button type='submit' id='banner'>登録する</button>";
+          echo "<button type='submit' name='banner' id='banner'>登録する</button>";
           echo "</form>";
         } else {
           $_SESSION['banner'] = 0;
           echo "<form action='b_banner.php' method='post' onSubmit='return check1()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
           //echo "<input type='hidden' name='test' value='false'>";
-          echo "<button type='submit' id='banner'>登録を解除する</button>";
+          echo "<button type='submit' name='banner' id='banner'>登録を解除する</button>";
           echo "</form>";
         }
         ?>
