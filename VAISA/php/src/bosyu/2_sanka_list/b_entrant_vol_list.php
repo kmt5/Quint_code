@@ -50,7 +50,11 @@ $count = $db -> query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = 
       <h1 align="center">ボランティアを<br>選択してください</h1>
       <div align="center">
         <?php
-            $array_count = count($vol_name);
+            if (!empty($array_count)) {
+              $count = count($vol_name);
+            } else {
+              $count = 0;
+            }
             for ($i = 0; $i < $array_count; $i++) {
               echo "<form action='b_entrant_list.php' method='post'>";
               echo "<input type='hidden' name='vol_id' value=".$vol_id[$i].">";
