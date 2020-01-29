@@ -6,7 +6,7 @@ $_SESSION["b_user_id"] = $b_user_id;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
-$getPass = $db -> query("SELECT passwd FROM bosyu_users WHERE b_user_id = $b_user_id");
+$getPass = $db->query("SELECT passwd FROM bosyu_users WHERE b_user_id = $b_user_id");
 foreach ($getPass as $get_pass) {
   $passwd =  $get_pass['passwd'];
 }
@@ -49,23 +49,26 @@ $db = null;
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <form method="post" name="formback" action="../b_home.php">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-    <a href="javascript:formback.submit()">
-      <p id="back"><i class="fas fa-reply"></i></p>
-    </a>
-  </form>
-  <form method="post" name="formhome" action="../b_home.php">
-    <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-    <a href="javascript:formhome.submit()">
-      <p id="home"><i class="fas fa-home"></i></p>
-    </a>
-  </form>
+      <a href="javascript:formback.submit()">
+        <p id="back"><i class="fas fa-reply"></i></p>
+      </a>
+    </form>
+    <form method="post" name="formhome" action="../b_home.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+      <a href="javascript:formhome.submit()">
+        <p id="home"><i class="fas fa-home"></i></p>
+      </a>
+    </form>
   </div>
   <div id="body-bk">
     <div id="body">
       <div id="Toptitle2">
         <i class="fas fa-handshake"></i>　参加者一覧
       </div>
-      <h1 align="center">ログイン</h1>
+      <h3 align="center">
+        ここから先では個人情報が管理されています。<br>
+        安全性のためパスワードを再入力してください。
+      </h3>
       <div align="center" class="login">
         <br><br>
         <p align="left">パスワード</p><br>

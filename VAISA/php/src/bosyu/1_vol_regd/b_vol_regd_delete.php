@@ -135,7 +135,7 @@ foreach ($getName as $get_name) {
                     <?php if ($vol_fig_path == null) {
                         echo "<br>登録されている写真はありません。";
                     } else {
-                        echo "<img src=./" . $vol_fig_path . ">";
+                        echo "<img src=../" . $vol_fig_path . ">";
                     } ?>
                     <h2>地域選択</h2>
                     <label>都道府県　</label>
@@ -168,7 +168,7 @@ foreach ($getName as $get_name) {
                     } ?>
                     <br><br>
                     <?php if ($newbie_flag == 1) {
-                      echo "<p class='dezain'>初心者OK</p>";
+                      echo "<p class='dezain'>初心者歓迎</p>";
                     } else {
                       echo "<p class='dezain'>経験者のみ</p>";
                     } ?>

@@ -31,18 +31,12 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
 }
 
 #tabbody .img{
+  position: absolute;
+  margin-top:60px;
   width:300px;
   height:150px;
-  top:70px;
-  right:10px;
+  right:80px;
 }
-
-.img2{
-  position: relative;
-  top:0px;
-  left:70px;
-  }
-
 #tabcontrol a:hover {
  background-color: white; /* 背景色：白色 */
 }
@@ -86,11 +80,9 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
  display: none;
 }
 #tabcontrol #m9{
-  /*white-space: nowrap;*/
  display: none;
 }
 #tabcontrol #m10{
- white-space: nowrap;
 }
 #tabcontrol #m11{
 

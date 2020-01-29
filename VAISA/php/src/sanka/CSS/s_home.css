@@ -29,7 +29,7 @@ div#body-bk{
 }
 
 div#body-bk3{
-    padding:115px 0 155px 0;    /* 上下に250pxを余白を取る */
+    padding:100px 0 100px 0;    /* 上下に250pxを余白を取る */
 
 }
 
@@ -267,7 +267,7 @@ font-size: 30px;
 
 
 .inline-block_test {
-  margin-top: -25px;
+  margin-top: -50px;
   margin-bottom: 150px;
     display: inline-block;      /* インラインブロック要素にする */
     background-color:  #fff;    /* 背景色指定 */
@@ -275,7 +275,7 @@ font-size: 30px;
     height: 50px;              /* 高さ指定 */
 }
 .inline-block_test1 {
-  margin-top: -25px;
+  margin-top: -50px;
   margin-bottom: 200px;
     display: inline-block;      /* インラインブロック要素にする */
     background-color:  #fff;    /* 背景色指定 */
