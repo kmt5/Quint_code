@@ -65,6 +65,10 @@
               header('Location: s_account_regd.php');
               exit();
       }
+      if ($res['prof_path'] != "prof/noimg.jpg"){
+        $file = "../../".$res['prof_path'];
+        unlink($file);
+      }
   //  もし一時的なファイル名の$_FILES['pic']ファイルを
   //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
       $gazou = basename($_FILES['pic']['name']);

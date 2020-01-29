@@ -47,7 +47,7 @@
         }
       } while ($s_id_cnt != 0 or $b_id_cnt != 0);
 
-      $prof_path = "prof/default.jpg";
+      $prof_path = "prof/noimg.jpg";
       $msg = null;
       // もし$_FILES['pic']があって、一時的なファイル名の$_FILES'pic'が
       // POSTでアップロードされたファイルだったら
@@ -60,13 +60,13 @@
           $new_name = $b_user_id;
           list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
           switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
-              case 2:
+              case IMAGETYPE_JPEG:
                   $new_name .= '.jpg';
                   break;
-              case 1:
+              case IMAGETYPE_GIF:
                   $new_name .= '.gif';
                   break;
-              case 3:
+              case IMAGETYPE_PNG:
                   $new_name .= '.png';
                   break;
               default:

@@ -8,7 +8,7 @@
 
     $sql = "SELECT prof_path FROM bosyu_users WHERE b_user_id = '".$b_user_id."'";
     $res = $db->query($sql)->fetch();
-    if ($res['prof_path'] != "prof/default.jpg"){
+    if ($res['prof_path'] != "prof/noimg.jpg"){
       $file = "../../".$res['prof_path'];
       unlink($file);
     }
