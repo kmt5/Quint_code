@@ -15,6 +15,8 @@ if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image
   } else {
     $msg = 'アップロードに失敗しました';
   }
+} else {
+  $b = 'upload/noimage.jpg';
 }
 
 if (isset($msg) && $msg == true) {
@@ -119,11 +121,9 @@ $db = null;
         <?php echo $vol_name; ?>
         <br>
         <h2>ボランティアイメージ画像</h2>
-        <?php if ($vol_fig_path == null) {
-          echo "<br>登録されている写真はありません。";
-        } else {
+        <?php 
           echo "<img src=../" . $vol_fig_path . ">";
-        } ?>
+        ?>
         <h2>地域選択</h2>
         <label>都道府県　</label>
         <?php echo $pref_name; ?>

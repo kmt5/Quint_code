@@ -53,11 +53,11 @@ $point = strval($num);
 //echo "point:" . $point . "<br>";
 $getName = $db->query("SELECT pref_name FROM areas WHERE area_id = $area_id");
 foreach ($getName as $get_name) {
-    $pref_name =  $get_name['pref_name'];
+  $pref_name =  $get_name['pref_name'];
 }
 $getName = $db->query("SELECT area_name FROM areas WHERE area_id = $area_id");
 foreach ($getName as $get_name) {
-    $area_name =  $get_name['area_name'];
+  $area_name =  $get_name['area_name'];
 }
 //echo $pref_name;
 //echo $area_name;
@@ -178,7 +178,7 @@ $db = null;
         } ?>
         <h2>詳細</h2>
         <div class="textarea">
-        <?php echo $vol_detail; ?>
+          <?php echo $vol_detail; ?>
         </div>
         <br>
         <br>

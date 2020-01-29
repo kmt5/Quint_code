@@ -59,6 +59,7 @@ li{
   margin-left: 20px;
 }
 .message{
+  text-align: center;
   width:99%;
   height: 200px;
   display: inline-block;
