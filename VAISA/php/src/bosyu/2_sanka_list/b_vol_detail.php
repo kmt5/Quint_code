@@ -56,11 +56,10 @@ $getName = $db->query("SELECT pref_name FROM areas WHERE pref_id = $pref_id");
 foreach ($getName as $get_name) {
     $pref_name =  $get_name['pref_name'];
 }
-$getName = $db->query("SELECT spec_rank, rank_spec_flag, b_user_id FROM volunteers WHERE vol_id = $vol_id");
+$getName = $db->query("SELECT spec_rank, rank_spec_flag FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $spec_rank =  $get_name['spec_rank'];
     $rank_spec_flag =  $get_name['rank_spec_flag'];
-    $b_user_id =  $get_name['b_user_id'];
 }
 $getName = $db->query("SELECT groupname, address, tel_num FROM bosyu_users WHERE b_user_id = $b_user_id");
 foreach ($getName as $get_name) {
@@ -83,26 +82,6 @@ foreach ($getName as $get_name) {
 $getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
 foreach ($getName as $get_name) {
     $vol_fig_path =  $get_name['vol_fig_path'];
-}
-$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
-foreach ($getName as $get_name) {
-    $vol_fig_path =  $get_name['vol_fig_path'];
-}
-$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
-foreach ($getName as $get_name) {
-    $vol_fig_path =  $get_name['vol_fig_path'];
-}
-$getName = $db->query("SELECT set_flag FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
-foreach ($getName as $get_name) {
-    $value =  $get_name['set_flag'];
-}
-$getName = $db->query("SELECT favo_flag FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
-foreach ($getName as $get_name) {
-    $value1 =  $get_name['favo_flag'];
-}
-$s_table = $db->query("SELECT rank FROM sanka_users WHERE s_user_id = $s_user_id");
-foreach ($s_table as $get_table) {
-    $rank =  $get_table['rank'];
 }
 ?>
 

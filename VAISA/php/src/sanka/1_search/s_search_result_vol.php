@@ -100,14 +100,7 @@ $getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_i
 foreach ($getName as $get_name) {
     $vol_fig_path =  $get_name['vol_fig_path'];
 }
-$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
-foreach ($getName as $get_name) {
-    $vol_fig_path =  $get_name['vol_fig_path'];
-}
-$getName = $db->query("SELECT vol_fig_path FROM volunteers WHERE vol_id = $vol_id");
-foreach ($getName as $get_name) {
-    $vol_fig_path =  $get_name['vol_fig_path'];
-}
+
 $getName = $db->query("SELECT set_flag FROM sanka_situations WHERE vol_id = $vol_id AND s_user_id = $s_user_id");
 foreach ($getName as $get_name) {
     $value =  $get_name['set_flag'];
