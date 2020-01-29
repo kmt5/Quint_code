@@ -15,6 +15,7 @@ $getName = $db -> query("SELECT banner_flag FROM options WHERE b_user_id = $b_us
 foreach ($getName as $get_name) {
   $shounin = $get_name['banner_flag'];
 }
+echo $shounin;
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
