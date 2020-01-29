@@ -1,10 +1,11 @@
 .frd-pro img{
-  width:200px;
-  height:150px;
+  width:400px;
+  height:300px;
   position: absolute;
   top: 20%;
   left:0;
   margin-left: 10%;
+  margin-top: 20%;
 }
 .name{
   position: absolute;
