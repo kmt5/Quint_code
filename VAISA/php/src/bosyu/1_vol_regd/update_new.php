@@ -15,8 +15,6 @@ if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image
   } else {
     $msg = 'アップロードに失敗しました';
   }
-} else {
-  $b = 'upload/noimage.jpg';
 }
 
 if (isset($msg) && $msg == true) {
@@ -117,26 +115,21 @@ $db = null;
 
         <h1 align="center">以下の内容で<br>登録が完了しました</h1>
 
-        <h2>ボランティア名</h2>
+        <h2 class="a">ボランティア名</h2>
         <?php echo $vol_name; ?>
         <br>
-        <h2>ボランティアイメージ画像</h2>
-        <?php 
+        <h2 class="a">ボランティアイメージ画像</h2>
+        <?php if ($vol_fig_path == null) {
+          echo "<br>登録されている写真はありません。";
+        } else {
           echo "<img src=../" . $vol_fig_path . ">";
-        ?>
-        <h2>地域選択</h2>
-        <label>都道府県　</label>
-        <?php echo $pref_name; ?>
-        <br><br>
-        <label>地域　　　</label>
-        <?php echo $area_name; ?>
-        <br>
-        <h2>郵便番号</h2>
-        <?php echo $post_num; ?>
-        <br>
-        <h2>住所</h2>
+        } ?>
+        <h2 class="a">都道府県　：<?php echo $pref_name; ?></h2>
+        <h2 class="a">地域　　　：<?php echo $area_name; ?></h2>
+        <h2 class="a">〒<?php echo $post_num; ?></h2>
+        <div class="textarea">
         <?php echo $vol_place; ?>
-        <br>
+        </div>
         <h2>開催日</h2>
         <?php echo $vol_date; ?>
         <br>
