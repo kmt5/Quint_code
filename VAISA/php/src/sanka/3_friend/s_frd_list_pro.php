@@ -91,10 +91,22 @@ else{$id=null;}
         </center>
         <ul>
 <?php
-    $myv = "SELECT vol_name FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations WHERE s_user_id = '$id' and set_flag = 1)";
+$now_time=date("Y/m/d");
+$now_year=(int)date("Y",strtotime($now_time));
+$now_month=(int)date("m",strtotime($now_time));
+$now_days=(int)date("d",strtotime($now_time));
+
+
+    $myv = "SELECT * FROM volunteers WHERE vol_id in (SELECT vol_id FROM sanka_situations WHERE s_user_id = '$id' and set_flag = 1)";
     $result2 = $db->query($myv);
     foreach ($result2 as $row){
+      if(date("Y",strtotime($row['vol_date'])) >= $now_year){
+        if(date("m",strtotime($row['vol_date'])) >= $now_month){
+          if(date("d",strtotime($row['vol_date'])) >= $now_days){
       echo '<li>'.$row['vol_name'].'</li>';
+          }
+        }
+      }
     }
 ?>
         </ul>
