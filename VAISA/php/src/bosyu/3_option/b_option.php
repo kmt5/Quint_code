@@ -1,7 +1,7 @@
 <?php
 session_start();
 $b_user_id = $_POST["b_user_id"];
-echo $b_user_id;
+//echo $b_user_id;
 $_SESSION["b_user_id"] = $b_user_id;
 ?>
 
