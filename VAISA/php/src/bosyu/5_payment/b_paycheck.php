@@ -83,12 +83,6 @@ if (isset($kessai_flag)) {
             echo "</form>";
         }
         ?>
-        <form method="post" name="update" action="b_paycheck.php">
-            <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-            <a href="javascript:formhome.submit()">
-                <p id="home"><i class="fas fa-home"></i></p>
-            </a>
-        </form>
 </body>
 
 </html>
