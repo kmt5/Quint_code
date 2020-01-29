@@ -41,11 +41,11 @@
           </form>
           <form method="post" name="my" action="./2_myvol/s_my_first.php"class="inline-block_test1">
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-            <a href="javascript:my.submit()" class="radius_test"><span>マイボラ</span></a><br>
+            <a href="javascript:my.submit()" class="radius_test" style="font-weight:bold;">マイボラ</a><br>
           </form>
           <form method="post" name="friend" action="./3_friend/s_frd_first.php" class="inline-block_test1">
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-            <a href="javascript:friend.submit()" class="radius_test"><span>フレンド</span></a><br>
+            <a href="javascript:friend.submit()" class="radius_test" style="font-weight:bold;">フレンド</a><br>
           </form>
           <form method="post" name="qr" action="./7_check/s_check.php" class="inline-block_test">
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
@@ -57,7 +57,7 @@
           </form>
           <form method="post" name="setting" action="./6_conf/s_setting_edit.php" class="inline-block_test1">
             <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-            <a href="javascript:setting.submit()" class="radius_test"><span>設定</span></a><br>
+            <a href="javascript:setting.submit()" class="radius_test" style="font-weight:bold;">設定</a><br>
           </form>
         </center> <!-- 中央寄せ -->
       </div>
