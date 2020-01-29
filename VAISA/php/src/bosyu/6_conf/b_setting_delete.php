@@ -31,11 +31,11 @@
     $stmt4  = $db->prepare($sql);
     $stmt4->execute($params);
 
-    $sql  = 'DELETE FROM bosyu_users WHERE b_user_id = :b_user_id';
+    $sql  = 'SET FOREIGN_KEY_CHECKS=0; DELETE FROM bosyu_users WHERE b_user_id = :b_user_id;';
     $stmt5  = $db->prepare($sql);
     $stmt5->execute($params);
 
-    if ($stmt5->rowCount()){
+    if ($stmt5){
       header('Location: ../../login.php');
     }
   }
