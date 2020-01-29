@@ -108,7 +108,9 @@ $now_year=(int)date("Y",strtotime($now_time));
       else{
         continue;
         }
+      echo  '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img">';
       echo '<h1>';
+      echo '<td align="left">';
       echo '<form method="post" name="form'.$count.'" action="../1_search/s_search_result_vol.php">';
       echo '<input type="hidden" name="vol_id" value="'.$row['vol_id'].'">';
       echo '<input type  = "hidden" name = "s_user_id" value="'.$user_id.'">';
@@ -121,43 +123,46 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '内容 '.$row['vol_name'];
       echo '</a>';
       echo '</form>';
+      echo '</td>';
+
 
       $count++;
 
+      echo '<td align="center">';
       echo '<form method="POST">';
       echo '<button type = "submit" name = "fav" id="ad" class="del" onclick="return favVol()">お気に入り解除</button>';
       echo '<input type = "hidden" name = "favol" value="'.$row['vol_id'].'">';
       echo '<input type  = "hidden" name = "s_user_id" value="'.$user_id.'">';
       echo '</form>';
-      echo  '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img">';
+      echo '</td>';
       echo '<br>';
       echo '</div>';
     }
     if($count1 == 0){
       echo '<div id="tabpage1">';
       echo '<h1>';
-      echo '<center>';
+      echo '<td align="center">';
       echo 'お気に入りボランティアは<br>';
       echo 'ありません';
-      echo '</center>';
+      echo '</td>';
       echo '</div>';
     }
     if($count2 == 0){
       echo '<div id="tabpage2">';
       echo '<h1>';
-      echo '<center>';
+      echo '<td align="center">';
       echo 'お気に入りボランティアは<br>';
       echo 'ありません';
-      echo '</center>';
+      echo '</td>';
       echo '</div>';
     }
     if($count3 == 0){
       echo '<div id="tabpage3">';
       echo '<h1>';
-      echo '<center>';
+      echo '<td align="center">';
       echo 'お気に入りボランティアは<br>';
       echo 'ありません';
-      echo '</center>';
+      echo '</td>';
       echo '</div>';
     }
     $db=null;

@@ -83,7 +83,7 @@ foreach ($getName as $get_name) {
           //echo "flag:".$read[$i];
 
           if ($read[$i] != 1) {
-            echo "<form action='b_entrant_list.php' method='post'>";
+            echo "<form action='qr_redirect.php' method='post'>";
             echo "<input type='hidden' name='s_user_id' value=" . $s_user_id[$i] . ">";
             echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
             echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
