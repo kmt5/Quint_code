@@ -36,8 +36,13 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
   margin-top:60px;
   width:300px;
   height:150px;
-  right:0px;
+  right:10px;
 }
+
+#tabbody h1{
+  z-index:10;
+}
+
 #tabcontrol a:hover {
  background-color: white; /* 背景色：白色 */
 }
