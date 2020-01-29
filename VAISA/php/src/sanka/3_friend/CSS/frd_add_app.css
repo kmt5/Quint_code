@@ -93,15 +93,17 @@
   transform: translateY(4px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
-.ero1{
-  position: absolute;
-  top: 60%;
-  left:35%;
-  color:red;
-  margin-right: 10%;
-  font-size:40px;
+.ero1 {
+    position: absolute;
+    top: 60%;
+    left: 23%;
+    font-weight: bold;
+    color: red;
+    border: solid 8px black;
+    border-radius: 20px;
+    font-size: 40px;
+    padding: 60px;
 }
-
 .ero2{
   display: flex;
   align-items: center;
