@@ -20,7 +20,7 @@ $user_id = $_POST['s_user_id'];
       </a>
     </form>
     <form method="post" name="formhome" action="../s_home.php">
-      <input type="hidden" name="s_user_id" value="<?php echo $b_user_id; ?>" />
+      <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:formhome.submit()">
         <p id="home"><i class="fas fa-home"></i></p>
       </a>
