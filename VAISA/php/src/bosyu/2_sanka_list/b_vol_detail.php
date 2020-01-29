@@ -102,7 +102,7 @@ foreach ($getName as $get_name) {
     <div id="header-fixed">
         <img border="0" src="../../common/header.jpg" width="100%" height="100%">
         <?php
-        echo "<form method='post' name='formback' action='../2_myvol/s_my_fav.php'>";
+        echo "<form method='post' name='formback' action='./b_entrant_list.php'>";
         echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . " />";
         echo "<a href='javascript:formback.submit()'>";
         echo "<p id='back'><i class='fas fa-reply'></i></p>";
