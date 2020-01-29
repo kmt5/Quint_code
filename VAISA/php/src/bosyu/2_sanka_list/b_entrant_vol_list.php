@@ -53,7 +53,7 @@ if (!empty($vol_name)) {
       <div align="center">
         <?php
         echo $message;
-        if (!empty($array_count)) {
+        if (!empty($vol_name)) {
           $count = count($vol_name);
         } else {
           $count = 0;
