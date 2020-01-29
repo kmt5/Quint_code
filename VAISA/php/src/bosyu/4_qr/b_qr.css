@@ -334,3 +334,23 @@ font-size: 20px;
   margin-right: 200px;
   border-radius: 10px;
 }
+
+
+.button-vol {
+  width:80%;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #02cb06;/*ボタン色*/
+  color: #000;
+  border-bottom: solid 10px #627295;
+  border-radius: 30px;
+  font-size:50px;
+  margin:20px
+}
+.button-vol:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
+}

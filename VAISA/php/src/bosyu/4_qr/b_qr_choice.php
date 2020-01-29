@@ -52,7 +52,7 @@
               <form method="post" action="./b_qr.php">
                 <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
                 <input type="hidden" name="vol_id" value="'.$value['vol_id'].'" />
-                <input type="submit" class="bg_test4" value="'.$value['vol_name'].'" />
+                <input type="submit"  class="button-vol" value="'.$value['vol_name'].'" />
               </form>
             </div>
             <br>';
