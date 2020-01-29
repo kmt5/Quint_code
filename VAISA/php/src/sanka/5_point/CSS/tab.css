@@ -39,7 +39,7 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
   right:10px;
 }
 
-#tabbody h1{
+#tabbody #text{
   z-index:10;
 }
 
