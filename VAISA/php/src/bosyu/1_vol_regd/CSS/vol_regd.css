@@ -135,8 +135,10 @@ margin:50px 100px 100px 100px;
 border-radius: 30px;
 }
 
-p{
-  text-align:center;
+p.dezain{
+  border:solid 5px #0cb06e;
+  width:50%;
+  border-radius:10px;
 }
 
 #listbutton{
@@ -146,4 +148,9 @@ margin:0px 30px 10px 20px;
 .vollist form {
     display: inline-block;
     margin: 0 10px;
+}
+
+div.textarea{
+  width:85%;
+  font-size:50px;
 }

@@ -236,6 +236,7 @@ font-size: 30px;
     display: inline-block;
     position: relative;
     z-index: 1;
+    font-weight: bold;
 }
 
 .hexagonB:before,

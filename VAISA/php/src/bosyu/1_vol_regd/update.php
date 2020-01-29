@@ -118,7 +118,7 @@ $db = null;
     </form>
   </div>
   <div id="body-bk">
-    
+
     <div id="body">
       <div id="Toptitle1">
         <i class="fas fa-edit"></i>　登録・編集
@@ -164,28 +164,26 @@ $db = null;
         <?php echo $vol_fin_time; ?>
         <h2>定員</h2>
         <?php echo $vol_capacity; ?>
-        <br><br>
         <?php if ($val_flag == 1) {
           echo "<p class='dezain'>報酬あり</p>";
         } else {
           echo "<p class='dezain'>報酬なし</p>";
         } ?>
-        <br><br>
         <?php if ($newbie_flag == 1) {
           echo "<p class='dezain'>初心者歓迎</p>";
         } else {
           echo "<p class='dezain'>経験者のみ</p>";
         } ?>
-        <br><br>
         <label>ランク指定　</label>
         <?php if ($spec_rank == 0) {
           echo "<p class='dezain'>指定なし</p>";
         } else {
           echo "<p class='dezain'>$spec_rank</p>";
         } ?>
-        <br><br>
         <h2>詳細</h2>
+        <div class="textarea">
         <?php echo $vol_detail; ?>
+        </div>
         <br>
         <br>
         <form action='b_vol_regd_list.php' method='post'>
