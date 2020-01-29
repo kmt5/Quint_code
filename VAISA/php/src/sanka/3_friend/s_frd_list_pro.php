@@ -28,30 +28,30 @@ else{$id=null;}
       <img border="0" src="header.jpg" style="vertical-align:middle;" width="100%" height="100%">
       <?php
       if(isset($_POST['whos_user_id'])){
-      echo '<form method="post" name="back" action="s_frd_list.php">';
+      echo '<form method="post" name="formback" action="s_frd_list.php">';
       }
       elseif(isset($_POST['now_user_id'])){
-      echo '<form method="post" name="back" action="s_frd_add_appnow.php">';
+      echo '<form method="post" name="formback" action="s_frd_add_appnow.php">';
       }
       elseif(isset($_POST['check_user_id'])){
-      echo '<form method="post" name="back" action="s_frd_appcheck.php">';
+      echo '<form method="post" name="formback" action="s_frd_appcheck.php">';
       }
       else{
-      echo '<form method="post" name="back" action="s_home.php">';
+      echo '<form method="post" name="formback" action="s_home.php">';
       }
       ?>
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
+      <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
-</button>
-      </form>
-      <form method="post" name="home" action="../s_home.php">
+      </a>
+    </form>
+    <form method="post" name="formhome" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
+      <a href="javascript:formhome.submit()">
         <p id="home"><i class="fas fa-home"></i></p>
-</button>
-      </form>
-    </div>
+      </a>
+    </form>
+</div>
 
   <div id="body-bk">
     <div id="body">

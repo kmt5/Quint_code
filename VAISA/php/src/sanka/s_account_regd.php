@@ -175,7 +175,7 @@
       <center> <!-- 中央寄せ -->
         <dt>プロフィール画像</dt>
         <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
-        <img id="preview" width="400" height="300">
+        <img id="preview" src="../prof/noimg.jpg" width="400" height="300">
         <script>
             $('#pic').on('change', function (e) {
               var reader = new FileReader();
