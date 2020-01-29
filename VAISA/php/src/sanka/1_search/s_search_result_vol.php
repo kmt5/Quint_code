@@ -304,7 +304,7 @@ if (empty($table)) {
                     }
                 </script>
                 <?php
-                if ($_POST['back'])== 1) {
+                if ($_POST['back'] == 1) {
                   if ($can_ap == 0) {
                       echo "このボランティアは" . $spec_rank . "以上の方しか参加することができません";
                   } else if ($value == 0) {
@@ -379,7 +379,7 @@ if (empty($table)) {
                 }
                 ?>
                 <?php
-                if ($_POST['back'])== 1) {
+                if ($_POST['back'] == 1) {
                   if ($value1 == 0) {
                       $_SESSION['favo'] = 1;
                       echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check()'>";
