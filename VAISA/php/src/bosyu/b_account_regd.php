@@ -108,7 +108,7 @@
       if ($stmt->rowCount()){
         echo '
           <form method="post" action="./b_account_regd_comp.php">
-            <input type="hidden" name="b_user_id" value "'.$b_user_id.'" />
+            <input type="hidden" name="b_user_id" value = "'.$b_user_id.'" />
             <input type="hidden" name="mail_address" value="'.$mail_address.'" />
             <input type="hidden" name="passwd" value="'.$passwd.'" />
           </form>
