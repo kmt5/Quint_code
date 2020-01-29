@@ -143,8 +143,8 @@ $user_id=$_POST['s_user_id'];
           echo '内容 '.$row['vol_name'];
           echo '<br>';
           echo '獲得ポイント '.$row['point'];
-          echo '<br>';
           echo '</td>';
+          echo '<br>';
           echo '</div>';
          }
          if($count1 == 0){
