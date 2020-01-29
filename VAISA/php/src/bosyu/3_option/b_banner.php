@@ -50,9 +50,29 @@ $_SESSION["b_user_id"] = $b_user_id;
         月額300円（税別）
         <br>
         <br>
-        <?php echo $b_user_id; ?>
+        <?php echo $_POST['b_user_id']; ?>
         <!-- onclickでjsのtest関数を呼び出す -->
-        <button type="submit" id="banner" onclick="postForm()">登録をする</button>
+        <?php
+        if ($_POST['test'] == false) {
+          //$_SESSION['set'] = 1;
+          echo "<form action='' method='post' onSubmit='return check()'>";
+          echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
+          echo "<input type='hidden' name='test' value='true'>";
+          echo "<button type='submit' id='banner'>登録をする</button>";
+          echo "</form>";
+        } else {
+          //$_SESSION['set'] = 0;
+          echo "<form action='' method='post' onSubmit='return check1()'>";
+          echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
+          echo "<input type='hidden' name='test' value='false'>";
+          echo "<button type='submit' id='banner'>登録を解除する</button>";
+          echo "</form>";
+        }
+        ?>
+        <!--
+        <form action='' method="post" onSubmit="return check()">
+          <button type="submit" id="banner" onclick="postForm()">登録をする</button>
+        </form> -->
       </div>
       <?php
       //$b_user_id = '00000001';
@@ -61,11 +81,9 @@ $_SESSION["b_user_id"] = $b_user_id;
 
       printf('<script>var value = %s;
       var elm = document.getElementById("status");
-      var elm1 = document.getElementById("banner");
 
       if ( value == true){
         elm.textContent = "利用状況：　利用申請中";
-        elm1.textContent = "登録を解除する";
       }
       </script>', $value);
 
@@ -82,46 +100,25 @@ $_SESSION["b_user_id"] = $b_user_id;
       $db=null;
       ?>
       <script>
-        function postForm() {
-
-          var result = window.confirm("実行しますか？");
-
-
-        / var elm1 = document.getElementById("banner");
-
-          var form = document.createElement('form');
-          var request = document.createElement('input');
-
-          form.method = 'POST';
-          form.action = 'b_banner.php';
-
-          request.type = 'hidden'; //入力フォームが表示されないように
-          request.name = 'test';
-
-          var str = '登録をする';
-
-          if (result) {
-            if (elm1.textContent == str) {
-              request.value = 'true';
-            } else {
-              request.value = 'false';
-            }
-          }
-
-          var input1 = document.createElement('input');
-
-          input1.type = 'hidden';
-          input1.name = 'b_user_id';
-          input1.value ='<?php echo $b_user_id; ?>'
-
-
-          form.appendChild(request);
-          form.appendChild(input1);
-          document.body.appendChild(form);
-
-          form.submit();
-
+      function check() {
+        if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
+          window.alert('登録が完了しました');
+          return true; // 「OK」時は送信を実行
+        } else { // 「キャンセル」時の処理
+          window.alert('キャンセルされました'); // 警告ダイアログを表示
+          return false; // 送信を中止
         }
+      }
+
+      function check1() { // 解除するとき
+        if (window.confirm('登録を解除してしてよろしいですか？')) { // 確認ダイアログを表示
+          window.alert('登録が解除されました');
+          return true; // 「OK」時は送信を実行
+        } else { // 「キャンセル」時の処理
+          window.alert('キャンセルされました'); // 警告ダイアログを表示
+          return false; // 送信を中止
+        }
+      }
       </script>
     </div>
   </div>
