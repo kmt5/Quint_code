@@ -75,6 +75,8 @@ $_SESSION["b_user_id"] = $b_user_id;
           //$_SESSION['set'] = 1;
           echo "<form action='b_banner.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
+          echo "<input type='hidden' name='syonin' value='1'>";
+
           echo "<input type='hidden' name='test' value='true'>";
           echo "<button type='submit' id='banner'>登録をする</button>";
           echo "</form>";
@@ -106,7 +108,12 @@ $_SESSION["b_user_id"] = $b_user_id;
       </script>', $value);
 
       //追加か所
-
+      if ($_POST['syonin'] == 1){
+        printf('<script>
+                  var elm = document.getElementById("status");
+                  elm.textContent = "利用状況：利用可能";
+                  </script>');
+      }
       //追加終わり
       $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
       $db = new PDO($dsn, 'root', 'root');
