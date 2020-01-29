@@ -104,6 +104,7 @@ foreach ($getName as $get_name) {
         <?php
         echo "<form method='post' name='formback' action='./b_entrant_list.php'>";
         echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . " />";
+        echo "<input type='hidden' name='vol_id' value=" . $vol_id . " />";
         echo "<a href='javascript:formback.submit()'>";
         echo "<p id='back'><i class='fas fa-reply'></i></p>";
         echo "</a></form>";
@@ -123,7 +124,7 @@ foreach ($getName as $get_name) {
     <div id="body-bk">
         <div id="body">
             <?php
-                echo "<div id='Toptitle1'>参加者一覧</div>";
+                echo "<div id='Toptitle2'>参加者一覧</div>";
             ?>
             <div width="100%" class="new">
                 <h1 align="center">ボランティア内容</h1>
