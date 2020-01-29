@@ -9,7 +9,7 @@ $db = new PDO($dsn, 'root', 'root');
 $db->query("set names utf8");
 $today = date("Y-m-d");
 
-$getVolName = $db->query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0 AND vol_date >'$vol_date'");
+$getVolName = $db->query("SELECT vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0 AND vol_date >= '$today'");
 $i = 0;
 foreach ($getVolName as $volname) {
   $vol_name[$i] .= $volname['vol_name'];
@@ -23,7 +23,7 @@ if (!empty($vol_name)) {
 }
 $php_vol_name = json_encode($vol_name);
 
-$getVolId = $db->query("SELECT vol_id FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0 AND vol_date > '$vol_date'");
+$getVolId = $db->query("SELECT vol_id FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0 AND vol_date >= '$today'");
 $j = 0;
 foreach ($getVolId as $volid) {
   $vol_id_html[$j] .= $volid['vol_id'];
