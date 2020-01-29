@@ -12,8 +12,10 @@ foreach ($getName as $get_name) {
   $j += 1;
 }
 if (!empty($vol_name)) {
-  $count = $db->query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
-  echo $count;
+  $getName = $db->query("SELECT COUNT(vol_name) AS count FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+  foreach ($getName as $get_name) {
+    $count = $get_name["count"];
+  }
 } else {
   $count = 0;
   $message = "<h2>ボランティアがありません<br>登録・編集から登録してください</h2>";
