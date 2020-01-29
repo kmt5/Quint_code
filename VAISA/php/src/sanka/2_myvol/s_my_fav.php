@@ -67,7 +67,6 @@ $now_year=(int)date("Y",strtotime($now_time));
   }
 </script>
       <div id="tabbody">
-        <center>
 <?php
 //データベースに接続(test3)
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
@@ -115,7 +114,7 @@ $now_year=(int)date("Y",strtotime($now_time));
       echo '<input type="hidden" name="vol_id" value="'.$row['vol_id'].'">';
       echo '<input type  = "hidden" name = "s_user_id" value="'.$user_id.'">';
       echo '<input type = "hidden" name="back" value="3">';
-      echo '<a href="javascript:form'.$count.'.submit()">';
+      echo '<a href="javascript:form'.$count.'.submit()" style="color:black">';
       echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
       echo '<br>';
       echo '場所 '.$row['vol_place'];
@@ -167,7 +166,6 @@ $now_year=(int)date("Y",strtotime($now_time));
     }
     $db=null;
 ?>
-</center>
       </div>
   </div>
 </div>

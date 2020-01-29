@@ -59,7 +59,6 @@ $user_id=$_POST['s_user_id'];
       </div>
 
     <div id="tabbody">
-      <center>
 <?php
     $dbh=null;
       // ポストのデータを変数に
@@ -258,7 +257,6 @@ $user_id=$_POST['s_user_id'];
         }
          $db=null;
   ?>
-  </center>
     </div>
   </div>
 </div>

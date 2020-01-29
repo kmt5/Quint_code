@@ -67,7 +67,6 @@ $now_year=(int)date("Y",strtotime($now_time));
      echo '</div>';
 ?>
 <div id="tabbody">
-  <center>
 <script>
   function adVol(){
   return confirm("登録解除しますか？");
@@ -172,7 +171,6 @@ $now_year=(int)date("Y",strtotime($now_time));
     }
     $db=null;
 ?>
-</center>
   </div>
   </div>
 </div>

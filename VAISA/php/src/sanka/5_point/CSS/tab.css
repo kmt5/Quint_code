@@ -27,14 +27,14 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
  padding: 1em;            /* 内側の余白量 */
  background-color: white; /* 背景色：白色 */
  width:800px;
- height:200px;
+ height:280px;
 }
 
 .img{
   position: absolute;
   width:300px;
   height:150px;
-  top:40px;
+  top:70px;
   right:10px;
 }
 
