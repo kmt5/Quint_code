@@ -76,3 +76,8 @@ button:active {
   transform: translateY(10px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
+
+h2{
+  font-size:50px;
+  text-align:center;
+}

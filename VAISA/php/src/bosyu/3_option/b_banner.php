@@ -2,6 +2,12 @@
 session_start();
 $b_user_id = $_POST["b_user_id"];
 $_SESSION["b_user_id"] = $b_user_id;
+
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+$db = new PDO($dsn, 'root', 'root');
+$db -> query("set names utf8");
+$banner_flag = $db -> query("SELECT banner_flag FROM options WHERE b_user_id = $b_user_id");
+echo $banner_flag;
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -58,31 +64,18 @@ $_SESSION["b_user_id"] = $b_user_id;
           }
         ?>
         <br>
-        <br>
-        <?php
-          if(empty($_POST['test'])) {
-              echo "testの値が渡されていません";
-          } else {
-
-            echo $_POST['test'];
-          }
-        ?>
-        <br>
-        <br>
         <!-- onclickでjsのtest関数を呼び出す -->
         <?php
-        if ($_POST['test'] == "false") {
-          //$_SESSION['set'] = 1;
+        if ($banner_flag == 0 || $banner_flag == null) {
           echo "<form action='b_banner.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          echo "<input type='hidden' name='test' value='true'>";
-          echo "<button type='submit' id='banner'>登録をする</button>";
+          //echo "<input type='hidden' name='test' value='true'>";
+          echo "<button type='submit' id='banner'>登録する</button>";
           echo "</form>";
         } else {
-          //$_SESSION['set'] = 0;
           echo "<form action='b_banner.php' method='post' onSubmit='return check1()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          echo "<input type='hidden' name='test' value='false'>";
+          //echo "<input type='hidden' name='test' value='false'>";
           echo "<button type='submit' id='banner'>登録を解除する</button>";
           echo "</form>";
         }
@@ -95,7 +88,7 @@ $_SESSION["b_user_id"] = $b_user_id;
       <?php
       //$b_user_id = '00000001';
       $b_user_id = $_POST["b_user_id"];
-      $value = $_POST['test'];
+      $value = $banner_flag;
 
       printf('<script>var value = %s;
       var elm = document.getElementById("status");
@@ -106,7 +99,12 @@ $_SESSION["b_user_id"] = $b_user_id;
       </script>', $value);
 
       //追加か所
-
+      if ($_POST['syonin'] == 1){
+        printf('<script>
+                  var elm = document.getElementById("status");
+                  elm.textContent = "利用状況：利用可能";
+                  </script>');
+      }
       //追加終わり
       $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
       $db = new PDO($dsn, 'root', 'root');

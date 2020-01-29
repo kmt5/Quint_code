@@ -49,9 +49,48 @@ $_SESSION["b_user_id"] = $b_user_id;
         月額200円（税別）
         <br>
         <br>
+        <?php
+          if(empty($_POST['b_user_id'])) {
+            echo "IDが渡されていません";
+          } else {
+            echo $_POST['b_user_id'];
+          }
+        ?>
+        <br>
+        <br>
+        <?php
+          if(empty($_POST['test'])) {
+              echo "testの値が渡されていません";
+          } else {
+
+            echo $_POST['test'];
+          }
+        ?>
+        <br>
+        <br>
         <!-- onclickでjsのtest関数を呼び出す -->
-        <button type="submit" id="banner" onclick="postForm()">登録をする</button>
-    </div>
+        <?php
+        if ($_POST['test'] == "false") {
+          //$_SESSION['set'] = 1;
+          echo "<form action='b_rank_spec.php' method='post' onSubmit='return check()'>";
+          echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
+          echo "<input type='hidden' name='test' value='true'>";
+          echo "<button type='submit' id='banner'>登録をする</button>";
+          echo "</form>";
+        } else {
+          //$_SESSION['set'] = 0;
+          echo "<form action='b_rank_spec.php' method='post' onSubmit='return check1()'>";
+          echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
+          echo "<input type='hidden' name='test' value='false'>";
+          echo "<button type='submit' id='banner'>登録を解除する</button>";
+          echo "</form>";
+        }
+        ?>
+        <!--
+        <form action='' method="post" onSubmit="return check()">
+          <button type="submit" id="banner" onclick="postForm()">登録をする</button>
+        </form> -->
+      </div>
     <?php
       //$b_user_id = '00000001';
       $b_user_id = $_POST["b_user_id"];
@@ -59,13 +98,20 @@ $_SESSION["b_user_id"] = $b_user_id;
 
       printf('<script>var value = %s;
       var elm = document.getElementById("status");
-      var elm1 = document.getElementById("banner");
 
       if ( value == true){
         elm.textContent = "利用状況：　利用申請中";
-        elm1.textContent = "登録を解除する";
       }
       </script>', $value);
+
+      //追加か所
+      if ($syonin == 1){
+        printf('<script>
+                  var elm = document.getElementById("status");
+                  elm.textContent = "利用状況：利用可能";
+                  </script>');
+      }
+      //追加終わり
       $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
       $db = new PDO($dsn, 'root', 'root');
       if ($_POST['test'] == 'true') {
@@ -76,69 +122,24 @@ $_SESSION["b_user_id"] = $b_user_id;
       $db=null;
     ?>
     <script>
-    function postForm() {
-
-    var result = window.confirm("実行しますか？");
-
-    // formを生成
-    var form = document.createElement("form");
-    form.action = 'b_banner.php';
-    form.target = target;
-    form.method = 'post';
-
-    var str = '登録をする';
-
-    if (result) {
-      if (elm1.textContent == str) {
-        var qs = [{type:'hidden',name:'test',value:'true'},{type:'hidden',name:'b_user_id',value:'<?php echo $b_user_id; ?>'}];
-      } else {
-        var qs = [{type:'hidden',name:'test',value:'false'},{type:'hidden',name:'b_user_id',value:'<?php echo $b_user_id; ?>'}];
+    function check() {
+      if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
+        window.alert('登録が完了しました');
+        return true; // 「OK」時は送信を実行
+      } else { // 「キャンセル」時の処理
+        window.alert('キャンセルされました'); // 警告ダイアログを表示
+        return false; // 送信を中止
       }
     }
 
-    // input-hidden生成と設定
-    for(var i = 0; i < qs.length; i++) {
-    var ol = qs[i];
-    var input = document.createElement("input");
-    for(var p in ol) {
-    input.setAttribute(p, ol[p]);
-    }
-    form.appendChild(input);
-    }
-
-    // formをbodyに追加して、サブミットする。その後、formを削除
-    var body = document.getElementsByTagName("body")[0];
-    body.appendChild(form);
-    form.submit();
-    body.removeChild(form);
-
-    /*var elm1 = document.getElementById("banner");
-
-    var form = document.createElement('form');
-    var request = document.createElement('input');
-
-    form.method = 'POST';
-    form.action = 'b_rank_spec.php';
-
-    request.type = 'hidden'; //入力フォームが表示されないように
-    request.name = 'test';
-
-    var str = '登録をする';
-
-    if( result ) {
-      if(elm1.textContent == str){
-        request.value = 'true';
-      }else {
-        request.value = 'false';
+    function check1() { // 解除するとき
+      if (window.confirm('登録を解除してしてよろしいですか？')) { // 確認ダイアログを表示
+        window.alert('登録が解除されました');
+        return true; // 「OK」時は送信を実行
+      } else { // 「キャンセル」時の処理
+        window.alert('キャンセルされました'); // 警告ダイアログを表示
+        return false; // 送信を中止
       }
-    }
-
-
-    form.appendChild(request);
-    document.body.appendChild(form);
-
-    form.submit(); */
-
     }
     </script>
   </div>

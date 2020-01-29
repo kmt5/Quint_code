@@ -36,7 +36,7 @@
   <div id="body-bk">
     <div id="Toptitle1">
       <center> <!-- 中央寄せ -->
-        <i class="fas fa-camera"></i>出欠確認
+        <i class="fas fa-id-badge"></i>出欠確認
       </center>
     </div>
     <div id="body">

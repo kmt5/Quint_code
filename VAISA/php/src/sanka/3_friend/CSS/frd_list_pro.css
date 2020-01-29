@@ -1,10 +1,11 @@
 .frd-pro img{
-  width:200px;
-  height:150px;
+  width:400px;
+  height:300px;
   position: absolute;
   top: 20%;
   left:0;
   margin-left: 10%;
+  margin-top: 5%;
 }
 .name{
   position: absolute;
@@ -22,7 +23,7 @@
 
 }
 .vol{
-  margin-top: 20%;
+  margin-top: 25%;
   width: 82%;
   font-size: 50px;
   text-align: center;
@@ -63,5 +64,6 @@ li{
   display: inline-block;
   border: solid 2px #000;
   border-radius: 20px;
+  font-size: 30px;
   margin-top: -10%;
 }
