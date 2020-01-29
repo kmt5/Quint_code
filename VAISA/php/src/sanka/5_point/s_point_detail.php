@@ -158,6 +158,7 @@ $user_id=$_POST['s_user_id'];
         }
         if($count2 == 0){
           echo '<div id="tabpage2">';
+          echo '<h1>';
           echo '<td align="center">';
           echo '<center>';
           echo '参加済みボランティアは<br>';

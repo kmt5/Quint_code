@@ -99,7 +99,12 @@ echo $banner_flag;
       </script>', $value);
 
       //追加か所
-
+      if ($_POST['syonin'] == 1){
+        printf('<script>
+                  var elm = document.getElementById("status");
+                  elm.textContent = "利用状況：利用可能";
+                  </script>');
+      }
       //追加終わり
       $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
       $db = new PDO($dsn, 'root', 'root');
