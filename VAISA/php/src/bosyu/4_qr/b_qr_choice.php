@@ -36,7 +36,7 @@
   <div id="body-bk">
     <div id="Toptitle1">
       <center> <!-- 中央寄せ -->
-        <i class="fas fa-camera"></i>QRコード
+        <i class="fas fa-camera"></i>出欠確認
       </center>
     </div>
     <div id="body">
@@ -49,7 +49,7 @@
           foreach($res as $value ) {
             echo '
             <div id="body-qr1">
-              <form method="post" action="./b_qr.php">
+              <form method="post" action="./b_sanka.php">
                 <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
                 <input type="hidden" name="vol_id" value="'.$value['vol_id'].'" />
                 <input type="submit"  class="button-vol" value="'.$value['vol_name'].'" />
