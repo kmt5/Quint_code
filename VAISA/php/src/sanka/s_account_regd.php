@@ -217,7 +217,7 @@
       <hr color="black"><br/><br/>
 
       <dt>ひとこと</dt>
-      <dd><input type = "text" name ="mes" id="input6" class="waku" ></dd>
+      <dd><input type = "text" name ="mes" id="input6" class="waku" maxlength='20'></dd>
       <hr color="black"><br/><br/>
 
       <p>
