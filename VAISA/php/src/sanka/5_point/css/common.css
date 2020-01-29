@@ -63,7 +63,6 @@ div#body{
 }
 
 div#Toptitle1{
-    z-index:2;
     width:100%;
     text-align: center;
     font-size: 100px;
@@ -73,7 +72,6 @@ div#Toptitle1{
 }
 
 div#Toptitle2{
-    z-index:2;
     width:100%;
     text-align: center;
     font-size: 100px;
