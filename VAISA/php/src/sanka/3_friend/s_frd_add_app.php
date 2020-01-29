@@ -45,6 +45,12 @@ if(isset($_POST['ask'])){
 
   <div id="body-bk">
     <div id="body">
+    <div id="Toptitle2">
+        フレンド
+        <div id="Toptitle-frd">
+          <i class="fa fa-user-plus"></i>フレンド追加
+        </div>
+      </div>
       <?php
 if($_POST['name'] == null){
 echo '正常に申請されました!!';
