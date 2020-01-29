@@ -13,8 +13,10 @@ if ($kessai = $db->query("SELECT DISTINCT kessai_flag FROM payments WHERE b_user
     }
 }
 if (isset($kessai_flag)) {
-    echo $kessai_flag;
+    echo $kessai_flag."<br>";
+    echo $b_user_id;
 } else {
+    echo $b_user_id;
     echo "NULL";
 }
 ?>
