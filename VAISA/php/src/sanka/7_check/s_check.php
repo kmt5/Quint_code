@@ -18,13 +18,13 @@ $user_id=$_POST['s_user_id'];
       <img border="0" src="../../common/header.jpg" style="vertical-align:middle;" width="100%" height="100%">
       <form method="post" name="back" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
+      <a href="javascript:back.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
-</button>
+</a>
       </form>
       <form method="post" name="home" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
-      <button type="submit">
+      <a href="javascript:home.submit()">
         <p id="home"><i class="fas fa-home"></i></p>
 </button>
       </form>

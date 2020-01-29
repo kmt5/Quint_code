@@ -47,7 +47,7 @@
 </head>
 <body>
   <div id="header-fixed">
-    <img border="0" src="../../common/header.jpg"style="vertical-align:middle;" width="100%" height="100%">
+    <img border="0" src="../../common/header.jpg" width="100%" height="100%">
     <form method="post" name="back" action="./s_setting_edit.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
       <a href="javascript:back.submit()">
