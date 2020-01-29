@@ -5,14 +5,6 @@ html, body{
     height:100%;
 }
 
-div#header-fixed
-{
-    position: fixed;            /* ヘッダーの固定 */
-    top: 0px;                   /* 位置(上0px) */
-    left: 0px;                  /* 位置(右0px) */
-    width: 100%;                /* 横幅100%　*/
-    height: 250px;              /* 縦幅140px */
-}
 
 .back {
     position: absolute;
@@ -37,7 +29,7 @@ div#footer-fixed
 
 /* ボディの定義 */
 div#body-bk{
-    padding:250px 0 250px 0;    /* 上下に250pxを余白を取る */
+    padding:200px 0 200px 0;    /* 上下に250pxを余白を取る */
 
 }
 

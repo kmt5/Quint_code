@@ -153,9 +153,9 @@
 <body>
   <div id="header-fixed">
   <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <form method="post" name="back" action="../s_home.php">
+    <form method="post" name="formback" action="../s_home.php">
       <input type="hidden" name="s_user_id" value="<?php echo $s_user_id; ?>" />
-      <a href="javascript:back.submit()">
+      <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
       </a>
     </form>
