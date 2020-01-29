@@ -31,7 +31,7 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
 }
 
 #tabbody .img{
-  position: relative;
+  position: absolute;
   width:300px;
   height:150px;
   top:70px;
@@ -87,11 +87,9 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
  display: none;
 }
 #tabcontrol #m9{
-  /*white-space: nowrap;*/
  display: none;
 }
 #tabcontrol #m10{
- white-space: nowrap;
 }
 #tabcontrol #m11{
 
