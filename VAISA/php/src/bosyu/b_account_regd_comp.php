@@ -28,14 +28,12 @@
       登録完了<br>
       ありがとうございます<br>
       アカウント登録が完了しました<br>
-      <form method="post" name="transfer" action="./5_payment/b_transfer.html">
+      <form method="post" name="transfer" action="./5_payment/b_paycheck.php">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <a href="javascript:transfer.submit()" class="btn-square5">決済情報閲覧</a>
       </form>
-      <form method="post" name="goHome" action="../login.php">
-        <input type="hidden" name="mail_address" value="<?php echo $mail_address; ?>" />
-        <input type="hidden" name="password" value="<?php echo $passwd; ?>" />
-        <a href="javascript:goHome.submit()" class="btn-square1">ホーム</a>
+      <form method="post" name="login" action="../login.php">
+        <a href="javascript:login.submit()" class="btn-square1">ログイン画面</a>
       </form>
     </center>
     </div>
