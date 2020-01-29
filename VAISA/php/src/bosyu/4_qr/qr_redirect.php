@@ -12,9 +12,17 @@
   if ($check['read_flag'] == 0){
     //point追加処理(mada)
     $v_res = $db->query('select point from volunteers where vol_id = "'.$vol_id.'"')->fetch();
-    $s_res = $db->query('select point from sanka_users where s_user_id = "'.$s_user_id.'"')->fetch();
+    $s_res = $db->query('select point,rank from sanka_users where s_user_id = "'.$s_user_id.'"')->fetch();
     $new = $v_res['point'] + $s_res['point'];
     $db->query('update sanka_users set point="'.$new.'" where s_user_id="'.$s_user_id.'"');
+
+    if ($new > 200 && $s_res['rank'] != "プラチナ"){
+      $db->query("update sanka_users set rank='プラチナ' where s_user_id='".$s_user_id."'");
+    }elseif($new > 100 && $s_res['rank'] != "ゴールド"){
+      $db->query("update sanka_users set rank='ゴールド' where s_user_id='".$s_user_id."'");
+    }elseif($new > 50 && $s_res['rank'] != "シルバー"){
+      $db->query("update sanka_users set rank='シルバー' where s_user_id='".$s_user_id."'");
+    }
 
     //read_flagの変更
     $db->query('update sanka_situations set read_flag="1" where s_user_id="'.$s_user_id.'" and vol_id = "'.$vol_id.'"');
