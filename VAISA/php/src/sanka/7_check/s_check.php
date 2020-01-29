@@ -33,7 +33,7 @@ $user_id=$_POST['s_user_id'];
   <div id="body-bk">
     <div id="body">
       <div id="Toptitle1">
-        <i class="far fa-id-badge">マイプロフィール
+        <i class="far fa-id-badge"></i>マイプロフィール
         <div id="Toptitle-frd">
           <i class="far fa-list-alt"></i>ユーザID:<?php echo $user_id;?>
         </div>
