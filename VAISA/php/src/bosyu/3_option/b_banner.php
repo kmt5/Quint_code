@@ -5,17 +5,28 @@ $_SESSION["b_user_id"] = $b_user_id;
 
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-$db -> query("set names utf8");
-$getName = $db -> query("SELECT banner_apply_flag FROM options WHERE b_user_id = $b_user_id");
-foreach ($getName as $get_name) {
-  $banner_flag = $get_name['banner_apply_flag'];
-}
-echo $banner_flag;
-$getName = $db -> query("SELECT banner_flag FROM options WHERE b_user_id = $b_user_id");
+$db->query("set names utf8");
+
+$getName = $db->query("SELECT banner_flag FROM options WHERE b_user_id = $b_user_id");
 foreach ($getName as $get_name) {
   $shounin = $get_name['banner_flag'];
 }
-echo $shounin;
+//echo "shounin:".$shounin;
+
+if (isset($_POST['banner'])) {
+  //echo "session:".$_SESSION['banner'];
+  if ($_SESSION['banner'] == 1) {
+    $db->query("UPDATE options SET banner_apply_flag = 1 WHERE b_user_id = $b_user_id");
+  } else {
+    $db->query("UPDATE options SET banner_apply_flag = 0 WHERE b_user_id = $b_user_id");
+  }
+}
+$getName = $db->query("SELECT banner_apply_flag FROM options WHERE b_user_id = $b_user_id");
+foreach ($getName as $get_name) {
+  $banner_flag = $get_name['banner_apply_flag'];
+}
+//echo "banner_flag:".$banner_flag;
+$db = null;
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -32,8 +43,8 @@ echo $shounin;
 <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-      <form method="post" name="formback" action="b_option.php">
-        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <form method="post" name="formback" action="b_option.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
       <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
       </a>
@@ -63,28 +74,20 @@ echo $shounin;
       <div class="b">
         月額300円（税別）
         <br>
-        <br>
-        <?php
-          if(empty($_POST['b_user_id'])) {
-            echo "IDが渡されていません";
-          } else {
-            echo $_POST['b_user_id'];
-          }
-        ?>
-        <br>
+
         <!-- onclickでjsのtest関数を呼び出す -->
         <?php
         if ($banner_flag == 0 || $banner_flag == null) {
+          $_SESSION['banner'] = 1;
           echo "<form action='b_banner.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          //echo "<input type='hidden' name='test' value='true'>";
-          echo "<button type='submit' id='banner'>登録する</button>";
+          echo "<button type='submit' name='banner' id='banner'>登録する</button>";
           echo "</form>";
         } else {
+          $_SESSION['banner'] = 0;
           echo "<form action='b_banner.php' method='post' onSubmit='return check1()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          //echo "<input type='hidden' name='test' value='false'>";
-          echo "<button type='submit' id='banner'>登録を解除する</button>";
+          echo "<button type='submit' name='banner' id='banner'>登録を解除する</button>";
           echo "</form>";
         }
         ?>
@@ -94,7 +97,6 @@ echo $shounin;
         </form> -->
       </div>
       <?php
-      //$b_user_id = '00000001';
       $b_user_id = $_POST["b_user_id"];
       $value = $banner_flag;
 
@@ -107,42 +109,33 @@ echo $shounin;
       </script>', $value);
 
       //追加か所
-      if ($shounin == 1){
+      if ($shounin == 1 && $banner_flag == 1) {
         printf('<script>
                   var elm = document.getElementById("status");
                   elm.textContent = "利用状況：利用可能";
                   </script>');
       }
-      //追加終わり
-      $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
-      $db = new PDO($dsn, 'root', 'root');
-      if ($banner_flag == 1) {
-        $db->query("UPDATE options SET banner_apply_flag = 1 WHERE b_user_id = $b_user_id");
-      } else {
-        $db->query("UPDATE options SET banner_apply_flag = 0 WHERE b_user_id = $b_user_id");
-      }
-      $db=null;
       ?>
       <script>
-      function check() {
-        if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
-          window.alert('登録が完了しました');
-          return true; // 「OK」時は送信を実行
-        } else { // 「キャンセル」時の処理
-          window.alert('キャンセルされました'); // 警告ダイアログを表示
-          return false; // 送信を中止
+        function check() {
+          if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
+            window.alert('登録が完了しました');
+            return true; // 「OK」時は送信を実行
+          } else { // 「キャンセル」時の処理
+            window.alert('キャンセルされました'); // 警告ダイアログを表示
+            return false; // 送信を中止
+          }
         }
-      }
 
-      function check1() { // 解除するとき
-        if (window.confirm('登録を解除してしてよろしいですか？')) { // 確認ダイアログを表示
-          window.alert('登録が解除されました');
-          return true; // 「OK」時は送信を実行
-        } else { // 「キャンセル」時の処理
-          window.alert('キャンセルされました'); // 警告ダイアログを表示
-          return false; // 送信を中止
+        function check1() { // 解除するとき
+          if (window.confirm('登録を解除してしてよろしいですか？')) { // 確認ダイアログを表示
+            window.alert('登録が解除されました');
+            return true; // 「OK」時は送信を実行
+          } else { // 「キャンセル」時の処理
+            window.alert('キャンセルされました'); // 警告ダイアログを表示
+            return false; // 送信を中止
+          }
         }
-      }
       </script>
     </div>
   </div>

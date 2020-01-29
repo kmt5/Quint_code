@@ -27,7 +27,8 @@ foreach ($getArea as $area_data_val) {
   <link rel="stylesheet" type="text/css" href="../../common/common.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_first.css">
   <link rel="stylesheet" type="text/css" href="./CSS/search_area.css">
-  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <!--<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
 </head>
