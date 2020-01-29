@@ -6,7 +6,10 @@ $_SESSION["b_user_id"] = $b_user_id;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 $db -> query("set names utf8");
-$banner_flag = $db -> query("SELECT banner_flag FROM options WHERE b_user_id = $b_user_id");
+$getName = $db -> query("SELECT banner_flag FROM options WHERE b_user_id = $b_user_id");
+foreach ($getName as $get_area) {
+  $banner_flag = $getName['banner_flag'];
+}
 echo $banner_flag;
 ?>
 
