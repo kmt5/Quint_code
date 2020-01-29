@@ -52,11 +52,22 @@ $_SESSION["b_user_id"] = $b_user_id;
         <br>
         <?php
           if(empty($_POST['b_user_id'])) {
-            echo "IDが渡されいません";
-          } else {
             echo $_POST['b_user_id'];
+          } else {
+            echo "IDが渡されていません";
           }
         ?>
+        <br>
+        <br>
+        <?php
+          if(empty($_POST['test'])) {
+            echo $_POST['test'];
+          } else {
+            echo "testの値が渡されていません";
+          }
+        ?>
+        <br>
+        <br>
         <!-- onclickでjsのtest関数を呼び出す -->
         <?php
         if ($_POST['test'] == false) {
