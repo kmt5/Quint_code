@@ -60,6 +60,7 @@
   <head>
     <meta charset="utf-8"> <!-- 文字コードを宣言 -->
     <title>PHP</title> <!-- ページのタイトル -->
+    <link rel="stylesheet" type="text/css" href="./common/common.css">
     <link rel="stylesheet" type="text/css" href="./CSS/login.css">
   </head>
 

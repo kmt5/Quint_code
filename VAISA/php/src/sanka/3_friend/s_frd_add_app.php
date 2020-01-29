@@ -53,7 +53,7 @@ if(isset($_POST['ask'])){
       </div>
       <?php
 if($_POST['name'] == null){
-echo '正常に申請されました!!';
+echo '<p class ="ero2">正常に申請されました!!<p/>';
 exit();
 }
     $id =  $_POST['name'];
@@ -73,15 +73,15 @@ exit();
     $data2 = $result3->fetchAll();
     $data3 = $result4->fetchAll();
     $data_which = $which->fetchAll();
-    if($id==$user_id){echo "自分のIDやで"; exit();}
-    if($data1 == Array()){echo 'IDに一致するユーザーが見つかりませんでした'; exit();}
+    if($id==$user_id){echo '<p class ="ero2">自分のIDやで<br>戻るボタンか<br>ホームボタンを押してね</p>'; exit();}
+    if($data1 == Array()){echo '<p class ="ero2">IDに一致するユーザーが<br>見つかりませんでした<br>戻るボタンか<br>ホームボタンを押してね</p>'; exit();}
     foreach ($result2 as $row){
       echo '<div class="frd-add-app">';
       echo  '<img src="../../'.$row['prof_path'].'" class="img">';
       echo '<p class="user_name">';
       echo $row['nickname'].'</p>';
       echo '</div>';
-    if(($data2 != Array()) or ($data3 != Array())){echo '<p>申請済みかフレンドです<p/>';}
+    if(($data2 != Array()) or ($data3 != Array())){echo '<p class ="ero1">申請済みかフレンドです<br>戻るボタンか<br>ホームボタンを押してね<p/>';}
     //elseif($data3 != Array()){echo '<p>申請済みかフレンドです<p/>';}
     else{
       if($data_which == Array()){

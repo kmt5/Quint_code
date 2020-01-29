@@ -103,7 +103,6 @@ else{$id=null;}
 <?php
    $usm = "SELECT * FROM sanka_users WHERE s_user_id = '$id'"; //idは文字型で送られてくるのでクォーテーション
    $result2 = $db->query($usm);
-   echo 'ここはID番号'.$id.'のページです。'.'<br>';
 foreach ($result2 as $row2) {
 echo $row2['message'];
 }
