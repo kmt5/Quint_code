@@ -56,7 +56,7 @@ $_SESSION["b_user_id"] = $b_user_id;
         if ($_POST['test'] == false) {
           //$_SESSION['set'] = 1;
           echo "<form action='' method='post' onSubmit='return check()'>";
-          echo "<input type='hidden' name='s_user_id' value=" . $b_user_id . ">";
+          echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
           echo "<input type='hidden' name='test' value='true'>";
           echo "<button type='submit' id='banner'>登録をする</button>";
           echo "</form>";

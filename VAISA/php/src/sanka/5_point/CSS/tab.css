@@ -30,7 +30,7 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
  height:280px;
 }
 
-.img{
+#tabbody .img{
   position: absolute;
   width:300px;
   height:150px;
