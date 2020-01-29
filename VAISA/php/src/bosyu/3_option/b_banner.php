@@ -6,11 +6,15 @@ $_SESSION["b_user_id"] = $b_user_id;
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 $db -> query("set names utf8");
-$getName = $db -> query("SELECT banner_flag FROM options WHERE b_user_id = $b_user_id");
+$getName = $db -> query("SELECT banner_apply_flag FROM options WHERE b_user_id = $b_user_id");
 foreach ($getName as $get_name) {
-  $banner_flag = $get_name['banner_flag'];
+  $banner_flag = $get_name['banner_apply_flag'];
 }
 echo $banner_flag;
+$getName = $db -> query("SELECT banner_flag FROM options WHERE b_user_id = $b_user_id");
+foreach ($getName as $get_name) {
+  $shounin = $get_name['banner_flag'];
+}
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -102,7 +106,7 @@ echo $banner_flag;
       </script>', $value);
 
       //追加か所
-      if ($_POST['syonin'] == 1){
+      if ($shounin == 1){
         printf('<script>
                   var elm = document.getElementById("status");
                   elm.textContent = "利用状況：利用可能";
@@ -111,7 +115,7 @@ echo $banner_flag;
       //追加終わり
       $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
       $db = new PDO($dsn, 'root', 'root');
-      if ($_POST['test'] == 'true') {
+      if ($banner_flag == 'true') {
         $db->query("UPDATE options SET banner_flag = 1 WHERE b_user_id = $b_user_id");
       } else {
         $db->query("UPDATE options SET banner_flag = 0 WHERE b_user_id = $b_user_id");
