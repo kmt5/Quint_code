@@ -25,7 +25,7 @@ $hash = password_hash($password_base, PASSWORD_DEFAULT, $enc);
 // パスワードチェック
 if (isset($_POST["password"])) {
   if (!password_verify($passwd, $hash)) {
-    $message = 'パスワードが間違っています。';
+    $message = 'パスワードが"."<br>"."間違っています。';
   } else {
     header("Location: b_entrant_vol_list.php");
     exit;
