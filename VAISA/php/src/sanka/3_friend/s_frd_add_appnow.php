@@ -43,7 +43,7 @@
       <div id="Toptitle2">
         フレンド
         <div id="Toptitle-frd">
-          <i class="fa fa-user-plus">フレンド追加</i>
+          <i class="fa fa-user-plus"></i>フレンド追加
         </div>
       </div>
 <script>
