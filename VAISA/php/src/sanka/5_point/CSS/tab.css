@@ -31,18 +31,14 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
 }
 
 #tabbody .img{
+  z-index:1;
   position: absolute;
+  margin-top:80px;
   width:300px;
   height:150px;
-  top:70px;
-  right:10px;
+  right:80px;
 }
-
-.img2{
-  position: relative;
-  top:0px;
-  left:70px;
-  }
+ #tabbody h1{z-index:2;}
 
 #tabcontrol a:hover {
  background-color: white; /* 背景色：白色 */
