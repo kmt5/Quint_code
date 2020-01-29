@@ -53,25 +53,10 @@ div#body{
 }
 
 div#body-qr1{
-    padding:0px 200px 0px 200px;    /* 上下に250pxを余白を取る */
+    padding:0p 200px 0px 200px;    /* 上下に250pxを余白を取る */
 
 }
 
-
-form{
-  padding:30px 50px;
-}
-
-form dl dt{
-  width: 300px;
-  padding:10px 0;
-  float:left;
-  clear:both;
-}
-
-form dl dd{
-  padding:21px 0;
-}
 
 input {
 font-size: 30px;
