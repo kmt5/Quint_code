@@ -135,8 +135,10 @@ margin:50px 100px 100px 100px;
 border-radius: 30px;
 }
 
-p{
-  text-align:center;
+p.dezain{
+  border:solid 5px #0cb06e;
+  width:50%;
+  border-radius:10px;
 }
 
 #listbutton{
