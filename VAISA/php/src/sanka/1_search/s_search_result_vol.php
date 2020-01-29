@@ -194,9 +194,13 @@ if (empty($table)) {
     </div>
     <div id="body-bk">
         <div id="body">
-            <div id="Toptitle1">
-                検索
-            </div>
+          <?php
+            if ($_POST['back'] == 1) {
+              echo "<div id='Toptitle1'>検索</div>";
+            } else {
+              echo "<div id='Toptitle2'>マイボランティア</div>";
+            }
+          ?>
             <div width="100%" class="new">
                 <h1 align="center">ボランティア内容</h1>
                 <form action="receiver.php" method="post" align="left">
@@ -300,47 +304,147 @@ if (empty($table)) {
                     }
                 </script>
                 <?php
-                if ($can_ap == 0) {
-                    echo "このボランティアは" . $spec_rank . "以上の方しか参加することができません";
-                } else if ($value == 0) {
-                    $_SESSION['set'] = 1;
-                    echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check()'>";
-                    //echo "<input type='hidden' value='2' name='value'>";
-                    //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
-                    echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' name='sanka' align='center' id='regd'>参加登録</button>";
-                    echo "</form>";
+                if ($_POST['back'] == 1) {
+                  if ($can_ap == 0) {
+                      echo "このボランティアは" . $spec_rank . "以上の方しか参加することができません";
+                  } else if ($value == 0) {
+                      $_SESSION['set'] = 1;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check()'>";
+                      //echo "<input type='hidden' value='2' name='value'>";
+                      //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='1'>";
+                      echo "<button type='submit' name='sanka' align='center' id='regd'>参加登録</button>";
+                      echo "</form>";
+                  } else {
+                      $_SESSION['set'] = 0;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check1()'>";
+                      //echo "<input type='hidden' value='1' name='value'>";
+                      //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='1'>";
+                      echo "<button type='submit' name='sanka' align='center' id='regd1'>参加登録を解除する</button>";
+                      echo "</form>";
+                  }
+                } elseif ($_POST['back'] == 2) {
+                  if ($can_ap == 0) {
+                      echo "このボランティアは" . $spec_rank . "以上の方しか参加することができません";
+                  } else if ($value == 0) {
+                      $_SESSION['set'] = 1;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check()'>";
+                      //echo "<input type='hidden' value='2' name='value'>";
+                      //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='2'>";
+                      echo "<button type='submit' name='sanka' align='center' id='regd'>参加登録</button>";
+                      echo "</form>";
+                  } else {
+                      $_SESSION['set'] = 0;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check1()'>";
+                      //echo "<input type='hidden' value='1' name='value'>";
+                      //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='2'>";
+                      echo "<button type='submit' name='sanka' align='center' id='regd1'>参加登録を解除する</button>";
+                      echo "</form>";
+                  }
                 } else {
-                    $_SESSION['set'] = 0;
-                    echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check1()'>";
-                    //echo "<input type='hidden' value='1' name='value'>";
-                    //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
-                    echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' name='sanka' align='center' id='regd1'>参加登録を解除する</button>";
-                    echo "</form>";
+                  if ($can_ap == 0) {
+                      echo "このボランティアは" . $spec_rank . "以上の方しか参加することができません";
+                  } else if ($value == 0) {
+                      $_SESSION['set'] = 1;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check()'>";
+                      //echo "<input type='hidden' value='2' name='value'>";
+                      //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='3'>";
+                      echo "<button type='submit' name='sanka' align='center' id='regd'>参加登録</button>";
+                      echo "</form>";
+                  } else {
+                      $_SESSION['set'] = 0;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return check1()'>";
+                      //echo "<input type='hidden' value='1' name='value'>";
+                      //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='3'>";
+                      echo "<button type='submit' name='sanka' align='center' id='regd1'>参加登録を解除する</button>";
+                      echo "</form>";
+                  }
                 }
                 ?>
                 <?php
-                if ($value1 == 0) {
-                    $_SESSION['favo'] = 1;
-                    echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check()'>";
-                    //echo "<input type='hidden' value='" . $value . "' name='value'>";
-                    //echo "<input type='hidden' value='2' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
-                    echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' name='favo' align='center' id='oki'>お気に入り</button>";
-                    echo "</form>";
+                if ($_POST['back'] == 1) {
+                  if ($value1 == 0) {
+                      $_SESSION['favo'] = 1;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check()'>";
+                      //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                      //echo "<input type='hidden' value='2' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='1'>";
+                      echo "<button type='submit' name='favo' align='center' id='oki'>お気に入り</button>";
+                      echo "</form>";
+                  } else {
+                      $_SESSION['favo'] = 0;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check1()'>";
+                      //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                      //echo "<input type='hidden' value='1' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                      echo "<input type='hidden' name='back' value='1'>";
+                      echo "<button type='submit' name='favo' align='center' id='oki1'>お気に入りを解除する</button>";
+                      echo "</form>";
+                  }
+                } else if ($_POST['back'] == 2) {
+                  if ($value1 == 0) {
+                      $_SESSION['favo'] = 1;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check()'>";
+                      //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                      //echo "<input type='hidden' value='2' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='2'>";
+                      echo "<button type='submit' name='favo' align='center' id='oki'>お気に入り</button>";
+                      echo "</form>";
+                  } else {
+                      $_SESSION['favo'] = 0;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check1()'>";
+                      //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                      //echo "<input type='hidden' value='1' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                      echo "<input type='hidden' name='back' value='2'>";
+                      echo "<button type='submit' name='favo' align='center' id='oki1'>お気に入りを解除する</button>";
+                      echo "</form>";
+                  }
                 } else {
-                    $_SESSION['favo'] = 0;
-                    echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check1()'>";
-                    //echo "<input type='hidden' value='" . $value . "' name='value'>";
-                    //echo "<input type='hidden' value='1' name='value1'>";
-                    echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
-                    echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
-                    echo "<button type='submit' name='favo' align='center' id='oki1'>お気に入りを解除する</button>";
-                    echo "</form>";
+                  if ($value1 == 0) {
+                      $_SESSION['favo'] = 1;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check()'>";
+                      //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                      //echo "<input type='hidden' value='2' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                        echo "<input type='hidden' name='back' value='3'>";
+                      echo "<button type='submit' name='favo' align='center' id='oki'>お気に入り</button>";
+                      echo "</form>";
+                  } else {
+                      $_SESSION['favo'] = 0;
+                      echo "<form action='s_search_result_vol.php' method='post' onSubmit='return oki_check1()'>";
+                      //echo "<input type='hidden' value='" . $value . "' name='value'>";
+                      //echo "<input type='hidden' value='1' name='value1'>";
+                      echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
+                      echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                      echo "<input type='hidden' name='back' value='3'>";
+                      echo "<button type='submit' name='favo' align='center' id='oki1'>お気に入りを解除する</button>";
+                      echo "</form>";
+                  }
                 }
                 ?>
 
