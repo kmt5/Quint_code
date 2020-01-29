@@ -3,7 +3,7 @@
 
   $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
   $db  = new PDO($dsn, 'root', 'root');
-  $res = $db->query('select vol_id,vol_name from volunteers where b_user_id="'.$b_user_id.'"');
+  $res = $db->query('select * from volunteers where b_user_id="'.$b_user_id.'" and disapp_flag = 0');
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
@@ -47,15 +47,17 @@
       <center > <!-- 中央寄せ -->
         <?php
           foreach($res as $value ) {
-            echo '
-            <div id="body-qr1">
-              <form method="post" action="./b_sanka.php">
-                <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
-                <input type="hidden" name="vol_id" value="'.$value['vol_id'].'" />
-                <input type="submit"  class="button-vol" value="'.$value['vol_name'].'" />
-              </form>
-            </div>
-            <br>';
+            if ($value['vol_date'] >= date("Y-m-d") ){
+              echo '
+              <div id="body-qr1">
+                <form method="post" action="./b_sanka.php">
+                  <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
+                  <input type="hidden" name="vol_id" value="'.$value['vol_id'].'" />
+                  <input type="submit"  class="button-vol" value="'.$value['vol_name'].'" />
+                </form>
+              </div>
+              <br>';
+            }
           }
         ?>
         <!--<h1>こんにちは</h1><br>-->
