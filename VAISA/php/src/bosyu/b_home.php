@@ -50,7 +50,7 @@
       </form><!-- 中央寄せ -->
       <form method="post" name="qr_choice" action="./4_qr/b_qr_choice.php" class="inline-block_test">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-        <a href="javascript:qr_choice.submit()" class="hexagonB"><span>参加名簿</span></a><br>
+        <a href="javascript:qr_choice.submit()" class="hexagonB"><span>出席確認</span></a><br>
       </form>
       <form method="post" name="settiement" action="./5_payment/b_settlement.php" class="inline-block_test">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
