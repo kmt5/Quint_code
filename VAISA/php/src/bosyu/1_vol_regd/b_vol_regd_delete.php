@@ -179,9 +179,11 @@ foreach ($getName as $get_name) {
                     } else {
                       echo "<p class='dezain'>$spec_rank</p>";
                     } ?>
-                    
+
                     <h2>詳細</h2>
+                    <div class="textarea">
                     <?php echo $vol_detail; ?>
+                    </div>
                     <br>
                     <script>
                         function test() {
@@ -189,7 +191,7 @@ foreach ($getName as $get_name) {
 
                         }
                     </script>
-                    <h2>このボランティアを削除しますか？</h2><br>
+                    <h2>このボランティアを<br>削除しますか？</h2><br>
                     <input type='hidden' name='vol_id' value="<?php echo $vol_id; ?>">
                     <input type='hidden' name='b_user_id' value="<?php echo $b_user_id; ?>">
                     <button type="submit" align="center" onclick="return test()">削除</button>
