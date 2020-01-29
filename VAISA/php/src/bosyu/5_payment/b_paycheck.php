@@ -76,7 +76,7 @@ if (isset($kessai_flag)) {
             echo "</form>";
         } else {
             echo "決済処理が完了致しました。<br>登録ありがとうございます！<br>下のボタンからホーム画面に遷移し、各機能の利用が可能です。";
-            echo "<form method='post' name='goHome' action='../login.php'>";
+            echo "<form method='post' name='goHome' action='../../login.php'>";
             echo "<input type='hidden' name='mail_address' value='".$mail_address."' />";
             echo "<input type='hidden' name='password' value='".$passwd."' />";
             echo "<a href='javascript:goHome.submit()' class='btn-square1'>ホーム</a>";
