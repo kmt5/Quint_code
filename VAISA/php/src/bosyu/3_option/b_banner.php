@@ -52,7 +52,6 @@ $_SESSION["b_user_id"] = $b_user_id;
         <br>
         <br>
         <!-- onclickでjsのtest関数を呼び出す -->
-        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
         <button type="submit" id="banner" onclick="postForm()">登録をする</button>
       </div>
       <?php
@@ -69,6 +68,10 @@ $_SESSION["b_user_id"] = $b_user_id;
         elm1.textContent = "登録を解除する";
       }
       </script>', $value);
+
+      //追加か所
+
+      //追加終わり
       $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
       $db = new PDO($dsn, 'root', 'root');
       if ($_POST['test'] == 'true') {
@@ -83,7 +86,40 @@ $_SESSION["b_user_id"] = $b_user_id;
 
           var result = window.confirm("実行しますか？");
 
-          var elm1 = document.getElementById("banner");
+          // formを生成
+          var form = document.createElement("form");
+          form.action = 'b_banner.php';
+          form.target = target;
+          form.method = 'post';
+
+          var str = '登録をする';
+
+          if (result) {
+            if (elm1.textContent == str) {
+              var qs = [{type:'hidden',name:'test',value:'true'},{type:'hidden',name:'b_user_id',value:'<?php echo $b_user_id; ?>'}];
+            } else {
+              var qs = [{type:'hidden',name:'test',value:'false'},{type:'hidden',name:'b_user_id',value:'<?php echo $b_user_id; ?>'}];
+            }
+          }
+
+          // input-hidden生成と設定
+          for(var i = 0; i < qs.length; i++) {
+          var ol = qs[i];
+          var input = document.createElement("input");
+          for(var p in ol) {
+          input.setAttribute(p, ol[p]);
+          }
+          form.appendChild(input);
+          }
+
+          // formをbodyに追加して、サブミットする。その後、formを削除
+          var body = document.getElementsByTagName("body")[0];
+          body.appendChild(form);
+          form.submit();
+          body.removeChild(form);
+
+
+        /*  var elm1 = document.getElementById("banner");
 
           var form = document.createElement('form');
           var request = document.createElement('input');
@@ -108,14 +144,12 @@ $_SESSION["b_user_id"] = $b_user_id;
           form.appendChild(request);
           document.body.appendChild(form);
 
-          form.submit();
+          form.submit(); */
 
         }
       </script>
     </div>
-    <div id="footer-fixed">
-      <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
-    </div>
+  </div>
 </body>
 
 </html>
