@@ -111,7 +111,7 @@ $db = null;
       </script>', $value);
 
       //追加か所
-      if ($syounin == 1) {
+      if ($shounin == 1 && $rank_flag == 1) {
         printf('<script>
                   var elm = document.getElementById("status");
                   elm.textContent = "利用状況：利用可能";
