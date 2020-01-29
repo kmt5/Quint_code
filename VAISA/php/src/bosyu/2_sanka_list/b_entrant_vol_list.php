@@ -13,6 +13,7 @@ foreach ($getName as $get_name) {
 }
 if (!empty($vol_name)) {
   $count = $db->query("SELECT COUNT(vol_name) FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+  echo $count;
 } else {
   $count = 0;
   $message = "<h2>ボランティアがありません<br>登録・編集から登録してください</h2>";
@@ -54,6 +55,7 @@ if (!empty($vol_name)) {
       <div align="center">
         <?php
         echo $message;
+        echo $count;
         for ($i = 0; $i < $count; $i++) {
           echo "<form action='b_entrant_list.php' method='post'>";
           echo "<input type='hidden' name='vol_id' value=" . $vol_id[$i] . ">";
