@@ -20,6 +20,7 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
 }
 /* ▼タブの中身 */
 #tabbody div {
+  position: relative;
  border: 3px solid black; /* 枠線：黒色の実線を3pxの太さで引く */
  border-radius: 20px 20px 20px 20px; /* 〇枠線 */
  margin-top: 5%;
