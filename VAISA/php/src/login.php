@@ -26,6 +26,17 @@
         $dir  = "bosyu";
         $head = "b";
         $res  = $b_res;
+        $sql = "select kessai_flag from payments where b_user_id = '".$b_res['b_user_id']."'";
+        $res2 = $db->query($sql)->fetch();
+        if (!$res2['kessai_flag']) {
+          echo '
+          <form method="post" action=".php">
+            <input type="hidden" name=b_user_id" value="'.$b_res['b_user_id'].'" />
+          </form>
+          <script>
+            document.forms[0].submit();
+          </script>';
+        }
       }
       if("$res[1]" == $pswd){//$res[0] = ユーザID, $res[1] = パスワード
         echo '
@@ -64,7 +75,7 @@
             <h1>VAISA</h1>
             <br>
             <form action="#" name="login" method="post">
-              <input type="text" name="mail_address" placeholder="メールアドレス"><br>
+              <input type="text" name="mail_address" value="<?php echo $mail; ?>" placeholder="メールアドレス"><br>
               <input type="password" name="password" placeholder="パスワード"><br>
               <input type="submit" value="ログイン" class="btn-square3x"><br><!--ログインボタン-->
             </form>
