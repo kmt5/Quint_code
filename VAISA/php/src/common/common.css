@@ -32,7 +32,7 @@ div#footer-fixed
     bottom: 0px;                /* 位置(下0px) */
     left: 0px;                  /* 位置(左0px) */
     width: 100%;                /* 横幅100%　*/
-    height: 200px;              /* 縦幅140px */
+    height: 100px;              /* 縦幅140px */
 }
 
 #back {
