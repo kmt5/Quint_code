@@ -47,18 +47,22 @@
       $new_name = $b_user_id;
       list($width, $height, $type, $attr) = getimagesize($_FILES['pic']['tmp_name']);
       switch ($type){//exif_imagetype($_FILES['pic']['tmp_name'])){
-          case 2:
+          case IMAGETYPE_JPEG:
               $new_name .= '.jpg';
               break;
-          case 1:
+          case IMAGETYPE_GIF:
               $new_name .= '.gif';
               break;
-          case 3:
+          case IMAGETYPE_PNG:
               $new_name .= '.png';
               break;
           default:
               header('Location: s_account_regd.php');
               exit();
+      }
+      if ($res['prof_path'] != "prof/noimg.jpg"){
+        $file = "../../".$res['prof_path'];
+        unlink($file);
       }
   //  もし一時的なファイル名の$_FILES['pic']ファイルを
   //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
