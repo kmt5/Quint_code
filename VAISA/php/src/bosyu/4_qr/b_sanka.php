@@ -59,7 +59,7 @@ foreach ($getName as $get_name) {
   <div id="body-bk">
     <div id="body">
       <div id="Toptitle1">
-        <i class="fas fa-handshake"></i>　出欠確認
+        <i class="fas fa-address-book"></i>　出欠確認
       </div>
       <?php
       $read_mem = 0;
@@ -87,7 +87,7 @@ foreach ($getName as $get_name) {
             echo "<input type='hidden' name='s_user_id' value=" . $s_user_id[$i] . ">";
             echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
             echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
-            echo "<button type='submit' class='button-vol'>" . $s_user_name[$i] . "</button>";
+            echo "<button type='submit' class='button-vol'>" .$s_user_name[$i]." : " .$s_user_id[$i]. "</button>";
             echo "</form>";
             echo "<br>";
           }
