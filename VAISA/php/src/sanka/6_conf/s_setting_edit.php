@@ -180,7 +180,7 @@
       <h2>
         <dt>プロフィール画像</dt>
         <dd><input type="file" name="pic" id="pic" accept="image/*"></dd>
-        <img src=<?php echo '../../'.$prof_path; ?> id="preview">
+        <img src=<?php echo '../../'.$prof_path; ?> id="preview" width="400" height="300">
         <script>
             $('#pic').on('change', function (e) {
               var reader = new FileReader();

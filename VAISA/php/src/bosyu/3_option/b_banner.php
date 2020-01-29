@@ -50,19 +50,25 @@ $_SESSION["b_user_id"] = $b_user_id;
         月額300円（税別）
         <br>
         <br>
-        <?php echo $_POST['b_user_id']; ?>
+        <?php
+          if(empty($_POST['b_user_id'])) {
+            echo "IDが渡されいません";
+          } else {
+            echo $_POST['b_user_id'];
+          }
+        ?>
         <!-- onclickでjsのtest関数を呼び出す -->
         <?php
         if ($_POST['test'] == false) {
           //$_SESSION['set'] = 1;
-          echo "<form action='' method='post' onSubmit='return check()'>";
+          echo "<form action='b_banner.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
           echo "<input type='hidden' name='test' value='true'>";
           echo "<button type='submit' id='banner'>登録をする</button>";
           echo "</form>";
         } else {
           //$_SESSION['set'] = 0;
-          echo "<form action='' method='post' onSubmit='return check1()'>";
+          echo "<form action='b_banner.php' method='post' onSubmit='return check1()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
           echo "<input type='hidden' name='test' value='false'>";
           echo "<button type='submit' id='banner'>登録を解除する</button>";
