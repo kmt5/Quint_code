@@ -18,23 +18,14 @@
 
     //read_flagの変更
     $db->query('update sanka_situations set read_flag="1" where s_user_id="'.$s_user_id.'" and vol_id = "'.$vol_id.'"');
-
-    echo '
-    <form method="post" action="../2_sanka_list/b_entrant_list.php">
-      <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
-      <input type="hidden" name="vol_id" value="'.$vol_id.'">
-    </form>
-    <script>
-      document.forms[0].submit();
-    </script>';
-  }else{
-    echo '
-    <form method="post" action="./b_qr.php">
-      <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
-      <input type="hidden" name="vol_id" value="'.$vol_id.'">
-    </form>
-    <script>
-      document.forms[0].submit();
-    </script>';
   }
+
+  echo '
+  <form method="post" action="./b_sanka.php">
+    <input type="hidden" name="b_user_id" value="'.$b_user_id.'" />
+    <input type="hidden" name="vol_id" value="'.$vol_id.'">
+  </form>
+  <script>
+    document.forms[0].submit();
+  </script>';
 ?>
