@@ -127,7 +127,7 @@ foreach ($getArea as $area_data_val) {
           echo "<input type='hidden' name='area_id' value='" . $area_id . "'>";
           ?>
           <input type='hidden' name='s_user_id' value="<?php echo $s_user_id; ?>">
-          <button type="submit" align="center">検索</button>
+          <button class="btn-square" type="submit" align="center">検索</button>
       </form>
       </center>
     </div>
