@@ -31,7 +31,7 @@
         if (!$res2['kessai_flag']) {
           echo '
           <form method="post" action="./bosyu/5_payment/b_paycheck.php">
-            <input type="hidden" name=b_user_id" value="'.$b_res['b_user_id'].'" />
+            <input type="hidden" name="b_user_id" value="'.$res[0].'" />
           </form>
           <script>
             document.forms[0].submit();

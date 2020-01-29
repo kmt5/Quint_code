@@ -23,20 +23,19 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
  border: 3px solid black; /* 枠線：黒色の実線を3pxの太さで引く */
  border-radius: 20px 20px 20px 20px; /* 〇枠線 */
  margin-top: 5%;
- margin-left: 5%;
+ margin-left: 80px;
  padding: 1em;            /* 内側の余白量 */
  background-color: white; /* 背景色：白色 */
- width:500px;
- height:300px;
+ width:800px;
+ height:280px;
 }
 
 .img{
-position: absolute;
-width:200px;
-height:100px;
-top:150px;
-margin-right:-250px;
-right:0px;
+  position: absolute;
+  width:300px;
+  height:150px;
+  top:70px;
+  right:10px;
 }
 
 .img2{

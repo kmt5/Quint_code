@@ -1,7 +1,7 @@
 <?php
 session_start();
 $b_user_id = $_POST["b_user_id"];
-//echo $b_user_id;
+echo $b_user_id;
 $_SESSION["b_user_id"] = $b_user_id;
 
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
@@ -78,10 +78,9 @@ if (isset($kessai_flag)) {
             echo "</form>";
         } else {
             echo "決済処理が完了致しました。<br>登録ありがとうございます！<br>下のボタンからホーム画面に遷移し、各機能の利用が可能です。";
-            echo "<form method='post' name='goHome' action='../../login.php'>";
-            echo "<input type='hidden' name='mail_address' value='".$mail_address."' />";
-            echo "<input type='hidden' name='password' value='".$passwd."' />";
-            echo "<a href='javascript:goHome.submit()' class='btn-square1'>ホーム</a>";
+            echo "<form method='post' name='goHome' action='../b_home.php'>";
+            echo "<input type='hidden' name='b_user_id' value='".$b_user_id."' />";
+            echo "<button type='submit' class='btn-square1'>ホームへ</button>";
             echo "</form>";
         }
         ?>

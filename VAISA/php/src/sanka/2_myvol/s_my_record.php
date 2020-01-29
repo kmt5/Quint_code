@@ -61,7 +61,6 @@ $user_id=$_POST['s_user_id'];
       </div>
 
       <div id="tabbody">
-      <center>
       <?php
     $dbh=null;
 //データベースに接続(test3)
@@ -133,127 +132,128 @@ foreach ($result as $row) {
    $count12++;
   }
   else{continue;}
+      echo '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img2">';
       echo '<h1>';
+      echo '<td align="left">';
       echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
       echo '<br>';
       echo '場所 '.$row['vol_place'];
       echo '<br>';
       echo '内容 '.$row['vol_name'];
+      echo '</td>';
       echo '<br>';
-      echo '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img2">';
       echo '</div>';
 }
 if($count1 == 0){
   echo '<div id="tabpage1">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count2 == 0){
   echo '<div id="tabpage2">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count3 == 0){
   echo '<div id="tabpage3">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count4 == 0){
   echo '<div id="tabpage4">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count5 == 0){
   echo '<div id="tabpage5">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count6 == 0){
   echo '<div id="tabpage6">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count7 == 0){
   echo '<div id="tabpage7">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count8 == 0){
   echo '<div id="tabpage8">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count9 == 0){
   echo '<div id="tabpage9">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count10 == 0){
   echo '<div id="tabpage10">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count11 == 0){
   echo '<div id="tabpage11">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
 if($count12 == 0){
   echo '<div id="tabpage12">';
   echo '<h1>';
-  echo '<center>';
+  echo '<td align="center">';
   echo '参加済みボランティアは<br>';
   echo 'ありません';
-  echo '</center>';
+  echo '</td>';
   echo '</div>';
 }
       $db=null;
   ?>
-   </center>
       </div>
   </div>
 </div>
