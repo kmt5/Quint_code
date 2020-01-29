@@ -61,7 +61,6 @@ $user_id=$_POST['s_user_id'];
       </div>
 
       <div id="tabbody">
-      <center>
       <?php
     $dbh=null;
 //データベースに接続(test3)
@@ -255,7 +254,6 @@ if($count12 == 0){
 }
       $db=null;
   ?>
-   </center>
       </div>
   </div>
 </div>

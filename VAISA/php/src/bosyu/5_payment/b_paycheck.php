@@ -79,8 +79,8 @@ if (isset($kessai_flag)) {
         } else {
             echo "決済処理が完了致しました。<br>登録ありがとうございます！<br>下のボタンからホーム画面に遷移し、各機能の利用が可能です。";
             echo "<form method='post' name='goHome' action='../b_home.php'>";
-            echo "<input type='hidden' name='mail_address' value='".$b_user_id."' />";
-            echo "<a href='javascript:goHome.submit()' class='btn-square1'>ホーム</a>";
+            echo "<input type='hidden' name='b_user_id' value='".$b_user_id."' />";
+            echo "<button type='submit' class='btn-square1'>ホームへ</button>";
             echo "</form>";
         }
         ?>
