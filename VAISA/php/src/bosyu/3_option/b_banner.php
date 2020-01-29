@@ -11,10 +11,10 @@ $getName = $db->query("SELECT banner_flag FROM options WHERE b_user_id = $b_user
 foreach ($getName as $get_name) {
   $shounin = $get_name['banner_flag'];
 }
-echo "shounin:".$shounin;
+//echo "shounin:".$shounin;
 
 if (isset($_POST['banner'])) {
-  echo "session:".$_SESSION['banner'];
+  //echo "session:".$_SESSION['banner'];
   if ($_SESSION['banner'] == 1) {
     $db->query("UPDATE options SET banner_apply_flag = 1 WHERE b_user_id = $b_user_id");
   } else {
@@ -25,7 +25,7 @@ $getName = $db->query("SELECT banner_apply_flag FROM options WHERE b_user_id = $
 foreach ($getName as $get_name) {
   $banner_flag = $get_name['banner_apply_flag'];
 }
-echo "banner_flag:".$banner_flag;
+//echo "banner_flag:".$banner_flag;
 $db = null;
 ?>
 

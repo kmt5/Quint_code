@@ -12,10 +12,10 @@ foreach ($getName as $get_name) {
   $shounin = $get_name['rank_spec_flag'];
 }
 
-echo "shounin:" . $shounin;
+//echo "shounin:" . $shounin;
 
 if (isset($_POST['rank'])) {
-  echo "session:" . $_SESSION['rank'];
+  //echo "session:" . $_SESSION['rank'];
   if ($_SESSION['rank'] == 1) {
     $db->query("UPDATE options SET rank_spec_apply_flag = 1 WHERE b_user_id = $b_user_id");
   } else {
@@ -26,7 +26,7 @@ $getName = $db->query("SELECT rank_spec_apply_flag FROM options WHERE b_user_id 
 foreach ($getName as $get_name) {
   $rank_flag = $get_name['rank_spec_apply_flag'];
 }
-echo "rank_flag:" . $rank_flag;
+//echo "rank_flag:" . $rank_flag;
 $db = null;
 ?>
 
