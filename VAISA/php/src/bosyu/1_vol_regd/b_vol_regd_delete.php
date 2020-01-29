@@ -6,12 +6,6 @@ $b_user_id = $_POST["b_user_id"];
 //データベースに接続(test3)
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
-//接続確認
-if ($db) {
-    echo "データベースに繋がっています";
-} else {
-    "データベースに繋がってないです";
-}
 ?>
 <?php
 //if (isset($_POST['vol_id'])) {

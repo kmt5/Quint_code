@@ -16,10 +16,6 @@ if (isset($_FILES) && isset($_FILES['change_image']) && is_uploaded_file($_FILES
   }
 } else {
   $vol_fig_path = $_POST['vol_fig_path'];
-  echo "vol_fig_path:".$vol_fig_path;
-}
-if (isset($msg) && $msg == true) {
-  echo '<p>' . $msg . '</p>';
 }
 ?>
 
