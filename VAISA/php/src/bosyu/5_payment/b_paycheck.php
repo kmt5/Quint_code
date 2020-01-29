@@ -13,8 +13,10 @@ if ($kessai = $db->query("SELECT DISTINCT kessai_flag FROM payments WHERE b_user
     }
 }
 if (isset($kessai_flag)) {
-    echo $kessai_flag;
+    echo $kessai_flag."<br>";
+    echo $b_user_id;
 } else {
+    echo $b_user_id;
     echo "NULL";
 }
 ?>
@@ -70,25 +72,19 @@ if (isset($kessai_flag)) {
             echo "<input type='hidden' name='b_user_id' value='" . $b_user_id . " '/>";
             echo "<button type='submit' align='center'>情報更新</button>";
             echo "</form>";
-            echo "<form method='post' name='goLogin' action='../login.php'>";
+            echo "<form method='post' name='goLogin' action='../../login.php'>";
             echo "<input type='hidden' name='b_user_id' value='" . $b_user_id . " '/>";
             echo "<button type='submit' align='center'>ログイン画面へ戻る</button>";
             echo "</form>";
         } else {
             echo "決済処理が完了致しました。<br>登録ありがとうございます！<br>下のボタンからホーム画面に遷移し、各機能の利用が可能です。";
-            echo "<form method='post' name='goHome' action='../login.php'>";
+            echo "<form method='post' name='goHome' action='../../login.php'>";
             echo "<input type='hidden' name='mail_address' value='".$mail_address."' />";
             echo "<input type='hidden' name='password' value='".$passwd."' />";
             echo "<a href='javascript:goHome.submit()' class='btn-square1'>ホーム</a>";
             echo "</form>";
         }
         ?>
-        <form method="post" name="update" action="b_paycheck.php">
-            <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-            <a href="javascript:formhome.submit()">
-                <p id="home"><i class="fas fa-home"></i></p>
-            </a>
-        </form>
 </body>
 
 </html>
