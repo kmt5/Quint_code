@@ -217,7 +217,7 @@
       </p>
       <hr color="black"><br/>
         <dt>ひとこと</dt>
-        <dd><input type = "text" name ="message" id="input6" value="<?php echo $message; ?>" class="waku" maxlength='20'></dd>
+        <dd><input type = "text" name ="message" id="input6" value="<?php echo $message; ?>" class="waku" maxlength='40'></dd>
         <hr color="black"><br/><br/>
 
       <p>
