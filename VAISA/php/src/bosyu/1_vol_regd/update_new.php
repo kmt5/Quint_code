@@ -116,8 +116,9 @@ $db = null;
         <h1 align="center">以下の内容で<br>登録が完了しました</h1>
 
         <h2 class="a">ボランティア名</h2>
+        <div class="textarea">
         <?php echo $vol_name; ?>
-        <br>
+        </div>
         <h2 class="a">ボランティアイメージ画像</h2>
         <?php if ($vol_fig_path == null) {
           echo "<br>登録されている写真はありません。";
@@ -126,11 +127,11 @@ $db = null;
         } ?>
         <h2 class="a">都道府県　：<?php echo $pref_name; ?></h2>
         <h2 class="a">地域　　　：<?php echo $area_name; ?></h2>
-        <h2 class="a">〒<?php echo $post_num; ?></h2>
+        <h2 class="a">〒　<?php echo $post_num; ?></h2>
         <div class="textarea">
         <?php echo $vol_place; ?>
         </div>
-        <h2>開催日</h2>
+        <h2 class="a">開催日</h2>
         <?php echo $vol_date; ?>
         <br>
         <label>開始時間</label>
@@ -138,8 +139,8 @@ $db = null;
         <br>
         <label>終了時間</label>
         <?php echo $vol_fin_time; ?>
-        <h2>定員</h2>
-        <?php echo $vol_capacity; ?>
+        <h2 class="a">定員　：<?php echo $vol_capacity; ?>名</h2>
+
         <?php if ($val_flag == 1) {
           echo "<p class='dezain'>報酬あり</p>";
         } else {
@@ -152,11 +153,8 @@ $db = null;
           echo "<p class='dezain'>経験者のみ</p>";
         } ?>
 
-        <label>ランク指定　</label>
-        <?php
-          echo "<p class='dezain'>$spec_rank</p>";
-        ?>
-        <h2>詳細</h2>
+        <h2 class="a">ランク指定　：<?php echo $spec_rank; ?></h2>
+        <h2 class="a">詳細</h2>
         <div class="textarea">
         <?php echo $vol_detail; ?>
         </div>
