@@ -70,7 +70,7 @@ if (isset($kessai_flag)) {
             echo "<input type='hidden' name='b_user_id' value='" . $b_user_id . " '/>";
             echo "<button type='submit' align='center'>情報更新</button>";
             echo "</form>";
-            echo "<form method='post' name='goLogin' action='../login.php'>";
+            echo "<form method='post' name='goLogin' action='../../login.php'>";
             echo "<input type='hidden' name='b_user_id' value='" . $b_user_id . " '/>";
             echo "<button type='submit' align='center'>ログイン画面へ戻る</button>";
             echo "</form>";
