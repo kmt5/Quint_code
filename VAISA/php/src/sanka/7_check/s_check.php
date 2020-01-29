@@ -47,7 +47,7 @@ $user_id=$_POST['s_user_id'];
     foreach ($result as $row) {
       echo '<div class="frd-pro">';
       echo  '<img src="../../'.$row['prof_path'].'" class="img">';
-      echo '<p class="name">'.$row['nickname'].'</p>';
+      echo '<p class="name">'.$row['fullname'].'</p>';
       if ($row['rank'] == 'ブロンズ'){
         echo '<p class="rank" style="color:#C47022">'.$row['rank'].'</p>';
       }
@@ -62,7 +62,6 @@ $user_id=$_POST['s_user_id'];
       }
     }
 ?>
-
         <center>
         <p class="vol">Myボランティアリスト</p>
         </center>
@@ -85,10 +84,8 @@ echo $row2['message'];
 }
 $db=null;
 ?>
-        </p>
-
+</p>
       </div>
-    </div>
   </div>
 </body>
 </html>
