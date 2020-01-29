@@ -81,14 +81,12 @@ $db = null;
           $_SESSION['banner'] = 1;
           echo "<form action='b_banner.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          //echo "<input type='hidden' name='test' value='true'>";
           echo "<button type='submit' name='banner' id='banner'>登録する</button>";
           echo "</form>";
         } else {
           $_SESSION['banner'] = 0;
           echo "<form action='b_banner.php' method='post' onSubmit='return check1()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          //echo "<input type='hidden' name='test' value='false'>";
           echo "<button type='submit' name='banner' id='banner'>登録を解除する</button>";
           echo "</form>";
         }
@@ -99,7 +97,6 @@ $db = null;
         </form> -->
       </div>
       <?php
-      //$b_user_id = '00000001';
       $b_user_id = $_POST["b_user_id"];
       $value = $banner_flag;
 

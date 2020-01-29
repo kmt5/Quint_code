@@ -1,12 +1,38 @@
 <?php
 session_start();
 $b_user_id = $_POST["b_user_id"];
-echo $b_user_id;
 $_SESSION["b_user_id"] = $b_user_id;
+
+$dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
+$db = new PDO($dsn, 'root', 'root');
+$db->query("set names utf8");
+
+$getName = $db->query("SELECT rank_spec_flag FROM options WHERE b_user_id = $b_user_id");
+foreach ($getName as $get_name) {
+  $shounin = $get_name['rank_spec_flag'];
+}
+
+echo "shounin:" . $shounin;
+
+if (isset($_POST['rank'])) {
+  echo "session:" . $_SESSION['rank'];
+  if ($_SESSION['rank'] == 1) {
+    $db->query("UPDATE options SET rank_spec_apply_flag = 1 WHERE b_user_id = $b_user_id");
+  } else {
+    $db->query("UPDATE options SET rank_spec_apply_flag = 0 WHERE b_user_id = $b_user_id");
+  }
+}
+$getName = $db->query("SELECT rank_spec_apply_flag FROM options WHERE b_user_id = $b_user_id");
+foreach ($getName as $get_name) {
+  $rank_flag = $get_name['rank_spec_apply_flag'];
+}
+echo "rank_flag:" . $rank_flag;
+$db = null;
 ?>
 
 <!DOCTYPE html> <!-- 宣言（無くても機能する？） -->
 <html>
+
 <head>
   <meta charset="utf-8"> <!-- 文字コードを宣言 -->
   <title>検索上位表示</title> <!-- ページのタイトル -->
@@ -14,11 +40,13 @@ $_SESSION["b_user_id"] = $b_user_id;
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="option.css">
 </head>
+
 <body>
-  <div id="header-fixed">  <!-- ヘッダー箇所 -->
+  <div id="header-fixed">
+    <!-- ヘッダー箇所 -->
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-      <form method="post" name="formback" action="b_option.php">
-        <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
+    <form method="post" name="formback" action="b_option.php">
+      <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
       <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
       </a>
@@ -48,41 +76,20 @@ $_SESSION["b_user_id"] = $b_user_id;
       <div class="b">
         月額200円（税別）
         <br>
-        <br>
-        <?php
-          if(empty($_POST['b_user_id'])) {
-            echo "IDが渡されていません";
-          } else {
-            echo $_POST['b_user_id'];
-          }
-        ?>
-        <br>
-        <br>
-        <?php
-          if(empty($_POST['test'])) {
-              echo "testの値が渡されていません";
-          } else {
 
-            echo $_POST['test'];
-          }
-        ?>
-        <br>
-        <br>
         <!-- onclickでjsのtest関数を呼び出す -->
         <?php
-        if ($_POST['test'] == "false") {
-          //$_SESSION['set'] = 1;
+        if ($rank_flag == 0 || $rank_flag == null) {
+          $_SESSION['rank'] = 1;
           echo "<form action='b_rank_spec.php' method='post' onSubmit='return check()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          echo "<input type='hidden' name='test' value='true'>";
-          echo "<button type='submit' id='banner'>登録をする</button>";
+          echo "<button type='submit' name='rank' id='banner'>登録する</button>";
           echo "</form>";
         } else {
-          //$_SESSION['set'] = 0;
+          $_SESSION['rank'] = 0;
           echo "<form action='b_rank_spec.php' method='post' onSubmit='return check1()'>";
           echo "<input type='hidden' name='b_user_id' value=" . $b_user_id . ">";
-          echo "<input type='hidden' name='test' value='false'>";
-          echo "<button type='submit' id='banner'>登録を解除する</button>";
+          echo "<button type='submit' name='rank' id='banner'>登録を解除する</button>";
           echo "</form>";
         }
         ?>
@@ -91,10 +98,9 @@ $_SESSION["b_user_id"] = $b_user_id;
           <button type="submit" id="banner" onclick="postForm()">登録をする</button>
         </form> -->
       </div>
-    <?php
-      //$b_user_id = '00000001';
+      <?php
       $b_user_id = $_POST["b_user_id"];
-      $value = $_POST['test'];
+      $value = $rank_flag;
 
       printf('<script>var value = %s;
       var elm = document.getElementById("status");
@@ -105,46 +111,38 @@ $_SESSION["b_user_id"] = $b_user_id;
       </script>', $value);
 
       //追加か所
-      if ($syonin == 1){
+      if ($syonin == 1) {
         printf('<script>
                   var elm = document.getElementById("status");
                   elm.textContent = "利用状況：利用可能";
                   </script>');
       }
-      //追加終わり
-      $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
-      $db = new PDO($dsn, 'root', 'root');
-      if ($_POST['test'] == 'true') {
-        $db->query("UPDATE options SET rank_spec_flag = 1 WHERE b_user_id = $b_user_id");
-      } else {
-        $db->query("UPDATE options SET rank_spec_flag = 0 WHERE b_user_id = $b_user_id");
-      }
-      $db=null;
-    ?>
-    <script>
-    function check() {
-      if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
-        window.alert('登録が完了しました');
-        return true; // 「OK」時は送信を実行
-      } else { // 「キャンセル」時の処理
-        window.alert('キャンセルされました'); // 警告ダイアログを表示
-        return false; // 送信を中止
-      }
-    }
+      ?>
+      <script>
+        function check() {
+          if (window.confirm('登録してしてよろしいですか？')) { // 確認ダイアログを表示
+            window.alert('登録が完了しました');
+            return true; // 「OK」時は送信を実行
+          } else { // 「キャンセル」時の処理
+            window.alert('キャンセルされました'); // 警告ダイアログを表示
+            return false; // 送信を中止
+          }
+        }
 
-    function check1() { // 解除するとき
-      if (window.confirm('登録を解除してしてよろしいですか？')) { // 確認ダイアログを表示
-        window.alert('登録が解除されました');
-        return true; // 「OK」時は送信を実行
-      } else { // 「キャンセル」時の処理
-        window.alert('キャンセルされました'); // 警告ダイアログを表示
-        return false; // 送信を中止
-      }
-    }
-    </script>
-  </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
-  </div>
+        function check1() { // 解除するとき
+          if (window.confirm('登録を解除してしてよろしいですか？')) { // 確認ダイアログを表示
+            window.alert('登録が解除されました');
+            return true; // 「OK」時は送信を実行
+          } else { // 「キャンセル」時の処理
+            window.alert('キャンセルされました'); // 警告ダイアログを表示
+            return false; // 送信を中止
+          }
+        }
+      </script>
+    </div>
+    <div id="footer-fixed">
+      <img border="0" src="../../common/kokoku.jpg" width="100%" height="100%">
+    </div>
 </body>
+
 </html>
