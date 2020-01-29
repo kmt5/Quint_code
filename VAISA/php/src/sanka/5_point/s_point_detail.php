@@ -133,8 +133,8 @@ $user_id=$_POST['s_user_id'];
       $count12++;
       }
       else{continue;}
-          echo '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img">';
-          echo '<h1>';
+          echo '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img" style="z-index:1">';
+          echo '<h1 style="z-index:2">';
           echo '<td align="left">';
           echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
           echo '<br>';
