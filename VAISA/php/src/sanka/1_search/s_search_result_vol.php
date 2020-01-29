@@ -313,6 +313,7 @@ if (empty($table)) {
                     //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
                     echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                      echo "<input type='hidden' name='back' value='1'>";
                     echo "<button type='submit' name='sanka' align='center' id='regd'>参加登録</button>";
                     echo "</form>";
                 } else {
@@ -322,6 +323,7 @@ if (empty($table)) {
                     //echo "<input type='hidden' value='" . $value1 . "' name='value1'>";
                     echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                      echo "<input type='hidden' name='back' value='1'>";
                     echo "<button type='submit' name='sanka' align='center' id='regd1'>参加登録を解除する</button>";
                     echo "</form>";
                 }
@@ -334,6 +336,7 @@ if (empty($table)) {
                     //echo "<input type='hidden' value='2' name='value1'>";
                     echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                      echo "<input type='hidden' name='back' value='1'>";
                     echo "<button type='submit' name='favo' align='center' id='oki'>お気に入り</button>";
                     echo "</form>";
                 } else {
@@ -343,6 +346,7 @@ if (empty($table)) {
                     //echo "<input type='hidden' value='1' name='value1'>";
                     echo "<input type='hidden' name='vol_id' value=" . $vol_id . ">";
                     echo "<input type='hidden' name='s_user_id' value=" . $s_user_id . ">";
+                      echo "<input type='hidden' name='back' value='1'>";
                     echo "<button type='submit' name='favo' align='center' id='oki1'>お気に入りを解除する</button>";
                     echo "</form>";
                 }
