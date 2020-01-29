@@ -111,7 +111,7 @@ $db = null;
       </script>', $value);
 
       //追加か所
-      if ($syonin == 1) {
+      if ($syounin == 1) {
         printf('<script>
                   var elm = document.getElementById("status");
                   elm.textContent = "利用状況：利用可能";
