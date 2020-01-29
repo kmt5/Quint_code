@@ -50,15 +50,19 @@ $spec_rank = $_POST["spec_rank"];
 //echo "spec_rank:" . $spec_rank . "<br>";
 //echo $vol_id . "<br>";
 $rank_spec_flag = $_POST['rank_spec_flag'];
-//echo "<br>";
 $area_id = $_POST["select_area"];
 //echo "select_area:" . $area_id . "<br>";
 $num = $vol_fin_time - $vol_beg_time;
 $point = strval($num);
 //echo "point:" . $point . "<br>";
-
-$pref_name = $_POST["pref_name"];
-$area_name = $_POST["area_name"];
+$getName = $db->query("SELECT pref_name FROM areas WHERE area_id = $area_id");
+foreach ($getName as $get_name) {
+    $pref_name =  $get_name['pref_name'];
+}
+$getName = $db->query("SELECT area_name FROM areas WHERE area_id = $area_id");
+foreach ($getName as $get_name) {
+    $area_name =  $get_name['area_name'];
+}
 //echo $pref_name;
 //echo $area_name;
 //データを登録する準備
