@@ -18,11 +18,11 @@ if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image
 }
 
 if (isset($msg) && $msg == true) {
-  echo '<p>' . $msg . '</p>';
+  //echo '<p>' . $msg . '</p>';
 }
 
-$h = apache_request_headers();
-var_dump($h["Content-Type"]);
+//$h = apache_request_headers();
+//var_dump($h["Content-Type"]);
 ?>
 <?php
 // 入力フォームのデータを変数に
@@ -46,7 +46,6 @@ $area_id = $_POST["select_area"];
 $num = $vol_fin_time - $vol_beg_time;
 $point = strval($num);
 $vol_fig_path = $b;
-$disapp_flag = 0;
 
 //データを登録する準備
 $regist = $db->prepare("INSERT INTO volunteers(vol_id, vol_name, vol_date, vol_beg_time, vol_fin_time, vol_capacity, post_num, vol_place, val_flag, newbie_flag, vol_detail, pref_id, spec_rank, b_user_id, rank_spec_flag, area_id, point, vol_fig_path, disapp_flag) VALUES (:vol_id, :vol_name, :vol_date, :vol_beg_time, :vol_fin_time, :vol_capacity, :post_num, :vol_place, :val_flag, :newbie_flag, :vol_detail, :pref_id, :spec_rank, :b_user_id, :rank_spec_flag, :area_id, :point, :vol_fig_path, :disapp_flag)");
