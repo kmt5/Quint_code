@@ -26,7 +26,7 @@ $user_id=$_POST['s_user_id'];
       <input type="hidden" name="s_user_id" value="<?php echo $user_id; ?>" />
       <a href="javascript:formhome.submit()">
         <p id="home"><i class="fas fa-home"></i></p>
-</button>
+</a>
       </form>
     </div>
 
