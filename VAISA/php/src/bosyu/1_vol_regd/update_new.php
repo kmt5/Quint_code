@@ -18,7 +18,7 @@ if (isset($_FILES) && isset($_FILES['image']) && is_uploaded_file($_FILES['image
 }
 
 if (isset($msg) && $msg == true) {
-  echo '<p>' . $msg . '</p>';
+  //echo '<p>' . $msg . '</p>';
 }
 
 $h = apache_request_headers();
