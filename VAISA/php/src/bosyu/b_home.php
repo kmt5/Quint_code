@@ -42,11 +42,11 @@
       </form>
       <form method="post" name="entrant" action="./2_sanka_list/b_entrant_login.php" class="inline-block_test1">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-        <a href="javascript:entrant.submit()" class="radius_test"><span>参加者確認</span></a><br>
+        <a href="javascript:entrant.submit()" class="radius_test" style="font-weight:bold;">参加者確認</a><br>
       </form>
       <form method="post" name="option" action="./3_option/b_option.php" class="inline-block_test1">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-        <a href="javascript:option.submit()" class="radius_test"><span>オプション</span></a><br>
+        <a href="javascript:option.submit()" class="radius_test" style="font-weight:bold;">オプション</a><br>
       </form><!-- 中央寄せ -->
       <form method="post" name="qr_choice" action="./4_qr/b_qr_choice.php" class="inline-block_test">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
@@ -58,7 +58,7 @@
       </form>
       <form method="post" name="setting" action="./6_conf/b_setting_edit.php" class="inline-block_test1">
         <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
-        <a href="javascript:setting.submit()" class="radius_test"><span>設定</span></a><br>
+        <a href="javascript:setting.submit()" class="radius_test" style="font-weight:bold;">設定</a><br>
       </form>
       </center> <!-- 中央寄せ -->
   </div>
