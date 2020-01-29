@@ -20,6 +20,7 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
 }
 /* ▼タブの中身 */
 #tabbody div {
+  position: relative;
  border: 3px solid black; /* 枠線：黒色の実線を3pxの太さで引く */
  border-radius: 20px 20px 20px 20px; /* 〇枠線 */
  margin-top: 5%;
@@ -31,14 +32,16 @@ div#tab-color{　　　　　　　　　　　　　/*タブのラベル*/
 }
 
 #tabbody .img{
-  z-index:1;
   position: absolute;
-  margin-top:80px;
+  margin-top:60px;
   width:300px;
   height:150px;
-  right:80px;
+  right:10px;
 }
- #tabbody h1{z-index:2;}
+
+#tabbody h1{
+  z-index:10;
+}
 
 #tabcontrol a:hover {
  background-color: white; /* 背景色：白色 */
