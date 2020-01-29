@@ -4,7 +4,7 @@ $b_user_id = $_SESSION["b_user_id"];
 $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
 $db = new PDO($dsn, 'root', 'root');
 
-$getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+$getName = $db->query("SELECT vol_id, vol_name FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0 ORDER BY vol_date DESC");
 $j = 0;
 foreach ($getName as $get_name) {
   $vol_id[$j] .= $get_name["vol_id"];
@@ -12,7 +12,7 @@ foreach ($getName as $get_name) {
   $j += 1;
 }
 if (!empty($vol_name)) {
-  $getName = $db->query("SELECT COUNT(vol_name) AS count FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0");
+  $getName = $db->query("SELECT COUNT(vol_name) AS count FROM volunteers WHERE b_user_id = $b_user_id AND disapp_flag = 0 ORDER BY vol_date DESC");
   foreach ($getName as $get_name) {
     $count = $get_name["count"];
   }
