@@ -194,9 +194,13 @@ if (empty($table)) {
     </div>
     <div id="body-bk">
         <div id="body">
-            <div id="Toptitle1">
-                検索
-            </div>
+          <?php
+            if ($_POST['back'] == 1) {
+              echo "<div id='Toptitle1'>検索</div>";
+            } else {
+              echo "<div id='Toptitle2'>マイボランティア</div>";
+            }
+          ?>
             <div width="100%" class="new">
                 <h1 align="center">ボランティア内容</h1>
                 <form action="receiver.php" method="post" align="left">
