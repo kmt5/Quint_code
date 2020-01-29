@@ -155,7 +155,7 @@ $db = null;
         } ?>
         <br><br>
         <?php if ($newbie_flag == 1) {
-          echo "<p class='dezain'>初心者OK</p>";
+          echo "<p class='dezain'>初心者歓迎</p>";
         } else {
           echo "<p class='dezain'>経験者のみ</p>";
         } ?>
