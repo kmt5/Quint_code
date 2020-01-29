@@ -133,12 +133,19 @@ $user_id=$_POST['s_user_id'];
       $count12++;
       }
       else{continue;}
+
+      $vi=$row['vol_id'];
+      $area = "SELECT * FROM areas WHERE area_id in (SELECT area_id FROM volunteers where vol_id = $vi)";
+      $pref = $db->query($area);
+
           echo '<img src="../../bosyu/'.$row['vol_fig_path'].'" class="img">';
           echo '<h1>';
           echo '<td align="left">';
           echo date("d日  ",strtotime($row['vol_date'])).date("H:i",strtotime($row['vol_beg_time'])).'~'.date("H:i",strtotime($row['vol_fin_time']));
           echo '<br>';
-          echo '場所 '.$row['vol_place'];
+          foreach($pref as $row2){
+            echo ' 開催地域 '.$row2['pref_name'].$row2['area_name'];
+            }
           echo '<br>';
           echo '内容 '.$row['vol_name'];
           echo '<br>';
