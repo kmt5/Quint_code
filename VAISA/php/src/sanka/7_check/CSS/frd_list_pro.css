@@ -1,6 +1,6 @@
 .frd-pro img{
-  width:200px;
-  height:150px;
+  width:400px;
+  height:300px;
   position: absolute;
   top: 20%;
   left:0;
@@ -63,5 +63,6 @@ li{
   display: inline-block;
   border: solid 2px #000;
   border-radius: 20px;
+  font-size: 30px;
   margin-top: -10%;
 }
