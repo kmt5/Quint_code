@@ -60,6 +60,10 @@
               header('Location: s_account_regd.php');
               exit();
       }
+      if ($res['prof_path'] != "prof/default.jpg"){
+        $file = "../../".$res['prof_path'];
+        unlink($file);
+      }
   //  もし一時的なファイル名の$_FILES['pic']ファイルを
   //  prof/basename($_FILES['pic']['name'])ファイルに移動したら
       $gazou = basename($_FILES['pic']['name']);
@@ -67,6 +71,7 @@
           $prof_path = "prof/".$new_name;
           $msg = $gazou. 'のアップロードに成功しました';
       }else {
+          $prof_path = "prof/default.jpg";
           $msg = 'アップロードに失敗しました';
       }
   }
