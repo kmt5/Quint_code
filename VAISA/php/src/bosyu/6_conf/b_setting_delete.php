@@ -53,7 +53,7 @@
   <body>
   <div id="header-fixed">
     <img border="0" src="../../common/header.jpg" width="100%" height="100%">
-    <form method="post" name="formback" action="../b_setting_edit.php">
+    <form method="post" name="formback" action="./b_setting_edit.php">
       <input type="hidden" name="b_user_id" value="<?php echo $b_user_id; ?>" />
       <a href="javascript:formback.submit()">
         <p id="back"><i class="fas fa-reply"></i></p>
