@@ -65,11 +65,10 @@ $db = null;
       <div id="Toptitle2">
         <i class="fas fa-handshake"></i>　参加者一覧
       </div>
-      <h1 align="center">ログイン</h1>
-      <h3>
+      <h2 align="center">
         ここから先では個人情報が管理されています。<br>
         安全性のためパスワードを再入力してください。
-      </h3>
+      </h2>
       <div align="center" class="login">
         <br><br>
         <p align="left">パスワード</p><br>
