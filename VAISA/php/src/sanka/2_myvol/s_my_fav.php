@@ -67,7 +67,6 @@ $now_year=(int)date("Y",strtotime($now_time));
   }
 </script>
       <div id="tabbody">
-        <center>
 <?php
 //データベースに接続(test3)
     $dsn = "mysql:host=vaisa_mysql_1;dbname=vaisa;";
@@ -167,7 +166,6 @@ $now_year=(int)date("Y",strtotime($now_time));
     }
     $db=null;
 ?>
-</center>
       </div>
   </div>
 </div>
