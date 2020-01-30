@@ -101,3 +101,9 @@ button:active {
   transform: translateY(10px);/*下に動く*/
   border-bottom: none;/*線を消す*/
 }
+
+#preview{
+  margin:50px 0px 0px 0px;
+  width:90%;
+  height:400px;
+}
