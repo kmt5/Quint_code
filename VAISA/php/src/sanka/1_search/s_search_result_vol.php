@@ -215,7 +215,7 @@ if (empty($table)) {
                         <?php if ($vol_fig_path == null) {
                             echo "登録されている写真はありません。";
                         } else {
-                            echo "<img src=../../bosyu/" . $vol_fig_path . ">";
+                            echo "<img id='preview' src=../../bosyu/" . $vol_fig_path . ">";
                         } ?>
                         <br><br>
                         <?php
