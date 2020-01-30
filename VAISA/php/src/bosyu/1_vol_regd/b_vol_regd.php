@@ -66,8 +66,6 @@ $_SESSION["b_user_id"] = $b_user_id;
       </table>
     </div>
   </div>
-  <div id="footer-fixed">
-    <img border="0" src="../../common/homeru.jpg" width="100%" height="100%">
-  </div>
+
 </body>
 </html>
