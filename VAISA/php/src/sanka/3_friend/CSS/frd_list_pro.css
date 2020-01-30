@@ -5,7 +5,7 @@
   top: 20%;
   left:0;
   margin-left: 10%;
-  margin-top: 5%;
+  margin-top: 7%;
 }
 .name{
   position: absolute;
@@ -23,7 +23,7 @@
 
 }
 .vol{
-  margin-top: 30%;
+  margin-top: 27%;
   width: 82%;
   font-size: 50px;
   text-align: center;
@@ -45,7 +45,7 @@ li{
   padding: 10px 20px 10px 20px;
   border-radius: 20px;
   text-align: center;
-  background-color: #92d050;
+  background-color: #0cb06e;
   border: solid 1px #000;
   font-size: 30px;
   box-sizing: border-box;
@@ -54,19 +54,19 @@ li{
 }
 
 .text{
+  margin-top: 2%;
   display: inline-block;
-  font-size: 35px;
+  font-size: 30px;
   margin-left: 20px;
 }
 .message{
-  width: 99%;
-  height: 300px;
-  display: flex;
+  text-align: center;
+  width:99%;
+  height: 200px;
+  display: inline-block;
   border: solid 2px #000;
   border-radius: 20px;
   font-size: 30px;
-  margin-top: -3%;
+  margin-top: -8%;
   align-items: center;
-  margin-right: 1px;
-  justify-content: center;
 }
