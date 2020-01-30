@@ -73,7 +73,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
           <h2>地域選択</h2>
           <label>都道府県</label>
           <select name="select_pref" , id="pref" required>
-            <option value="none" selected>----選択してください----</option>
+            <option value="none">----選択してください----</option>
             <?php
             echo $pref_pd;
             ?>
@@ -90,7 +90,7 @@ if ($pref_data = $db -> query("SELECT DISTINCT pref_id, pref_name FROM areas")) 
           </script>
           <label>地域</label>
           <select name="select_area" , id="area" required>
-            <option value="none" selected></option>
+            <option value="none" ></option>
 
           </select>
           <br>
