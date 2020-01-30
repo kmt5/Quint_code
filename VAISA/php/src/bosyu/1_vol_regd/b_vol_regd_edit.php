@@ -191,7 +191,7 @@ $db = null;
                     </select>
                     <br>
                     <h2>郵便番号</h2>
-                    <!-- ▼郵便番号入力フィールド(7桁) -->-
+                    <!-- ▼郵便番号入力フィールド(7桁) -->
                     <!-- 登録した郵便番号が表示できるか -->
                     <input type="text" name="zip11" size="10" maxlength="8" value="<?= htmlspecialchars($post_num, ENT_QUOTES, 'UTF-8') ?>" required>
                     <!-- ▼住所入力フィールド(都道府県+以降の住所) -->
