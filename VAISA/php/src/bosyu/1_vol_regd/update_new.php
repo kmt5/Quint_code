@@ -37,8 +37,13 @@ $val_flag = $_POST["va_flag"];
 $newbie_flag = $_POST["newbie_flag"];
 $vol_detail = $_POST["detail"];
 $pref_id = $_POST["select_pref"];
+$area_id = $_POST["select_area"];
 $spec_rank = $_POST["spec_rank"];
-
+$getName = $db->query("SELECT pref_name, area_name FROM areas WHERE area_id = $area_id");
+foreach ($getName as $get_name) {
+    $pref_name =  $get_name['pref_name'];
+    $area_name =  $get_name['area_name'];
+}
 if ($spec_rank == null) {
     $spec_rank = '指定なし';
 }
