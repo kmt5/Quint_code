@@ -6,7 +6,7 @@ $db = new PDO($dsn, 'root', 'root');
 <?php
 //if (isset($_POST['vol_id'])) {
 //    print "送信された内容は{$_POST['vol_id']}です。<br/>";
-//} 
+//}
 $b_user_id = $_POST["b_user_id"];
 $vol_id = $_POST['vol_id'];
 //echo $b_user_id;
@@ -146,7 +146,7 @@ $db = null;
                     if ($vol_fig_path == null) {
                         echo "<br>登録されている写真はありません。";
                     } else {
-                        echo "<img src=../" . $vol_fig_path . ">";
+                        echo "<img id='preview' src=../" . $vol_fig_path . ">";
                     }
                     ?>
                     <br>
