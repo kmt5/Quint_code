@@ -47,7 +47,7 @@
         <i class="fas fa-coins"></i>決済情報確認
       </div>
       <div class="setumei">
-        個人・団体名：
+        個人・団体名<br>
         <?php
         echo $groupname;
         ?>
