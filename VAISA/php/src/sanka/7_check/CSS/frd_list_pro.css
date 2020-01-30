@@ -5,7 +5,7 @@
   top: 20%;
   left:0;
   margin-left: 10%;
-  margin-top: 5%;
+  margin-top: 6%;
 }
 .name{
   position: absolute;
@@ -23,7 +23,7 @@
 
 }
 .vol{
-  margin-top: 25%;
+  margin-top: 26%;
   width: 82%;
   font-size: 50px;
   text-align: center;
@@ -54,6 +54,7 @@ li{
 }
 
 .text{
+  margin-top: 1%;
   display: inline-block;
   font-size: 30px;
   margin-left: 20px;
@@ -65,5 +66,5 @@ li{
   border: solid 2px #000;
   border-radius: 20px;
   font-size: 30px;
-  margin-top: -10%;
+  margin-top: -9%;
 }
