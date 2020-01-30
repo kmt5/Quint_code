@@ -60,7 +60,9 @@ li{
   margin-left: 20px;
 }
 .message{
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width:99%;
   height: 200px;
   display: inline-block;
@@ -68,5 +70,4 @@ li{
   border-radius: 20px;
   font-size: 30px;
   margin-top: -8%;
-  vertical-align:  middle;
 }
