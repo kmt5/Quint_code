@@ -123,7 +123,7 @@ $db = null;
         <?php if ($vol_fig_path == null) {
           echo "<br>登録されている写真はありません。";
         } else {
-          echo "<img src=../" . $vol_fig_path . ">";
+          echo "<img id='preview' src=../" . $vol_fig_path . ">";
         } ?>
         <h2 class="a">都道府県　：<?php echo $pref_name; ?></h2>
         <h2 class="a">地域　　　：<?php echo $area_name; ?></h2>
