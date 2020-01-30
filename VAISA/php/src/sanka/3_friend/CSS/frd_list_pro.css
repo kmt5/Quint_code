@@ -60,13 +60,13 @@ li{
   margin-left: 20px;
 }
 .message{
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width:99%;
   height: 200px;
-  display: inline-block;
   border: solid 2px #000;
   border-radius: 20px;
   font-size: 30px;
   margin-top: -8%;
-  align-items: center;
 }
