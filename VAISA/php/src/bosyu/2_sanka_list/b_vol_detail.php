@@ -92,7 +92,7 @@ foreach ($getName as $get_name) {
     <meta charset="utf-8"> <!-- 文字コードを宣言 -->
     <title>Sample</title> <!-- ページのタイトル -->
     <link rel="stylesheet" type="text/css" href="../../common/common.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/entrant.css">
+    <link rel="stylesheet" type="text/css" href="entrant_vol.css">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -129,39 +129,50 @@ foreach ($getName as $get_name) {
             <div width="100%" class="new">
                 <h1 align="center">ボランティア内容</h1>
                 <form action="receiver.php" method="post" align="left">
-                    <h2>ボランティア名</h2>
-                    <p><?php echo $vol_name; ?></p>
-                    <h2>地域</h2>
-                    <p><?php echo $pref_name;
-                        echo $area_name; ?></p>
-                    <h2>住所</h2>
-                    <p><?php echo $post_num; ?><br>
-                        <?php echo $vol_place; ?></p>
-                    <h2>開催日</h2>
-                    <p><?php echo date('Y年m月d日',  strtotime($vol_date)); ?><br>
-                        開始時間：<?php echo $vol_beg_time; ?><br>
-                        終了時間：<?php echo $vol_fin_time; ?>
-                        <h2>定員</h2>
-                        <p><?php echo $vol_capacity; ?>名</p>
-                        <h2>ボランティアイメージ画像</h2>
-                        <?php if ($vol_fig_path == null) {
-                            echo "登録されている写真はありません。";
-                        } else {
-                            echo "<img src=../../bosyu/" . $vol_fig_path . ">";
-                        } ?>
-                        <br><br>
-                        <?php
-                        if ($newbie_flag == 1) {
-                            echo "<h2>初心者OK</h2>";
-                        }
-                        ?>
-                        <br>
-                        <h2>ランク指定</h2>
-                        <p><?php echo $spec_rank; ?></p>
-                        <br>
-                        <h2>詳細</h2>
-                        <p><?php echo $vol_detail; ?></p>
-                        <br>
+                  <h2 class="a">ボランティア名</h2>
+        <div class="textarea">
+        <?php echo $vol_name; ?>
+        </div>
+        <h2 class="a">ボランティアイメージ画像</h2>
+        <?php if ($vol_fig_path == null) {
+          echo "<br>登録されている写真はありません。";
+        } else {
+          echo "<img id='preview' src=../" . $vol_fig_path . ">";
+        } ?>
+        <h2 class="a">都道府県　：<?php echo $pref_name; ?></h2>
+        <h2 class="a">地域　　　：<?php echo $area_name; ?></h2>
+        <h2 class="a">〒　<?php echo $post_num; ?></h2>
+        <div class="textarea">
+        <?php echo $vol_place; ?>
+        </div>
+        <h2 class="a">開催日</h2>
+        <?php echo $vol_date; ?>
+        <br>
+        <label>開始時間</label>
+        <?php echo $vol_beg_time; ?>
+        <br>
+        <label>終了時間</label>
+        <?php echo $vol_fin_time; ?>
+        <h2 class="a">定員　：<?php echo $vol_capacity; ?>名</h2>
+
+        <?php if ($val_flag == 1) {
+          echo "<p class='dezain'>報酬あり</p>";
+        } else {
+          echo "<p class='dezain'>報酬なし</p>";
+        } ?>
+
+        <?php if ($newbie_flag == 1) {
+          echo "<p class='dezain'>初心者歓迎</p>";
+        } else {
+          echo "<p class='dezain'>経験者のみ</p>";
+        } ?>
+
+        <h2 class="a">ランク指定　：<?php echo $spec_rank; ?></h2>
+        <h2 class="a">詳細</h2>
+        <div class="textarea">
+        <?php echo $vol_detail; ?>
+        </div>
+        <br>
                 </form>
             </div>
         </div>

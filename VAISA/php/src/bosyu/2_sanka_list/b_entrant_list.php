@@ -74,11 +74,13 @@ foreach ($getName as $get_name) {
       }
       ?>
       <h1 align="center"><?php echo $vol_name; ?></h1>
+      <div align="center">
       <form action='./b_vol_detail.php' method='post'>
       <input type='hidden' name='vol_id' value=<?php echo $vol_id; ?>>
       <input type='hidden' name='b_user_id' value=<?php echo $b_user_id; ?>>
       <button type='submit' class='button-vol'>ボランティア詳細を見る</button>
       </form>
+    </div>
       <h2 align="center">参加者人数　<?php echo $read_mem; ?>/<?php echo $count; ?></h2>
       <div align="center">
         <?php
